@@ -235,4 +235,4 @@ __Spectus__ follows [Semantic Versioning 2.0](http://semver.org/)
 
 ## Copyright
 
-&copy; [Cyril Wack](https://plus.google.com/+CyrilWack?rel=author)
+&copy; 2014 [Cyril Wack](https://plus.google.com/+CyrilWack?rel=author)
