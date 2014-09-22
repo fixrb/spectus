@@ -67,7 +67,7 @@ end
 @bird = Duck.new
 ```
 
-> When I see a #<Duck:0x007f96b285d6d0> that ...
+> When I see a `#<Duck:0x007f96b285d6d0>` that ...
 
 ```ruby
 require 'spectus'
@@ -87,7 +87,7 @@ case (expectation_1.pass? &&
 end
 ```
 
-> I call that #<Duck:0x007f96b285d6d0> a duck.
+> I call that `#<Duck:0x007f96b285d6d0>` a duck.
 
 ## Built-in matchers
 
