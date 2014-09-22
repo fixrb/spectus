@@ -4,7 +4,7 @@
 [![Coverage Status](http://img.shields.io/coveralls/cyril/spectus.rb.svg?branch=master)](https://coveralls.io/r/cyril/spectus.rb)
 [![Dependency Status](https://gemnasium.com/cyril/spectus.rb.svg)](https://gemnasium.com/cyril/spectus.rb)
 [![Gem Version](http://img.shields.io/gem/v/spectus.svg)](https://rubygems.org/gems/spectus)
-[![Inline docs](http://inch-ci.org/github/cyril/spectus.rb.svg)](http://inch-ci.org/github/cyril/spectus.rb)
+[![Inline docs](http://inch-ci.org/github/cyril/spectus.rb.svg?branch=master)](http://inch-ci.org/github/cyril/spectus.rb)
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)](http://rubydoc.info/gems/spectus/frames)
 [![License](http://img.shields.io/:license-MIT-38c800.svg)](http://cyril.mit-license.org/)
 
@@ -44,7 +44,7 @@ $ gem install spectus
 
 * It's ~200 lines of fast and KISS code.
 * Atomic state transitions, immutable objects, thread-safe.
-* A generic, consistent DSL for assertions.
+* Generic and consistent DSL for assertions.
 
 ## Usage
 
