@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/cyril/spectus.rb.svg?branch=master)](https://travis-ci.org/cyril/spectus.rb)
 [![Coverage Status](http://img.shields.io/coveralls/cyril/spectus.rb.svg?branch=master)](https://coveralls.io/r/cyril/spectus.rb)
-[![Code Climate](http://img.shields.io/codeclimate/github/cyril/spectus.rb.svg)](https://codeclimate.com/github/cyril/spectus.rb)
 [![Dependency Status](https://gemnasium.com/cyril/spectus.rb.svg)](https://gemnasium.com/cyril/spectus.rb)
 [![Gem Version](http://img.shields.io/gem/v/spectus.svg)](https://rubygems.org/gems/spectus)
 [![Inline docs](http://inch-ci.org/github/cyril/spectus.rb.svg)](http://inch-ci.org/github/cyril/spectus.rb)
