@@ -42,9 +42,9 @@ $ gem install spectus
 
 ## Why would I want this library?
 
-* It's ~200 lines of fast and KISS code.
+* It's 194 lines of fast and KISS code.
 * Atomic state transitions, immutable objects, thread-safe.
-* Generic and consistent DSL for assertions.
+* Provides a generic and consistent DSL for assertions.
 
 ## API
 
