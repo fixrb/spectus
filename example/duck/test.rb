@@ -2,8 +2,7 @@
 
 require_relative 'app'
 
-# require 'spectus'
-require_relative '../../lib/spectus'
+require 'spectus'
 
 extend Spectus::DSL
 
