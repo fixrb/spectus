@@ -3,11 +3,8 @@ require 'stringio'
 module Spectus
   module Matcher
 
-    # @api private
     # Provides the implementation for `capture_stderr`.
     class CaptureStderr
-
-      # @api private
       def initialize expected
         @expected = expected
 

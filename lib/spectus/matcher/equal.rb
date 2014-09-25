@@ -1,11 +1,8 @@
 module Spectus
   module Matcher
 
-    # @api private
     # Provides the implementation for `equal`.
     class Equal
-
-      # @api private
       def initialize expected
         @expected = expected
 

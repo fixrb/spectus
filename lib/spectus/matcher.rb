@@ -1,18 +1,21 @@
-require_relative 'reporter'
-
 module Spectus
 
   # This module provides matchers to define expectations.
   module Matcher
 
-    # Evaluate the expectation, and report the result.
+    # Evaluate the expectation with the passed block.
+    #
+    # @param [Boolean] negated
+    # @param [Hash] definition
+    #
+    # @return [ExceptionClass, false, true] true, false, or a cached exception.
     def self.eval negated, definition, &actual
       params        = Array(definition).flatten(1)
       name          = params.first
       expected_args = params[1..-1]
       matcher       = Matcher.get(name).new(*expected_args)
 
-      Reporter.new negated, name, *expected_args, begin
+      begin
         negated ^ matcher.matches?(&actual)
       rescue => e
         e

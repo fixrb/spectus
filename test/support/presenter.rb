@@ -12,12 +12,12 @@ def it describe, &expectation
 
   result = expectation.call
 
-  case result.state
-  when :success
-    puts "\e[32m#{result}\e[0m"
-  when :failure
-    warn "\e[31m#{result}\e[0m"
+  case result
+  when true
+    puts "\e[32m.\e[0m"
+  when false
+    warn "\e[31mF\e[0m"
   else
-    fail result.exception
+    fail result
   end
 end

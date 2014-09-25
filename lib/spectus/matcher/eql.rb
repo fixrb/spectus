@@ -1,11 +1,8 @@
 module Spectus
   module Matcher
 
-    # @api private
     # Provides the implementation for `eql`.
     class Eql
-
-      # @api private
       def initialize expected
         @expected = expected
 

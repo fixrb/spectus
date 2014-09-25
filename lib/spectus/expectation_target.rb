@@ -7,19 +7,26 @@ module Spectus
   # @example
   #   expect { do_something } # => ExpectationTarget wrapping the block
   class ExpectationTarget
-    # @api private
     def initialize &actual
       @actual = actual
 
       freeze
     end
 
-    # To evaluate to a positive assertion.
+    # Evaluate to a positive assertion.
+    #
+    # @api public
+    #
+    # @see Matcher#eval
     def to definition
       Matcher.eval false, definition, &@actual
     end
 
-    # To evaluate to a negative assertion.
+    # Evaluate to a negative assertion.
+    #
+    # @api public
+    #
+    # @see Matcher#eval
     def not_to definition
       Matcher.eval true, definition, &@actual
     end

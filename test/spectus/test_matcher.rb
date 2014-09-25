@@ -4,10 +4,16 @@ subject "matcher module" do
   Spectus::Matcher
 end
 
-it 'must evaluate the expectation' do
-  expect do
-    subject.eval(false, eql: 'foobar') { 'foobar' }.class
-  end.to equal: Spectus::Reporter
+it 'must return true after the evaluation' do
+  expect { subject.eval(false, eql: 'foo') { 'foo' } }.to equal: true
+end
+
+it 'must return false after the evaluation' do
+  expect { subject.eval(false, eql: 'foo') { 'bar' } }.to equal: false
+end
+
+it 'must return an exception after the evaluation' do
+  expect { subject.eval(false, eql: 'foo') { BOOM }.class }.to equal: NameError
 end
 
 it 'must return the class of a matcher from its symbol' do

@@ -46,6 +46,16 @@ $ gem install spectus
 * Atomic state transitions, immutable objects, thread-safe.
 * Generic and consistent DSL for assertions.
 
+## API
+
+The [Spectus DSL](lib/spectus/dsl.rb) provides the `expect` method.
+It takes a block parameter and responds to:
+
+* `to(definition)`
+* `not_to(definition)`
+
+Then it returns `true`, `false`, or a cached exception.
+
 ## Usage
 
 ```ruby
@@ -77,10 +87,10 @@ expectation_2 = expect { @bird.swims  }.to eql: "Swoosh..."
 expectation_3 = expect { @bird.quacks }.to capture_stdout: "Quaaaaaack!\n"
 expectation_4 = expect { @bird.speaks }.to raise_exception: NoMethodError
 
-case (expectation_1.pass? &&
-      expectation_2.pass? &&
-      expectation_3.pass? &&
-      expectation_4.pass?)
+case (expectation_1 == true &&
+      expectation_2 == true &&
+      expectation_3 == true &&
+      expectation_4 == true)
   when true then puts "I call that #{@bird} a duck."
   else warn 'WAT?'
 end
@@ -93,37 +103,37 @@ end
 ### Standard error
 
 ```ruby
-expect { warn 'foo' }.to capture_stderr: "foo\n"
+expect { warn 'foo' }.to capture_stderr: "foo\n" # => true
 ```
 
 ### Standard output
 
 ```ruby
-expect { puts 'foo' }.to capture_stdout: "foo\n"
+expect { puts 'foo' }.to capture_stdout: "foo\n" # => true
 ```
 
 ### Equivalence
 
 ```ruby
-expect { 'foo' }.to eql: 'foo'
+expect { 'foo' }.to eql: 'foo' # => true
 ```
 
 ### Identity
 
 ```ruby
-expect { :foo }.to equal: :foo
+expect { :foo }.to equal: :foo # => true
 ```
 
 ### Regular expressions
 
 ```ruby
-expect { 'foo' }.to({match: /^foo$/})
+expect { 'foo' }.to({match: /^foo$/}) # => true
 ```
 
 ### Expecting errors
 
 ```ruby
-expect { Foo }.to raise_exception: NameError
+expect { Foo }.to raise_exception: NameError # => true
 ```
 
 ## Custom matchers
@@ -136,13 +146,13 @@ The following expression...
 
 ```ruby
 require 'prime'
-expect { Prime.prime? 42 }.to equal: false
+expect { Prime.prime? 42 }.to equal: false # => true
 ```
 
 ...could be refactored into:
 
 ```ruby
-expect { 42 }.not_to :be_prime
+expect { 42 }.not_to :be_prime # => true
 ```
 
 It can be done with this custom matcher:
@@ -166,13 +176,13 @@ end
 The following expression...
 
 ```ruby
-expect { 42 }.to equal: 42
+expect { 42 }.to equal: 42 # => true
 ```
 
 ...could be refactored into:
 
 ```ruby
-expect { 42 }.to :be_the_answer
+expect { 42 }.to :be_the_answer # => true
 ```
 
 It can be done with this custom matcher:
@@ -194,13 +204,13 @@ end
 The following expression...
 
 ```ruby
-expect { 'foobar' }.to match: /^foo/
+expect { 'foobar' }.to match: /^foo/ # => true
 ```
 
 ...could be refactored into:
 
 ```ruby
-expect { 'foobar' }.to start_with: 'foo'
+expect { 'foobar' }.to start_with: 'foo' # => true
 ```
 
 It can be done with this custom matcher:
