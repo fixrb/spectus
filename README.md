@@ -1,20 +1,19 @@
 # Spectus
 
-[![Build Status](https://travis-ci.org/cyril/spectus.rb.svg?branch=master)](https://travis-ci.org/cyril/spectus.rb)
-[![Coverage Status](http://img.shields.io/coveralls/cyril/spectus.rb.svg?branch=master)](https://coveralls.io/r/cyril/spectus.rb)
-[![Dependency Status](https://gemnasium.com/cyril/spectus.rb.svg)](https://gemnasium.com/cyril/spectus.rb)
+[![Build Status](https://travis-ci.org/fixrb/spectus.svg?branch=master)](https://travis-ci.org/fixrb/spectus)
+[![Coverage Status](http://img.shields.io/coveralls/fixrb/spectus.svg?branch=master)](https://coveralls.io/r/fixrb/spectus)
+[![Dependency Status](https://gemnasium.com/fixrb/spectus.svg)](https://gemnasium.com/fixrb/spectus)
 [![Gem Version](http://img.shields.io/gem/v/spectus.svg)](https://rubygems.org/gems/spectus)
-[![Inline docs](http://inch-ci.org/github/cyril/spectus.rb.svg?branch=master)](http://inch-ci.org/github/cyril/spectus.rb)
+[![Inline docs](http://inch-ci.org/github/fixrb/spectus.svg?branch=master)](http://inch-ci.org/github/fixrb/spectus)
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)](http://rubydoc.info/gems/spectus/frames)
-[![License](http://img.shields.io/:license-MIT-38c800.svg)](http://cyril.mit-license.org/)
 
-> An expectation library with some built-in matchers for Ruby.
+> Expectation library with some built-in matchers for Ruby.
 
 ## Contact
 
-* Home page: https://github.com/cyril/spectus.rb
-* Bugs/issues: https://github.com/cyril/spectus.rb/issues
-* Support: https://stackoverflow.com/questions/tagged/spectus-ruby
+* Home page: https://github.com/fixrb/spectus
+* Bugs/issues: https://github.com/fixrb/spectus/issues
+* Support: https://stackoverflow.com/questions/tagged/spectus
 
 ## Rubies
 
@@ -233,7 +232,7 @@ end
 
 ## Contributing
 
-1. [Fork it](https://github.com/cyril/spectus.rb/fork)
+1. [Fork it](https://github.com/fixrb/spectus/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

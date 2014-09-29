@@ -4,8 +4,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Cyril Wack']
   spec.email         = ['cyril@sashite.com']
   spec.summary       = %q{Expectation library.}
-  spec.description   = %q{An expectation library with some matchers for Ruby.}
-  spec.homepage      = 'https://github.com/cyril/spectus.rb'
+  spec.description   = %q{Expectation library with some matchers for Ruby.}
+  spec.homepage      = 'https://github.com/fixrb/spectus'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
