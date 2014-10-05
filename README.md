@@ -230,6 +230,10 @@ module Spectus
 end
 ```
 
+## Presentations
+
+* [こんばんは、条件やビヘイビアテスト](https://speakerdeck.com/cyril/konbanha-tiao-jian-yabiheibiatesuto)
+
 ## Contributing
 
 1. [Fork it](https://github.com/fixrb/spectus/fork)
