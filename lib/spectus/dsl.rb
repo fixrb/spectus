@@ -10,7 +10,7 @@ module Spectus
     # @api public
     #
     # @example Duck example
-    #   YARD.parse('example/duck/*.rb')
+    #   expect { 42 }.to equal: 42 # => true
     #
     # @return [ExpectationTarget] the expectation target.
     def expect &input
