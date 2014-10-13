@@ -91,7 +91,7 @@ case (expectation_1 == true &&
       expectation_3 == true &&
       expectation_4 == true)
   when true then puts "I call that #{@bird} a duck."
-  else warn 'WAT?'
+  else abort 'WAT?'
 end
 ```
 

@@ -1,3 +1,5 @@
+@failures = 0
+
 def subject title = nil, &block
   if block
     @subject = block.call
@@ -16,8 +18,14 @@ def it describe, &expectation
   when true
     puts "\e[32m.\e[0m"
   when false
+    @failures += 1
     warn "\e[31mF\e[0m"
   else
+    @failures += 1
     fail result
   end
+end
+
+at_exit do
+  abort("\e[31mFailure.\e[0m") unless @failures.zero?
 end
