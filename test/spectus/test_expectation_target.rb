@@ -13,5 +13,5 @@ it 'must responds to :to' do
 end
 
 it 'must responds to :not_to' do
-  expect { subject.respond_to? :not_to }.to equal: true
+  expect { subject.respond_to? :not_to }.not_to equal: false
 end
