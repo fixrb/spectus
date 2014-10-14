@@ -29,9 +29,9 @@ it 'must no longer raise' do
   module Spectus
     module Matcher
       class Foo
-        def matches?
-          true
-        end
+        # def matches?
+        #   true
+        # end
       end
     end
   end
