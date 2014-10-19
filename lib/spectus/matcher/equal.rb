@@ -2,11 +2,9 @@ module Spectus
   module Matcher
 
     # Provides the implementation for `equal`.
-    class Equal
+    class Equal < BasicObject
       def initialize expected
         @expected = expected
-
-        freeze
       end
 
       # @return [Boolean] Comparison between actual and expected values.

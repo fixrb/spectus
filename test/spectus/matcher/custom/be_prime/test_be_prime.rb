@@ -4,15 +4,15 @@ subject 'be prime custom matcher' do
   Spectus::Matcher::BePrime.new
 end
 
-it 'must confirm that the instance variable is undefined' do
-  expect { subject.instance_variable_defined?(:@expected) }.to equal: false
-end
-
 it 'must be prime' do
   expect { subject.matches? { 3 } }.to equal: true
 end
 
 it 'must not match the string' do
+  expect { subject.matches? { 4 } }.not_to equal: true
+end
+
+it 'must return false' do
   expect { subject.matches? { 4 } }.to equal: false
 end
 

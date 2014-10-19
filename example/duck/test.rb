@@ -2,19 +2,42 @@
 
 require_relative 'app'
 
-require 'spectus'
+require_relative '../../lib/spectus'
 
 extend Spectus::DSL
 
-expectation_1 = expect { @app.swims  }.to capture_stderr: " ...\n"
-expectation_2 = expect { @app.quacks }.to capture_stdout: "Quaaaaaack!\n"
-expectation_3 = expect { @app.speaks }.to raise_exception: NoMethodError
-expectation_4 = expect { @app.walks  }.to eql: "Quaaa... Klop klop!"
+# Let's define the custom matcher `capture_stdout`.
+require 'stringio'
+module Spectus
+  module Matcher
+    class CaptureStdout
+      def initialize expected
+        @expected = expected
+      end
+
+      def matches?
+        begin
+          orig_std  = $stdout
+          $stdout   = StringIO.new
+          yield
+          $stdout.string.eql? @expected
+        ensure
+          $stdout   = orig_std
+        end
+      end
+    end
+  end
+end
+
+expectation_1 = expect { @bird.walks  }.to eql: "Klop klop!"
+expectation_2 = expect { @bird.swims  }.to eql: "Swoosh..."
+expectation_3 = expect { @bird.quacks }.to capture_stdout: "Quaaaaaack!\n"
+expectation_4 = expect { @bird.speaks }.to raise_exception: NoMethodError
 
 case (expectation_1 == true &&
       expectation_2 == true &&
       expectation_3 == true &&
       expectation_4 == true)
-  when true then puts "I call that #{@app} a duck."
+  when true then puts "I call that #{@bird} a duck."
   else abort 'WAT?'
 end

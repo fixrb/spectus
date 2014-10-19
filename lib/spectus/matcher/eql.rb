@@ -2,11 +2,9 @@ module Spectus
   module Matcher
 
     # Provides the implementation for `eql`.
-    class Eql
+    class Eql < BasicObject
       def initialize expected
         @expected = expected
-
-        freeze
       end
 
       # @return [Boolean] Comparison between actual and expected values.

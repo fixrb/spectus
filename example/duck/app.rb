@@ -1,3 +1,3 @@
 require_relative 'lib'
 
-@app = Duck.new
+@bird = Duck.new

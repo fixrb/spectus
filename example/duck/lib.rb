@@ -1,11 +1,10 @@
 class Duck
   def walks
-    "Quaaa... Klop klop!"
+    "Klop klop!"
   end
 
   def swims
-    warn " ..."
-    "Quaaa.."
+    "Swoosh..."
   end
 
   def quacks

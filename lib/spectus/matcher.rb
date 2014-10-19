@@ -8,18 +8,14 @@ module Spectus
     # @param [Boolean] negated
     # @param [Hash] definition
     #
-    # @return [ExceptionClass, false, true] true, false, or a cached exception.
-    def self.eval negated, definition, &actual
-      params        = Array(definition).flatten(1)
+    # @return [Boolean] Report if the expectation is true or false.
+    def self.pass? negated, definition, &actual
+      params        = Array(definition).flatten 1
       name          = params.first
       expected_args = params[1..-1]
       matcher       = Matcher.get(name).new(*expected_args)
 
-      begin
-        negated ^ matcher.matches?(&actual)
-      rescue => e
-        e
-      end
+      negated ^ matcher.matches?(&actual)
     end
 
     # Get the class of a matcher from its symbol.

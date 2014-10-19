@@ -41,8 +41,8 @@ $ gem install spectus
 
 ## Why would I want this library?
 
-* It's 194 lines of fast and KISS code.
-* Atomic state transitions, immutable objects, thread-safe.
+* It's 143 lines of fast and KISS code.
+* Atomic state transitions, unmutated objects, thread-safe.
 * Provides a generic and consistent DSL for assertions.
 
 ## API
@@ -53,7 +53,7 @@ It takes a block parameter and responds to:
 * `to(definition)`
 * `not_to(definition)`
 
-Then it returns `true`, `false`, or a cached exception.
+Then, it returns `true` or `false`; or it raises an exception.
 
 ## Usage
 
@@ -81,6 +81,29 @@ end
 require 'spectus'
 extend Spectus::DSL
 
+# Let's define the custom matcher `capture_stdout`.
+require 'stringio'
+module Spectus
+  module Matcher
+    class CaptureStdout
+      def initialize expected
+        @expected = expected
+      end
+
+      def matches?
+        begin
+          orig_std  = $stdout
+          $stdout   = StringIO.new
+          yield
+          $stdout.string.eql? @expected
+        ensure
+          $stdout   = orig_std
+        end
+      end
+    end
+  end
+end
+
 expectation_1 = expect { @bird.walks  }.to eql: "Klop klop!"
 expectation_2 = expect { @bird.swims  }.to eql: "Swoosh..."
 expectation_3 = expect { @bird.quacks }.to capture_stdout: "Quaaaaaack!\n"
@@ -98,18 +121,6 @@ end
 > I call that `#<Duck:0x007f96b285d6d0>` a duck.
 
 ## Built-in matchers
-
-### Standard error
-
-```ruby
-expect { warn 'foo' }.to capture_stderr: "foo\n" # => true
-```
-
-### Standard output
-
-```ruby
-expect { puts 'foo' }.to capture_stdout: "foo\n" # => true
-```
 
 ### Equivalence
 

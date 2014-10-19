@@ -6,29 +6,27 @@ module Spectus
   #
   # @example
   #   expect { do_something } # => ExpectationTarget wrapping the block
-  class ExpectationTarget
+  class ExpectationTarget < BasicObject
     def initialize &actual
       @actual = actual
-
-      freeze
     end
 
     # Evaluate to a positive assertion.
     #
     # @api public
     #
-    # @see Matcher#eval
+    # @see Matcher#pass?
     def to definition
-      Matcher.eval false, definition, &@actual
+      Matcher.pass? false, definition, &@actual
     end
 
     # Evaluate to a negative assertion.
     #
     # @api public
     #
-    # @see Matcher#eval
+    # @see Matcher#pass?
     def not_to definition
-      Matcher.eval true, definition, &@actual
+      Matcher.pass? true, definition, &@actual
     end
   end
 end

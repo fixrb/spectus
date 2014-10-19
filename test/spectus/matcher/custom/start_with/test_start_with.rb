@@ -4,15 +4,15 @@ subject 'start with custom matcher' do
   Spectus::Matcher::StartWith.new('foo')
 end
 
-it 'must return the expected value' do
-  expect { subject.instance_variable_get(:@expected) }.to eql: 'foo'
-end
-
 it 'must match the string' do
   expect { subject.matches? { 'foobar' } }.to equal: true
 end
 
 it 'must not match the string' do
+  expect { subject.matches? { 'bar' } }.not_to equal: true
+end
+
+it 'must return false' do
   expect { subject.matches? { 'bar' } }.to equal: false
 end
 

@@ -2,11 +2,9 @@ module Spectus
   module Matcher
 
     # Provides the implementation for `raise_exception`.
-    class RaiseException
+    class RaiseException < BasicObject
       def initialize expected
         @expected = expected
-
-        freeze
       end
 
       # @return [Boolean] Comparison between actual and expected values.
