@@ -1,6 +1,6 @@
 require_relative 'helper_test'
 
-subject "matcher module" do
+subject 'matcher module' do
   Spectus::Matcher
 end
 
@@ -13,8 +13,8 @@ it 'must return false after the evaluation' do
 end
 
 it 'must raise a name error exception' do
-  expect { subject.pass?(false, eql: 'foo') { BOOM } }.
-    to raise_exception: NameError
+  expect { subject.pass?(false, eql: 'foo') { BOOM } }
+    .to raise_exception: NameError
 end
 
 it 'must return the class of a matcher from its symbol' do
@@ -22,8 +22,8 @@ it 'must return the class of a matcher from its symbol' do
 end
 
 it 'must raise a name error exception' do
-  expect { subject.get(:foo).equal? subject.const_get(:Foo) }.
-    to raise_exception: NameError
+  expect { subject.get(:foo).equal? subject.const_get(:Foo) }
+    .to raise_exception: NameError
 end
 
 it 'must no longer raise' do

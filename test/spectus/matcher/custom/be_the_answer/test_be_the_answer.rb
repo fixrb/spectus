@@ -17,5 +17,5 @@ it 'must return false' do
 end
 
 it 'must return the raised exception' do
-  expect { raise subject.matches? { BOOM } }.to raise_exception: NameError
+  expect { fail subject.matches? { BOOM } }.to raise_exception: NameError
 end

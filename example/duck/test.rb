@@ -10,8 +10,9 @@ extend Spectus::DSL
 require 'stringio'
 module Spectus
   module Matcher
+    # Provides a way to assert that the has emitted content to either $stdout.
     class CaptureStdout
-      def initialize expected
+      def initialize(expected)
         @expected = expected
       end
 
@@ -29,8 +30,8 @@ module Spectus
   end
 end
 
-expectation_1 = expect { @bird.walks  }.to eql: "Klop klop!"
-expectation_2 = expect { @bird.swims  }.to eql: "Swoosh..."
+expectation_1 = expect { @bird.walks  }.to eql: 'Klop klop!'
+expectation_2 = expect { @bird.swims  }.to eql: 'Swoosh...'
 expectation_3 = expect { @bird.quacks }.to capture_stdout: "Quaaaaaack!\n"
 expectation_4 = expect { @bird.speaks }.to raise_exception: NoMethodError
 
@@ -38,6 +39,6 @@ case (expectation_1 == true &&
       expectation_2 == true &&
       expectation_3 == true &&
       expectation_4 == true)
-  when true then puts "I call that #{@bird} a duck."
-  else abort 'WAT?'
+when true then puts "I call that #{@bird} a duck."
+else abort 'WAT?'
 end

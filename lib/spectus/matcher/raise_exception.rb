@@ -1,9 +1,8 @@
 module Spectus
   module Matcher
-
     # Provides the implementation for `raise_exception`.
     class RaiseException < BasicObject
-      def initialize expected
+      def initialize(expected)
         @expected = expected
       end
 

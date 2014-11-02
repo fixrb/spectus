@@ -1,4 +1,4 @@
-def subject title = nil, &block
+def subject(title = nil, &block)
   if block
     @subject = block.call
     puts "Testing: #{title}"
@@ -7,7 +7,7 @@ def subject title = nil, &block
   end
 end
 
-def it describe, &expectation
+def it(describe, &expectation)
   print " * #{describe}: ".ljust 79
   expectation.call.equal?(true) ? puts('.') : abort('F')
 end

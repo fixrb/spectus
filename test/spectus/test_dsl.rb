@@ -1,6 +1,6 @@
 require_relative 'helper_test'
 
-subject "domain-specific language" do
+subject 'domain-specific language' do
   Spectus::DSL
 end
 

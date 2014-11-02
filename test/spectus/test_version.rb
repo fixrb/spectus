@@ -1,6 +1,6 @@
 require_relative 'helper_test'
 
-subject "version" do
+subject 'version' do
   Spectus::VERSION
 end
 

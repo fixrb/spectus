@@ -1,13 +1,14 @@
+# Example of Duck implementation
 class Duck
   def walks
-    "Klop klop!"
+    'Klop klop!'
   end
 
   def swims
-    "Swoosh..."
+    'Swoosh...'
   end
 
   def quacks
-    puts "Quaaaaaack!"
+    puts 'Quaaaaaack!'
   end
 end
