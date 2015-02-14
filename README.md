@@ -59,7 +59,7 @@ Spectus.this { 'foo'.valid_encoding? }.SHOULD equal: true # => true
 **Not recommended** definition:
 
 ```ruby
-Spectus.this { ''.blank? }.SHOULD_NOT raise_exception: NoMethodError # => false
+Spectus.this { ''.blank? }.SHOULD_NOT raise_exception: NoMethodError # => true
 ```
 
 **Optional** definition:

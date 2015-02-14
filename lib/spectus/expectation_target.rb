@@ -70,7 +70,7 @@ module Spectus
     # @api public
     #
     # @example _Not recommended_ definition
-    #   this { ''.blank? }.SHOULD_NOT raise_exception: NoMethodError # => false
+    #   this { ''.blank? }.SHOULD_NOT raise_exception: NoMethodError # => true
     #
     # @param [Hash] definition
     #
