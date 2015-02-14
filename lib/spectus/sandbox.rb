@@ -3,7 +3,7 @@ require 'expect'
 module Spectus
   # This class evaluate the expectation with the passed block.
   #
-  class Sandbox < BasicObject
+  class Sandbox
     attr_reader :exception, :got
 
     # Execute the untested code from the passed block against the definition.
