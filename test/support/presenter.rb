@@ -1,10 +1,6 @@
-def subject(title = nil, &block)
-  if block
-    @subject = block.call
-    puts "Testing: #{title}"
-  else
-    @subject
-  end
+def subject(title, &block)
+  @object = block.call
+  puts "Testing: #{title}"
 end
 
 def it(describe, &expectation)
