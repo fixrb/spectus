@@ -2,7 +2,10 @@ require_relative File.join 'spectus', 'expectation_target'
 
 # Namespace for the Spectus library.
 #
-# @api private
+# @api public
+#
+# @example 42 MUST be equal to 42
+#   Spectus.this { 42 }.MUST equal: 42 # => true
 module Spectus
   # Expectations are built with this method.
   #
