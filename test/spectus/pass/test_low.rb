@@ -6,10 +6,6 @@ subject 'Uppercase of foo string' do
   Spectus.this { 'foo'.upcase }
 end
 
-it 'must pass, even if the recommended expected value is ignored' do
-  @object.MAY(eql: 'foo').equal?(true)
-end
-
 it 'must pass' do
   @object.MAY(eql: 'FOO').equal?(true)
 end

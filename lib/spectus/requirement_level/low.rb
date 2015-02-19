@@ -11,10 +11,12 @@ module Spectus
       #
       # @return [Boolean] report if the expectation is true or false.
       def pass?(&actual)
-        if sandbox(&actual).exception.class.equal?(::NoMethodError)
+        result = sandbox(&actual)
+
+        if result.exception.class.equal?(::NoMethodError)
           true
         else
-          super
+          result.pass?(@negate)
         end
       end
     end
