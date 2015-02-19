@@ -10,6 +10,7 @@ module Spectus
   class ExpectationTarget < BasicObject
     # Create a new expection target
     #
+    # @yieldparam actual the value which is compared with the expected value.
     def initialize(&actual)
       @actual = actual
     end

@@ -3,6 +3,8 @@ require 'expect'
 module Spectus
   # This class evaluate the expectation with the passed block.
   #
+  # @api private
+  #
   class Sandbox
     attr_reader :exception, :got
 
