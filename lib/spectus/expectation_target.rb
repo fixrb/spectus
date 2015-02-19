@@ -5,6 +5,8 @@ require_relative File.join 'requirement_level', 'low'
 module Spectus
   # Wraps the target of an expectation.
   #
+  # @api private
+  #
   # @example
   #   this { stuff } # => ExpectationTarget wrapping the block
   class ExpectationTarget < BasicObject
