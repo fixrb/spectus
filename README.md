@@ -36,6 +36,15 @@ Or install it yourself as:
 
     $ gem install spectus
 
+## Results
+
+| Requirement levels        | **MUST** | **SHOULD** | **MAY** |
+| ------------------------- | -------- | ---------- | ------- |
+| Implemented & Matched     | `true`   | `true`     | `true`  |
+| Implemented & Not matched | `false`  | `true`     | `false` |
+| Implemented & Exception   | `false`  | `false`    | `false` |
+| Not implemented           | `false`  | `false`    | `true`  |
+
 ## Usage
 
 **Absolute requirement** definition:
