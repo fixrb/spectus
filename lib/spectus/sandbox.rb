@@ -11,22 +11,22 @@ module Spectus
     # Execute the untested code from the passed block against the definition.
     #
     # @param [Hash] definition
-    def initialize(definition, &actual)
-      @got = ::Expect.this(&actual).to(definition)
+    # @param [Boolean] negate
+    # @yieldparam actual the value which is compared with the expected value.
+    def initialize(definition, negate, &actual)
+      @got = negate ^ ::Expect.this(&actual).to(definition)
     rescue => e
       @exception = e
     end
 
-    # Return the result as a positive or a negative assertion.
-    #
-    # @param [Boolean] negate
+    # Return the result.
     #
     # @return [Boolean] Report if the test was true or false.
-    def pass?(negate)
+    def pass?
       if defined?(@exception)
         false
       else
-        negate ^ @got
+        @got
       end
     end
   end

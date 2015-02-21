@@ -9,7 +9,7 @@ module Spectus
       #
       # @return [Boolean] report if the expectation is true or false.
       def pass?(&actual)
-        sandbox(&actual).pass?(@negate)
+        sandbox(&actual).pass?
       end
     end
   end

@@ -23,7 +23,7 @@ module Spectus
     #
     # @return [Boolean] report if the expectation is true or false.
     def sandbox(&actual)
-      Sandbox.new(@definition, &actual)
+      Sandbox.new(@definition, @negate, &actual)
     end
   end
 end

@@ -14,7 +14,7 @@ module Spectus
         if result.exception.class.equal?(::NoMethodError)
           true
         else
-          result.pass?(@negate)
+          result.pass?
         end
       end
     end

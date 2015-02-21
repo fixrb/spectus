@@ -11,7 +11,7 @@ module Spectus
       def pass?(&actual)
         result = sandbox(&actual)
 
-        if result.pass?(@negate)
+        if result.pass?
           true
         else
           result.exception.nil?
