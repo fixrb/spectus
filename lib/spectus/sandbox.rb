@@ -1,4 +1,4 @@
-require 'expect'
+require_relative 'matcher'
 
 module Spectus
   # This class evaluate the expectation with the passed block.
@@ -14,7 +14,7 @@ module Spectus
     # @param [Boolean] negate
     # @yieldparam actual the value which is compared with the expected value.
     def initialize(definition, negate, &actual)
-      @got = negate ^ ::Expect.this(&actual).to(definition)
+      @got = negate ^ Matcher.pass?(definition, &actual)
     rescue => e
       @exception = e
     end
