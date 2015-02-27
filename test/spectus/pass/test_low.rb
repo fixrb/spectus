@@ -7,7 +7,7 @@ subject 'Uppercase of foo string' do
 end
 
 it 'must pass' do
-  @object.MAY(eql: 'FOO').equal?(true)
+  @object.MAY(eql: 'FOO')
 end
 
 # ***
@@ -17,5 +17,5 @@ subject 'Not implemented behavior' do
 end
 
 it 'must pass, the optional behavior is not implemented' do
-  @object.MAY(eql: 'foo').equal?(true)
+  @object.MAY(eql: 'foo')
 end

@@ -1,6 +1,9 @@
 require_relative File.join 'requirement_level', 'high'
 require_relative File.join 'requirement_level', 'medium'
 require_relative File.join 'requirement_level', 'low'
+require_relative File.join 'exception', 'high_failure'
+require_relative File.join 'exception', 'medium_failure'
+require_relative File.join 'exception', 'low_failure'
 
 module Spectus
   # Wraps the target of an expectation.
@@ -9,7 +12,7 @@ module Spectus
   #
   # @example
   #   this { stuff } # => ExpectationTarget wrapping the block
-  class ExpectationTarget < BasicObject
+  class ExpectationTarget
     # Create a new expection target
     #
     # @yieldparam actual the value which is compared with the expected value.
@@ -29,7 +32,7 @@ module Spectus
     #
     # @return [Boolean] report if the expectation is true or false.
     def MUST(definition)
-      RequirementLevel::High.new(definition).pass?(&@actual)
+      RequirementLevel::High.new(definition).pass?(&@actual) || fail(HighFailure)
     end
 
     # This phrase, or the phrase "SHALL NOT", mean that the
@@ -44,7 +47,7 @@ module Spectus
     #
     # @return [Boolean] report if the expectation is true or false.
     def MUST_NOT(definition)
-      RequirementLevel::High.new(definition, true).pass?(&@actual)
+      RequirementLevel::High.new(definition, true).pass?(&@actual) || fail(HighFailure)
     end
 
     # This word, or the adjective "RECOMMENDED", mean that there
@@ -61,7 +64,7 @@ module Spectus
     #
     # @return [Boolean] report if the expectation is true or false.
     def SHOULD(definition)
-      RequirementLevel::Medium.new(definition).pass?(&@actual)
+      RequirementLevel::Medium.new(definition).pass?(&@actual) || fail(MediumFailure)
     end
 
     # This phrase, or the phrase "NOT RECOMMENDED" mean that
@@ -79,7 +82,7 @@ module Spectus
     #
     # @return [Boolean] report if the expectation is true or false.
     def SHOULD_NOT(definition)
-      RequirementLevel::Medium.new(definition, true).pass?(&@actual)
+      RequirementLevel::Medium.new(definition, true).pass?(&@actual) || fail(MediumFailure)
     end
 
     # This word, or the adjective "OPTIONAL", mean that an item is
@@ -103,7 +106,7 @@ module Spectus
     #
     # @return [Boolean] report if the expectation is true or false.
     def MAY(definition)
-      RequirementLevel::Low.new(definition).pass?(&@actual)
+      RequirementLevel::Low.new(definition).pass?(&@actual) || fail(LowFailure)
     end
   end
 end

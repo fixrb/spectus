@@ -7,7 +7,11 @@ subject 'Uppercase of foo string' do
 end
 
 it 'must fail, the recommended expected value is ignored' do
-  @object.MAY(eql: 'foo').equal?(false)
+  begin
+    @object.MAY(eql: 'foo')
+  rescue Spectus::LowFailure
+    true
+  end
 end
 
 # ***
@@ -17,5 +21,9 @@ subject 'Unexpected exception' do
 end
 
 it 'must fail, the optional behavior is implemented but it raised an error' do
-  @object.MAY(eql: 'foo').equal?(false)
+  begin
+    @object.MAY(eql: 'foo')
+  rescue Spectus::LowFailure
+    true
+  end
 end

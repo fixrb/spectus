@@ -7,9 +7,9 @@ subject 'Uppercase of foo string' do
 end
 
 it 'must be equivalent to FOO' do
-  @object.MUST(eql: 'FOO').equal?(true)
+  @object.MUST(eql: 'FOO')
 end
 
 it 'must no longer be equivalent to foo' do
-  @object.MUST_NOT(eql: 'foo').equal?(true)
+  @object.MUST_NOT(eql: 'foo')
 end

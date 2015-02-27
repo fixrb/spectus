@@ -7,11 +7,19 @@ subject 'Uppercase of foo string' do
 end
 
 it 'must be equivalent to foo must be false' do
-  @object.MUST(eql: 'foo').equal?(false)
+  begin
+    @object.MUST(eql: 'foo')
+  rescue Spectus::HighFailure
+    true
+  end
 end
 
 it 'must not be equivalent to FOO must be false' do
-  @object.MUST_NOT(eql: 'FOO').equal?(false)
+  begin
+    @object.MUST_NOT(eql: 'FOO')
+  rescue Spectus::HighFailure
+    true
+  end
 end
 
 # ***
@@ -21,11 +29,19 @@ subject 'Not implemented behavior' do
 end
 
 it 'must raise and fail the spec' do
-  @object.MUST(eql: 'foo').equal?(false)
+  begin
+    @object.MUST(eql: 'foo')
+  rescue Spectus::HighFailure
+    true
+  end
 end
 
 it 'must also raise and fail the spec' do
-  @object.MUST_NOT(eql: 'foo').equal?(false)
+  begin
+    @object.MUST_NOT(eql: 'foo')
+  rescue Spectus::HighFailure
+    true
+  end
 end
 
 # ***
@@ -35,9 +51,17 @@ subject 'Unexpected exception' do
 end
 
 it 'must raise and fail the spec' do
-  @object.MUST(eql: 'foo').equal?(false)
+  begin
+    @object.MUST(eql: 'foo')
+  rescue Spectus::HighFailure
+    true
+  end
 end
 
 it 'must also raise and fail the spec' do
-  @object.MUST_NOT(eql: 'foo').equal?(false)
+  begin
+    @object.MUST_NOT(eql: 'foo')
+  rescue Spectus::HighFailure
+    true
+  end
 end

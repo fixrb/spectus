@@ -7,9 +7,17 @@ subject 'Uppercase of foo string' do
 end
 
 it 'must raise and fail the spec' do
-  @object.SHOULD(eql: 'foo').equal?(false)
+  begin
+    @object.SHOULD(eql: 'foo')
+  rescue Spectus::MediumFailure
+    true
+  end
 end
 
 it 'must also raise and fail the spec' do
-  @object.SHOULD_NOT(eql: 'foo').equal?(false)
+  begin
+    @object.SHOULD_NOT(eql: 'foo')
+  rescue Spectus::MediumFailure
+    true
+  end
 end
