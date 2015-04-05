@@ -32,7 +32,7 @@ module Spectus
 
       # @param [Sandbox] state The sandbox that tested the code.
       #
-      # @return [Result::Fail] fail the spec.
+      # @raise [Result::Fail] fail the spec.
       def fail!(state)
         fail(Result::Fail.new('failing spec', *result_signature(state)))
       end
