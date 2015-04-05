@@ -14,7 +14,7 @@ module Spectus
   # @example Absolute requirement definition
   #   this { 42 }.MUST Equal: 42 # => #<Spectus::Result::Pass...>
   #
-  # @yieldparam input the code to test.
+  # @param input [Proc] the code to test.
   #
   # @return [ExpectationTarget] the expectation target.
   def self.this(&input)

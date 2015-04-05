@@ -12,7 +12,7 @@ module Spectus
   class ExpectationTarget < BasicObject
     # Create a new expection target
     #
-    # @yieldparam actual the value which is compared with the expected value.
+    # @param subject [Proc] the value which is compared with the expected value.
     def initialize(&subject)
       @subject    = subject
       @challenge  = :call
