@@ -2,10 +2,9 @@ require_relative File.join 'support', 'coverage'
 require_relative File.join '..', 'lib', 'spectus'
 
 subject = -> { 'foo'.upcase }
-object  = Spectus.this(&subject)
 
 begin
-  object.MUST(Eql: 'foo')
+  Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise 'failing test' unless raised_result.to_char == 'F'
   raise 'failing test' unless raised_result.to_h == {
@@ -26,7 +25,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  object.MUST_NOT(Eql: 'FOO')
+  Spectus.this(&subject).MUST_NOT(Eql: 'FOO')
 rescue Spectus::Result::Fail => raised_result
   raise 'failing test' unless raised_result.to_char == 'F'
   raise 'failing test' unless raised_result.to_h == {
@@ -46,13 +45,10 @@ rescue Spectus::Result::Fail => raised_result
   print '.'
 end
 
-puts
-
 subject = -> { 'foo'.bar }
-object  = Spectus.this(&subject)
 
 begin
-  object.MUST(Eql: 'foo')
+  Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise 'failing test' unless raised_result.error.class == NoMethodError
   raise 'failing test' unless raised_result.to_char == 'E'
@@ -74,7 +70,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  object.MUST_NOT(Eql: 'foo')
+  Spectus.this(&subject).MUST_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise 'failing test' unless raised_result.error.class == NoMethodError
   raise 'failing test' unless raised_result.to_char == 'E'
@@ -95,13 +91,10 @@ rescue Spectus::Result::Fail => raised_result
   print '.'
 end
 
-puts
-
 subject = -> { 'foo'.upcase(:bar) }
-object  = Spectus.this(&subject)
 
 begin
-  object.MUST(Eql: 'foo')
+  Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise 'failing test' unless raised_result.error.class == ArgumentError
   raise 'failing test' unless raised_result.to_char == 'E'
@@ -123,7 +116,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  object.MUST_NOT(Eql: 'foo')
+  Spectus.this(&subject).MUST_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise 'failing test' unless raised_result.error.class == ArgumentError
   raise 'failing test' unless raised_result.to_char == 'E'

@@ -11,40 +11,42 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param [Array, Hash, Symbol] definition
-      # @param [Boolean] negate
-      def initialize(definition, negate, subject, challenge, *context)
+      # @param definition [Array, Hash, Symbol] The definition of the expected
+      #   value.
+      # @param negate     [Boolean] Evaluate to a negative assertion.
+      # @param subject    [#object_id] the front object to test.
+      # @param challenge  [Challenge] a challenge for the subject.
+      def initialize(definition, negate, subject, challenge)
         @definition = definition
         @negate     = negate
         @subject    = subject
         @challenge  = challenge
-        @context    = context
       end
 
       protected
 
-      # @param [Sandbox] state The sandbox that tested the code.
+      # @param state [Sandbox] The sandbox that tested the code.
       #
       # @return [Result::Pass] pass the spec.
       def pass!(state)
         Result::Pass.new('passing spec', *result_signature(state))
       end
 
-      # @param [Sandbox] state The sandbox that tested the code.
+      # @param state [Sandbox] The sandbox that tested the code.
       #
       # @raise [Result::Fail] fail the spec.
       def fail!(state)
         fail(Result::Fail.new('failing spec', *result_signature(state)))
       end
 
-      # @param [Sandbox] state The sandbox that tested the code.
+      # @param state [Sandbox] The sandbox that tested the code.
       #
       # @return [Array] list of parameters.
       def result_signature(state)
         [
           @subject,
-          @challenge,
-          @context,
+          @challenge.symbol,
+          @challenge.args,
           state.actual,
           @definition,
           state.got,
@@ -60,13 +62,10 @@ module Spectus
         self.class.name.split('::').last.to_sym
       end
 
-      # Run the actual block against the definition.
-      #
-      # @yieldparam actual the value which is compared with the expected value.
-      #
-      # @return [Boolean] report if the expectation is true or false.
+      # @return [Sandbox] the sandbox.
       def sandbox
-        Sandbox.new(@definition, @negate, @subject, @challenge, *@context)
+        Sandbox.new(@definition, @negate, @subject, @challenge.symbol,
+                    *@challenge.args)
       end
     end
   end

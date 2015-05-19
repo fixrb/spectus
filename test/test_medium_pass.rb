@@ -2,9 +2,8 @@ require_relative File.join 'support', 'coverage'
 require_relative File.join '..', 'lib', 'spectus'
 
 subject = -> { 'foo'.upcase }
-object  = Spectus.this(&subject)
 
-result = object.SHOULD(Eql: 'foo')
+result = Spectus.this(&subject).SHOULD(Eql: 'foo')
 
 fail 'failing test' unless result.to_char == 'I'
 fail 'failing test' unless result.to_h == {
@@ -23,7 +22,7 @@ fail 'failing test' unless result.to_h == {
 
 print '.'
 
-result = object.SHOULD_NOT(Eql: 'foo')
+result = Spectus.this(&subject).SHOULD_NOT(Eql: 'foo')
 
 fail 'failing test' unless result.to_char == '.'
 fail 'failing test' unless result.to_h == {
@@ -42,7 +41,7 @@ fail 'failing test' unless result.to_h == {
 
 print '.'
 
-result = object.SHOULD(Eql: 'FOO')
+result = Spectus.this(&subject).SHOULD(Eql: 'FOO')
 
 fail 'failing test' unless result.to_char == '.'
 fail 'failing test' unless result.to_h == {
@@ -61,7 +60,7 @@ fail 'failing test' unless result.to_h == {
 
 print '.'
 
-result = object.SHOULD_NOT(Eql: 'FOO')
+result = Spectus.this(&subject).SHOULD_NOT(Eql: 'FOO')
 
 fail 'failing test' unless result.to_char == 'I'
 fail 'failing test' unless result.to_h == {

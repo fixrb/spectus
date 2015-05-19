@@ -12,10 +12,12 @@ module Spectus
     #
     # @param [Array, Hash, Symbol] definition
     # @param [Boolean] negate
-    # @yieldparam actual the value which is compared with the expected value.
-    def initialize(definition, negate, obj, meth, *args)
+    # @param [#object_id] object the front object which is challenged.
+    # @param [Symbol] meth the name of the method.
+    # @param [Array] args the arguments of the method.
+    def initialize(definition, negate, object, meth, *args)
       @got = negate ^ matcher(definition).matches? do
-        @actual = obj.public_send(meth, *args)
+        @actual = object.public_send(meth, *args)
       end
     rescue => e
       @exception = e
@@ -36,7 +38,7 @@ module Spectus
 
     # Load the matcher.
     #
-    # @param [Array, Hash, Symbol] definition
+    # @param definition [Array, Hash, Symbol]
     #
     # @return [#matches?] the matcher
     def matcher(definition)

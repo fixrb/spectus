@@ -2,9 +2,8 @@ require_relative File.join 'support', 'coverage'
 require_relative File.join '..', 'lib', 'spectus'
 
 subject = -> { 'foo'.upcase }
-object  = Spectus.this(&subject)
 
-result = object.MAY(Eql: 'FOO')
+result = Spectus.this(&subject).MAY(Eql: 'FOO')
 
 fail 'failing test' unless result.to_char == '.'
 fail 'failing test' unless result.to_h == {
@@ -23,12 +22,9 @@ fail 'failing test' unless result.to_h == {
 
 print '.'
 
-puts
-
 subject = -> { 'foo'.bar }
-object  = Spectus.this(&subject)
 
-result = object.MAY(Eql: 'foo')
+result = Spectus.this(&subject).MAY(Eql: 'foo')
 
 fail 'failing test' unless result.error.class == NoMethodError
 fail 'failing test' unless result.to_char == 'I'
