@@ -1,10 +1,14 @@
+[gem]: https://rubygems.org/gems/spectus
+[travis]: https://travis-ci.org/fixrb/spectus
+[inchpages]: http://inch-ci.org/github/fixrb/spectus/
+[rubydoc]: http://rubydoc.info/gems/spectus/frames
+
 # Spectus
 
-[![Build Status](https://travis-ci.org/fixrb/spectus.svg?branch=master)](https://travis-ci.org/fixrb/spectus)
-[![Dependency Status](https://gemnasium.com/fixrb/spectus.svg)](https://gemnasium.com/fixrb/spectus)
-[![Gem Version](http://img.shields.io/gem/v/spectus.svg)](https://rubygems.org/gems/spectus)
-[![Inline docs](http://inch-ci.org/github/fixrb/spectus.svg?branch=master)](http://inch-ci.org/github/fixrb/spectus)
-[![Documentation](http://img.shields.io/:yard-docs-38c800.svg)](http://rubydoc.info/gems/spectus/frames)
+[![Build Status](https://travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
+[![Gem Version](https://badge.fury.io/rb/spectus.svg)][gem]
+[![Inline docs](http://inch-ci.org/github/fixrb/spectus.svg?branch=master)][inchpages]
+[![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 > Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'s requirement levels, and some matchers for Ruby.
 
