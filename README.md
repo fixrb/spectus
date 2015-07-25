@@ -89,7 +89,8 @@ Spectus.this { BasicObject.superclass }.SHOULD Equal: NilClass
 # => #<Spectus::Result::Pass:0x007fa41c2f1d00 @message="passing spec", @subject=#<Proc:0x007fa41c2f2110@(irb):3>, @challenge=:call, @context=[], @actual=nil, @expected={:Equal=>NilClass}, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
 ```
 
-Even if the sole instance of `NilClass` (`nil`) was returned, there isn't any exception so the result of the test shows that the spec passed.
+Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
+However, because there isn't any exception, the result of the test shows that the spec passed.
 
 ### Not recommended
 
@@ -104,14 +105,14 @@ There was a `TypeError` exception, the result of the test shows that the spec fa
 
 ### Optional
 
-Given the `"foo"` object, when it receives `bar` method, then it **MAY** match the regular expression `/^foo$/`:
+Given the `"foo"` object, when it receives `blank?` method, then it **MAY** be `false`:
 
 ```ruby
 Spectus.this { 'foo'.blank? }.MAY :BeFalse
 # => #<Spectus::Result::Pass:0x007fa41c2bae18 @message="passing spec", @subject=#<Proc:0x007fa41c2bb368@(irb):6>, @challenge=:call, @context=[], @actual=nil, @expected=:BeFalse, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
 ```
 
-The optional `blank?` method is not implemented (unlike in [Ruby on Rails](http://api.rubyonrails.org/classes/Object.html#method-i-blank-3F) for instance), so the result of the test shows that the spec passed.
+The optional `blank?` method is not implemented (unlike in [Ruby on Rails](http://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
 
 ## Versioning
 
