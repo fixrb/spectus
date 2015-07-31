@@ -1,8 +1,3 @@
-[gem]: https://rubygems.org/gems/spectus
-[travis]: https://travis-ci.org/fixrb/spectus
-[inchpages]: http://inch-ci.org/github/fixrb/spectus/
-[rubydoc]: http://rubydoc.info/gems/spectus/frames
-
 # Spectus
 
 [![Build Status](https://travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
@@ -26,19 +21,14 @@
 
 ## Installation
 
-Add this line to your application's Gemfile:
+__Spectus__ is cryptographically signed.
 
-```ruby
-gem 'spectus'
-```
+To be sure the gem you install hasn't been tampered with, add my public key (if you haven't already) as a trusted certificate:
 
-And then execute:
+    $ gem cert --add <(curl -Ls https://raw.github.com/fixrb/spectus/master/certs/gem-fixrb-public_cert.pem)
+    $ gem install spectus -P HighSecurity
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install spectus
+The `HighSecurity` trust profile will verify all gems.  All of __Spectus__'s dependencies are signed.
 
 ## Expectation
 
@@ -118,6 +108,19 @@ Spectus.this { 'foo'.blank? }.MAY :BeFalse
 
 The optional `blank?` method is not implemented (unlike in [Ruby on Rails](http://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
 
+## Security
+
+As a basic form of security __Spectus__ provides a set of SHA512 checksums for
+every Gem release.  These checksums can be found in the `checksum/` directory.
+Although these checksums do not prevent malicious users from tampering with a
+built Gem they can be used for basic integrity verification purposes.
+
+The checksum of a file can be checked using the `sha512sum` command.  For
+example:
+
+    $ sha512sum pkg/spectus-2.0.0.gem
+    e00ef19cbae209816410c1b0e4b032a59ba70ab2e43367c934ad723d3e23a9c50c457c0963fab7d46743d82ab21f9482dbd8ceb7cab23617e37be26823d846cd  pkg/spectus-2.0.0.gem
+
 ## Versioning
 
 __Spectus__ follows [Semantic Versioning 2.0](http://semver.org/).
@@ -133,3 +136,8 @@ __Spectus__ follows [Semantic Versioning 2.0](http://semver.org/).
 ## License
 
 See `LICENSE.md` file.
+
+[gem]: https://rubygems.org/gems/spectus
+[travis]: https://travis-ci.org/fixrb/spectus
+[inchpages]: http://inch-ci.org/github/fixrb/spectus/
+[rubydoc]: http://rubydoc.info/gems/spectus/frames
