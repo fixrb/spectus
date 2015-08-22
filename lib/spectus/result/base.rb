@@ -7,7 +7,6 @@ module Spectus
     module Base
       # Initialize the result class.
       #
-      # @param message    [String] It is describing the actual/error value.
       # @param subject    [#object_id] The untrusted object to be tested.
       # @param challenge  [Symbol] The method to call on the subject.
       # @param context    [Array] Parameters of the challenge.
@@ -21,14 +20,8 @@ module Spectus
       # @param level      [:High, :Medium, :Low] The level of the expectation.
       # @param negate     [Boolean] Evaluate to a negative assertion.
       # @param valid      [Boolean] Report if the test was true or false.
-      def initialize(message, subject, challenge, context, actual, expected,
-                     got, error, level, negate, valid)
-
-        if respond_to?(:exception)
-          super(message)
-        else
-          @message  = message
-        end
+      def initialize(subject, challenge, context, actual, expected, got, error,
+        level, negate, valid)
 
         @subject    = subject
         @challenge  = challenge

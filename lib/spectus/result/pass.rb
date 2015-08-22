@@ -6,8 +6,6 @@ module Spectus
     class Pass
       include Base
 
-      attr_reader :message
-
       # The value of the expectation of the spec.
       #
       # @return [Boolean] the spec was true.

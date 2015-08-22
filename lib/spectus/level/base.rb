@@ -29,14 +29,14 @@ module Spectus
       #
       # @return [Result::Pass] pass the spec.
       def pass!(state)
-        Result::Pass.new('passing spec', *result_signature(state))
+        Result::Pass.new(*result_signature(state))
       end
 
       # @param state [Sandbox] The sandbox that tested the code.
       #
       # @raise [Result::Fail] fail the spec.
       def fail!(state)
-        fail(Result::Fail.new('failing spec', *result_signature(state)))
+        fail Result::Fail.new(*result_signature(state)), 'failing spec'
       end
 
       # @param state [Sandbox] The sandbox that tested the code.

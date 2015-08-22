@@ -58,7 +58,7 @@ Given the `"ルビー"` object, when it receives `valid_encoding?` method, then 
 
 ```ruby
 Spectus.this { 'ルビー'.valid_encoding? }.MUST :BeTrue
-# => #<Spectus::Result::Pass:0x007fa41c371b90 @message="passing spec", @subject=#<Proc:0x007fa41c3721f8@(irb):1>, @challenge=:call, @context=[], @actual=true, @expected=:BeTrue, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x007fbbc12b9fd8 @subject=#<Proc:0x007fbbc12ba410@(irb):1>, @challenge=:call, @context=[], @actual=true, @expected=:BeTrue, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -69,7 +69,7 @@ Given the `"foo"` object, when it receives `length` method, then it **MUST NOT**
 
 ```ruby
 Spectus.this { 'foo'.length }.MUST_NOT RaiseException: NoMethodError
-# => #<Spectus::Result::Pass:0x007fa41e001d50 @message="passing spec", @subject=#<Proc:0x007fa41c34a928@(irb):2>, @challenge=:call, @context=[], @actual=3, @expected={:RaiseException=>NoMethodError}, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
+# => #<Spectus::Result::Pass:0x007fbbc12a8e90 @subject=#<Proc:0x007fbbc12a95e8@(irb):2>, @challenge=:call, @context=[], @actual=3, @expected={:RaiseException=>NoMethodError}, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -80,7 +80,7 @@ Given the `BasicObject` object, when it receives `superclass` method, then it **
 
 ```ruby
 Spectus.this { BasicObject.superclass }.SHOULD Equal: NilClass
-# => #<Spectus::Result::Pass:0x007fa41c2f1d00 @message="passing spec", @subject=#<Proc:0x007fa41c2f2110@(irb):3>, @challenge=:call, @context=[], @actual=nil, @expected={:Equal=>NilClass}, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x007fbbc1291ec0 @subject=#<Proc:0x007fbbc12923e8@(irb):3>, @challenge=:call, @context=[], @actual=nil, @expected={:Equal=>NilClass}, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
 ```
 
 Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
@@ -103,7 +103,7 @@ Given the `"foo"` object, when it receives `blank?` method, then it **MAY** be `
 
 ```ruby
 Spectus.this { 'foo'.blank? }.MAY :BeFalse
-# => #<Spectus::Result::Pass:0x007fa41c2bae18 @message="passing spec", @subject=#<Proc:0x007fa41c2bb368@(irb):6>, @challenge=:call, @context=[], @actual=nil, @expected=:BeFalse, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x007fbbc1b7c238 @subject=#<Proc:0x007fbbc1b7c698@(irb):5>, @challenge=:call, @context=[], @actual=nil, @expected=:BeFalse, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
 ```
 
 The optional `blank?` method is not implemented (unlike in [Ruby on Rails](http://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
