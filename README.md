@@ -131,7 +131,7 @@ The checksum of a file can be checked using the `sha512sum` command.  For
 example:
 
     $ sha512sum pkg/spectus-2.3.0.gem
-    d12d7d9c2a4fdfe075cbb7a141fa5f2195175891e4098c7e1a28c8bca655ab44fb9d67b6a2e3991d0f852026c5e4537fdf7e314575c68d1c80b3a4b1eb1c041f  pkg/spectus-2.3.0.gem
+    e9e35e1953104e2d428b0f217e418db3c1baecd9e011b2545f9fcba4ff7e3bba674c6b928b3d8db842a139cd7cc9806d77ebdc7f710ece4f2aecb343703e2451  pkg/spectus-2.3.0.gem
 
 ## Versioning
 
