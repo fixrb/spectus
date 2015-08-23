@@ -1,12 +1,15 @@
 module Spectus
+  # Namespace for the results.
+  #
+  # @api private
+  #
   module Result
     # Result base's module.
-    #
-    # @api public
     #
     module Base
       # Initialize the result class.
       #
+      # @param message    [String] It is describing the actual/error value.
       # @param subject    [#object_id] The untrusted object to be tested.
       # @param challenge  [Symbol] The method to call on the subject.
       # @param context    [Array] Parameters of the challenge.
@@ -20,9 +23,10 @@ module Spectus
       # @param level      [:High, :Medium, :Low] The level of the expectation.
       # @param negate     [Boolean] Evaluate to a negative assertion.
       # @param valid      [Boolean] Report if the test was true or false.
-      def initialize(subject, challenge, context, actual, expected, got, error,
-        level, negate, valid)
+      def initialize(message, subject, challenge, context, actual, expected,
+        got, error, level, negate, valid)
 
+        @message    = message
         @subject    = subject
         @challenge  = challenge
         @context    = context
@@ -35,8 +39,47 @@ module Spectus
         @valid      = valid
       end
 
-      attr_reader :subject, :challenge, :context, :actual, :expected, :got,
-                  :error, :level
+      # @!attribute [r] subject
+      #
+      # @return [#object_id] The untrusted object to be tested.
+      attr_reader :subject
+
+      # @!attribute [r] challenge
+      #
+      # @return [Symbol] The method to call on the subject.
+      attr_reader :challenge
+
+      # @!attribute [r] context
+      #
+      # @return [Array] Parameters of the challenge.
+      attr_reader :context
+
+      # @!attribute [r] actual
+      #
+      # @return [#object_id] The value that the subject return through its
+      #   challenge.
+      attr_reader :actual
+
+      # @!attribute [r] expected
+      #
+      # @return [Array, Hash, Symbol] The definition of the expected value.
+      attr_reader :expected
+
+      # @!attribute [r] got
+      #
+      # @return [#object_id] The result of the boolean comparison between the
+      #   actual value and the expected value.
+      attr_reader :got
+
+      # @!attribute [r] error
+      #
+      # @return [#exception, nil] Any possible raised exception.
+      attr_reader :error
+
+      # @!attribute [r] level
+      #
+      # @return [:High, :Medium, :Low] The level of the expectation.
+      attr_reader :level
 
       # The value of the negate instance variable.
       #
@@ -53,9 +96,9 @@ module Spectus
         @valid
       end
 
-      # Report the result.
+      # Properties of the result.
       #
-      # @return [Symbol] the properties of the result.
+      # @return [Hash] the properties of the result.
       def to_h
         {
           subject:    subject,

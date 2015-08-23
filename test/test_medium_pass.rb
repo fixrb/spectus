@@ -5,8 +5,9 @@ subject = -> { 'foo'.upcase }
 
 result = Spectus.this(&subject).SHOULD(Eql: 'foo')
 
-fail 'failing test' unless result.to_char == 'I'
-fail 'failing test' unless result.to_h == {
+fail unless result.to_char == 'I'
+fail unless result.message == 'Info: Expected "FOO" to eql "foo".'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],
@@ -24,8 +25,9 @@ print '.'
 
 result = Spectus.this(&subject).SHOULD_NOT(Eql: 'foo')
 
-fail 'failing test' unless result.to_char == '.'
-fail 'failing test' unless result.to_h == {
+fail unless result.to_char == '.'
+fail unless result.message == 'Pass: Expected "FOO" not to eql "foo".'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],
@@ -43,8 +45,9 @@ print '.'
 
 result = Spectus.this(&subject).SHOULD(Eql: 'FOO')
 
-fail 'failing test' unless result.to_char == '.'
-fail 'failing test' unless result.to_h == {
+fail unless result.to_char == '.'
+fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],
@@ -62,8 +65,9 @@ print '.'
 
 result = Spectus.this(&subject).SHOULD_NOT(Eql: 'FOO')
 
-fail 'failing test' unless result.to_char == 'I'
-fail 'failing test' unless result.to_h == {
+fail unless result.to_char == 'I'
+fail unless result.message == 'Info: Expected "FOO" not to eql "FOO".'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],

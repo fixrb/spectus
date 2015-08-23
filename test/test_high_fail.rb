@@ -6,8 +6,10 @@ subject = -> { 'foo'.upcase }
 begin
   Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.to_char == 'F'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.to_char == 'F'
+  raise unless raised_result.message ==
+               'Failure: Expected "FOO" to eql "foo".'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],
@@ -27,8 +29,10 @@ end
 begin
   Spectus.this(&subject).MUST_NOT(Eql: 'FOO')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.to_char == 'F'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.to_char == 'F'
+  raise unless raised_result.message ==
+               'Failure: Expected "FOO" not to eql "FOO".'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],
@@ -50,9 +54,12 @@ subject = -> { 'foo'.bar }
 begin
   Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.error.class == NoMethodError
-  raise 'failing test' unless raised_result.to_char == 'E'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.to_char == 'E'
+  raise unless raised_result.message ==
+               'Error: ' \
+               'undefined method `bar\' for "foo":String (NoMethodError).'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],
@@ -72,9 +79,12 @@ end
 begin
   Spectus.this(&subject).MUST_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.error.class == NoMethodError
-  raise 'failing test' unless raised_result.to_char == 'E'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.to_char == 'E'
+  raise unless raised_result.message ==
+               'Error: ' \
+               'undefined method `bar\' for "foo":String (NoMethodError).'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],
@@ -96,9 +106,11 @@ subject = -> { 'foo'.upcase(:bar) }
 begin
   Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.error.class == ArgumentError
-  raise 'failing test' unless raised_result.to_char == 'E'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.error.class == ArgumentError
+  raise unless raised_result.to_char == 'E'
+  raise unless raised_result.message ==
+               'Error: wrong number of arguments (1 for 0) (ArgumentError).'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],
@@ -118,9 +130,11 @@ end
 begin
   Spectus.this(&subject).MUST_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.error.class == ArgumentError
-  raise 'failing test' unless raised_result.to_char == 'E'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.error.class == ArgumentError
+  raise unless raised_result.to_char == 'E'
+  raise unless raised_result.message ==
+               'Error: wrong number of arguments (1 for 0) (ArgumentError).'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],

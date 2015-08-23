@@ -9,8 +9,6 @@ require_relative File.join 'spectus', 'expectation_target'
 module Spectus
   # Expectations are built with this method.
   #
-  # @api public
-  #
   # @example Absolute requirement definition
   #   this { 42 }.MUST Equal: 42 # => #<Spectus::Result::Pass...>
   #

@@ -17,10 +17,14 @@ module Spectus
       @challenge  = Challenge.new(:call)
     end
 
-    # @return [BasicObject] the front object to be tested.
+    # @!attribute [r] subject
+    #
+    # @return [BasicObject] The front object to be tested.
     attr_reader :subject
 
-    # @return [Challenge] the challenge to call on the subject.
+    # @!attribute [r] challenge
+    #
+    # @return [Challenge] The challenge to call on the subject.
     attr_reader :challenge
 
     # This word, or the terms "REQUIRED" or "SHALL", mean that the

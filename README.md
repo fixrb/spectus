@@ -30,6 +30,16 @@ To be sure the gem you install hasn't been tampered with, add my public key (if 
 
 The `HighSecurity` trust profile will verify all gems.  All of __Spectus__'s dependencies are signed.
 
+Or add this line to your application's Gemfile:
+
+```ruby
+gem 'spectus'
+```
+
+And then execute:
+
+    $ bundle
+
 ## Expectation
 
 An expectation is an assertion that is either `true` or `false`.
@@ -58,7 +68,7 @@ Given the `"ルビー"` object, when it receives `valid_encoding?` method, then 
 
 ```ruby
 Spectus.this { 'ルビー'.valid_encoding? }.MUST :BeTrue
-# => #<Spectus::Result::Pass:0x007fbbc12b9fd8 @subject=#<Proc:0x007fbbc12ba410@(irb):1>, @challenge=:call, @context=[], @actual=true, @expected=:BeTrue, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x007f9329c45090 @message="Pass: Expected true to be true.", @subject=#<Proc:0x007f9329c45d60@(irb):1>, @challenge=:call, @context=[], @actual=true, @expected=:BeTrue, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -69,7 +79,7 @@ Given the `"foo"` object, when it receives `length` method, then it **MUST NOT**
 
 ```ruby
 Spectus.this { 'foo'.length }.MUST_NOT RaiseException: NoMethodError
-# => #<Spectus::Result::Pass:0x007fbbc12a8e90 @subject=#<Proc:0x007fbbc12a95e8@(irb):2>, @challenge=:call, @context=[], @actual=3, @expected={:RaiseException=>NoMethodError}, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
+# => #<Spectus::Result::Pass:0x007f9329c341f0 @message="Pass: Expected 3 not to raise exception NoMethodError.", @subject=#<Proc:0x007f9329c34da8@(irb):2>, @challenge=:call, @context=[], @actual=3, @expected={:RaiseException=>NoMethodError}, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -80,7 +90,7 @@ Given the `BasicObject` object, when it receives `superclass` method, then it **
 
 ```ruby
 Spectus.this { BasicObject.superclass }.SHOULD Equal: NilClass
-# => #<Spectus::Result::Pass:0x007fbbc1291ec0 @subject=#<Proc:0x007fbbc12923e8@(irb):3>, @challenge=:call, @context=[], @actual=nil, @expected={:Equal=>NilClass}, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x007f9329c1def0 @message="Info: Expected nil to equal NilClass.", @subject=#<Proc:0x007f9329c1e990@(irb):3>, @challenge=:call, @context=[], @actual=nil, @expected={:Equal=>NilClass}, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
 ```
 
 Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
@@ -92,7 +102,9 @@ Given the `"1"` object, when it receives `+(1)` method, then it **SHOULD NOT** r
 
 ```ruby
 Spectus.this { '1' + 1 }.SHOULD_NOT Eql: '11'
-# => raise #<Spectus::Result::Fail: failing spec> exception
+# Spectus::Result::Fail: Error: no implicit conversion of Fixnum into String (TypeError).
+# 	from (irb):4
+# 	from ./bin/console:7:in `<main>'
 ```
 
 There was a `TypeError` exception, the result of the test shows that the spec failed.
@@ -103,7 +115,7 @@ Given the `"foo"` object, when it receives `blank?` method, then it **MAY** be `
 
 ```ruby
 Spectus.this { 'foo'.blank? }.MAY :BeFalse
-# => #<Spectus::Result::Pass:0x007fbbc1b7c238 @subject=#<Proc:0x007fbbc1b7c698@(irb):5>, @challenge=:call, @context=[], @actual=nil, @expected=:BeFalse, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x007f932b91feb8 @message="Info: undefined method `blank?' for \"foo\":String (NoMethodError).", @subject=#<Proc:0x007f9329bfc5e8@(irb):5>, @challenge=:call, @context=[], @actual=nil, @expected=:BeFalse, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
 ```
 
 The optional `blank?` method is not implemented (unlike in [Ruby on Rails](http://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
@@ -118,8 +130,8 @@ built Gem they can be used for basic integrity verification purposes.
 The checksum of a file can be checked using the `sha512sum` command.  For
 example:
 
-    $ sha512sum pkg/spectus-2.0.0.gem
-    e00ef19cbae209816410c1b0e4b032a59ba70ab2e43367c934ad723d3e23a9c50c457c0963fab7d46743d82ab21f9482dbd8ceb7cab23617e37be26823d846cd  pkg/spectus-2.0.0.gem
+    $ sha512sum pkg/spectus-2.3.0.gem
+    d12d7d9c2a4fdfe075cbb7a141fa5f2195175891e4098c7e1a28c8bca655ab44fb9d67b6a2e3991d0f852026c5e4537fdf7e314575c68d1c80b3a4b1eb1c041f  pkg/spectus-2.3.0.gem
 
 ## Versioning
 

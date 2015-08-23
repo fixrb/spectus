@@ -6,8 +6,6 @@ module Spectus
   # @api private
   #
   class Sandbox
-    attr_reader :actual, :exception, :got
-
     # Execute the untested code from the passed block against the definition.
     #
     # @param [Array, Hash, Symbol] definition
@@ -22,6 +20,23 @@ module Spectus
     rescue => e
       @exception = e
     end
+
+    # @!attribute [r] actual
+    #
+    # @return [#object_id] The value that the subject return through its
+    #   challenge.
+    attr_reader :actual
+
+    # @!attribute [r] exception
+    #
+    # @return [#exception, nil] Any possible raised exception.
+    attr_reader :exception
+
+    # @!attribute [r] got
+    #
+    # @return [#object_id] The result of the boolean comparison between the
+    #   actual value and the expected value.
+    attr_reader :got
 
     # Report to the spec's requirement level if the test is true or false.
     #

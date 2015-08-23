@@ -5,8 +5,9 @@ subject = -> { 'foo'.upcase }
 
 result = Spectus.this(&subject).MAY(Eql: 'FOO')
 
-fail 'failing test' unless result.to_char == '.'
-fail 'failing test' unless result.to_h == {
+fail unless result.to_char == '.'
+fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],
@@ -26,9 +27,11 @@ subject = -> { 'foo'.bar }
 
 result = Spectus.this(&subject).MAY(Eql: 'foo')
 
-fail 'failing test' unless result.error.class == NoMethodError
-fail 'failing test' unless result.to_char == 'I'
-fail 'failing test' unless result.to_h == {
+fail unless result.error.class == NoMethodError
+fail unless result.to_char == 'I'
+fail unless result.message ==
+            'Info: undefined method `bar\' for "foo":String (NoMethodError).'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],

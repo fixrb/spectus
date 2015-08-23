@@ -6,9 +6,12 @@ subject = -> { 'foo'.bar }
 begin
   Spectus.this(&subject).SHOULD(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.error.class == NoMethodError
-  raise 'failing test' unless raised_result.to_char == 'E'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.to_char == 'E'
+  raise unless raised_result.message ==
+               'Error: ' \
+               'undefined method `bar\' for "foo":String (NoMethodError).'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],
@@ -28,9 +31,12 @@ end
 begin
   Spectus.this(&subject).SHOULD_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
-  raise 'failing test' unless raised_result.error.class == NoMethodError
-  raise 'failing test' unless raised_result.to_char == 'E'
-  raise 'failing test' unless raised_result.to_h == {
+  raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.to_char == 'E'
+  raise unless raised_result.message ==
+               'Error: ' \
+               'undefined method `bar\' for "foo":String (NoMethodError).'
+  raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,
     context:    [],

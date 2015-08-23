@@ -1,10 +1,10 @@
 module Spectus
-  # This class evaluate the expectation with the passed block.
+  # This class contains a challenge to apply against an object.
   #
-  # @api private
+  # @api public
   #
   class Challenge
-    # A Query to the subject.
+    # Initialize the challenge class.
     #
     # @param [#to_sym] method_id the identifier of a method.
     # @param [Array] args the arguments of the method.
@@ -13,10 +13,14 @@ module Spectus
       @args   = args
     end
 
-    # @return [Symbol] the method to call on the subject.
+    # @!attribute [r] symbol
+    #
+    # @return [Symbol] The method to call on the subject.
     attr_reader :symbol
 
-    # @return [Array] the parameters following the method.
+    # @!attribute [r] args
+    #
+    # @return [Array] The parameters following the method.
     attr_reader :args
   end
 end

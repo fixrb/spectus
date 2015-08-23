@@ -1,17 +1,18 @@
 require_relative File.join 'support', 'coverage'
 require_relative File.join '..', 'lib', 'spectus'
 
-subject = -> { 'foo'.upcase }
+subject = -> { true }
 
-result = Spectus.this(&subject).MUST(Eql: 'FOO')
+result = Spectus.this(&subject).MUST(:BeTrue)
 
-fail 'failing test' unless result.to_char == '.'
-fail 'failing test' unless result.to_h == {
+fail unless result.to_char == '.'
+fail unless result.message == 'Pass: Expected true to be true.'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],
-  actual:     'FOO',
-  expected:   { Eql: 'FOO' },
+  actual:     true,
+  expected:   :BeTrue,
   got:        true,
   error:      nil,
   level:      :High,
@@ -22,15 +23,16 @@ fail 'failing test' unless result.to_h == {
 
 print '.'
 
-result = Spectus.this(&subject).MUST_NOT(Eql: 'foo')
+result = Spectus.this(&subject).MUST_NOT(:BeFalse)
 
-fail 'failing test' unless result.to_char == '.'
-fail 'failing test' unless result.to_h == {
+fail unless result.to_char == '.'
+fail unless result.message == 'Pass: Expected true not to be false.'
+fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
   context:    [],
-  actual:     'FOO',
-  expected:   { Eql: 'foo' },
+  actual:     true,
+  expected:   :BeFalse,
   got:        true,
   error:      nil,
   level:      :High,
