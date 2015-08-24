@@ -58,7 +58,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'E'
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
-    defined?(RUBY_VERSION) && RUBY_VERSION == '2.2.3'
+     defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
 
     raise unless raised_result.message ==
                  'Error: ' \
@@ -89,7 +89,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'E'
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
-    defined?(RUBY_VERSION) && RUBY_VERSION == '2.2.3'
+     defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
 
     raise unless raised_result.message ==
                  'Error: ' \
@@ -122,7 +122,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'E'
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
-    defined?(RUBY_VERSION) && RUBY_VERSION == '2.2.3'
+     defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
 
     raise unless raised_result.message ==
                  'Error: wrong number of arguments (1 for 0) (ArgumentError).'
@@ -152,7 +152,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'E'
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
-    defined?(RUBY_VERSION) && RUBY_VERSION == '2.2.3'
+     defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
 
     raise unless raised_result.message ==
                  'Error: wrong number of arguments (1 for 0) (ArgumentError).'

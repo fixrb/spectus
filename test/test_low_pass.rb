@@ -31,7 +31,7 @@ fail unless result.error.class == NoMethodError
 fail unless result.to_char == 'I'
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
-  defined?(RUBY_VERSION) && RUBY_VERSION == '2.2.3'
+   defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
 
   fail unless result.message ==
               'Info: undefined method `bar\' for "foo":String (NoMethodError).'
