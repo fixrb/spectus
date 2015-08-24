@@ -32,8 +32,14 @@ begin
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
   raise unless raised_result.to_char == 'E'
-  raise unless raised_result.message ==
-               'Error: wrong number of arguments (1 for 0) (ArgumentError).'
+
+  if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
+    defined?(RUBY_VERSION) && RUBY_VERSION == '2.2.3'
+
+    raise unless raised_result.message ==
+                 'Error: wrong number of arguments (1 for 0) (ArgumentError).'
+  end
+
   raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  :call,

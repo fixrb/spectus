@@ -29,8 +29,14 @@ result = Spectus.this(&subject).MAY(Eql: 'foo')
 
 fail unless result.error.class == NoMethodError
 fail unless result.to_char == 'I'
-fail unless result.message ==
-            'Info: undefined method `bar\' for "foo":String (NoMethodError).'
+
+if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
+  defined?(RUBY_VERSION) && RUBY_VERSION == '2.2.3'
+
+  fail unless result.message ==
+              'Info: undefined method `bar\' for "foo":String (NoMethodError).'
+end
+
 fail unless result.to_h == {
   subject:    subject,
   challenge:  :call,
