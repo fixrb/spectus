@@ -9,7 +9,7 @@ module Spectus
     class Low < Base
       # Evaluate the expectation.
       #
-      # @return [Result::Fail, Result::Pass] report if the low expectation
+      # @return [Result::Fail, Result::Pass] Report if the low expectation
       #   pass or fail.
       def result
         state = sandbox

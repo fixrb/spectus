@@ -11,7 +11,7 @@ module Spectus
   class ExpectationTarget < BasicObject
     # Create a new expection target
     #
-    # @param subject [Proc] the value which is compared with the expected value.
+    # @param subject [Proc] The value which is compared with the expected value.
     def initialize(&subject)
       @subject    = subject
       @challenges = [Challenge.new(:call)]
@@ -35,7 +35,7 @@ module Spectus
     #
     # @param req [Array, Hash, Symbol]
     #
-    # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
+    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(req)
       RequirementLevel::High.new(req, false, subject, *challenges).result
     end
@@ -48,7 +48,7 @@ module Spectus
     #
     # @param req [Array, Hash, Symbol]
     #
-    # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
+    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(req)
       RequirementLevel::High.new(req, true, subject, *challenges).result
     end
@@ -63,7 +63,7 @@ module Spectus
     #
     # @param req [Array, Hash, Symbol]
     #
-    # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
+    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(req)
       RequirementLevel::Medium.new(req, false, subject, *challenges).result
     end
@@ -79,7 +79,7 @@ module Spectus
     #
     # @param req [Array, Hash, Symbol]
     #
-    # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
+    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(req)
       RequirementLevel::Medium.new(req, true, subject, *challenges).result
     end
@@ -101,7 +101,7 @@ module Spectus
     #
     # @param req [Array, Hash, Symbol]
     #
-    # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
+    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(req)
       RequirementLevel::Low.new(req, false, subject, *challenges).result
     end

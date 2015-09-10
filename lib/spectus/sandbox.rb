@@ -8,8 +8,8 @@ module Spectus
   class Sandbox
     # Execute the untested code from the passed block against the definition.
     #
-    # @param definition [Hash, Symbol]  Definition
-    # @param negate     [Boolean]       Negate
+    # @param definition [Hash, Symbol]  Definition.
+    # @param negate     [Boolean]       Negate the expectation result.
     # @param object     [#object_id]    The front object which is challenged.
     # @param challenges [Array]         The list of challenges.
     def initialize(definition, negate, object, *challenges)
@@ -62,7 +62,7 @@ module Spectus
     #
     # @param definition [Array, Hash, Symbol]
     #
-    # @return [#matches?] the matcher
+    # @return [#matches?] The matcher.
     def matcher(definition)
       params = Array(definition).flatten(1)
       Matchi.fetch(params.first, *params[1..-1])

@@ -9,12 +9,12 @@ require_relative File.join 'spectus', 'expectation_target'
 module Spectus
   # Expectations are built with this method.
   #
-  # @example Absolute requirement definition
+  # @example _Absolute requirement_ definition
   #   this { 42 }.MUST Equal: 42 # => #<Spectus::Result::Pass...>
   #
-  # @param input [Proc] the code to test.
+  # @param input [Proc] The code to test.
   #
-  # @return [ExpectationTarget] the expectation target.
+  # @return [ExpectationTarget] The expectation target.
   def self.this(&input)
     ExpectationTarget.new(&input)
   end

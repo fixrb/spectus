@@ -14,8 +14,7 @@ module Spectus
       # @param challenge  [Challenge] The method to call on the subject.
       # @param actual     [#object_id] The value that the subject return through
       #   its challenge.
-      # @param expected   [Array, Hash, Symbol] The definition of the expected
-      #   value.
+      # @param expected   [Hash, Symbol] The definition of the expected value.
       # @param got        [#object_id] The result of the boolean comparison
       #   between the actual value and the expected value.
       # @param error      [#exception, nil] Any possible raised exception.
@@ -76,7 +75,7 @@ module Spectus
 
       # The value of the negate instance variable.
       #
-      # @return [Boolean] evaluated to a negative assertion or not.
+      # @return [Boolean] Evaluated to a negative assertion or not.
       def negate?
         @negate
       end
@@ -84,14 +83,14 @@ module Spectus
       # The value of the boolean comparison between the actual value and the
       # expected value.
       #
-      # @return [Boolean] the test was true or false.
+      # @return [Boolean] The test was true or false.
       def valid?
         @valid
       end
 
       # Properties of the result.
       #
-      # @return [Hash] the properties of the result.
+      # @return [Hash] The properties of the result.
       def to_h
         {
           subject:    subject,

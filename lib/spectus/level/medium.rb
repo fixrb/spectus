@@ -9,7 +9,7 @@ module Spectus
     class Medium < Base
       # Evaluate the expectation.
       #
-      # @return [Result::Fail, Result::Pass] report if the medium expectation
+      # @return [Result::Fail, Result::Pass] Report if the medium expectation
       #   pass or fail.
       def result
         state = sandbox

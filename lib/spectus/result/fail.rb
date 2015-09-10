@@ -8,14 +8,14 @@ module Spectus
 
       # The value of the expectation of the spec.
       #
-      # @return [Boolean] the spec was false.
+      # @return [Boolean] The spec was false.
       def result?
         false
       end
 
       # Identify the state of the result.
       #
-      # @return [String] the char that identify the state of the result.
+      # @return [String] The char that identify the state of the result.
       def to_char
         if error.nil?
           'F'
