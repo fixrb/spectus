@@ -11,8 +11,7 @@ module Spectus
       #
       # @param message    [String] It is describing the actual/error value.
       # @param subject    [#object_id] The untrusted object to be tested.
-      # @param challenge  [Symbol] The method to call on the subject.
-      # @param context    [Array] Parameters of the challenge.
+      # @param challenge  [Challenge] The method to call on the subject.
       # @param actual     [#object_id] The value that the subject return through
       #   its challenge.
       # @param expected   [Array, Hash, Symbol] The definition of the expected
@@ -23,13 +22,12 @@ module Spectus
       # @param level      [:High, :Medium, :Low] The level of the expectation.
       # @param negate     [Boolean] Evaluate to a negative assertion.
       # @param valid      [Boolean] Report if the test was true or false.
-      def initialize(message, subject, challenge, context, actual, expected,
-        got, error, level, negate, valid)
+      def initialize(message, subject, challenge, actual, expected, got, error,
+        level, negate, valid)
 
         @message    = message
         @subject    = subject
         @challenge  = challenge
-        @context    = context
         @actual     = actual
         @expected   = expected
         @got        = got
@@ -48,11 +46,6 @@ module Spectus
       #
       # @return [Symbol] The method to call on the subject.
       attr_reader :challenge
-
-      # @!attribute [r] context
-      #
-      # @return [Array] Parameters of the challenge.
-      attr_reader :context
 
       # @!attribute [r] actual
       #
@@ -102,8 +95,7 @@ module Spectus
       def to_h
         {
           subject:    subject,
-          challenge:  challenge,
-          context:    context,
+          challenge:  challenge.to_h,
           actual:     actual,
           expected:   expected,
           got:        got,

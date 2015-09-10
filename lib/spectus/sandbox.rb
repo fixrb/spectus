@@ -8,18 +8,25 @@ module Spectus
   class Sandbox
     # Execute the untested code from the passed block against the definition.
     #
-    # @param [Array, Hash, Symbol] definition
-    # @param [Boolean] negate
-    # @param [#object_id] object the front object which is challenged.
-    # @param [Symbol] meth the name of the method.
-    # @param [Array] args the arguments of the method.
-    def initialize(definition, negate, object, meth, *args)
+    # @param definition [Hash, Symbol]  Definition
+    # @param negate     [Boolean]       Negate
+    # @param object     [#object_id]    The front object which is challenged.
+    # @param challenges [Array]         The list of challenges.
+    def initialize(definition, negate, object, *challenges)
       @got = negate ^ matcher(definition).matches? do
-        @actual = object.public_send(meth, *args)
+        @actual = challenges.inject(object) do |subject, challenge|
+          @last_challenge = challenge
+          @last_challenge.to(subject)
+        end
       end
     rescue => e
       @exception = e
     end
+
+    # @!attribute [r] last_challenge
+    #
+    # @return [Challenge] The last evaluated challenge.
+    attr_reader :last_challenge
 
     # @!attribute [r] actual
     #

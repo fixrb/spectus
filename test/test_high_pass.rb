@@ -9,8 +9,7 @@ fail unless result.to_char == '.'
 fail unless result.message == 'Pass: Expected true to be true.'
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     true,
   expected:   :BeTrue,
   got:        true,
@@ -29,8 +28,7 @@ fail unless result.to_char == '.'
 fail unless result.message == 'Pass: Expected true not to be false.'
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     true,
   expected:   :BeFalse,
   got:        true,

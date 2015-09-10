@@ -14,7 +14,7 @@ module Spectus
     # @param subject [Proc] the value which is compared with the expected value.
     def initialize(&subject)
       @subject    = subject
-      @challenge  = Challenge.new(:call)
+      @challenges = [Challenge.new(:call)]
     end
 
     # @!attribute [r] subject
@@ -22,10 +22,10 @@ module Spectus
     # @return [BasicObject] The front object to be tested.
     attr_reader :subject
 
-    # @!attribute [r] challenge
+    # @!attribute [r] challenges
     #
-    # @return [Challenge] The challenge to call on the subject.
-    attr_reader :challenge
+    # @return [Array] The challenges to call on the subject.
+    attr_reader :challenges
 
     # This word, or the terms "REQUIRED" or "SHALL", mean that the
     # definition is an absolute requirement of the specification.
@@ -33,11 +33,11 @@ module Spectus
     # @example _Absolute requirement_ definition
     #   this { 'foo'.upcase }.MUST Eql: 'FOO'
     #
-    # @param definition [Array, Hash, Symbol]
+    # @param req [Array, Hash, Symbol]
     #
     # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
-    def MUST(definition)
-      RequirementLevel::High.new(definition, false, subject, challenge).result
+    def MUST(req)
+      RequirementLevel::High.new(req, false, subject, *challenges).result
     end
 
     # This phrase, or the phrase "SHALL NOT", mean that the
@@ -46,11 +46,11 @@ module Spectus
     # @example _Absolute prohibition_ definition
     #   this { 'foo'.size }.MUST_NOT Equal: 42
     #
-    # @param definition [Array, Hash, Symbol]
+    # @param req [Array, Hash, Symbol]
     #
     # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
-    def MUST_NOT(definition)
-      RequirementLevel::High.new(definition, true, subject, challenge).result
+    def MUST_NOT(req)
+      RequirementLevel::High.new(req, true, subject, *challenges).result
     end
 
     # This word, or the adjective "RECOMMENDED", mean that there
@@ -61,11 +61,11 @@ module Spectus
     # @example _Recommended_ definition
     #   this { 'foo'.valid_encoding? }.SHOULD Equal: true
     #
-    # @param definition [Array, Hash, Symbol]
+    # @param req [Array, Hash, Symbol]
     #
     # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
-    def SHOULD(definition)
-      RequirementLevel::Medium.new(definition, false, subject, challenge).result
+    def SHOULD(req)
+      RequirementLevel::Medium.new(req, false, subject, *challenges).result
     end
 
     # This phrase, or the phrase "NOT RECOMMENDED" mean that
@@ -77,11 +77,11 @@ module Spectus
     # @example _Not recommended_ definition
     #   this { ''.blank? }.SHOULD_NOT RaiseException: NoMethodError
     #
-    # @param definition [Array, Hash, Symbol]
+    # @param req [Array, Hash, Symbol]
     #
     # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
-    def SHOULD_NOT(definition)
-      RequirementLevel::Medium.new(definition, true, subject, challenge).result
+    def SHOULD_NOT(req)
+      RequirementLevel::Medium.new(req, true, subject, *challenges).result
     end
 
     # This word, or the adjective "OPTIONAL", mean that an item is
@@ -99,11 +99,11 @@ module Spectus
     # @example _Optional_ definition
     #   this { 'foo'.bar }.MAY Match: /^foo$/
     #
-    # @param definition [Array, Hash, Symbol]
+    # @param req [Array, Hash, Symbol]
     #
     # @return [Result::Fail, Result::Pass] report if the spec pass or fail.
-    def MAY(definition)
-      RequirementLevel::Low.new(definition, false, subject, challenge).result
+    def MAY(req)
+      RequirementLevel::Low.new(req, false, subject, *challenges).result
     end
   end
 end

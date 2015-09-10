@@ -9,8 +9,7 @@ fail unless result.to_char == '.'
 fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     'FOO',
   expected:   { Eql: 'FOO' },
   got:        true,
@@ -39,8 +38,7 @@ end
 
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     nil,
   expected:   { Eql: 'foo' },
   got:        nil,

@@ -9,8 +9,7 @@ fail unless result.to_char == 'I'
 fail unless result.message == 'Info: Expected "FOO" to eql "foo".'
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     'FOO',
   expected:   { Eql: 'foo' },
   got:        false,
@@ -29,8 +28,7 @@ fail unless result.to_char == '.'
 fail unless result.message == 'Pass: Expected "FOO" not to eql "foo".'
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     'FOO',
   expected:   { Eql: 'foo' },
   got:        true,
@@ -49,8 +47,7 @@ fail unless result.to_char == '.'
 fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     'FOO',
   expected:   { Eql: 'FOO' },
   got:        true,
@@ -69,8 +66,7 @@ fail unless result.to_char == 'I'
 fail unless result.message == 'Info: Expected "FOO" not to eql "FOO".'
 fail unless result.to_h == {
   subject:    subject,
-  challenge:  :call,
-  context:    [],
+  challenge:  { method: :call, args: [] },
   actual:     'FOO',
   expected:   { Eql: 'FOO' },
   got:        false,

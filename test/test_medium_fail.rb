@@ -19,8 +19,7 @@ rescue Spectus::Result::Fail => raised_result
 
   raise unless raised_result.to_h == {
     subject:    subject,
-    challenge:  :call,
-    context:    [],
+    challenge:  { method: :call, args: [] },
     actual:     nil,
     expected:   { Eql: 'foo' },
     got:        nil,
@@ -50,8 +49,7 @@ rescue Spectus::Result::Fail => raised_result
 
   raise unless raised_result.to_h == {
     subject:    subject,
-    challenge:  :call,
-    context:    [],
+    challenge:  { method: :call, args: [] },
     actual:     nil,
     expected:   { Eql: 'foo' },
     got:        nil,

@@ -6,21 +6,28 @@ module Spectus
   class Challenge
     # Initialize the challenge class.
     #
-    # @param [#to_sym] method_id the identifier of a method.
-    # @param [Array] args the arguments of the method.
-    def initialize(method_id, *args)
-      @symbol = method_id.to_sym
+    # @param method [#to_sym] The identifier of a method.
+    # @param args   [Array]   The arguments of the method.
+    def initialize(method, *args)
+      @method = method.to_sym
       @args   = args
     end
 
-    # @!attribute [r] symbol
+    # @param object [#public_send] The subject of the challenge.
     #
-    # @return [Symbol] The method to call on the subject.
-    attr_reader :symbol
+    # @return [BasicObject] The result of the challenge.
+    def to(object)
+      object.public_send(@method, *@args)
+    end
 
-    # @!attribute [r] args
+    # Properties of the challenge.
     #
-    # @return [Array] The parameters following the method.
-    attr_reader :args
+    # @return [Hash] The properties of the challenge.
+    def to_h
+      {
+        method: @method,
+        args:   @args
+      }
+    end
   end
 end

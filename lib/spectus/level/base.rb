@@ -17,12 +17,12 @@ module Spectus
       #   value.
       # @param negate     [Boolean] Evaluate to a negative assertion.
       # @param subject    [#object_id] the front object to test.
-      # @param challenge  [Challenge] a challenge for the subject.
-      def initialize(definition, negate, subject, challenge)
+      # @param challenges [Array] a list of challenges for the front object.
+      def initialize(definition, negate, subject, *challenges)
         @definition = definition
         @negate     = negate
         @subject    = subject
-        @challenge  = challenge
+        @challenges = challenges
       end
 
       protected
@@ -48,8 +48,7 @@ module Spectus
       def result_signature(state)
         [
           @subject,
-          @challenge.symbol,
-          @challenge.args,
+          state.last_challenge,
           state.actual,
           @definition,
           state.got,
@@ -67,8 +66,7 @@ module Spectus
 
       # @return [Sandbox] the sandbox.
       def sandbox
-        Sandbox.new(@definition, @negate, @subject, @challenge.symbol,
-                    *@challenge.args)
+        Sandbox.new(@definition, @negate, @subject, *@challenges)
       end
 
       # @param state  [Sandbox] The sandbox that tested the code.
