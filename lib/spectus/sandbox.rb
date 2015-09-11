@@ -25,7 +25,7 @@ module Spectus
 
     # @!attribute [r] last_challenge
     #
-    # @return [Challenge] The last evaluated challenge.
+    # @return [Defi::Challenge] The last evaluated challenge.
     attr_reader :last_challenge
 
     # @!attribute [r] actual

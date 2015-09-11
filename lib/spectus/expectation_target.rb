@@ -1,7 +1,7 @@
 require_relative File.join 'level', 'high'
 require_relative File.join 'level', 'medium'
 require_relative File.join 'level', 'low'
-require_relative 'challenge'
+require 'defi'
 
 module Spectus
   # Wraps the target of an expectation.
@@ -14,7 +14,7 @@ module Spectus
     # @param subject [Proc] The value which is compared with the expected value.
     def initialize(&subject)
       @subject    = subject
-      @challenges = [Challenge.new(:call)]
+      @challenges = [::Defi.send(:call)]
     end
 
     # @!attribute [r] subject

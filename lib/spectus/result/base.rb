@@ -11,7 +11,7 @@ module Spectus
       #
       # @param message    [String] It is describing the actual/error value.
       # @param subject    [#object_id] The untrusted object to be tested.
-      # @param challenge  [Challenge] The method to call on the subject.
+      # @param challenge  [Defi::Challenge] The challenge for the subject.
       # @param actual     [#object_id] The value that the subject return through
       #   its challenge.
       # @param expected   [Hash, Symbol] The definition of the expected value.
