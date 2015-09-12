@@ -6,6 +6,9 @@ subject = -> { 'foo'.upcase }
 begin
   Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
+  raise unless raised_result.failure? == true
+  raise unless raised_result.error? == false
+  raise unless raised_result.to_sym == :failure
   raise unless raised_result.to_char == 'F'
   raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
   raise unless raised_result.message ==
@@ -29,6 +32,9 @@ end
 begin
   Spectus.this(&subject).MUST_NOT(Eql: 'FOO')
 rescue Spectus::Result::Fail => raised_result
+  raise unless raised_result.failure? == true
+  raise unless raised_result.error? == false
+  raise unless raised_result.to_sym == :failure
   raise unless raised_result.to_char == 'F'
   raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
   raise unless raised_result.message ==
@@ -55,6 +61,9 @@ begin
   Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.failure? == false
+  raise unless raised_result.error? == true
+  raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
@@ -86,6 +95,9 @@ begin
   Spectus.this(&subject).MUST_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.failure? == false
+  raise unless raised_result.error? == true
+  raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
@@ -119,6 +131,9 @@ begin
   Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
+  raise unless raised_result.failure? == false
+  raise unless raised_result.error? == true
+  raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
@@ -149,6 +164,9 @@ begin
   Spectus.this(&subject).MUST_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
+  raise unless raised_result.failure? == false
+  raise unless raised_result.error? == true
+  raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 

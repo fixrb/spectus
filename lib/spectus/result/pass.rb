@@ -18,13 +18,34 @@ module Spectus
         true
       end
 
+      # The state of success.
+      #
+      # @return [Boolean] The test was a success.
+      def success?
+        got.equal?(true)
+      end
+
+      # The state of info.
+      #
+      # @return [Boolean] The test was an info.
+      def info?
+        !success?
+      end
+
       # Identify the state of the result.
+      #
+      # @return [Symbol] The identifier of the state.
+      def to_sym
+        success? ? :success : :info
+      end
+
+      # Express the result with one char.
       #
       # @param color [Boolean] Enable the color.
       #
-      # @return [String] The char that identify the state of the result.
+      # @return [String] The char that identify the result.
       def to_char(color = false)
-        if got
+        if success?
           color ? "\e[32m.\e[0m" : '.'
         else
           color ? "\e[33mI\e[0m" : 'I'

@@ -7,6 +7,9 @@ begin
   Spectus.this(&subject).SHOULD(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.failure? == false
+  raise unless raised_result.error? == true
+  raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
@@ -38,6 +41,9 @@ begin
   Spectus.this(&subject).SHOULD_NOT(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
+  raise unless raised_result.failure? == false
+  raise unless raised_result.error? == true
+  raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 

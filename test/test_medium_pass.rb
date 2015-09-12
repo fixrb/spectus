@@ -5,6 +5,9 @@ subject = -> { 'foo'.upcase }
 
 result = Spectus.this(&subject).SHOULD(Eql: 'foo')
 
+fail unless result.success? == false
+fail unless result.info? == true
+fail unless result.to_sym == :info
 fail unless result.to_char == 'I'
 fail unless result.to_char(true) == "\e[33mI\e[0m"
 fail unless result.message == 'Info: Expected "FOO" to eql "foo".'
@@ -25,6 +28,9 @@ print '.'
 
 result = Spectus.this(&subject).SHOULD_NOT(Eql: 'foo')
 
+fail unless result.success? == true
+fail unless result.info? == false
+fail unless result.to_sym == :success
 fail unless result.to_char == '.'
 fail unless result.to_char(true) == "\e[32m.\e[0m"
 fail unless result.message == 'Pass: Expected "FOO" not to eql "foo".'
@@ -45,6 +51,9 @@ print '.'
 
 result = Spectus.this(&subject).SHOULD(Eql: 'FOO')
 
+fail unless result.success? == true
+fail unless result.info? == false
+fail unless result.to_sym == :success
 fail unless result.to_char == '.'
 fail unless result.to_char(true) == "\e[32m.\e[0m"
 fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
@@ -65,6 +74,9 @@ print '.'
 
 result = Spectus.this(&subject).SHOULD_NOT(Eql: 'FOO')
 
+fail unless result.success? == false
+fail unless result.info? == true
+fail unless result.to_sym == :info
 fail unless result.to_char == 'I'
 fail unless result.to_char(true) == "\e[33mI\e[0m"
 fail unless result.message == 'Info: Expected "FOO" not to eql "FOO".'
