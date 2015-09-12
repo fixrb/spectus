@@ -6,6 +6,7 @@ subject = -> { 'foo'.upcase }
 result = Spectus.this(&subject).MAY(Eql: 'FOO')
 
 fail unless result.to_char == '.'
+fail unless result.to_char(true) == "\e[32m.\e[0m"
 fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
 fail unless result.to_h == {
   subject:    subject,
@@ -28,6 +29,7 @@ result = Spectus.this(&subject).MAY(Eql: 'foo')
 
 fail unless result.error.class == NoMethodError
 fail unless result.to_char == 'I'
+fail unless result.to_char(true) == "\e[33mI\e[0m"
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
    defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')

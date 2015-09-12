@@ -7,6 +7,7 @@ begin
   Spectus.this(&subject).MUST(Eql: 'foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'F'
+  raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
   raise unless raised_result.message ==
                'Failure: Expected "FOO" to eql "foo".'
   raise unless raised_result.to_h == {
@@ -29,6 +30,7 @@ begin
   Spectus.this(&subject).MUST_NOT(Eql: 'FOO')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'F'
+  raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
   raise unless raised_result.message ==
                'Failure: Expected "FOO" not to eql "FOO".'
   raise unless raised_result.to_h == {
@@ -54,6 +56,7 @@ begin
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.to_char == 'E'
+  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
      defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
@@ -84,6 +87,7 @@ begin
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.to_char == 'E'
+  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
      defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
@@ -116,6 +120,7 @@ begin
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
   raise unless raised_result.to_char == 'E'
+  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
      defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
@@ -145,6 +150,7 @@ begin
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
   raise unless raised_result.to_char == 'E'
+  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
      defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')

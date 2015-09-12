@@ -15,12 +15,14 @@ module Spectus
 
       # Identify the state of the result.
       #
+      # @param color [Boolean] Enable the color.
+      #
       # @return [String] The char that identify the state of the result.
-      def to_char
+      def to_char(color = false)
         if error.nil?
-          'F'
+          color ? "\e[35mF\e[0m" : 'F'
         else
-          'E'
+          color ? "\e[31mE\e[0m" : 'E'
         end
       end
     end

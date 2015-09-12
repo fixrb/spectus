@@ -8,6 +8,7 @@ begin
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.to_char == 'E'
+  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
      defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
@@ -38,6 +39,7 @@ begin
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.to_char == 'E'
+  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
 
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
      defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')

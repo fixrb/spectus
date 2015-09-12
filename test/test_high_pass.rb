@@ -6,6 +6,7 @@ subject = -> { true }
 result = Spectus.this(&subject).MUST(:BeTrue)
 
 fail unless result.to_char == '.'
+fail unless result.to_char(true) == "\e[32m.\e[0m"
 fail unless result.message == 'Pass: Expected true to be true.'
 fail unless result.to_h == {
   subject:    subject,
@@ -25,6 +26,7 @@ print '.'
 result = Spectus.this(&subject).MUST_NOT(:BeFalse)
 
 fail unless result.to_char == '.'
+fail unless result.to_char(true) == "\e[32m.\e[0m"
 fail unless result.message == 'Pass: Expected true not to be false.'
 fail unless result.to_h == {
   subject:    subject,
