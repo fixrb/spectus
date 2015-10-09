@@ -27,6 +27,8 @@ module Spectus
     # @return [Array] The challenges to call on the subject.
     attr_reader :challenges
 
+    # rubocop:disable Style/MethodName
+
     # This word, or the terms "REQUIRED" or "SHALL", mean that the
     # definition is an absolute requirement of the specification.
     #
