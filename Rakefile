@@ -7,6 +7,7 @@ RuboCop::RakeTask.new
 Rake::TestTask.new do |t|
   t.verbose = true
   t.warning = true
+  t.pattern = File.join('test', '**', 'test_*.rb')
 end
 
 namespace :test do

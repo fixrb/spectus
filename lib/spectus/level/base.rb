@@ -65,7 +65,11 @@ module Spectus
 
       # @return [Sandbox] The sandbox.
       def sandbox
-        Sandbox.new(@req, @negate, @subject, *@challenges)
+        if Process.respond_to?(:fork)
+          fork_and_return { Sandbox.new(@req, @negate, @subject, *@challenges) }
+        else
+          Sandbox.new(@req, @negate, @subject, *@challenges)
+        end
       end
 
       # @param state  [Sandbox] The sandbox that tested the code.
@@ -119,6 +123,25 @@ module Spectus
           .gsub(/([a-z\d])([A-Z])/, '\1_\2')
           .tr('-_', ' ')
           .downcase
+      end
+
+      # Run the code in a separate process.
+      #
+      # @api private
+      def fork_and_return
+        read, write = IO.pipe
+
+        pid = fork do
+          read.close
+          result = yield
+          Marshal.dump(result, write)
+          exit!(0)
+        end
+
+        write.close
+        result = read.read
+        Process.wait(pid)
+        Marshal.load(result)
       end
     end
   end
