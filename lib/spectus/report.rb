@@ -63,7 +63,7 @@ module Spectus
     def summary
       return state.exception.message unless state.valid? || state.exception.nil?
 
-      'Expected ' + state.actual.inspect + maybe_negate + ' to ' + definition
+      "Expected #{state.actual.inspect}#{maybe_negate} to #{definition}"
     end
 
     # The negation, if any.
@@ -85,7 +85,7 @@ module Spectus
     # @return [String] The readable definition string.
     def definition
       if req.is_a?(Hash)
-        snake_case(req.keys.first) + ' ' + req.values.first.inspect
+        "#{snake_case(req.keys.first)} #{req.values.first.inspect}"
       else
         snake_case(req)
       end
