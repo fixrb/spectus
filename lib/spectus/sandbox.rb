@@ -52,7 +52,7 @@ module Spectus
       if defined?(@exception)
         false
       else
-        @got
+        got
       end
     end
 

@@ -24,6 +24,26 @@ module Spectus
         @challenges = challenges
       end
 
+      # @!attribute [r] req
+      #
+      # @return [Hash, Symbol] The definition of the expected value.
+      attr_reader :req
+
+      # @!attribute [r] negate
+      #
+      # @return [Boolean] Evaluate to a negative assertion.
+      attr_reader :negate
+
+      # @!attribute [r] subject
+      #
+      # @return [#object_id] The front object to test.
+      attr_reader :subject
+
+      # @!attribute [r] challenges
+      #
+      # @return [Array] A list of challenges.
+      attr_reader :challenges
+
       protected
 
       # @param state [Sandbox] The sandbox that tested the code.
@@ -46,14 +66,14 @@ module Spectus
       # @return [Array] List of parameters.
       def result_signature(state)
         [
-          @subject,
+          subject,
           state.last_challenge,
           state.actual,
-          @req,
+          req,
           state.got,
           state.exception,
           level,
-          @negate,
+          negate,
           state.valid?
         ]
       end
@@ -66,9 +86,9 @@ module Spectus
       # @return [Sandbox] The sandbox.
       def sandbox
         if Process.respond_to?(:fork)
-          fork_and_return { Sandbox.new(@req, @negate, @subject, *@challenges) }
+          fork_and_return { Sandbox.new(req, negate, subject, *challenges) }
         else
-          Sandbox.new(@req, @negate, @subject, *@challenges)
+          Sandbox.new(req, negate, subject, *challenges)
         end
       end
 
@@ -101,12 +121,11 @@ module Spectus
       # @return [String] The summary of the state.
       def summary(state)
         if state.valid? || state.exception.nil?
-          'Expected ' + state.actual.inspect + (@negate ? ' not ' : ' ') +
-            'to ' + if @req.is_a?(Hash)
-                      readable(@req.keys.first) + ' ' +
-                        @req.values.first.inspect
+          'Expected ' + state.actual.inspect + (negate ? ' not ' : ' ') +
+            'to ' + if req.is_a?(Hash)
+                      readable(req.keys.first) + ' ' + req.values.first.inspect
                     else
-                      readable(@req)
+                      readable(req)
                     end
         else
           state.exception.message
