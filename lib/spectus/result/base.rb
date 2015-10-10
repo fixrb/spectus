@@ -9,7 +9,7 @@ module Spectus
     module Base
       # Initialize the result class.
       #
-      # @param message    [String] It is describing the actual/error value.
+      # @param message    [#to_s] It is describing the actual/error value.
       # @param subject    [#object_id] The untrusted object to be tested.
       # @param challenge  [Defi::Challenge] The challenge for the subject.
       # @param actual     [#object_id] The value that the subject return through
@@ -24,7 +24,7 @@ module Spectus
       def initialize(message, subject, challenge, actual, expected, got, error,
         level, negate, valid)
 
-        @message    = message
+        @message    = message.to_s
         @subject    = subject
         @challenge  = challenge
         @actual     = actual

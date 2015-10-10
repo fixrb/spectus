@@ -1,5 +1,3 @@
-require_relative File.join 'spectus', 'expectation_target'
-
 # Namespace for the Spectus library.
 #
 # @api public
@@ -19,3 +17,5 @@ module Spectus
     ExpectationTarget.new(&input)
   end
 end
+
+require_relative File.join 'spectus', 'expectation_target'

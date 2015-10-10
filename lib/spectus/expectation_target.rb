@@ -1,6 +1,3 @@
-require_relative File.join 'level', 'high'
-require_relative File.join 'level', 'medium'
-require_relative File.join 'level', 'low'
 require 'defi'
 
 module Spectus
@@ -109,3 +106,7 @@ module Spectus
     end
   end
 end
+
+require_relative File.join 'level', 'high'
+require_relative File.join 'level', 'medium'
+require_relative File.join 'level', 'low'
