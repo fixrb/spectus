@@ -97,7 +97,7 @@ module Spectus
       #
       # @return [String] The message that describe the state.
       def message(state, result)
-        "#{title(state, result)}: #{summary(state)}."
+        "#{title(state, result)}: #{summary(state)}#{maybe_exception(state)}."
       end
 
       # The title of the state.
@@ -121,21 +121,44 @@ module Spectus
       # @return [String] The summary of the state.
       def summary(state)
         if state.valid? || state.exception.nil?
-          'Expected ' + state.actual.inspect + (negate ? ' not ' : ' ') +
-            'to ' + if req.is_a?(Hash)
-                      readable(req.keys.first) + ' ' + req.values.first.inspect
-                    else
-                      readable(req)
-                    end
+          'Expected ' + state.actual.inspect + maybe_negate + ' to ' +
+            readable_definition
         else
           state.exception.message
-        end + (state.exception.nil? ? '' : " (#{state.exception.class})")
+        end
       end
 
-      # @param st [#to_s] A UpperCamelCase string.
+      # The negation, if any.
+      #
+      # @return [String] The negation, or an empty string.
+      def maybe_negate
+        negate ? ' not' : ''
+      end
+
+      # The type of exception, if any.
+      #
+      # @param state [Sandbox] The sandbox that tested the code.
+      #
+      # @return [String] The type of exception, or an empty string.
+      def maybe_exception(state)
+        state.exception.nil? ? '' : " (#{state.exception.class})"
+      end
+
+      # The readable definition.
+      #
+      # @return [String] The readable definition string.
+      def readable_definition
+        if req.is_a?(Hash)
+          snake_case(req.keys.first) + ' ' + req.values.first.inspect
+        else
+          snake_case(req)
+        end
+      end
+
+      # @param st [#to_s] An UpperCamelCase string.
       #
       # @return [String] The snake_case string.
-      def readable(st)
+      def snake_case(st)
         st.to_s
           .gsub(/::/, '/')
           .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
