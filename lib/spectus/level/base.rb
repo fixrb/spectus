@@ -127,7 +127,7 @@ module Spectus
 
       # Run the code in a separate process.
       #
-      # @api private
+      # @yieldreturn [Sandbox] Execute the untested code in the sandbox.
       def fork_and_return
         read, write = IO.pipe
 
