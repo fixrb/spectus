@@ -51,6 +51,31 @@ An expectation is an assertion that is either `true` or `false`.
 | Implemented & Exception   | `false`  | `false`    | `false` |
 | Not implemented           | `false`  | `false`    | `true`  |
 
+## Isolation
+
+There are two cases:
+
+* when the requirement level of an expectation ends with `!`, the test is performed in isolation;
+* when the requirement level of an expectation does not end with `!`, the test is performed without isolation.
+
+Example of test in isolation:
+
+```ruby
+greeting = 'Hello, world!'
+Spectus.this { greeting.gsub!('world', 'Alice') }.MUST! Eql: 'Hello, Alice!'
+# => #<Spectus::Result::Pass:0x007fd6312e5310 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007fd6312e6238@(irb):2>, @challenge=#<Defi::Challenge:0x007fd6312e59c8 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected={:Eql=>"Hello, Alice!"}, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+greeting # => "Hello, world!"
+```
+
+Example of test without isolation:
+
+```ruby
+greeting = 'Hello, world!'
+Spectus.this { greeting.gsub!('world', 'Alice') }.MUST Eql: 'Hello, Alice!'
+# => #<Spectus::Result::Pass:0x007fabbab88f68 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007fabbab895a8@(irb):2>, @challenge=#<Defi::Challenge:0x007fabbab89530 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected={:Eql=>"Hello, Alice!"}, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+greeting # => "Hello, Alice!"
+```
+
 ## Results
 
 There are two cases:

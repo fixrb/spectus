@@ -2,19 +2,19 @@ require_relative 'base'
 
 module Spectus
   module RequirementLevel
-    # High requirement level's class.
+    # Medium requirement level's class.
     #
     # @api private
     #
-    class High < Base
+    class Medium < Base
       # Evaluate the expectation.
       #
-      # @return [Result::Fail, Result::Pass] Report if the high expectation
+      # @return [Result::Fail, Result::Pass] Report if the medium expectation
       #   pass or fail.
-      def result
-        state = sandbox
+      def result(isolation = false)
+        state = sandbox(isolation)
 
-        if state.valid?
+        if state.valid? || state.exception.nil?
           pass!(state)
         else
           fail!(state)

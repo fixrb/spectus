@@ -84,9 +84,11 @@ module Spectus
         self.class.name.split('::').last.to_sym
       end
 
+      # @param isolation [Boolean] Test in isolation.
+      #
       # @return [Sandbox] The sandbox.
-      def sandbox
-        Process.respond_to?(:fork) ? fork_and_return { execute } : execute
+      def sandbox(isolation)
+        isolation ? fork_and_return { execute } : execute
       end
 
       # @return [Sandbox] The sandbox.

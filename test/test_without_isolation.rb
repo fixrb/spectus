@@ -1,17 +1,10 @@
 require_relative File.join 'support', 'coverage'
 require_relative File.join '..', 'lib', 'spectus'
 
-unless Process.respond_to?(:fork)
-  warn 'Info: fork is not implemented on the current platform.'
-  exit
-end
-
-# rubocop:disable Style/GlobalVars
-
-$greeting = 'Hello, world!'
+greeting = 'Hello, world!'
 
 result = Spectus.this do
-  $greeting.gsub!(/\bworld\b/, 'Alice')
+  greeting.gsub!('world', 'Alice')
 end.MUST Eql: 'Hello, Alice!'
 
 fail unless result.success? == true
@@ -37,16 +30,15 @@ fail unless result.to_h == {
 print '.'
 
 result = Spectus.this do
-  $greeting.gsub!(/\bworld\b/, 'Bob')
-end.MUST Eql: 'Hello, Bob!'
+  greeting.gsub!('world', 'Bob')
+end.MUST :BeNil
 
 fail unless result.success? == true
 fail unless result.info? == false
 fail unless result.to_sym == :success
 fail unless result.to_char == '.'
 fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected "Hello, Bob!" ' \
-                              'to eql "Hello, Bob!".'
+fail unless result.message == 'Pass: Expected nil to be nil.'
 fail unless result.to_h == {
   subject:    result.subject,
   challenge:  { method: :call, args: [] },

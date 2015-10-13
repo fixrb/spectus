@@ -11,8 +11,8 @@ module Spectus
       #
       # @return [Result::Fail, Result::Pass] Report if the low expectation
       #   pass or fail.
-      def result
-        state = sandbox
+      def result(isolation = false)
+        state = sandbox(isolation)
 
         if state.valid? || state.exception.class.equal?(::NoMethodError)
           pass!(state)

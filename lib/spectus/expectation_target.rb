@@ -39,6 +39,14 @@ module Spectus
       RequirementLevel::High.new(req, false, subject, *challenges).result
     end
 
+    # @example _Absolute requirement_ definition with isolation
+    #   this { 'foo'.upcase }.MUST! Eql: 'FOO'
+    #
+    # @see MUST
+    def MUST!(req)
+      RequirementLevel::High.new(req, false, subject, *challenges).result(true)
+    end
+
     # This phrase, or the phrase "SHALL NOT", mean that the
     # definition is an absolute prohibition of the specification.
     #
@@ -50,6 +58,14 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(req)
       RequirementLevel::High.new(req, true, subject, *challenges).result
+    end
+
+    # @example _Absolute prohibition_ definition with isolation
+    #   this { 'foo'.size }.MUST_NOT! Equal: 42
+    #
+    # @see MUST_NOT
+    def MUST_NOT!(req)
+      RequirementLevel::High.new(req, true, subject, *challenges).result(true)
     end
 
     # This word, or the adjective "RECOMMENDED", mean that there
@@ -67,6 +83,15 @@ module Spectus
       RequirementLevel::Medium.new(req, false, subject, *challenges).result
     end
 
+    # @example _Recommended_ definition with isolation
+    #   this { 'foo'.valid_encoding? }.SHOULD! Equal: true
+    #
+    # @see SHOULD
+    def SHOULD!(req)
+      RequirementLevel::Medium.new(req, false, subject, *challenges)
+        .result(true)
+    end
+
     # This phrase, or the phrase "NOT RECOMMENDED" mean that
     # there may exist valid reasons in particular circumstances when the
     # particular behavior is acceptable or even useful, but the full
@@ -81,6 +106,14 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(req)
       RequirementLevel::Medium.new(req, true, subject, *challenges).result
+    end
+
+    # @example _Not recommended_ definition with isolation
+    #   this { ''.blank? }.SHOULD_NOT! RaiseException: NoMethodError
+    #
+    # @see SHOULD_NOT
+    def SHOULD_NOT!(req)
+      RequirementLevel::Medium.new(req, true, subject, *challenges).result(true)
     end
 
     # This word, or the adjective "OPTIONAL", mean that an item is
@@ -104,9 +137,17 @@ module Spectus
     def MAY(req)
       RequirementLevel::Low.new(req, false, subject, *challenges).result
     end
+
+    # @example _Optional_ definition with isolation
+    #   this { 'foo'.bar }.MAY! Match: /^foo$/
+    #
+    # @see MAY
+    def MAY!(req)
+      RequirementLevel::Low.new(req, false, subject, *challenges).result(true)
+    end
   end
 end
 
-require_relative File.join 'level', 'high'
-require_relative File.join 'level', 'medium'
-require_relative File.join 'level', 'low'
+require_relative File.join 'requirement_level', 'high'
+require_relative File.join 'requirement_level', 'medium'
+require_relative File.join 'requirement_level', 'low'
