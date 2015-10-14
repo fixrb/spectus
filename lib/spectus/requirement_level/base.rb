@@ -1,3 +1,5 @@
+require 'aw'
+
 module Spectus
   # Namespace for the requirement levels.
   #
@@ -88,31 +90,12 @@ module Spectus
       #
       # @return [Sandbox] The sandbox.
       def sandbox(isolation)
-        isolation ? fork_and_return { execute } : execute
+        isolation ? Aw.fork! { execute } : execute
       end
 
       # @return [Sandbox] The sandbox.
       def execute
         Sandbox.new(req, negate?, subject, *challenges)
-      end
-
-      # Run the code in a separate process.
-      #
-      # @yieldreturn [Sandbox] Execute the untested code in the sandbox.
-      def fork_and_return
-        read, write = IO.pipe
-
-        pid = fork do
-          read.close
-          result = yield
-          Marshal.dump(result, write)
-          exit!(0)
-        end
-
-        write.close
-        result = read.read
-        Process.wait(pid)
-        Marshal.load(result)
       end
     end
   end
