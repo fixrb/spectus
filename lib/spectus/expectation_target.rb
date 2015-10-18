@@ -14,16 +14,6 @@ module Spectus
       @challenges = [::Defi.send(:call)]
     end
 
-    # @!attribute [r] subject
-    #
-    # @return [BasicObject] The front object to be tested.
-    attr_reader :subject
-
-    # @!attribute [r] challenges
-    #
-    # @return [Array] The challenges to call on the subject.
-    attr_reader :challenges
-
     # rubocop:disable Style/MethodName
 
     # This word, or the terms "REQUIRED" or "SHALL", mean that the
@@ -145,6 +135,18 @@ module Spectus
     def MAY!(req)
       RequirementLevel::Low.new(req, false, subject, *challenges).result(true)
     end
+
+    private
+
+    # @!attribute [r] subject
+    #
+    # @return [BasicObject] The front object to be tested.
+    attr_reader :subject
+
+    # @!attribute [r] challenges
+    #
+    # @return [Array] The challenges to call on the subject.
+    attr_reader :challenges
   end
 end
 
