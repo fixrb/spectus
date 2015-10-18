@@ -11,7 +11,7 @@ module Spectus
     # @param subject [Proc] The value which is compared with the expected value.
     def initialize(&subject)
       @subject    = subject
-      @challenges = [::Defi.send(:call)]
+      @challenges = [block_challenge]
     end
 
     # rubocop:disable Style/MethodName
@@ -137,6 +137,13 @@ module Spectus
     end
 
     private
+
+    # The challenge for blocks.
+    #
+    # @return [Defi] The challenge for blocks.
+    def block_challenge
+      ::Defi.send(:call)
+    end
 
     # @!attribute [r] subject
     #
