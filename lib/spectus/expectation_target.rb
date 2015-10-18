@@ -3,10 +3,14 @@ require 'defi'
 module Spectus
   # Wraps the target of an expectation.
   #
+  # @api public
+  #
   # @example
   #   this { actual value } # => ExpectationTarget wrapping the block
   class ExpectationTarget < BasicObject
     # Create a new expection target
+    #
+    # @api private
     #
     # @param subject [Proc] The value which is compared with the expected value.
     def initialize(&subject)
@@ -16,6 +20,8 @@ module Spectus
 
     # rubocop:disable Style/MethodName
 
+    # @api public
+    #
     # This word, or the terms "REQUIRED" or "SHALL", mean that the
     # definition is an absolute requirement of the specification.
     #
@@ -136,24 +142,28 @@ module Spectus
       RequirementLevel::Low.new(req, false, subject, *challenges).result(true)
     end
 
-    private
-
-    # The challenge for blocks.
-    #
-    # @return [Defi] The challenge for blocks.
-    def block_challenge
-      ::Defi.send(:call)
-    end
-
     # @!attribute [r] subject
     #
     # @return [BasicObject] The front object to be tested.
     attr_reader :subject
+    private :subject
 
     # @!attribute [r] challenges
     #
     # @return [Array] The challenges to call on the subject.
     attr_reader :challenges
+    private :challenges
+
+    private
+
+    # The first default challenge for blocks.
+    #
+    # @since 2.10.0
+    #
+    # @return [Defi] The challenge for blocks.
+    def block_challenge
+      ::Defi.send(:call)
+    end
   end
 end
 
