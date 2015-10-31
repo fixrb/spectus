@@ -184,3 +184,9 @@ See `LICENSE.md` file.
 [travis]: https://travis-ci.org/fixrb/spectus
 [inchpages]: http://inch-ci.org/github/fixrb/spectus/
 [rubydoc]: http://rubydoc.info/gems/spectus/frames
+
+***
+
+This project is sponsored by:
+
+[![Sashite](http://www.sashite.com/assets/img/sashite.png)](http://www.sashite.com/)
