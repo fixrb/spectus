@@ -1,19 +1,17 @@
-require 'matchi'
-
 module Spectus
   # This class evaluate the expectation with the passed block.
   #
   # @api private
   #
   class Sandbox
-    # Execute the untested code from the passed block against the definition.
+    # Execute the untested code from the passed block against the matcher.
     #
-    # @param definition [Hash, Symbol]  Definition.
-    # @param negate     [Boolean]       Negate the expectation result.
-    # @param object     [#object_id]    The front object which is challenged.
-    # @param challenges [Array]         The list of challenges.
-    def initialize(definition, negate, object, *challenges)
-      @got = negate ^ matcher(definition).matches? do
+    # @param matcher    [#matches?]  The matcher.
+    # @param negate     [Boolean]    The negation of the matcher's result.
+    # @param object     [#object_id] The front object which is challenged.
+    # @param challenges [Array]      The list of challenges.
+    def initialize(matcher, negate, object, *challenges)
+      @got = negate ^ matcher.matches? do
         @actual = challenges.inject(object) do |subject, challenge|
           @last_challenge = challenge
           @last_challenge.to(subject)
@@ -54,18 +52,6 @@ module Spectus
       else
         got
       end
-    end
-
-    private
-
-    # Load the matcher.
-    #
-    # @param definition [Array, Hash, Symbol]
-    #
-    # @return [#matches?] The matcher.
-    def matcher(definition)
-      params = Array(definition).flatten(1)
-      Matchi.fetch(params.first, *params[1..-1])
     end
   end
 end

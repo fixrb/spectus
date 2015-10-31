@@ -1,10 +1,12 @@
 require_relative File.join '..', 'support', 'coverage'
 require_relative File.join '..', '..', 'lib', 'spectus'
 
+include Spectus
+
 subject = -> { 'foo'.upcase }
 
 begin
-  Spectus.this(&subject).MUST(Eql: 'foo')
+  it(&subject).MUST eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
   raise unless raised_result.error? == false
@@ -17,7 +19,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     'FOO',
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        false,
     error:      nil,
     level:      :High,
@@ -30,7 +32,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  Spectus.this(&subject).MUST_NOT(Eql: 'FOO')
+  it(&subject).MUST_NOT eql('FOO')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
   raise unless raised_result.error? == false
@@ -43,7 +45,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     'FOO',
-    expected:   { Eql: 'FOO' },
+    expected:   { Eql: ['FOO'] },
     got:        false,
     error:      nil,
     level:      :High,
@@ -58,7 +60,7 @@ end
 subject = -> { 'foo'.bar }
 
 begin
-  Spectus.this(&subject).MUST(Eql: 'foo')
+  it(&subject).MUST eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.failure? == false
@@ -79,7 +81,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     nil,
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
     level:      :High,
@@ -92,7 +94,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  Spectus.this(&subject).MUST_NOT(Eql: 'foo')
+  it(&subject).MUST_NOT eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.failure? == false
@@ -113,7 +115,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     nil,
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
     level:      :High,
@@ -128,7 +130,7 @@ end
 subject = -> { 'foo'.upcase(:bar) }
 
 begin
-  Spectus.this(&subject).MUST(Eql: 'foo')
+  it(&subject).MUST eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
   raise unless raised_result.failure? == false
@@ -148,7 +150,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     nil,
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
     level:      :High,
@@ -161,7 +163,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  Spectus.this(&subject).MUST_NOT(Eql: 'foo')
+  it(&subject).MUST_NOT eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
   raise unless raised_result.failure? == false
@@ -181,7 +183,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     nil,
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
     level:      :High,

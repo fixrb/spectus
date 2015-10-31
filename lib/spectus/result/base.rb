@@ -14,7 +14,7 @@ module Spectus
       # @param challenge  [Defi::Challenge] The challenge for the subject.
       # @param actual     [#object_id] The value that the subject return through
       #   its challenge.
-      # @param expected   [Hash, Symbol] The definition of the expected value.
+      # @param expected   [#matches?] The definition of the expected value.
       # @param got        [#object_id] The result of the boolean comparison
       #   between the actual value and the expected value.
       # @param error      [#exception, nil] Any possible raised exception.
@@ -54,7 +54,7 @@ module Spectus
 
       # @!attribute [r] expected
       #
-      # @return [Array, Hash, Symbol] The definition of the expected value.
+      # @return [#matches?] The definition of the expected value.
       attr_reader :expected
 
       # @!attribute [r] got
@@ -96,7 +96,7 @@ module Spectus
           subject:    subject,
           challenge:  challenge.to_h,
           actual:     actual,
-          expected:   expected,
+          expected:   expected.to_h,
           got:        got,
           error:      error,
           level:      level,

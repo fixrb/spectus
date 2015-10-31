@@ -1,10 +1,12 @@
 require_relative File.join '..', 'support', 'coverage'
 require_relative File.join '..', '..', 'lib', 'spectus'
 
+include Spectus
+
 subject = -> { 'foo'.bar }
 
 begin
-  Spectus.this(&subject).SHOULD(Eql: 'foo')
+  it(&subject).SHOULD eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.failure? == false
@@ -25,7 +27,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     nil,
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
     level:      :Medium,
@@ -38,7 +40,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  Spectus.this(&subject).SHOULD_NOT(Eql: 'foo')
+  it(&subject).SHOULD_NOT eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.failure? == false
@@ -59,7 +61,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     nil,
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
     level:      :Medium,

@@ -6,21 +6,21 @@ module Spectus
   class Report
     # Initialize the report class.
     #
-    # @param req    [Hash, Symbol]  The definition of the expected value.
-    # @param negate [Boolean]       Evaluate to a negative assertion.
-    # @param state  [Sandbox]       The sandbox that tested the code.
-    # @param result [Boolean]       The result of the test.
-    def initialize(req, negate, state, result)
-      @req    = req
-      @negate = negate
-      @state  = state
-      @result = result
+    # @param matcher [#matches?] The matcher.
+    # @param negate  [Boolean]   Evaluate to a negative assertion.
+    # @param state   [Sandbox]   The sandbox that tested the code.
+    # @param result  [Boolean]   The result of the test.
+    def initialize(matcher, negate, state, result)
+      @matcher = matcher
+      @negate  = negate
+      @state   = state
+      @result  = result
     end
 
-    # @!attribute [r] req
+    # @!attribute [r] matcher
     #
-    # @return [Hash, Symbol] The definition of the expected value.
-    attr_reader :req
+    # @return [#matches?] The matcher.
+    attr_reader :matcher
 
     # The value of the negate instance variable.
     #
@@ -84,27 +84,7 @@ module Spectus
     #
     # @return [String] The readable definition string.
     def definition
-      if req.is_a?(Hash)
-        "#{snake_case(req.keys.first)} #{req.values.first.inspect}"
-      else
-        snake_case(req)
-      end
-    end
-
-    private
-
-    # @api private
-    #
-    # @param st [#to_s] An UpperCamelCase string.
-    #
-    # @return [String] The snake_case string.
-    def snake_case(st)
-      st.to_s
-        .gsub(/::/, '/')
-        .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-        .gsub(/([a-z\d])([A-Z])/, '\1_\2')
-        .tr('-_', ' ')
-        .downcase
+      matcher.to_s
     end
   end
 end

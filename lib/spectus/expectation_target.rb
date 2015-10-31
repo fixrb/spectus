@@ -6,7 +6,7 @@ module Spectus
   # @api public
   #
   # @example
-  #   this { actual value } # => ExpectationTarget wrapping the block
+  #   it { actual value } # => ExpectationTarget wrapping the block
   class ExpectationTarget < BasicObject
     # Create a new expection target
     #
@@ -26,42 +26,42 @@ module Spectus
     # definition is an absolute requirement of the specification.
     #
     # @example _Absolute requirement_ definition
-    #   this { 'foo'.upcase }.MUST Eql: 'FOO'
+    #   it { 'foo'.upcase }.MUST eql: 'FOO'
     #
-    # @param req [Array, Hash, Symbol]
+    # @param m [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def MUST(req)
-      RequirementLevel::High.new(req, false, subject, *challenges).result
+    def MUST(m)
+      RequirementLevel::High.new(m, false, subject, *challenges).result
     end
 
     # @example _Absolute requirement_ definition with isolation
-    #   this { 'foo'.upcase }.MUST! Eql: 'FOO'
+    #   it { 'foo'.upcase }.MUST! eql: 'FOO'
     #
     # @see MUST
-    def MUST!(req)
-      RequirementLevel::High.new(req, false, subject, *challenges).result(true)
+    def MUST!(m)
+      RequirementLevel::High.new(m, false, subject, *challenges).result(true)
     end
 
     # This phrase, or the phrase "SHALL NOT", mean that the
     # definition is an absolute prohibition of the specification.
     #
     # @example _Absolute prohibition_ definition
-    #   this { 'foo'.size }.MUST_NOT Equal: 42
+    #   it { 'foo'.size }.MUST_NOT equal: 42
     #
-    # @param req [Array, Hash, Symbol]
+    # @param m [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def MUST_NOT(req)
-      RequirementLevel::High.new(req, true, subject, *challenges).result
+    def MUST_NOT(m)
+      RequirementLevel::High.new(m, true, subject, *challenges).result
     end
 
     # @example _Absolute prohibition_ definition with isolation
-    #   this { 'foo'.size }.MUST_NOT! Equal: 42
+    #   it { 'foo'.size }.MUST_NOT! equal: 42
     #
     # @see MUST_NOT
-    def MUST_NOT!(req)
-      RequirementLevel::High.new(req, true, subject, *challenges).result(true)
+    def MUST_NOT!(m)
+      RequirementLevel::High.new(m, true, subject, *challenges).result(true)
     end
 
     # This word, or the adjective "RECOMMENDED", mean that there
@@ -70,22 +70,21 @@ module Spectus
     # carefully weighed before choosing a different course.
     #
     # @example _Recommended_ definition
-    #   this { 'foo'.valid_encoding? }.SHOULD Equal: true
+    #   it { 'foo'.valid_encoding? }.SHOULD equal: true
     #
-    # @param req [Array, Hash, Symbol]
+    # @param m [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def SHOULD(req)
-      RequirementLevel::Medium.new(req, false, subject, *challenges).result
+    def SHOULD(m)
+      RequirementLevel::Medium.new(m, false, subject, *challenges).result
     end
 
     # @example _Recommended_ definition with isolation
-    #   this { 'foo'.valid_encoding? }.SHOULD! Equal: true
+    #   it { 'foo'.valid_encoding? }.SHOULD! equal: true
     #
     # @see SHOULD
-    def SHOULD!(req)
-      RequirementLevel::Medium.new(req, false, subject, *challenges)
-        .result(true)
+    def SHOULD!(m)
+      RequirementLevel::Medium.new(m, false, subject, *challenges).result(true)
     end
 
     # This phrase, or the phrase "NOT RECOMMENDED" mean that
@@ -95,21 +94,21 @@ module Spectus
     # before implementing any behavior described with this label.
     #
     # @example _Not recommended_ definition
-    #   this { ''.blank? }.SHOULD_NOT RaiseException: NoMethodError
+    #   it { ''.blank? }.SHOULD_NOT raise_exception: NoMethodError
     #
-    # @param req [Array, Hash, Symbol]
+    # @param m [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def SHOULD_NOT(req)
-      RequirementLevel::Medium.new(req, true, subject, *challenges).result
+    def SHOULD_NOT(m)
+      RequirementLevel::Medium.new(m, true, subject, *challenges).result
     end
 
     # @example _Not recommended_ definition with isolation
-    #   this { ''.blank? }.SHOULD_NOT! RaiseException: NoMethodError
+    #   it { ''.blank? }.SHOULD_NOT! raise_exception: NoMethodError
     #
     # @see SHOULD_NOT
-    def SHOULD_NOT!(req)
-      RequirementLevel::Medium.new(req, true, subject, *challenges).result(true)
+    def SHOULD_NOT!(m)
+      RequirementLevel::Medium.new(m, true, subject, *challenges).result(true)
     end
 
     # This word, or the adjective "OPTIONAL", mean that an item is
@@ -125,21 +124,21 @@ module Spectus
     # option provides.)
     #
     # @example _Optional_ definition
-    #   this { 'foo'.bar }.MAY Match: /^foo$/
+    #   it { 'foo'.bar }.MAY match: /^foo$/
     #
-    # @param req [Array, Hash, Symbol]
+    # @param m [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def MAY(req)
-      RequirementLevel::Low.new(req, false, subject, *challenges).result
+    def MAY(m)
+      RequirementLevel::Low.new(m, false, subject, *challenges).result
     end
 
     # @example _Optional_ definition with isolation
-    #   this { 'foo'.bar }.MAY! Match: /^foo$/
+    #   it { 'foo'.bar }.MAY! match: /^foo$/
     #
     # @see MAY
-    def MAY!(req)
-      RequirementLevel::Low.new(req, false, subject, *challenges).result(true)
+    def MAY!(m)
+      RequirementLevel::Low.new(m, false, subject, *challenges).result(true)
     end
 
     # @!attribute [r] subject

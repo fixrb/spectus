@@ -1,9 +1,11 @@
 require_relative File.join '..', 'support', 'coverage'
 require_relative File.join '..', '..', 'lib', 'spectus'
 
+include Spectus
+
 subject = -> { 'foo'.upcase }
 
-result = Spectus.this(&subject).SHOULD(Eql: 'foo')
+result = it(&subject).SHOULD eql('foo')
 
 fail unless result.success? == false
 fail unless result.info? == true
@@ -15,7 +17,7 @@ fail unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
-  expected:   { Eql: 'foo' },
+  expected:   { Eql: ['foo'] },
   got:        false,
   error:      nil,
   level:      :Medium,
@@ -26,7 +28,7 @@ fail unless result.to_h == {
 
 print '.'
 
-result = Spectus.this(&subject).SHOULD_NOT(Eql: 'foo')
+result = it(&subject).SHOULD_NOT eql('foo')
 
 fail unless result.success? == true
 fail unless result.info? == false
@@ -38,7 +40,7 @@ fail unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
-  expected:   { Eql: 'foo' },
+  expected:   { Eql: ['foo'] },
   got:        true,
   error:      nil,
   level:      :Medium,
@@ -49,7 +51,7 @@ fail unless result.to_h == {
 
 print '.'
 
-result = Spectus.this(&subject).SHOULD(Eql: 'FOO')
+result = it(&subject).SHOULD eql('FOO')
 
 fail unless result.success? == true
 fail unless result.info? == false
@@ -61,7 +63,7 @@ fail unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
-  expected:   { Eql: 'FOO' },
+  expected:   { Eql: ['FOO'] },
   got:        true,
   error:      nil,
   level:      :Medium,
@@ -72,7 +74,7 @@ fail unless result.to_h == {
 
 print '.'
 
-result = Spectus.this(&subject).SHOULD_NOT(Eql: 'FOO')
+result = it(&subject).SHOULD_NOT eql('FOO')
 
 fail unless result.success? == false
 fail unless result.info? == true
@@ -84,7 +86,7 @@ fail unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
-  expected:   { Eql: 'FOO' },
+  expected:   { Eql: ['FOO'] },
   got:        false,
   error:      nil,
   level:      :Medium,

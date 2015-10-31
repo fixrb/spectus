@@ -1,21 +1,23 @@
 require_relative File.join '..', 'support', 'coverage'
 require_relative File.join '..', '..', 'lib', 'spectus'
 
+include Spectus
+
 subject = -> { true }
 
-result = Spectus.this(&subject).MUST(:BeTrue)
+result = it(&subject).MUST be_true
 
 fail unless result.success? == true
 fail unless result.info? == false
 fail unless result.to_sym == :success
 fail unless result.to_char == '.'
 fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected true to be true.'
+fail unless result.message == 'Pass: Expected true to be_true.'
 fail unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     true,
-  expected:   :BeTrue,
+  expected:   { BeTrue: [] },
   got:        true,
   error:      nil,
   level:      :High,
@@ -26,19 +28,19 @@ fail unless result.to_h == {
 
 print '.'
 
-result = Spectus.this(&subject).MUST_NOT(:BeFalse)
+result = it(&subject).MUST_NOT be_false
 
 fail unless result.success? == true
 fail unless result.info? == false
 fail unless result.to_sym == :success
 fail unless result.to_char == '.'
 fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected true not to be false.'
+fail unless result.message == 'Pass: Expected true not to be_false.'
 fail unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     true,
-  expected:   :BeFalse,
+  expected:   { BeFalse: [] },
   got:        true,
   error:      nil,
   level:      :High,

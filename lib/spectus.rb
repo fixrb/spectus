@@ -1,19 +1,43 @@
+require 'matchi'
+
 # Namespace for the Spectus library.
 #
 # @api public
 #
-# @example 42 MUST be equal to 42
-#   Spectus.this { 42 }.MUST Equal: 42 # => #<Spectus::Result::Pass...>
+# @example It MUST equal 42.
+#   require 'spectus'
+#   it { 42 }.MUST equal 42 # => #<Spectus::Result::Pass...>
 module Spectus
+  Matchi.constants.each do |const|
+    name = const
+           .to_s
+           .gsub(/::/, '/')
+           .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+           .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+           .downcase
+
+    # Define a method for the given matcher.
+    #
+    # @example Given the `Matchi::Equal` matcher, its method will be defined as:
+    #   def equal(expected)
+    #     Matchi::Equal.new(expected)
+    #   end
+    #
+    # @return [#matches?] The matcher.
+    define_method name do |*args|
+      Matchi.const_get(const).new(*args)
+    end
+  end
+
   # Expectations are built with this method.
   #
-  # @example _Absolute requirement_ definition
-  #   this { 42 }.MUST Equal: 42 # => #<Spectus::Result::Pass...>
+  # @example An _absolute requirement_ definition.
+  #   it { 42 }.MUST equal 42 # => #<Spectus::Result::Pass...>
   #
   # @param input [Proc] The code to test.
   #
   # @return [ExpectationTarget] The expectation target.
-  def self.this(&input)
+  def it(&input)
     ExpectationTarget.new(&input)
   end
 end

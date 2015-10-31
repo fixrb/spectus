@@ -11,21 +11,21 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param req        [Hash, Symbol]  The definition of the expected value.
-      # @param negate     [Boolean]       Evaluate to a negative assertion.
-      # @param subject    [#object_id]    The front object to test.
-      # @param challenges [Array]         A list of challenges.
-      def initialize(req, negate, subject, *challenges)
-        @req        = req
+      # @param matcher    [#matches?]   The matcher.
+      # @param negate     [Boolean]     Evaluate to a negative assertion.
+      # @param subject    [#object_id]  The front object to test.
+      # @param challenges [Array]       A list of challenges.
+      def initialize(matcher, negate, subject, *challenges)
+        @matcher    = matcher
         @negate     = negate
         @subject    = subject
         @challenges = challenges
       end
 
-      # @!attribute [r] req
+      # @!attribute [r] matcher
       #
-      # @return [Hash, Symbol] The definition of the expected value.
-      attr_reader :req
+      # @return [#matches?] The matcher.
+      attr_reader :matcher
 
       # The value of the negate instance variable.
       #
@@ -50,7 +50,7 @@ module Spectus
       #
       # @return [Result::Pass] Pass the spec.
       def pass!(state)
-        msg = Report.new(req, negate?, state, true)
+        msg = Report.new(matcher, negate?, state, true)
 
         Result::Pass.new(msg, *result_signature(state))
       end
@@ -59,7 +59,7 @@ module Spectus
       #
       # @raise [Result::Fail] Fail the spec.
       def fail!(state)
-        msg = Report.new(req, negate?, state, false)
+        msg = Report.new(matcher, negate?, state, false)
 
         fail Result::Fail.new(msg, *result_signature(state)), msg, caller[2..-1]
       end
@@ -72,7 +72,7 @@ module Spectus
           subject,
           state.last_challenge,
           state.actual,
-          req,
+          matcher,
           state.got,
           state.exception,
           level,
@@ -95,7 +95,7 @@ module Spectus
 
       # @return [Sandbox] The sandbox.
       def execute
-        Sandbox.new(req, negate?, subject, *challenges)
+        Sandbox.new(matcher, negate?, subject, *challenges)
       end
     end
   end

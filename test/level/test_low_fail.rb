@@ -1,10 +1,12 @@
 require_relative File.join '..', 'support', 'coverage'
 require_relative File.join '..', '..', 'lib', 'spectus'
 
+include Spectus
+
 subject = -> { 'foo'.upcase }
 
 begin
-  Spectus.this(&subject).MAY(Eql: 'foo')
+  it(&subject).MAY eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
   raise unless raised_result.error? == false
@@ -16,7 +18,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     'FOO',
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        false,
     error:      nil,
     level:      :Low,
@@ -31,7 +33,7 @@ end
 subject = -> { 'foo'.upcase(:bar) }
 
 begin
-  Spectus.this(&subject).MAY(Eql: 'foo')
+  it(&subject).MAY eql('foo')
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
   raise unless raised_result.failure? == false
@@ -51,7 +53,7 @@ rescue Spectus::Result::Fail => raised_result
     subject:    subject,
     challenge:  { method: :call, args: [] },
     actual:     nil,
-    expected:   { Eql: 'foo' },
+    expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
     level:      :Low,
