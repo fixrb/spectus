@@ -63,7 +63,7 @@ Example of test in isolation:
 ```ruby
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST! eql 'Hello, Alice!'
-# => #<Spectus::Result::Pass:0x007fc03bb56a78 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007fc03bb57248@(irb):2>, @challenge=#<Defi::Challenge:0x007fc03bb56dc0 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected={:Eql=>"Hello, Alice!"}, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x007fa5022d8760 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007fa5022d8e18@(irb):3>, @challenge=#<Defi::Challenge:0x007fa5022d8a08 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Eql:0x007fa5022d8cb0 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 greeting # => "Hello, world!"
 ```
 
@@ -72,7 +72,7 @@ Example of test without isolation:
 ```ruby
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST eql 'Hello, Alice!'
-# => #<Spectus::Result::Pass:0x007f94b13de620 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007f94b13deeb8@(irb):2>, @challenge=#<Defi::Challenge:0x007f94b13dee18 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected={:Eql=>"Hello, Alice!"}, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x007f982304d310 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007f982304fbb0@(irb):3>, @challenge=#<Defi::Challenge:0x007f982304f890 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Eql:0x007f982304f200 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 greeting # => "Hello, Alice!"
 ```
 
@@ -99,7 +99,7 @@ Given the `"ルビー"` object, when it receives `valid_encoding?` method, then 
 
 ```ruby
 it { 'ルビー'.valid_encoding? }.MUST be_true
-# => #<Spectus::Result::Pass:0x007fd2791f1a50 @message="Pass: Expected true to be true.", @subject=#<Proc:0x007fd2791f23d8@(irb):1>, @challenge=#<Defi::Challenge:0x007fd2791f2338 @method=:call, @args=[]>, @actual=true, @expected=:BeTrue, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x007ffd7d00af50 @message="Pass: Expected true to be_true.", @subject=#<Proc:0x007ffd7d010130@(irb):2>, @challenge=#<Defi::Challenge:0x007ffd7d0116e8 @method=:call, @args=[]>, @actual=true, @expected=#<Matchi::BeTrue:0x007ffd7d012188>, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -110,7 +110,7 @@ Given the `"foo"` object, when it receives `length` method, then it **MUST NOT**
 
 ```ruby
 it { 'foo'.length }.MUST_NOT raise_exception NoMethodError
-# => #<Spectus::Result::Pass:0x007f94e3408628 @message="Pass: Expected 3 not to raise exception NoMethodError.", @subject=#<Proc:0x007f94e3409050@(irb):1>, @challenge=#<Defi::Challenge:0x007f94e3408fd8 @method=:call, @args=[]>, @actual=3, @expected={:RaiseException=>NoMethodError}, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
+# => #<Spectus::Result::Pass:0x007ffd7b890af0 @message="Pass: Expected 3 not to raise_exception NoMethodError.", @subject=#<Proc:0x007ffd7b8913b0@(irb):3>, @challenge=#<Defi::Challenge:0x007ffd7b891248 @method=:call, @args=[]>, @actual=3, @expected=#<Matchi::RaiseException:0x007ffd7b891130 @expected=NoMethodError>, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -121,7 +121,7 @@ Given the `BasicObject` object, when it receives `superclass` method, then it **
 
 ```ruby
 it { BasicObject.superclass }.SHOULD equal NilClass
-# => #<Spectus::Result::Pass:0x007fb5ac37cc10 @message="Info: Expected nil to equal NilClass.", @subject=#<Proc:0x007fb5ac37d5c0@(irb):1>, @challenge=#<Defi::Challenge:0x007fb5ac37d520 @method=:call, @args=[]>, @actual=nil, @expected={:Equal=>NilClass}, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x007ffd7b871a38 @message="Info: Expected nil to equal NilClass.", @subject=#<Proc:0x007ffd7b872460@(irb):4>, @challenge=#<Defi::Challenge:0x007ffd7b872370 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::Equal:0x007ffd7b872140 @expected=NilClass>, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
 ```
 
 Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
@@ -134,7 +134,7 @@ Given the `"1"` object, when it receives `+(1)` method, then it **SHOULD NOT** r
 ```ruby
 it { '1' + 1 }.SHOULD_NOT eql '11'
 # Spectus::Result::Fail: Error: no implicit conversion of Fixnum into String (TypeError).
-# 	from (irb):1
+# 	from (irb):5
 # 	from ./bin/console:7:in `<main>'
 ```
 
@@ -146,7 +146,7 @@ Given the `"foo"` object, when it receives `blank?` method, then it **MAY** be `
 
 ```ruby
 it { 'foo'.blank? }.MAY be_false
-# => #<Spectus::Result::Pass:0x007fad1d057130 @message="Info: undefined method `blank?' for \"foo\":String (NoMethodError).", @subject=#<Proc:0x007fad1d057dd8@(irb):1>, @challenge=#<Defi::Challenge:0x007fad1d057ce8 @method=:call, @args=[]>, @actual=nil, @expected=:BeFalse, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x007ffd7bbc3cb8 @message="Info: undefined method `blank?' for \"foo\":String (NoMethodError).", @subject=#<Proc:0x007ffd7b8285b8@(irb):6>, @challenge=#<Defi::Challenge:0x007ffd7b8284f0 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::BeFalse:0x007ffd7b828310>, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
 ```
 
 The optional `blank?` method is not implemented (unlike in [Ruby on Rails](http://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
