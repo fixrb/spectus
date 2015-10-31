@@ -26,7 +26,7 @@ module Spectus
     # definition is an absolute requirement of the specification.
     #
     # @example _Absolute requirement_ definition
-    #   it { 'foo'.upcase }.MUST eql: 'FOO'
+    #   it { 'foo'.upcase }.MUST eql 'FOO'
     #
     # @param m [#matches?] The matcher.
     #
@@ -36,7 +36,7 @@ module Spectus
     end
 
     # @example _Absolute requirement_ definition with isolation
-    #   it { 'foo'.upcase }.MUST! eql: 'FOO'
+    #   it { 'foo'.upcase }.MUST! eql 'FOO'
     #
     # @see MUST
     def MUST!(m)
@@ -47,7 +47,7 @@ module Spectus
     # definition is an absolute prohibition of the specification.
     #
     # @example _Absolute prohibition_ definition
-    #   it { 'foo'.size }.MUST_NOT equal: 42
+    #   it { 'foo'.size }.MUST_NOT equal 42
     #
     # @param m [#matches?] The matcher.
     #
@@ -57,7 +57,7 @@ module Spectus
     end
 
     # @example _Absolute prohibition_ definition with isolation
-    #   it { 'foo'.size }.MUST_NOT! equal: 42
+    #   it { 'foo'.size }.MUST_NOT! equal 42
     #
     # @see MUST_NOT
     def MUST_NOT!(m)
@@ -70,7 +70,7 @@ module Spectus
     # carefully weighed before choosing a different course.
     #
     # @example _Recommended_ definition
-    #   it { 'foo'.valid_encoding? }.SHOULD equal: true
+    #   it { 'foo'.valid_encoding? }.SHOULD equal true
     #
     # @param m [#matches?] The matcher.
     #
@@ -80,7 +80,7 @@ module Spectus
     end
 
     # @example _Recommended_ definition with isolation
-    #   it { 'foo'.valid_encoding? }.SHOULD! equal: true
+    #   it { 'foo'.valid_encoding? }.SHOULD! equal true
     #
     # @see SHOULD
     def SHOULD!(m)
@@ -94,7 +94,7 @@ module Spectus
     # before implementing any behavior described with this label.
     #
     # @example _Not recommended_ definition
-    #   it { ''.blank? }.SHOULD_NOT raise_exception: NoMethodError
+    #   it { ''.blank? }.SHOULD_NOT raise_exception NoMethodError
     #
     # @param m [#matches?] The matcher.
     #
@@ -104,7 +104,7 @@ module Spectus
     end
 
     # @example _Not recommended_ definition with isolation
-    #   it { ''.blank? }.SHOULD_NOT! raise_exception: NoMethodError
+    #   it { ''.blank? }.SHOULD_NOT! raise_exception NoMethodError
     #
     # @see SHOULD_NOT
     def SHOULD_NOT!(m)
@@ -124,7 +124,7 @@ module Spectus
     # option provides.)
     #
     # @example _Optional_ definition
-    #   it { 'foo'.bar }.MAY match: /^foo$/
+    #   it { 'foo'.bar }.MAY match /^foo$/
     #
     # @param m [#matches?] The matcher.
     #
@@ -134,7 +134,7 @@ module Spectus
     end
 
     # @example _Optional_ definition with isolation
-    #   it { 'foo'.bar }.MAY! match: /^foo$/
+    #   it { 'foo'.bar }.MAY! match /^foo$/
     #
     # @see MAY
     def MAY!(m)

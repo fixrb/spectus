@@ -71,7 +71,7 @@ Example of test without isolation:
 
 ```ruby
 greeting = 'Hello, world!'
-it { greeting.gsub!('world', 'Alice') }.MUST eql: 'Hello, Alice!'
+it { greeting.gsub!('world', 'Alice') }.MUST eql 'Hello, Alice!'
 # => #<Spectus::Result::Pass:0x007f94b13de620 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007f94b13deeb8@(irb):2>, @challenge=#<Defi::Challenge:0x007f94b13dee18 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected={:Eql=>"Hello, Alice!"}, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 greeting # => "Hello, Alice!"
 ```
