@@ -22,7 +22,7 @@ module Spectus
       # @param negate     [Boolean] Evaluate to a negative assertion.
       # @param valid      [Boolean] Report if the test was true or false.
       def initialize(message, subject, challenge, actual, expected, got, error,
-        level, negate, valid)
+                     level, negate, valid)
 
         @message    = message.to_s
         @subject    = subject

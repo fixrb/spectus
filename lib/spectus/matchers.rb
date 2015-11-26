@@ -6,7 +6,7 @@ module Spectus
   # @api public
   #
   module Matchers
-    Matchi.constants.each do |const|
+    Matchi::Matchers.constants.each do |const|
       name = const
              .to_s
              .gsub(/::/, '/')
@@ -16,14 +16,16 @@ module Spectus
 
       # Define a method for the given matcher.
       #
-      # @example Given the `Matchi::Equal` matcher, its method would be:
+      # @example Given the `Matchi::Matchers::Equal::Matcher` matcher, its
+      #   method would be:
+      #
       #   def equal(expected)
-      #     Matchi::Equal.new(expected)
+      #     Matchi::Matchers::Equal::Matcher.new(expected)
       #   end
       #
       # @return [#matches?] The matcher.
       define_method name do |*args|
-        Matchi.const_get(const).new(*args)
+        Matchi::Matchers.const_get(const)::Matcher.new(*args)
       end
     end
   end
