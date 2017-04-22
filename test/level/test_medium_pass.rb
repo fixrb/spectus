@@ -7,13 +7,13 @@ subject = -> { 'foo'.upcase }
 
 result = it(&subject).SHOULD eql('foo')
 
-fail unless result.success? == false
-fail unless result.info? == true
-fail unless result.to_sym == :info
-fail unless result.to_char == 'I'
-fail unless result.to_char(true) == "\e[33mI\e[0m"
-fail unless result.message == 'Info: Expected "FOO" to eql "foo".'
-fail unless result.to_h == {
+raise unless result.success? == false
+raise unless result.info? == true
+raise unless result.to_sym == :info
+raise unless result.to_char == 'I'
+raise unless result.to_char(true) == "\e[33mI\e[0m"
+raise unless result.message == 'Info: Expected "FOO" to eql "foo".'
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
@@ -30,13 +30,13 @@ print '.'
 
 result = it(&subject).SHOULD_NOT eql('foo')
 
-fail unless result.success? == true
-fail unless result.info? == false
-fail unless result.to_sym == :success
-fail unless result.to_char == '.'
-fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected "FOO" not to eql "foo".'
-fail unless result.to_h == {
+raise unless result.success? == true
+raise unless result.info? == false
+raise unless result.to_sym == :success
+raise unless result.to_char == '.'
+raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.message == 'Pass: Expected "FOO" not to eql "foo".'
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
@@ -53,13 +53,13 @@ print '.'
 
 result = it(&subject).SHOULD eql('FOO')
 
-fail unless result.success? == true
-fail unless result.info? == false
-fail unless result.to_sym == :success
-fail unless result.to_char == '.'
-fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
-fail unless result.to_h == {
+raise unless result.success? == true
+raise unless result.info? == false
+raise unless result.to_sym == :success
+raise unless result.to_char == '.'
+raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
@@ -76,13 +76,13 @@ print '.'
 
 result = it(&subject).SHOULD_NOT eql('FOO')
 
-fail unless result.success? == false
-fail unless result.info? == true
-fail unless result.to_sym == :info
-fail unless result.to_char == 'I'
-fail unless result.to_char(true) == "\e[33mI\e[0m"
-fail unless result.message == 'Info: Expected "FOO" not to eql "FOO".'
-fail unless result.to_h == {
+raise unless result.success? == false
+raise unless result.info? == true
+raise unless result.to_sym == :info
+raise unless result.to_char == 'I'
+raise unless result.to_char(true) == "\e[33mI\e[0m"
+raise unless result.message == 'Info: Expected "FOO" not to eql "FOO".'
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',

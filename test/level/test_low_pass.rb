@@ -7,13 +7,13 @@ subject = -> { 'foo'.upcase }
 
 result = it(&subject).MAY eql('FOO')
 
-fail unless result.success? == true
-fail unless result.info? == false
-fail unless result.to_sym == :success
-fail unless result.to_char == '.'
-fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
-fail unless result.to_h == {
+raise unless result.success? == true
+raise unless result.info? == false
+raise unless result.to_sym == :success
+raise unless result.to_char == '.'
+raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     'FOO',
@@ -32,21 +32,21 @@ subject = -> { 'foo'.bar }
 
 result = it(&subject).MAY eql('foo')
 
-fail unless result.error.class == NoMethodError
-fail unless result.success? == false
-fail unless result.info? == true
-fail unless result.to_sym == :info
-fail unless result.to_char == 'I'
-fail unless result.to_char(true) == "\e[33mI\e[0m"
+raise unless result.error.class == NoMethodError
+raise unless result.success? == false
+raise unless result.info? == true
+raise unless result.to_sym == :info
+raise unless result.to_char == 'I'
+raise unless result.to_char(true) == "\e[33mI\e[0m"
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
    defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
 
-  fail unless result.message ==
-              'Info: undefined method `bar\' for "foo":String (NoMethodError).'
+  raise unless result.message ==
+               'Info: undefined method `bar\' for "foo":String (NoMethodError).'
 end
 
-fail unless result.to_h == {
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     nil,

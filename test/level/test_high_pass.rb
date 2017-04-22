@@ -7,13 +7,13 @@ subject = -> { true }
 
 result = it(&subject).MUST be_true
 
-fail unless result.success? == true
-fail unless result.info? == false
-fail unless result.to_sym == :success
-fail unless result.to_char == '.'
-fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected true to be_true.'
-fail unless result.to_h == {
+raise unless result.success? == true
+raise unless result.info? == false
+raise unless result.to_sym == :success
+raise unless result.to_char == '.'
+raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.message == 'Pass: Expected true to be_true.'
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     true,
@@ -30,13 +30,13 @@ print '.'
 
 result = it(&subject).MUST_NOT be_false
 
-fail unless result.success? == true
-fail unless result.info? == false
-fail unless result.to_sym == :success
-fail unless result.to_char == '.'
-fail unless result.to_char(true) == "\e[32m.\e[0m"
-fail unless result.message == 'Pass: Expected true not to be_false.'
-fail unless result.to_h == {
+raise unless result.success? == true
+raise unless result.info? == false
+raise unless result.to_sym == :success
+raise unless result.to_char == '.'
+raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.message == 'Pass: Expected true not to be_false.'
+raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
   actual:     true,

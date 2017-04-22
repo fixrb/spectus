@@ -50,18 +50,18 @@ module Spectus
       #
       # @return [Result::Pass] Pass the spec.
       def pass!(state)
-        msg = Report.new(matcher, negate?, state, true)
+        r = Report.new(matcher, negate?, state, true)
 
-        Result::Pass.new(msg, *result_signature(state))
+        Result::Pass.new(r, *result_signature(state))
       end
 
       # @param state [Sandbox] The sandbox that tested the code.
       #
       # @raise [Result::Fail] Fail the spec.
       def fail!(state)
-        msg = Report.new(matcher, negate?, state, false)
+        r = Report.new(matcher, negate?, state, false)
 
-        fail Result::Fail.new(msg, *result_signature(state)), msg, caller[2..-1]
+        raise Result::Fail.new(r, *result_signature(state)), r, caller[2..-1]
       end
 
       # @param state [Sandbox] The sandbox that tested the code.
