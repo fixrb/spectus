@@ -13,6 +13,7 @@ raise unless result.to_sym == :success
 raise unless result.to_char == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
 raise unless result.message == 'Pass: Expected "FOO" to eql "FOO".'
+
 raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
@@ -38,13 +39,7 @@ raise unless result.info? == true
 raise unless result.to_sym == :info
 raise unless result.to_char == 'I'
 raise unless result.to_char(true) == "\e[33mI\e[0m"
-
-if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
-   defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
-
-  raise unless result.message ==
-               'Info: undefined method `bar\' for "foo":String (NoMethodError).'
-end
+raise unless result.message.start_with?('Info: ')
 
 raise unless result.to_h == {
   subject:    subject,

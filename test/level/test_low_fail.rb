@@ -14,6 +14,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'F'
   raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
   raise unless raised_result.message == 'Failure: Expected "FOO" to eql "foo".'
+
   raise unless raised_result.to_h == {
     subject:    subject,
     challenge:  { method: :call, args: [] },
@@ -41,13 +42,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
-
-  if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'ruby' &&
-     defined?(RUBY_VERSION) && RUBY_VERSION.start_with?('2.')
-
-    raise unless raised_result.message ==
-                 'Error: wrong number of arguments (1 for 0) (ArgumentError).'
-  end
+  raise unless raised_result.message.start_with?('Error: ')
 
   raise unless raised_result.to_h == {
     subject:    subject,
