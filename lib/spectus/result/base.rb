@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spectus
   # Namespace for the results.
   #

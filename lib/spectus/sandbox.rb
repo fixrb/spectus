@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 module Spectus
   # This class evaluate the expectation with the passed block.
   #
   # @api private
   #
   class Sandbox
+    # rubocop:disable Style/RescueStandardError
+
     # Execute the untested code from the passed block against the matcher.
     #
     # @param matcher    [#matches?]  The matcher.
@@ -20,6 +24,8 @@ module Spectus
     rescue => e
       @exception = e
     end
+
+    # rubocop:enable Style/RescueStandardError
 
     # @!attribute [r] last_challenge
     #

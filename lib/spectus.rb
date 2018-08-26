@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative File.join 'spectus', 'matchers'
 
 # Namespace for the Spectus library.

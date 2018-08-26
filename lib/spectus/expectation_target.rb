@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'defi'
 
 module Spectus
@@ -19,6 +21,7 @@ module Spectus
     end
 
     # rubocop:disable Style/MethodName
+    # rubocop:disable Naming/UncommunicativeMethodParamName
 
     # @api public
     #
@@ -141,6 +144,11 @@ module Spectus
       RequirementLevel::Low.new(m, false, subject, *challenges).result(true)
     end
 
+    # rubocop:enable Style/MethodName
+    # rubocop:enable Naming/UncommunicativeMethodParamName
+
+    # rubocop:disable Style/AccessModifierDeclarations
+
     # @!attribute [r] subject
     #
     # @return [BasicObject] The front object to be tested.
@@ -152,6 +160,8 @@ module Spectus
     # @return [Array] The challenges to call on the subject.
     attr_reader :challenges
     private :challenges
+
+    # rubocop:enable Style/AccessModifierDeclarations
 
     private
 

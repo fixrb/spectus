@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spectus
   # The class that is responsible for reporting the result of the test.
   #
