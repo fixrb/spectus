@@ -95,16 +95,16 @@ module Spectus
       # @return [Hash] The properties of the result.
       def to_h
         {
-          subject:    subject,
-          challenge:  challenge.to_h,
-          actual:     actual,
-          expected:   expected.to_h,
-          got:        got,
-          error:      error,
-          level:      level,
-          negate:     negate?,
-          valid:      valid?,
-          result:     result?
+          subject: subject,
+          challenge: challenge.to_h,
+          actual: actual,
+          expected: expected.to_h,
+          got: got,
+          error: error,
+          level: level,
+          negate: negate?,
+          valid: valid?,
+          result: result?
         }
       end
     end

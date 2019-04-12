@@ -53,11 +53,9 @@ module Spectus
     #
     # @return [Boolean] Report if the test was true or false.
     def valid?
-      if defined?(@exception)
-        false
-      else
-        got
-      end
+      return false if defined?(@exception)
+
+      got
     end
   end
 end
