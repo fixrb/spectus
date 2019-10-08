@@ -5,7 +5,7 @@ require_relative 'base'
 module Spectus
   module Result
     # The class that is responsible for reporting that the expectation is false.
-    class Fail < StandardError
+    class Fail < ::StandardError
       include Base
 
       # The value of the expectation of the spec.

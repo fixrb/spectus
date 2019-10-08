@@ -92,7 +92,7 @@ module Spectus
       #
       # @return [Sandbox] The sandbox.
       def sandbox(isolation)
-        isolation ? Aw.fork! { execute } : execute
+        isolation ? ::Aw.fork! { execute } : execute
       end
 
       # @return [Sandbox] The sandbox.
@@ -103,7 +103,7 @@ module Spectus
   end
 end
 
-require_relative File.join '..', 'report'
-require_relative File.join '..', 'result', 'fail'
-require_relative File.join '..', 'result', 'pass'
-require_relative File.join '..', 'sandbox'
+require_relative File.join('..', 'report')
+require_relative File.join('..', 'result', 'fail')
+require_relative File.join('..', 'result', 'pass')
+require_relative File.join('..', 'sandbox')

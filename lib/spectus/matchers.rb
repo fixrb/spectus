@@ -8,13 +8,12 @@ module Spectus
   # @api public
   #
   module Matchers
-    Matchi::Matchers.constants.each do |const|
-      name = const
-             .to_s
-             .gsub(/::/, '/')
-             .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-             .gsub(/([a-z\d])([A-Z])/, '\1_\2')
-             .downcase
+    ::Matchi::Matchers.constants.each do |const|
+      name = const.to_s
+                  .gsub(/::/, '/')
+                  .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+                  .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+                  .downcase
 
       # Define a method for the given matcher.
       #
@@ -27,7 +26,7 @@ module Spectus
       #
       # @return [#matches?] The matcher.
       define_method name do |*args|
-        Matchi::Matchers.const_get(const)::Matcher.new(*args)
+        ::Matchi::Matchers.const_get(const)::Matcher.new(*args)
       end
     end
   end

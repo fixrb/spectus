@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative File.join 'spectus', 'matchers'
+require_relative File.join('spectus', 'matchers')
 
 # Namespace for the Spectus library.
 #
@@ -25,4 +25,4 @@ module Spectus
   end
 end
 
-require_relative File.join 'spectus', 'expectation_target'
+require_relative File.join('spectus', 'expectation_target')

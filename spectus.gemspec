@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'matchi',                 '~> 1.0.4'
 
   spec.add_development_dependency 'bundler',    '~> 2.0'
-  spec.add_development_dependency 'rake',       '~> 12.3'
-  spec.add_development_dependency 'rubocop',    '~> 0.67'
-  spec.add_development_dependency 'simplecov',  '~> 0.16'
+  spec.add_development_dependency 'rake',       '~> 13.0'
+  spec.add_development_dependency 'rubocop',    '~> 0.75'
+  spec.add_development_dependency 'simplecov',  '~> 0.17'
   spec.add_development_dependency 'yard',       '~> 0.9'
 end

@@ -176,6 +176,6 @@ module Spectus
   end
 end
 
-require_relative File.join 'requirement_level', 'high'
-require_relative File.join 'requirement_level', 'medium'
-require_relative File.join 'requirement_level', 'low'
+require_relative File.join('requirement_level', 'high')
+require_relative File.join('requirement_level', 'medium')
+require_relative File.join('requirement_level', 'low')
