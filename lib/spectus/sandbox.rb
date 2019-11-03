@@ -10,27 +10,17 @@ module Spectus
 
     # Execute the untested code from the passed block against the matcher.
     #
-    # @param matcher    [#matches?]  The matcher.
-    # @param negate     [Boolean]    The negation of the matcher's result.
-    # @param object     [#object_id] The front object which is challenged.
-    # @param challenges [Array]      The list of challenges.
-    def initialize(matcher, negate, object, *challenges)
-      @got = negate ^ matcher.matches? do
-        @actual = challenges.inject(object) do |subject, challenge|
-          @last_challenge = challenge
-          @last_challenge.to(subject)
-        end
-      end
+    # @param matcher    [#matches?]       The matcher.
+    # @param negate     [Boolean]         Evaluate to a negative assertion.
+    # @param subject    [#object_id]      The subject of the test.
+    # @param challenge  [Defi::Challenge] The challenge for the subject.
+    def initialize(matcher, negate, subject, challenge)
+      @got = negate ^ matcher.matches? { @actual = challenge.to(subject) }
     rescue => e
       @exception = e
     end
 
     # rubocop:enable Style/RescueStandardError
-
-    # @!attribute [r] last_challenge
-    #
-    # @return [Defi::Challenge] The last evaluated challenge.
-    attr_reader :last_challenge
 
     # @!attribute [r] actual
     #
@@ -53,9 +43,7 @@ module Spectus
     #
     # @return [Boolean] Report if the test was true or false.
     def valid?
-      return false if defined?(@exception)
-
-      got
+      defined?(@exception) ? false : got
     end
   end
 end

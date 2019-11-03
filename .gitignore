@@ -1,4 +1,5 @@
 /.bundle/
+/.irb_history
 /.ruby-version
 /.yardoc
 /Gemfile.lock

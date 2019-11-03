@@ -17,7 +17,7 @@ module Spectus
     # @param subject [Proc] The value which is compared with the expected value.
     def initialize(&subject)
       @subject    = subject
-      @challenges = [block_challenge]
+      @challenge  = ::Defi.send(:call)
     end
 
     # rubocop:disable Style/MethodName
@@ -35,7 +35,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(m)
-      RequirementLevel::High.new(m, false, subject, *challenges).result
+      RequirementLevel::High.new(m, false, subject, challenge).result
     end
 
     # @example _Absolute requirement_ definition with isolation
@@ -43,7 +43,7 @@ module Spectus
     #
     # @see MUST
     def MUST!(m)
-      RequirementLevel::High.new(m, false, subject, *challenges).result(true)
+      RequirementLevel::High.new(m, false, subject, challenge).result(true)
     end
 
     # This phrase, or the phrase "SHALL NOT", mean that the
@@ -56,7 +56,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(m)
-      RequirementLevel::High.new(m, true, subject, *challenges).result
+      RequirementLevel::High.new(m, true, subject, challenge).result
     end
 
     # @example _Absolute prohibition_ definition with isolation
@@ -64,7 +64,7 @@ module Spectus
     #
     # @see MUST_NOT
     def MUST_NOT!(m)
-      RequirementLevel::High.new(m, true, subject, *challenges).result(true)
+      RequirementLevel::High.new(m, true, subject, challenge).result(true)
     end
 
     # This word, or the adjective "RECOMMENDED", mean that there
@@ -79,7 +79,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(m)
-      RequirementLevel::Medium.new(m, false, subject, *challenges).result
+      RequirementLevel::Medium.new(m, false, subject, challenge).result
     end
 
     # @example _Recommended_ definition with isolation
@@ -87,7 +87,7 @@ module Spectus
     #
     # @see SHOULD
     def SHOULD!(m)
-      RequirementLevel::Medium.new(m, false, subject, *challenges).result(true)
+      RequirementLevel::Medium.new(m, false, subject, challenge).result(true)
     end
 
     # This phrase, or the phrase "NOT RECOMMENDED" mean that
@@ -103,7 +103,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(m)
-      RequirementLevel::Medium.new(m, true, subject, *challenges).result
+      RequirementLevel::Medium.new(m, true, subject, challenge).result
     end
 
     # @example _Not recommended_ definition with isolation
@@ -111,7 +111,7 @@ module Spectus
     #
     # @see SHOULD_NOT
     def SHOULD_NOT!(m)
-      RequirementLevel::Medium.new(m, true, subject, *challenges).result(true)
+      RequirementLevel::Medium.new(m, true, subject, challenge).result(true)
     end
 
     # This word, or the adjective "OPTIONAL", mean that an item is
@@ -133,7 +133,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(m)
-      RequirementLevel::Low.new(m, false, subject, *challenges).result
+      RequirementLevel::Low.new(m, false, subject, challenge).result
     end
 
     # @example _Optional_ definition with isolation
@@ -141,7 +141,7 @@ module Spectus
     #
     # @see MAY
     def MAY!(m)
-      RequirementLevel::Low.new(m, false, subject, *challenges).result(true)
+      RequirementLevel::Low.new(m, false, subject, challenge).result(true)
     end
 
     # rubocop:enable Style/MethodName
@@ -155,24 +155,13 @@ module Spectus
     attr_reader :subject
     private :subject
 
-    # @!attribute [r] challenges
+    # @!attribute [r] challenge
     #
-    # @return [Array] The challenges to call on the subject.
-    attr_reader :challenges
-    private :challenges
+    # @return [Defi::Challenge] The challenge to call against the subject.
+    attr_reader :challenge
+    private :challenge
 
     # rubocop:enable Style/AccessModifierDeclarations
-
-    private
-
-    # The first default challenge for blocks.
-    #
-    # @since 2.10.0
-    #
-    # @return [Defi] The challenge for blocks.
-    def block_challenge
-      ::Defi.send(:call)
-    end
   end
 end
 

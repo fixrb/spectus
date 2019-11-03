@@ -13,15 +13,20 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param matcher    [#matches?]   The matcher.
-      # @param negate     [Boolean]     Evaluate to a negative assertion.
-      # @param subject    [#object_id]  The front object to test.
-      # @param challenges [Array]       A list of challenges.
-      def initialize(matcher, negate, subject, *challenges)
+      # @param matcher    [#matches?]       The matcher.
+      # @param negate     [Boolean]         Evaluate to a negative assertion.
+      # @param subject    [#object_id]      The subject of the test.
+      # @param challenge  [Defi::Challenge] The challenge for the subject.
+      def initialize(matcher, negate, subject, challenge)
+        unless matcher.respond_to?(:matches?)
+          raise NoMethodError, "undefined method `matches?' " \
+                               "for #{matcher.inspect}:#{matcher.class}"
+        end
+
         @matcher    = matcher
         @negate     = negate
         @subject    = subject
-        @challenges = challenges
+        @challenge  = challenge
       end
 
       # @!attribute [r] matcher
@@ -38,13 +43,13 @@ module Spectus
 
       # @!attribute [r] subject
       #
-      # @return [#object_id] The front object to test.
+      # @return [#object_id] The subject to test.
       attr_reader :subject
 
-      # @!attribute [r] challenges
+      # @!attribute [r] challenge
       #
-      # @return [Array] A list of challenges.
-      attr_reader :challenges
+      # @return [Array] The challenge to test the subject.
+      attr_reader :challenge
 
       protected
 
@@ -72,7 +77,7 @@ module Spectus
       def result_signature(state)
         [
           subject,
-          state.last_challenge,
+          challenge,
           state.actual,
           matcher,
           state.got,
@@ -85,7 +90,7 @@ module Spectus
 
       # @return [Symbol] The requirement level.
       def level
-        self.class.name.split('::').last.to_sym
+        self.class.name.split('::').fetch(-1).to_sym
       end
 
       # @param isolation [Boolean] Test in isolation.
@@ -97,7 +102,7 @@ module Spectus
 
       # @return [Sandbox] The sandbox.
       def execute
-        Sandbox.new(matcher, negate?, subject, *challenges)
+        Sandbox.new(matcher, negate?, subject, challenge)
       end
     end
   end
