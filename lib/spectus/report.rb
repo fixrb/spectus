@@ -10,12 +10,12 @@ module Spectus
     #
     # @param matcher [#matches?] The matcher.
     # @param negate  [Boolean]   Evaluate to a negative assertion.
-    # @param state   [Sandbox]   The sandbox that tested the code.
+    # @param exam    [Exam]   The exam of the code.
     # @param result  [Boolean]   The result of the test.
-    def initialize(matcher, negate, state, result)
+    def initialize(matcher, negate, exam, result)
       @matcher = matcher
       @negate  = negate
-      @state   = state
+      @exam    = exam
       @result  = result
     end
 
@@ -31,10 +31,10 @@ module Spectus
       @negate
     end
 
-    # @!attribute [r] state
+    # @!attribute [r] exam
     #
-    # @return [Sandbox] The sandbox that tested the code.
-    attr_reader :state
+    # @return [Exam] The exam of the code.
+    attr_reader :exam
 
     # @!attribute [r] result
     #
@@ -43,29 +43,29 @@ module Spectus
 
     # The message.
     #
-    # @return [String] The message that describe the state.
+    # @return [String] The message that describe the exam.
     def to_s
       "#{title}: #{summary}#{maybe_exception}."
     end
 
-    # The title of the state.
+    # The title of the exam.
     #
-    # @return [String] The title of the state.
+    # @return [String] The title of the exam.
     def title
       if result
-        state.got ? 'Pass' : 'Info'
+        exam.got ? 'Pass' : 'Info'
       else
-        state.exception.nil? ? 'Failure' : 'Error'
+        exam.exception.nil? ? 'Failure' : 'Error'
       end
     end
 
-    # The summary of the state.
+    # The summary of the exam.
     #
-    # @return [String] The summary of the state.
+    # @return [String] The summary of the exam.
     def summary
-      return state.exception.message unless state.valid? || state.exception.nil?
+      return exam.exception.message unless exam.valid? || exam.exception.nil?
 
-      "Expected #{state.actual.inspect}#{maybe_negate} to #{definition}"
+      "Expected #{exam.actual.inspect}#{maybe_negate} to #{definition}"
     end
 
     # The negation, if any.
@@ -79,7 +79,7 @@ module Spectus
     #
     # @return [String] The type of exception, or an empty string.
     def maybe_exception
-      state.exception.nil? ? '' : " (#{state.exception.class})"
+      exam.exception.nil? ? '' : " (#{exam.exception.class})"
     end
 
     # The readable definition.

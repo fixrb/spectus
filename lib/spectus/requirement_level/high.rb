@@ -11,16 +11,9 @@ module Spectus
     class High < Base
       # Evaluate the expectation.
       #
-      # @return [Result::Fail, Result::Pass] Report if the high expectation
-      #   pass or fail.
-      def result(isolation = false)
-        state = sandbox(isolation)
-
-        if state.valid?
-          pass!(state)
-        else
-          fail!(state)
-        end
+      # @return [Boolean] Report if the high expectation pass or fail.
+      def pass?
+        exam.valid?
       end
     end
   end

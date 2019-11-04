@@ -7,14 +7,15 @@ include Spectus
 front_object = 'foo'
 
 
-print 'Testing low requirement expectations that fail'
+print 'Testing low requirement expectations that fail ' \
+      'when the actual value is computed in isolation'
 
 
 # @note When challenging the subject against an implemented method.
 subject = -> { front_object.upcase }
 
 begin
-  it(&subject).MAY eql('foo')
+  it(&subject).MAY! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
@@ -45,7 +46,7 @@ end
 subject = -> { front_object.upcase(:bar) }
 
 begin
-  it(&subject).MAY eql('foo')
+  it(&subject).MAY! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError

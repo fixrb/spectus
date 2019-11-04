@@ -20,7 +20,7 @@ module Spectus
       @challenge  = ::Defi.send(:call)
     end
 
-    # rubocop:disable Style/MethodName
+    # rubocop:disable Naming/MethodName
     # rubocop:disable Naming/UncommunicativeMethodParamName
 
     # @api public
@@ -35,7 +35,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(m)
-      RequirementLevel::High.new(m, false, subject, challenge).result
+      RequirementLevel::High.new(m, false, subject, challenge, false).result
     end
 
     # @example _Absolute requirement_ definition with isolation
@@ -43,7 +43,7 @@ module Spectus
     #
     # @see MUST
     def MUST!(m)
-      RequirementLevel::High.new(m, false, subject, challenge).result(true)
+      RequirementLevel::High.new(m, false, subject, challenge, true).result
     end
 
     # This phrase, or the phrase "SHALL NOT", mean that the
@@ -56,7 +56,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(m)
-      RequirementLevel::High.new(m, true, subject, challenge).result
+      RequirementLevel::High.new(m, true, subject, challenge, false).result
     end
 
     # @example _Absolute prohibition_ definition with isolation
@@ -64,7 +64,7 @@ module Spectus
     #
     # @see MUST_NOT
     def MUST_NOT!(m)
-      RequirementLevel::High.new(m, true, subject, challenge).result(true)
+      RequirementLevel::High.new(m, true, subject, challenge, true).result
     end
 
     # This word, or the adjective "RECOMMENDED", mean that there
@@ -79,7 +79,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(m)
-      RequirementLevel::Medium.new(m, false, subject, challenge).result
+      RequirementLevel::Medium.new(m, false, subject, challenge, false).result
     end
 
     # @example _Recommended_ definition with isolation
@@ -87,7 +87,7 @@ module Spectus
     #
     # @see SHOULD
     def SHOULD!(m)
-      RequirementLevel::Medium.new(m, false, subject, challenge).result(true)
+      RequirementLevel::Medium.new(m, false, subject, challenge, true).result
     end
 
     # This phrase, or the phrase "NOT RECOMMENDED" mean that
@@ -103,7 +103,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(m)
-      RequirementLevel::Medium.new(m, true, subject, challenge).result
+      RequirementLevel::Medium.new(m, true, subject, challenge, false).result
     end
 
     # @example _Not recommended_ definition with isolation
@@ -111,7 +111,7 @@ module Spectus
     #
     # @see SHOULD_NOT
     def SHOULD_NOT!(m)
-      RequirementLevel::Medium.new(m, true, subject, challenge).result(true)
+      RequirementLevel::Medium.new(m, true, subject, challenge, true).result
     end
 
     # This word, or the adjective "OPTIONAL", mean that an item is
@@ -133,7 +133,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(m)
-      RequirementLevel::Low.new(m, false, subject, challenge).result
+      RequirementLevel::Low.new(m, false, subject, challenge, false).result
     end
 
     # @example _Optional_ definition with isolation
@@ -141,10 +141,10 @@ module Spectus
     #
     # @see MAY
     def MAY!(m)
-      RequirementLevel::Low.new(m, false, subject, challenge).result(true)
+      RequirementLevel::Low.new(m, false, subject, challenge, true).result
     end
 
-    # rubocop:enable Style/MethodName
+    # rubocop:enable Naming/MethodName
     # rubocop:enable Naming/UncommunicativeMethodParamName
 
     # rubocop:disable Style/AccessModifierDeclarations
@@ -160,6 +160,18 @@ module Spectus
     # @return [Defi::Challenge] The challenge to call against the subject.
     attr_reader :challenge
     private :challenge
+
+    # @!attribute [r] actual
+    #
+    # @return [#object_id] The actual object.
+    attr_reader :actual
+    private :actual
+
+    # @!attribute [r] exception
+    #
+    # @return [#exception] The exception object.
+    attr_reader :exception
+    private :exception
 
     # rubocop:enable Style/AccessModifierDeclarations
   end

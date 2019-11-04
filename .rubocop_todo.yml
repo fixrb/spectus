@@ -6,7 +6,7 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 230
+# Offense count: 410
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
 # SupportedHashRocketStyles: key, separator, table
@@ -16,41 +16,81 @@ Layout/AlignHash:
   Exclude:
     - 'lib/spectus/result/base.rb'
     - 'test/level/test_high_fail.rb'
+    - 'test/level/test_high_fail_in_isolation.rb'
     - 'test/level/test_high_pass.rb'
+    - 'test/level/test_high_pass_in_isolation.rb'
     - 'test/level/test_low_fail.rb'
+    - 'test/level/test_low_fail_in_isolation.rb'
     - 'test/level/test_low_pass.rb'
+    - 'test/level/test_low_pass_in_isolation.rb'
     - 'test/level/test_medium_fail.rb'
+    - 'test/level/test_medium_fail_in_isolation.rb'
     - 'test/level/test_medium_pass.rb'
+    - 'test/level/test_medium_pass_in_isolation.rb'
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
 
-# Offense count: 2
+# Offense count: 19
+# Cop supports --auto-correct.
+Layout/EmptyLines:
+  Exclude:
+    - 'test/level/test_high_fail.rb'
+    - 'test/level/test_high_fail_in_isolation.rb'
+    - 'test/level/test_high_pass.rb'
+    - 'test/level/test_high_pass_in_isolation.rb'
+    - 'test/level/test_low_fail.rb'
+    - 'test/level/test_low_fail_in_isolation.rb'
+    - 'test/level/test_low_pass.rb'
+    - 'test/level/test_low_pass_in_isolation.rb'
+    - 'test/level/test_medium_fail.rb'
+    - 'test/level/test_medium_fail_in_isolation.rb'
+    - 'test/level/test_medium_pass.rb'
+    - 'test/level/test_medium_pass_in_isolation.rb'
+
+# Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
-  Max: 12
+  Max: 20
 
 # Offense count: 1
 # Configuration parameters: CountKeywordArgs.
 Metrics/ParameterLists:
   Max: 10
 
-# Offense count: 10
+# Offense count: 20
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredName.
 Naming/RescuedExceptionsVariableName:
   Exclude:
     - 'test/level/test_high_fail.rb'
+    - 'test/level/test_high_fail_in_isolation.rb'
     - 'test/level/test_low_fail.rb'
+    - 'test/level/test_low_fail_in_isolation.rb'
     - 'test/level/test_medium_fail.rb'
+    - 'test/level/test_medium_fail_in_isolation.rb'
 
-# Offense count: 8
+# Offense count: 14
 Style/MixinUsage:
   Exclude:
     - 'test/level/test_high_fail.rb'
+    - 'test/level/test_high_fail_in_isolation.rb'
     - 'test/level/test_high_pass.rb'
+    - 'test/level/test_high_pass_in_isolation.rb'
     - 'test/level/test_low_fail.rb'
+    - 'test/level/test_low_fail_in_isolation.rb'
     - 'test/level/test_low_pass.rb'
+    - 'test/level/test_low_pass_in_isolation.rb'
     - 'test/level/test_medium_fail.rb'
+    - 'test/level/test_medium_fail_in_isolation.rb'
     - 'test/level/test_medium_pass.rb'
+    - 'test/level/test_medium_pass_in_isolation.rb'
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: implicit, explicit
+Style/RescueStandardError:
+  Exclude:
+    - 'lib/spectus/requirement_level/base.rb'

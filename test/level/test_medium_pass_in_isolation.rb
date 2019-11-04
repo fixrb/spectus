@@ -7,13 +7,14 @@ include Spectus
 front_object = 'foo'
 
 
-print 'Testing medium requirement expectations that pass'
+print 'Testing medium requirement expectations that pass ' \
+      'when the actual value is computed in isolation'
 
 
 # @note When challenging the subject against an implemented method.
 subject = -> { front_object.upcase }
 
-result = it(&subject).SHOULD eql('foo')
+result = it(&subject).SHOULD! eql('foo')
 
 raise unless result.success? == false
 raise unless result.info? == true
@@ -36,7 +37,7 @@ raise unless result.to_h == {
 
 print "\e[32m.\e[0m"
 
-result = it(&subject).SHOULD_NOT eql('foo')
+result = it(&subject).SHOULD_NOT! eql('foo')
 
 raise unless result.success? == true
 raise unless result.info? == false
@@ -59,8 +60,7 @@ raise unless result.to_h == {
 
 print "\e[32m.\e[0m"
 
-
-result = it(&subject).SHOULD eql('FOO')
+result = it(&subject).SHOULD! eql('FOO')
 
 raise unless result.success? == true
 raise unless result.info? == false
@@ -83,7 +83,7 @@ raise unless result.to_h == {
 
 print "\e[32m.\e[0m"
 
-result = it(&subject).SHOULD_NOT eql('FOO')
+result = it(&subject).SHOULD_NOT! eql('FOO')
 
 raise unless result.success? == false
 raise unless result.info? == true

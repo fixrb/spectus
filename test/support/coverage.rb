@@ -2,4 +2,6 @@
 
 require 'simplecov'
 
-SimpleCov.start
+SimpleCov.start do
+  add_filter %r{^/test/}
+end

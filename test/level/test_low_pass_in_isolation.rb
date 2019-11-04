@@ -7,13 +7,14 @@ include Spectus
 front_object = 'foo'
 
 
-print 'Testing low requirement expectations that pass'
+print 'Testing low requirement expectations that pass ' \
+      'when the actual value is computed in isolation'
 
 
 # @note When challenging the subject against an implemented method.
 subject = -> { front_object.upcase }
 
-result = it(&subject).MAY eql('FOO')
+result = it(&subject).MAY! eql('FOO')
 
 raise unless result.success? == true
 raise unless result.info? == false
@@ -41,7 +42,7 @@ print "\e[32m.\e[0m"
 # @note When challenging the subject against a not implemented method.
 subject = -> { front_object.bar }
 
-result = it(&subject).MAY eql('foo')
+result = it(&subject).MAY! eql('foo')
 
 raise unless result.error.class == NoMethodError
 raise unless result.success? == false

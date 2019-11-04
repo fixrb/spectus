@@ -34,7 +34,7 @@ raise unless result.to_h == {
   result:     true
 }
 
-print '.'
+print "\e[32m.\e[0m"
 
 result = it { greeting.gsub!('world', 'Bob') }.MUST! eql('Hello, Bob!')
 
@@ -58,4 +58,4 @@ raise unless result.to_h == {
   result:     true
 }
 
-print '.'
+print "\e[32m.\e[0m"

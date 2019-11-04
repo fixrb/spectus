@@ -7,14 +7,15 @@ include Spectus
 front_object = 'foo'
 
 
-print 'Testing high requirement expectations that fail'
+print 'Testing high requirement expectations that fail ' \
+      'when the actual value is computed in isolation'
 
 
 # @note When challenging the subject against an implemented method.
 subject = -> { front_object.upcase }
 
 begin
-  it(&subject).MUST eql('foo')
+  it(&subject).MUST! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
@@ -42,7 +43,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  it(&subject).MUST_NOT eql('FOO')
+  it(&subject).MUST_NOT! eql('FOO')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
@@ -74,7 +75,7 @@ end
 subject = -> { front_object.bar }
 
 begin
-  it(&subject).MUST eql('foo')
+  it(&subject).MUST! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
@@ -102,7 +103,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  it(&subject).MUST_NOT eql('foo')
+  it(&subject).MUST_NOT! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
@@ -134,7 +135,7 @@ end
 subject = -> { front_object.upcase(:bar) }
 
 begin
-  it(&subject).MUST eql('foo')
+  it(&subject).MUST! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError
@@ -162,7 +163,7 @@ rescue Spectus::Result::Fail => raised_result
 end
 
 begin
-  it(&subject).MUST_NOT eql('foo')
+  it(&subject).MUST_NOT! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == ArgumentError

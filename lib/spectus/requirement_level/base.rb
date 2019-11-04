@@ -17,29 +17,36 @@ module Spectus
       # @param negate     [Boolean]         Evaluate to a negative assertion.
       # @param subject    [#object_id]      The subject of the test.
       # @param challenge  [Defi::Challenge] The challenge for the subject.
-      def initialize(matcher, negate, subject, challenge)
+      # @param isolation  [Boolean]         Compute actual in isolation.
+      def initialize(matcher, negate, subject, challenge, isolation)
         unless matcher.respond_to?(:matches?)
           raise NoMethodError, "undefined method `matches?' " \
                                "for #{matcher.inspect}:#{matcher.class}"
+        end
+
+        begin
+          @actual = if isolation
+                      ::Aw.fork! { challenge.to(subject) }
+                    else
+                      challenge.to(subject)
+                    end
+        rescue => e
+          @exception = e
         end
 
         @matcher    = matcher
         @negate     = negate
         @subject    = subject
         @challenge  = challenge
+        @actual     = actual
+        @exception  = exception
+        @exam       = execute
       end
 
       # @!attribute [r] matcher
       #
       # @return [#matches?] The matcher.
       attr_reader :matcher
-
-      # The value of the negate instance variable.
-      #
-      # @return [Boolean] Evaluated to a negative assertion or not.
-      def negate?
-        @negate
-      end
 
       # @!attribute [r] subject
       #
@@ -48,43 +55,66 @@ module Spectus
 
       # @!attribute [r] challenge
       #
-      # @return [Array] The challenge to test the subject.
+      # @return [Defi::Challenge] The challenge to test the subject.
       attr_reader :challenge
+
+      # @!attribute [r] actual
+      #
+      # @return [#object_id] The actual value.
+      attr_reader :actual
+
+      # @!attribute [r] exception
+      #
+      # @return [#exception] The exception value.
+      attr_reader :exception
+
+      # @!attribute [r] exam
+      #
+      # @return [#Exam] The exam.
+      attr_reader :exam
+
+      # The value of the negate instance variable.
+      #
+      # @return [Boolean] Evaluated to a negative assertion or not.
+      def negate?
+        @negate
+      end
+
+      # The result of the expectation.
+      #
+      # @return [Result::Fail, Result::Pass] A Fail or a Pass instance.
+      def result
+        pass? ? pass! : fail!
+      end
 
       protected
 
-      # @param state [Sandbox] The sandbox that tested the code.
-      #
       # @return [Result::Pass] Pass the spec.
-      def pass!(state)
-        r = Report.new(matcher, negate?, state, true)
+      def pass!
+        r = Report.new(matcher, negate?, exam, true)
 
-        Result::Pass.new(r, *result_signature(state))
+        Result::Pass.new(r, *result_signature)
       end
 
-      # @param state [Sandbox] The sandbox that tested the code.
-      #
       # @raise [Result::Fail] Fail the spec.
-      def fail!(state)
-        r = Report.new(matcher, negate?, state, false)
+      def fail!
+        r = Report.new(matcher, negate?, exam, false)
 
-        raise Result::Fail.new(r, *result_signature(state)), r, caller[2..-1]
+        raise Result::Fail.new(r, *result_signature), r, caller[2..-1]
       end
 
-      # @param state [Sandbox] The sandbox that tested the code.
-      #
       # @return [Array] List of parameters.
-      def result_signature(state)
+      def result_signature
         [
           subject,
           challenge,
-          state.actual,
+          actual,
           matcher,
-          state.got,
-          state.exception,
+          exam.got,
+          exception,
           level,
           negate?,
-          state.valid?
+          exam.valid?
         ]
       end
 
@@ -93,22 +123,15 @@ module Spectus
         self.class.name.split('::').fetch(-1).to_sym
       end
 
-      # @param isolation [Boolean] Test in isolation.
-      #
-      # @return [Sandbox] The sandbox.
-      def sandbox(isolation)
-        isolation ? ::Aw.fork! { execute } : execute
-      end
-
-      # @return [Sandbox] The sandbox.
+      # @return [Exam] The exam.
       def execute
-        Sandbox.new(matcher, negate?, subject, challenge)
+        Exam.new(matcher, negate?, actual, exception)
       end
     end
   end
 end
 
+require_relative File.join('..', 'exam')
 require_relative File.join('..', 'report')
 require_relative File.join('..', 'result', 'fail')
 require_relative File.join('..', 'result', 'pass')
-require_relative File.join('..', 'sandbox')

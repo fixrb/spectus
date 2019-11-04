@@ -11,16 +11,9 @@ module Spectus
     class Medium < Base
       # Evaluate the expectation.
       #
-      # @return [Result::Fail, Result::Pass] Report if the medium expectation
-      #   pass or fail.
-      def result(isolation = false)
-        state = sandbox(isolation)
-
-        if state.valid? || state.exception.nil?
-          pass!(state)
-        else
-          fail!(state)
-        end
+      # @return [Boolean] Report if the medium expectation pass or fail.
+      def pass?
+        exam.valid? || exam.exception.nil?
       end
     end
   end

@@ -7,13 +7,14 @@ include Spectus
 front_object = true
 
 
-print 'Testing high requirement expectations that pass'
+print 'Testing high requirement expectations that pass ' \
+      'when the actual value is computed in isolation'
 
 
 # @note When challenging the subject against an implemented method.
 subject = -> { front_object.itself }
 
-result = it(&subject).MUST be_true
+result = it(&subject).MUST! be_true
 
 raise unless result.success? == true
 raise unless result.info? == false
@@ -36,7 +37,7 @@ raise unless result.to_h == {
 
 print "\e[32m.\e[0m"
 
-result = it(&subject).MUST_NOT be_false
+result = it(&subject).MUST_NOT! be_false
 
 raise unless result.success? == true
 raise unless result.info? == false

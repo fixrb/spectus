@@ -11,16 +11,9 @@ module Spectus
     class Low < Base
       # Evaluate the expectation.
       #
-      # @return [Result::Fail, Result::Pass] Report if the low expectation
-      #   pass or fail.
-      def result(isolation = false)
-        state = sandbox(isolation)
-
-        if state.valid? || state.exception.class.equal?(::NoMethodError)
-          pass!(state)
-        else
-          fail!(state)
-        end
+      # @return [Boolean] Report if the low expectation pass or fail.
+      def pass?
+        exam.valid? || exam.exception.class.equal?(::NoMethodError)
       end
     end
   end

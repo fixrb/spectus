@@ -4,11 +4,18 @@ require_relative File.join('..', 'support', 'coverage')
 require_relative File.join('..', '..', 'lib', 'spectus')
 
 include Spectus
+front_object = 'foo'
 
-subject = -> { 'foo'.bar }
+
+print 'Testing medium requirement expectations that fail'
+
+
+# @note When challenging the subject against a not implemented method.
+subject = -> { front_object.bar }
 
 begin
   it(&subject).SHOULD eql('foo')
+  raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.failure? == false
@@ -31,11 +38,12 @@ rescue Spectus::Result::Fail => raised_result
     result:     false
   }
 
-  print '.'
+  print "\e[32m.\e[0m"
 end
 
 begin
   it(&subject).SHOULD_NOT eql('foo')
+  raise
 rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.error.class == NoMethodError
   raise unless raised_result.failure? == false
@@ -58,7 +66,8 @@ rescue Spectus::Result::Fail => raised_result
     result:     false
   }
 
-  print '.'
+  print "\e[32m.\e[0m"
 end
 
-puts
+
+puts "\e[32mSuccess!\e[0m"
