@@ -13,16 +13,19 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param matcher      [#matches?]       The matcher.
-      # @param is_negate    [Boolean]         Positive or negative assertion?
-      # @param subject      [#object_id]      The subject of the test.
       # @param challenge    [Defi::Challenge] The challenge for the subject.
       # @param is_isolation [Boolean]         Compute actual in isolation?
-      def initialize(matcher, is_negate, subject, challenge, is_isolation)
+      # @param is_negate    [Boolean]         Positive or negative assertion?
+      # @param matcher      [#matches?]       The matcher.
+      # @param subject      [#object_id]      The subject of the test.
+      def initialize(challenge:, is_isolation:, is_negate:, matcher:, subject:)
         unless matcher.respond_to?(:matches?)
           raise ::NoMethodError, "undefined method `matches?' " \
                                  "for #{matcher.inspect}:#{matcher.class}"
         end
+
+        @subject    = subject
+        @challenge  = challenge
 
         # rubocop:disable Lint/HandleExceptions
         # rubocop:disable Lint/RescueException
@@ -33,13 +36,17 @@ module Spectus
                      challenge.to(subject)
                    end
         rescue ::Exception => e
+          # An exception is catched.
         end
         # rubocop:enable Lint/HandleExceptions
         # rubocop:enable Lint/RescueException
 
-        @subject    = subject
-        @challenge  = challenge
-        @exam       = Exam.new(matcher, is_negate, actual, e)
+        @exam = Exam.new(
+          actual:     actual,
+          exception:  e,
+          is_negate:  is_negate,
+          matcher:    matcher
+        )
       end
 
       # @!attribute [r] challenge
@@ -59,40 +66,37 @@ module Spectus
 
       # The result of the expectation.
       #
-      # @return [Result::Fail, Result::Pass] A Fail or a Pass instance.
-      def result
+      # @return [Result::Fail, Result::Pass] The test result.
+      def call
         pass? ? pass! : fail!
       end
 
       protected
 
-      # @return [Result::Pass] Pass the spec.
+      # @return [Result::Pass] A passed spec result.
       def pass!
-        r = Report.new(exam, true)
-
-        Result::Pass.new(r, *result_signature)
+        Result::Pass.new(**details)
       end
 
-      # @raise [Result::Fail] Fail the spec.
+      # @raise [Result::Fail] A failed spec result.
       def fail!
-        r = Report.new(exam, false)
-
-        raise Result::Fail.new(r, *result_signature), r, caller[2..-1]
+        exception = Result::Fail.new(**details)
+        raise exception, exception.message, caller[2..-1]
       end
 
-      # @return [Array] List of parameters.
-      def result_signature
-        [
-          subject,
-          challenge,
-          exam.actual,
-          exam.matcher,
-          exam.got,
-          exam.exception,
-          level,
-          exam.negate?,
-          exam.valid?
-        ]
+      # @return [Hash] List of parameters.
+      def details
+        {
+          actual:     exam.actual,
+          challenge:  challenge,
+          error:      exam.exception,
+          expected:   exam.matcher,
+          got:        exam.got,
+          is_negate:  exam.negate?,
+          is_valid:   exam.valid?,
+          level:      level,
+          subject:    subject
+        }
       end
 
       # @return [Symbol] The requirement level.

@@ -8,15 +8,10 @@ module Spectus
     class Pass
       include Base
 
-      # @!attribute [r] message
-      #
-      # @return [String] The message that describe the state.
-      attr_reader :message
-
       # The value of the expectation of the spec.
       #
       # @return [Boolean] The spec was true?
-      def result?
+      def pass?
         true
       end
 

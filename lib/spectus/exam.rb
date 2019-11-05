@@ -11,12 +11,12 @@ module Spectus
     # @param matcher    [#matches?]   The matcher.
     # @param is_negate  [Boolean]     Positive or negative assertion?
     # @param actual     [#object_id]  The actual value.
-    # @param exception  [#exception]  An exception.
-    def initialize(matcher, is_negate, actual, exception)
-      @matcher    = matcher
-      @is_negate  = is_negate
+    # @param exception  [Exception]   An exception.
+    def initialize(actual:, exception:, is_negate:, matcher:)
       @actual     = actual
       @exception  = exception
+      @is_negate  = is_negate
+      @matcher    = matcher
       @got        = is_negate ^ matcher.matches? { actual } if exception.nil?
     end
 
@@ -27,7 +27,7 @@ module Spectus
 
     # @!attribute [r] exception
     #
-    # @return [#exception, nil] An exception.
+    # @return [Exception, nil] An exception.
     attr_reader :exception
 
     # @!attribute [r] got
@@ -42,6 +42,9 @@ module Spectus
     #   between the actual value and the expected value.
     attr_reader :matcher
 
+    # @note The boolean comparison between the actual value and the expected
+    #   value can be evaluated to a negative assertion.
+    #
     # @return [Boolean] Positive or negative assertion?
     def negate?
       @is_negate

@@ -6,29 +6,14 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 410
+# Offense count: 474
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
 # SupportedHashRocketStyles: key, separator, table
 # SupportedColonStyles: key, separator, table
 # SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
 Layout/AlignHash:
-  Exclude:
-    - 'lib/spectus/result/base.rb'
-    - 'test/level/test_high_fail.rb'
-    - 'test/level/test_high_fail_in_isolation.rb'
-    - 'test/level/test_high_pass.rb'
-    - 'test/level/test_high_pass_in_isolation.rb'
-    - 'test/level/test_low_fail.rb'
-    - 'test/level/test_low_fail_in_isolation.rb'
-    - 'test/level/test_low_pass.rb'
-    - 'test/level/test_low_pass_in_isolation.rb'
-    - 'test/level/test_medium_fail.rb'
-    - 'test/level/test_medium_fail_in_isolation.rb'
-    - 'test/level/test_medium_pass.rb'
-    - 'test/level/test_medium_pass_in_isolation.rb'
-    - 'test/test_with_isolation.rb'
-    - 'test/test_without_isolation.rb'
+  Enabled: false
 
 # Offense count: 45
 # Cop supports --auto-correct.
@@ -47,15 +32,20 @@ Layout/EmptyLines:
     - 'test/level/test_medium_pass.rb'
     - 'test/level/test_medium_pass_in_isolation.rb'
 
-# Offense count: 3
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 103
+
+# Offense count: 4
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
-  Max: 15
+  Max: 20
 
-# Offense count: 1
+# Offense count: 2
 # Configuration parameters: CountKeywordArgs.
 Metrics/ParameterLists:
-  Max: 10
+  Max: 9
 
 # Offense count: 20
 # Cop supports --auto-correct.

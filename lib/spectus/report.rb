@@ -8,63 +8,63 @@ module Spectus
   class Report
     # Initialize the report class.
     #
-    # @param exam     [Exam]    The exam of the code.
-    # @param is_pass  [Boolean] The test passed or failed?
-    def initialize(exam, is_pass)
-      @exam    = exam
-      @is_pass = is_pass
-    end
+    # @param actual     [#object_id]    The actual value.
+    # @param exception  [Exception]     An exception.
+    # @param expected   [#matches?]     The expected value.
+    # @param got        [Boolean, nil]  The boolean comparison result.
+    # @param is_negate  [Boolean]       Positive or negative assertion?
+    # @param is_pass    [Boolean]       Value of the expectation of the spec.
+    # @param is_valid   [Boolean]       The test pass or fail?
+    def initialize(actual:, exception:, expected:, got:, is_negate:, is_pass:,
+                   is_valid:)
 
-    # @!attribute [r] exam
-    #
-    # @return [Exam] The exam of the code.
-    attr_reader :exam
+      @actual     = actual
+      @exception  = exception
+      @expected   = expected
+      @got        = got
+      @is_negate  = is_negate
+      @is_pass    = is_pass
+      @is_valid   = is_valid
+    end
 
     # The readable definition.
     #
     # @return [String] The readable definition string.
     def definition
-      exam.matcher.to_s
+      @expected.to_s
     end
 
     # The type of exception, if any.
     #
     # @return [String] The type of exception, or an empty string.
     def maybe_exception
-      exam.exception.nil? ? '' : " (#{exam.exception.class})"
+      @exception.nil? ? '' : " (#{@exception.class})"
     end
 
     # The negation, if any.
     #
     # @return [String] The negation, or an empty string.
     def maybe_negate
-      exam.negate? ? ' not' : ''
-    end
-
-    # The test passed of failed?
-    #
-    # @return [Boolean] Is the test passed?
-    def pass?
-      @is_pass
+      @is_negate ? ' not' : ''
     end
 
     # The summary of the exam.
     #
     # @return [String] The summary of the exam.
     def summary
-      return exam.exception.message unless exam.valid? || exam.exception.nil?
+      return @exception.message unless @is_valid || @exception.nil?
 
-      "Expected #{exam.actual.inspect}#{maybe_negate} to #{definition}"
+      "Expected #{@actual.inspect}#{maybe_negate} to #{definition}"
     end
 
     # The title of the exam.
     #
     # @return [String] The title of the exam.
     def title
-      if pass?
-        exam.got ? 'Pass' : 'Info'
+      if @is_pass
+        @got ? 'Pass' : 'Info'
       else
-        exam.exception.nil? ? 'Failure' : 'Error'
+        @exception.nil? ? 'Failure' : 'Error'
       end
     end
 

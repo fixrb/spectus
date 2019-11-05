@@ -11,7 +11,6 @@ module Spectus
     module Base
       # Initialize the result class.
       #
-      # @param message    [#to_s] It is describing the actual/error value.
       # @param subject    [#object_id] The untrusted object to be tested.
       # @param challenge  [Defi::Challenge] The challenge for the subject.
       # @param actual     [#object_id] The value that the subject return through
@@ -19,24 +18,37 @@ module Spectus
       # @param expected   [#matches?] The definition of the expected value.
       # @param got        [#object_id] The result of the boolean comparison
       #   between the actual value and the expected value.
-      # @param error      [#exception, nil] Any possible raised exception.
+      # @param error      [Exception, nil] Any possible raised exception.
       # @param level      [:High, :Medium, :Low] The level of the expectation.
       # @param is_negate  [Boolean] Evaluate to a negative assertion?
       # @param is_valid   [Boolean] Report if the test was true or false?
-      def initialize(message, subject, challenge, actual, expected, got, error,
-                     level, is_negate, is_valid)
+      def initialize(actual:, challenge:, error:, expected:, got:,
+                     is_negate:, is_valid:, level:, subject:)
 
-        @message    = message.to_s
-        @subject    = subject
-        @challenge  = challenge
         @actual     = actual
+        @challenge  = challenge
+        @error      = error
         @expected   = expected
         @got        = got
-        @error      = error
-        @level      = level
         @is_negate  = is_negate
         @is_valid   = is_valid
+        @level      = level
+        @subject    = subject
+        @message    = Report.new(
+          actual:     actual,
+          exception:  error,
+          expected:   expected,
+          got:        got,
+          is_negate:  is_negate,
+          is_pass:    pass?,
+          is_valid:   is_valid
+        ).to_s
       end
+
+      # @!attribute [r] message
+      #
+      # @return [String] The message that describe the state.
+      attr_reader :message
 
       # @!attribute [r] subject
       #
@@ -67,7 +79,7 @@ module Spectus
 
       # @!attribute [r] error
       #
-      # @return [#exception, nil] Any possible raised exception.
+      # @return [Exception, nil] Any possible raised exception.
       attr_reader :error
 
       # @!attribute [r] level
@@ -81,6 +93,25 @@ module Spectus
       def negate?
         @is_negate
       end
+
+      # :nocov:
+
+      # @note Abstract method.
+      def to_char(*)
+        raise ::NotImplementedError
+      end
+
+      # @note Abstract method.
+      def pass?
+        raise ::NotImplementedError
+      end
+
+      # @note Abstract method.
+      def to_sym
+        raise ::NotImplementedError
+      end
+
+      # :nocov:
 
       # The value of the boolean comparison between the actual value and the
       # expected value.
@@ -104,7 +135,7 @@ module Spectus
           level:      level,
           negate:     negate?,
           valid:      valid?,
-          result:     result?
+          result:     pass?
         }
       end
     end

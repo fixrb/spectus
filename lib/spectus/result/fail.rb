@@ -11,7 +11,7 @@ module Spectus
       # The value of the expectation of the spec.
       #
       # @return [Boolean] The spec was false?
-      def result?
+      def pass?
         false
       end
 
