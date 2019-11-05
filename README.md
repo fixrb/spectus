@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/spectus/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/spectus.svg)][gem]
-[![Inline docs](http://inch-ci.org/github/fixrb/spectus.svg?branch=master)][inchpages]
-[![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
+[![Inline docs](https://inch-ci.org/github/fixrb/spectus.svg?branch=master)][inchpages]
+[![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 > Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'s requirement levels, and some matchers for Ruby.
 
@@ -16,9 +16,9 @@
 
 ## Rubies
 
-* [MRI](https://www.ruby-lang.org/)
-* [Rubinius](http://rubini.us/)
-* [JRuby](http://jruby.org/)
+* [MRI](https://www.ruby-lang.org/en/)
+* [Rubinius](https://rubinius.com/)
+* [JRuby](https://www.jruby.org/)
 
 ## Installation
 
@@ -57,18 +57,22 @@ There are two cases:
 Example of test in isolation:
 
 ```ruby
+include Spectus
+
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST! eql 'Hello, Alice!'
-# => #<Spectus::Result::Pass:0x007fa5022d8760 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007fa5022d8e18@(irb):3>, @challenge=#<Defi::Challenge:0x007fa5022d8a08 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Eql:0x007fa5022d8cb0 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x00007fca618bcd28 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x00007fca618bf370 (irb):3>, @challenge=#<Defi::Challenge:0x00007fca618bf168 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Matchers::Eql::Matcher:0x00007fca618bf028 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 greeting # => "Hello, world!"
 ```
 
 Example of test without isolation:
 
 ```ruby
+include Spectus
+
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST eql 'Hello, Alice!'
-# => #<Spectus::Result::Pass:0x007f982304d310 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x007f982304fbb0@(irb):3>, @challenge=#<Defi::Challenge:0x007f982304f890 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Eql:0x007f982304f200 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x00007fdfa31b0168 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x00007fdfa31b09d8 (irb):3>, @challenge=#<Defi::Challenge:0x00007fdfa31b0870 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Matchers::Eql::Matcher:0x00007fdfa31b06e0 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 greeting # => "Hello, Alice!"
 ```
 
@@ -91,22 +95,22 @@ include Spectus
 
 ### Absolute requirement
 
-Given the `"ルビー"` object, when it receives `valid_encoding?` method, then it **MUST** be `true`:
+Given the "`ルビー`" object, when it receives `valid_encoding?` method, then it **MUST** be `true`:
 
 ```ruby
 it { 'ルビー'.valid_encoding? }.MUST be_true
-# => #<Spectus::Result::Pass:0x007ffd7d00af50 @message="Pass: Expected true to be_true.", @subject=#<Proc:0x007ffd7d010130@(irb):2>, @challenge=#<Defi::Challenge:0x007ffd7d0116e8 @method=:call, @args=[]>, @actual=true, @expected=#<Matchi::BeTrue:0x007ffd7d012188>, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x00007faac7024df0 @message="Pass: Expected true to be_true.", @subject=#<Proc:0x00007faac7046428 (irb):2>, @challenge=#<Defi::Challenge:0x00007faac7035650 @method=:call, @args=[]>, @actual=true, @expected=#<Matchi::Matchers::BeTrue::Matcher:0x00007faac7035060>, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
 
 ### Absolute prohibition
 
-Given the `"foo"` object, when it receives `length` method, then it **MUST NOT** raise the `NoMethodError` exception:
+Given the "`foo`" object, when it receives `length` method, then it **MUST NOT** raise the `NoMethodError` exception:
 
 ```ruby
 it { 'foo'.length }.MUST_NOT raise_exception NoMethodError
-# => #<Spectus::Result::Pass:0x007ffd7b890af0 @message="Pass: Expected 3 not to raise_exception NoMethodError.", @subject=#<Proc:0x007ffd7b8913b0@(irb):3>, @challenge=#<Defi::Challenge:0x007ffd7b891248 @method=:call, @args=[]>, @actual=3, @expected=#<Matchi::RaiseException:0x007ffd7b891130 @expected=NoMethodError>, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
+# => #<Spectus::Result::Pass:0x00007faac7ae65b8 @message="Pass: Expected 3 not to raise_exception NoMethodError.", @subject=#<Proc:0x00007faac7ae68b0 (irb):3>, @challenge=#<Defi::Challenge:0x00007faac7ae6838 @method=:call, @args=[]>, @actual=3, @expected=#<Matchi::Matchers::RaiseException::Matcher:0x00007faac7ae6798 @expected=NoMethodError>, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -117,7 +121,7 @@ Given the `BasicObject` object, when it receives `superclass` method, then it **
 
 ```ruby
 it { BasicObject.superclass }.SHOULD equal NilClass
-# => #<Spectus::Result::Pass:0x007ffd7b871a38 @message="Info: Expected nil to equal NilClass.", @subject=#<Proc:0x007ffd7b872460@(irb):4>, @challenge=#<Defi::Challenge:0x007ffd7b872370 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::Equal:0x007ffd7b872140 @expected=NilClass>, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x00007faac7b3edf8 @message="Info: Expected nil to equal NilClass.", @subject=#<Proc:0x00007faac7b3f0c8 (irb):4>, @challenge=#<Defi::Challenge:0x00007faac7b3f050 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::Matchers::Equal::Matcher:0x00007faac7b3efb0 @expected=nil>, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
 ```
 
 Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
@@ -125,27 +129,28 @@ However, because there isn't any exception, the result of the test shows that th
 
 ### Not recommended
 
-Given the `"1"` object, when it receives `+(1)` method, then it **SHOULD NOT** return the `"11"` value:
+Given the "`1`" object, when it receives `+(1)` method, then it **SHOULD NOT** return the "`11`" value:
 
 ```ruby
 it { '1' + 1 }.SHOULD_NOT eql '11'
-# Spectus::Result::Fail: Error: no implicit conversion of Fixnum into String (TypeError).
-# 	from (irb):5
-# 	from ./bin/console:7:in `<main>'
+# Traceback (most recent call last):
+#         2: from ./bin/console:8:in `<main>'
+#         1: from (irb):5
+# Spectus::Result::Fail (Error: no implicit conversion of Integer into String (TypeError).)
 ```
 
 There was a `TypeError` exception, the result of the test shows that the spec failed.
 
 ### Optional
 
-Given the `"foo"` object, when it receives `blank?` method, then it **MAY** be `false`:
+Given the "`foo`" object, when it receives `blank?` method, then it **MAY** be `false`:
 
 ```ruby
 it { 'foo'.blank? }.MAY be_false
-# => #<Spectus::Result::Pass:0x007ffd7bbc3cb8 @message="Info: undefined method `blank?' for \"foo\":String (NoMethodError).", @subject=#<Proc:0x007ffd7b8285b8@(irb):6>, @challenge=#<Defi::Challenge:0x007ffd7b8284f0 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::BeFalse:0x007ffd7b828310>, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x00007faac721cf68 @message="Info: undefined method `blank?' for \"foo\":String (NoMethodError).", @subject=#<Proc:0x00007faac721d3a0 (irb):6>, @challenge=#<Defi::Challenge:0x00007faac721d328 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::Matchers::BeFalse::Matcher:0x00007faac721d288>, @got=nil, @error=#<NoMethodError: undefined method `blank?' for "foo":String>, @level=:Low, @negate=false, @valid=false>
 ```
 
-The optional `blank?` method is not implemented (unlike in [Ruby on Rails](http://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
+The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
 
 ## Security
 
@@ -162,7 +167,7 @@ example:
 
 ## Versioning
 
-__Spectus__ follows [Semantic Versioning 2.0](http://semver.org/).
+__Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## Contributing
 
@@ -180,8 +185,8 @@ See `LICENSE.md` file.
 [travis]: https://travis-ci.org/fixrb/spectus
 [codeclimate]: https://codeclimate.com/github/fixrb/spectus
 [gemnasium]: https://gemnasium.com/fixrb/spectus
-[inchpages]: http://inch-ci.org/github/fixrb/spectus
-[rubydoc]: http://rubydoc.info/gems/spectus/frames
+[inchpages]: https://inch-ci.org/github/fixrb/spectus
+[rubydoc]: https://rubydoc.info/gems/spectus/frames
 
 ***
 
