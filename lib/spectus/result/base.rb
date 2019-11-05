@@ -21,10 +21,10 @@ module Spectus
       #   between the actual value and the expected value.
       # @param error      [#exception, nil] Any possible raised exception.
       # @param level      [:High, :Medium, :Low] The level of the expectation.
-      # @param negate     [Boolean] Evaluate to a negative assertion.
-      # @param valid      [Boolean] Report if the test was true or false.
+      # @param is_negate  [Boolean] Evaluate to a negative assertion?
+      # @param is_valid   [Boolean] Report if the test was true or false?
       def initialize(message, subject, challenge, actual, expected, got, error,
-                     level, negate, valid)
+                     level, is_negate, is_valid)
 
         @message    = message.to_s
         @subject    = subject
@@ -34,8 +34,8 @@ module Spectus
         @got        = got
         @error      = error
         @level      = level
-        @negate     = negate
-        @valid      = valid
+        @is_negate  = is_negate
+        @is_valid   = is_valid
       end
 
       # @!attribute [r] subject
@@ -77,17 +77,17 @@ module Spectus
 
       # The value of the negate instance variable.
       #
-      # @return [Boolean] Evaluated to a negative assertion or not.
+      # @return [Boolean] Evaluated to a negative assertion?
       def negate?
-        @negate
+        @is_negate
       end
 
       # The value of the boolean comparison between the actual value and the
       # expected value.
       #
-      # @return [Boolean] The test was true or false.
+      # @return [Boolean] The test was true or false?
       def valid?
-        @valid
+        @is_valid
       end
 
       # Properties of the result.

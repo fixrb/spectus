@@ -11,7 +11,7 @@ module Spectus
     class Low < Base
       # Evaluate the expectation.
       #
-      # @return [Boolean] Report if the low expectation pass or fail.
+      # @return [Boolean] Report if the low expectation pass or fail?
       def pass?
         exam.valid? || exam.exception.class.equal?(::NoMethodError)
       end

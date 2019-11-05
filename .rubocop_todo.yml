@@ -30,7 +30,7 @@ Layout/AlignHash:
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
 
-# Offense count: 19
+# Offense count: 45
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
@@ -50,7 +50,7 @@ Layout/EmptyLines:
 # Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
-  Max: 20
+  Max: 15
 
 # Offense count: 1
 # Configuration parameters: CountKeywordArgs.
@@ -86,11 +86,3 @@ Style/MixinUsage:
     - 'test/level/test_medium_pass_in_isolation.rb'
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: implicit, explicit
-Style/RescueStandardError:
-  Exclude:
-    - 'lib/spectus/requirement_level/base.rb'

@@ -10,21 +10,21 @@ module Spectus
 
       # The value of the expectation of the spec.
       #
-      # @return [Boolean] The spec was false.
+      # @return [Boolean] The spec was false?
       def result?
         false
       end
 
       # The state of failure.
       #
-      # @return [Boolean] The test was a failure.
+      # @return [Boolean] The test was a failure?
       def failure?
         error.nil?
       end
 
       # The state of error.
       #
-      # @return [Boolean] The test was an error.
+      # @return [Boolean] The test was an error?
       def error?
         !failure?
       end
@@ -38,14 +38,14 @@ module Spectus
 
       # Express the result with one char.
       #
-      # @param color [Boolean] Enable the color.
+      # @param is_color [Boolean] Enable the color?
       #
       # @return [String] The char that identify the result.
-      def to_char(color = false)
+      def to_char(is_color = false)
         if failure?
-          color ? "\e[35mF\e[0m" : 'F'
+          is_color ? "\e[35mF\e[0m" : 'F'
         else
-          color ? "\e[31mE\e[0m" : 'E'
+          is_color ? "\e[31mE\e[0m" : 'E'
         end
       end
     end

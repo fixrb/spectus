@@ -11,7 +11,7 @@ module Spectus
     class High < Base
       # Evaluate the expectation.
       #
-      # @return [Boolean] Report if the high expectation pass or fail.
+      # @return [Boolean] Report if the high expectation pass or fail?
       def pass?
         exam.valid?
       end

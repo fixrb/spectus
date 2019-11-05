@@ -8,27 +8,11 @@ module Spectus
   class Report
     # Initialize the report class.
     #
-    # @param matcher [#matches?] The matcher.
-    # @param negate  [Boolean]   Evaluate to a negative assertion.
-    # @param exam    [Exam]   The exam of the code.
-    # @param result  [Boolean]   The result of the test.
-    def initialize(matcher, negate, exam, result)
-      @matcher = matcher
-      @negate  = negate
+    # @param exam     [Exam]    The exam of the code.
+    # @param is_pass  [Boolean] The test passed or failed?
+    def initialize(exam, is_pass)
       @exam    = exam
-      @result  = result
-    end
-
-    # @!attribute [r] matcher
-    #
-    # @return [#matches?] The matcher.
-    attr_reader :matcher
-
-    # The value of the negate instance variable.
-    #
-    # @return [Boolean] Evaluated to a negative assertion or not.
-    def negate?
-      @negate
+      @is_pass = is_pass
     end
 
     # @!attribute [r] exam
@@ -36,27 +20,32 @@ module Spectus
     # @return [Exam] The exam of the code.
     attr_reader :exam
 
-    # @!attribute [r] result
+    # The readable definition.
     #
-    # @return [Boolean] The result of the test.
-    attr_reader :result
-
-    # The message.
-    #
-    # @return [String] The message that describe the exam.
-    def to_s
-      "#{title}: #{summary}#{maybe_exception}."
+    # @return [String] The readable definition string.
+    def definition
+      exam.matcher.to_s
     end
 
-    # The title of the exam.
+    # The type of exception, if any.
     #
-    # @return [String] The title of the exam.
-    def title
-      if result
-        exam.got ? 'Pass' : 'Info'
-      else
-        exam.exception.nil? ? 'Failure' : 'Error'
-      end
+    # @return [String] The type of exception, or an empty string.
+    def maybe_exception
+      exam.exception.nil? ? '' : " (#{exam.exception.class})"
+    end
+
+    # The negation, if any.
+    #
+    # @return [String] The negation, or an empty string.
+    def maybe_negate
+      exam.negate? ? ' not' : ''
+    end
+
+    # The test passed of failed?
+    #
+    # @return [Boolean] Is the test passed?
+    def pass?
+      @is_pass
     end
 
     # The summary of the exam.
@@ -68,25 +57,22 @@ module Spectus
       "Expected #{exam.actual.inspect}#{maybe_negate} to #{definition}"
     end
 
-    # The negation, if any.
+    # The title of the exam.
     #
-    # @return [String] The negation, or an empty string.
-    def maybe_negate
-      negate? ? ' not' : ''
+    # @return [String] The title of the exam.
+    def title
+      if pass?
+        exam.got ? 'Pass' : 'Info'
+      else
+        exam.exception.nil? ? 'Failure' : 'Error'
+      end
     end
 
-    # The type of exception, if any.
+    # The message.
     #
-    # @return [String] The type of exception, or an empty string.
-    def maybe_exception
-      exam.exception.nil? ? '' : " (#{exam.exception.class})"
-    end
-
-    # The readable definition.
-    #
-    # @return [String] The readable definition string.
-    def definition
-      matcher.to_s
+    # @return [String] The message that describe the exam.
+    def to_s
+      "#{title}: #{summary}#{maybe_exception}."
     end
   end
 end

@@ -11,7 +11,7 @@ module Spectus
     class Medium < Base
       # Evaluate the expectation.
       #
-      # @return [Boolean] Report if the medium expectation pass or fail.
+      # @return [Boolean] Report if the medium expectation pass or fail?
       def pass?
         exam.valid? || exam.exception.nil?
       end

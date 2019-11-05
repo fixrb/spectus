@@ -13,72 +13,49 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param matcher    [#matches?]       The matcher.
-      # @param negate     [Boolean]         Evaluate to a negative assertion.
-      # @param subject    [#object_id]      The subject of the test.
-      # @param challenge  [Defi::Challenge] The challenge for the subject.
-      # @param isolation  [Boolean]         Compute actual in isolation.
-      def initialize(matcher, negate, subject, challenge, isolation)
+      # @param matcher      [#matches?]       The matcher.
+      # @param is_negate    [Boolean]         Positive or negative assertion?
+      # @param subject      [#object_id]      The subject of the test.
+      # @param challenge    [Defi::Challenge] The challenge for the subject.
+      # @param is_isolation [Boolean]         Compute actual in isolation?
+      def initialize(matcher, is_negate, subject, challenge, is_isolation)
         unless matcher.respond_to?(:matches?)
-          raise NoMethodError, "undefined method `matches?' " \
-                               "for #{matcher.inspect}:#{matcher.class}"
+          raise ::NoMethodError, "undefined method `matches?' " \
+                                 "for #{matcher.inspect}:#{matcher.class}"
         end
 
+        # rubocop:disable Lint/HandleExceptions
+        # rubocop:disable Lint/RescueException
         begin
-          @actual = if isolation
-                      ::Aw.fork! { challenge.to(subject) }
-                    else
-                      challenge.to(subject)
-                    end
-        rescue => e
-          @exception = e
+          actual = if is_isolation
+                     ::Aw.fork! { challenge.to(subject) }
+                   else
+                     challenge.to(subject)
+                   end
+        rescue ::Exception => e
         end
+        # rubocop:enable Lint/HandleExceptions
+        # rubocop:enable Lint/RescueException
 
-        @matcher    = matcher
-        @negate     = negate
         @subject    = subject
         @challenge  = challenge
-        @actual     = actual
-        @exception  = exception
-        @exam       = execute
+        @exam       = Exam.new(matcher, is_negate, actual, e)
       end
-
-      # @!attribute [r] matcher
-      #
-      # @return [#matches?] The matcher.
-      attr_reader :matcher
-
-      # @!attribute [r] subject
-      #
-      # @return [#object_id] The subject to test.
-      attr_reader :subject
 
       # @!attribute [r] challenge
       #
       # @return [Defi::Challenge] The challenge to test the subject.
       attr_reader :challenge
 
-      # @!attribute [r] actual
-      #
-      # @return [#object_id] The actual value.
-      attr_reader :actual
-
-      # @!attribute [r] exception
-      #
-      # @return [#exception] The exception value.
-      attr_reader :exception
-
       # @!attribute [r] exam
       #
       # @return [#Exam] The exam.
       attr_reader :exam
 
-      # The value of the negate instance variable.
+      # @!attribute [r] subject
       #
-      # @return [Boolean] Evaluated to a negative assertion or not.
-      def negate?
-        @negate
-      end
+      # @return [#object_id] The subject to test.
+      attr_reader :subject
 
       # The result of the expectation.
       #
@@ -91,14 +68,14 @@ module Spectus
 
       # @return [Result::Pass] Pass the spec.
       def pass!
-        r = Report.new(matcher, negate?, exam, true)
+        r = Report.new(exam, true)
 
         Result::Pass.new(r, *result_signature)
       end
 
       # @raise [Result::Fail] Fail the spec.
       def fail!
-        r = Report.new(matcher, negate?, exam, false)
+        r = Report.new(exam, false)
 
         raise Result::Fail.new(r, *result_signature), r, caller[2..-1]
       end
@@ -108,12 +85,12 @@ module Spectus
         [
           subject,
           challenge,
-          actual,
-          matcher,
+          exam.actual,
+          exam.matcher,
           exam.got,
-          exception,
+          exam.exception,
           level,
-          negate?,
+          exam.negate?,
           exam.valid?
         ]
       end
@@ -121,11 +98,6 @@ module Spectus
       # @return [Symbol] The requirement level.
       def level
         self.class.name.split('::').fetch(-1).to_sym
-      end
-
-      # @return [Exam] The exam.
-      def execute
-        Exam.new(matcher, negate?, actual, exception)
       end
     end
   end
