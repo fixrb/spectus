@@ -108,6 +108,5 @@ module Spectus
 end
 
 require_relative File.join('..', 'exam')
-require_relative File.join('..', 'report')
 require_relative File.join('..', 'result', 'fail')
 require_relative File.join('..', 'result', 'pass')

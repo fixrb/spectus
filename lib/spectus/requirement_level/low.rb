@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative 'high'
 
 module Spectus
   module RequirementLevel
@@ -8,12 +8,12 @@ module Spectus
     #
     # @api private
     #
-    class Low < Base
+    class Low < High
       # Evaluate the expectation.
       #
       # @return [Boolean] Report if the low expectation pass or fail?
       def pass?
-        exam.valid? || exam.exception.class.equal?(::NoMethodError)
+        super || exam.exception.is_a?(::NoMethodError)
       end
     end
   end

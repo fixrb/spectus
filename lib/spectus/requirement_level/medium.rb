@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative 'high'
 
 module Spectus
   module RequirementLevel
@@ -8,12 +8,12 @@ module Spectus
     #
     # @api private
     #
-    class Medium < Base
+    class Medium < High
       # Evaluate the expectation.
       #
       # @return [Boolean] Report if the medium expectation pass or fail?
       def pass?
-        exam.valid? || exam.exception.nil?
+        super || exam.exception.nil?
       end
     end
   end

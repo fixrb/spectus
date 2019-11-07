@@ -6,50 +6,9 @@ module Spectus
   # @api private
   #
   module Result
-    # Result base's module.
+    # Common collection of methods for Result's classes.
     #
-    module Base
-      # Initialize the result class.
-      #
-      # @param subject    [#object_id] The untrusted object to be tested.
-      # @param challenge  [Defi::Challenge] The challenge for the subject.
-      # @param actual     [#object_id] The value that the subject return through
-      #   its challenge.
-      # @param expected   [#matches?] The definition of the expected value.
-      # @param got        [#object_id] The result of the boolean comparison
-      #   between the actual value and the expected value.
-      # @param error      [Exception, nil] Any possible raised exception.
-      # @param level      [:High, :Medium, :Low] The level of the expectation.
-      # @param is_negate  [Boolean] Evaluate to a negative assertion?
-      # @param is_valid   [Boolean] Report if the test was true or false?
-      def initialize(actual:, challenge:, error:, expected:, got:,
-                     is_negate:, is_valid:, level:, subject:)
-
-        @actual     = actual
-        @challenge  = challenge
-        @error      = error
-        @expected   = expected
-        @got        = got
-        @is_negate  = is_negate
-        @is_valid   = is_valid
-        @level      = level
-        @subject    = subject
-        @message    = Report.new(
-          actual:     actual,
-          exception:  error,
-          expected:   expected,
-          got:        got,
-          is_negate:  is_negate,
-          is_pass:    pass?,
-          is_valid:   is_valid
-        ).to_s
-      end
-
-      # @!attribute [r] message
-      #
-      # @return [String] The message that describe the state.
-      attr_reader :message
-
+    module Common
       # @!attribute [r] subject
       #
       # @return [#object_id] The untrusted object to be tested.
@@ -87,6 +46,20 @@ module Spectus
       # @return [:High, :Medium, :Low] The level of the expectation.
       attr_reader :level
 
+      # The readable definition.
+      #
+      # @return [String] A readable string of the definition.
+      def definition
+        expected.to_s
+      end
+
+      # The negation, if any.
+      #
+      # @return [String] The negation, or an empty string.
+      def maybe_negate
+        negate? ? ' not' : ''
+      end
+
       # The value of the negate instance variable.
       #
       # @return [Boolean] Evaluated to a negative assertion?
@@ -109,6 +82,15 @@ module Spectus
       # @note Abstract method.
       def to_sym
         raise ::NotImplementedError
+      end
+
+      # The summary of the result.
+      #
+      # @return [String] A string representing the summary of the result.
+      def summary
+        return error.message if error?
+
+        "Expected #{actual.inspect}#{maybe_negate} to #{definition}"
       end
 
       # :nocov:
@@ -137,6 +119,13 @@ module Spectus
           valid:      valid?,
           result:     pass?
         }
+      end
+
+      # The representation of the result.
+      #
+      # @return [String] A string representing the result.
+      def to_s
+        "#{title}: #{summary}#{maybe_exception}."
       end
     end
   end
