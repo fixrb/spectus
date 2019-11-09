@@ -14,7 +14,7 @@ raise unless result.info? == false
 raise unless result.to_sym == :success
 raise unless result.to_char == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
-raise unless result.message == 'Success: Expected "Hello, Alice!" ' \
+raise unless result.message == 'Success: expected "Hello, Alice!" ' \
                               'to eql "Hello, Alice!".'
 raise unless result.to_h == {
   subject:    result.subject,
@@ -38,7 +38,7 @@ raise unless result.info? == false
 raise unless result.to_sym == :success
 raise unless result.to_char == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
-raise unless result.message == 'Success: Expected nil to be_nil.'
+raise unless result.message == 'Success: expected nil to be_nil.'
 raise unless result.to_h == {
   subject:    result.subject,
   challenge:  { method: :call, args: [] },

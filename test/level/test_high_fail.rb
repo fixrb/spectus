@@ -23,7 +23,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'F'
   raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
   raise unless raised_result.message ==
-               'Failure: Expected "FOO" to eql "foo".'
+               'Failure: expected "FOO" to eql "foo".'
 
   raise unless raised_result.to_h == {
     subject:    subject,
@@ -51,7 +51,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char == 'F'
   raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
   raise unless raised_result.message ==
-               'Failure: Expected "FOO" not to eql "FOO".'
+               'Failure: expected "FOO" not to eql "FOO".'
 
   raise unless raised_result.to_h == {
     subject:    subject,

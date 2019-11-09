@@ -42,13 +42,6 @@ module Spectus
         true
       end
 
-      # The state of error.
-      #
-      # @return [Boolean] The test raised an error?
-      def error?
-        false
-      end
-
       # The state of failure.
       #
       # @return [Boolean] The test was a failure?
@@ -74,13 +67,6 @@ module Spectus
       #
       # @return [String] The message that describe the exam.
       alias message to_s
-
-      # The type of exception, if any.
-      #
-      # @return [String] The type of exception, or an empty string.
-      def maybe_exception
-        ''
-      end
 
       # The title of the exam.
       #

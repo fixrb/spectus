@@ -61,7 +61,7 @@ include Spectus
 
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST! eql 'Hello, Alice!'
-# => #<Spectus::Result::Pass:0x00007fca618bcd28 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x00007fca618bf370 (irb):3>, @challenge=#<Defi::Challenge:0x00007fca618bf168 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Matchers::Eql::Matcher:0x00007fca618bf028 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x00007fca618bcd28 @message="Pass: expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x00007fca618bf370 (irb):3>, @challenge=#<Defi::Challenge:0x00007fca618bf168 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Matchers::Eql::Matcher:0x00007fca618bf028 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 greeting # => "Hello, world!"
 ```
 
@@ -72,7 +72,7 @@ include Spectus
 
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST eql 'Hello, Alice!'
-# => #<Spectus::Result::Pass:0x00007fdfa31b0168 @message="Pass: Expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x00007fdfa31b09d8 (irb):3>, @challenge=#<Defi::Challenge:0x00007fdfa31b0870 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Matchers::Eql::Matcher:0x00007fdfa31b06e0 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x00007fdfa31b0168 @message="Pass: expected \"Hello, Alice!\" to eql \"Hello, Alice!\".", @subject=#<Proc:0x00007fdfa31b09d8 (irb):3>, @challenge=#<Defi::Challenge:0x00007fdfa31b0870 @method=:call, @args=[]>, @actual="Hello, Alice!", @expected=#<Matchi::Matchers::Eql::Matcher:0x00007fdfa31b06e0 @expected="Hello, Alice!">, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 greeting # => "Hello, Alice!"
 ```
 
@@ -99,7 +99,7 @@ Given the "`ルビー`" object, when it receives `valid_encoding?` method, then 
 
 ```ruby
 it { 'ルビー'.valid_encoding? }.MUST be_true
-# => #<Spectus::Result::Pass:0x00007faac7024df0 @message="Pass: Expected true to be_true.", @subject=#<Proc:0x00007faac7046428 (irb):2>, @challenge=#<Defi::Challenge:0x00007faac7035650 @method=:call, @args=[]>, @actual=true, @expected=#<Matchi::Matchers::BeTrue::Matcher:0x00007faac7035060>, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
+# => #<Spectus::Result::Pass:0x00007faac7024df0 @message="Pass: expected true to be_true.", @subject=#<Proc:0x00007faac7046428 (irb):2>, @challenge=#<Defi::Challenge:0x00007faac7035650 @method=:call, @args=[]>, @actual=true, @expected=#<Matchi::Matchers::BeTrue::Matcher:0x00007faac7035060>, @got=true, @error=nil, @level=:High, @negate=false, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -110,7 +110,7 @@ Given the "`foo`" object, when it receives `length` method, then it **MUST NOT**
 
 ```ruby
 it { 'foo'.length }.MUST_NOT raise_exception NoMethodError
-# => #<Spectus::Result::Pass:0x00007faac7ae65b8 @message="Pass: Expected 3 not to raise_exception NoMethodError.", @subject=#<Proc:0x00007faac7ae68b0 (irb):3>, @challenge=#<Defi::Challenge:0x00007faac7ae6838 @method=:call, @args=[]>, @actual=3, @expected=#<Matchi::Matchers::RaiseException::Matcher:0x00007faac7ae6798 @expected=NoMethodError>, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
+# => #<Spectus::Result::Pass:0x00007faac7ae65b8 @message="Pass: expected 3 not to raise_exception NoMethodError.", @subject=#<Proc:0x00007faac7ae68b0 (irb):3>, @challenge=#<Defi::Challenge:0x00007faac7ae6838 @method=:call, @args=[]>, @actual=3, @expected=#<Matchi::Matchers::RaiseException::Matcher:0x00007faac7ae6798 @expected=NoMethodError>, @got=true, @error=nil, @level=:High, @negate=true, @valid=true>
 ```
 
 The result of the test shows that the spec passed.
@@ -121,7 +121,7 @@ Given the `BasicObject` object, when it receives `superclass` method, then it **
 
 ```ruby
 it { BasicObject.superclass }.SHOULD equal NilClass
-# => #<Spectus::Result::Pass:0x00007faac7b3edf8 @message="Info: Expected nil to equal NilClass.", @subject=#<Proc:0x00007faac7b3f0c8 (irb):4>, @challenge=#<Defi::Challenge:0x00007faac7b3f050 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::Matchers::Equal::Matcher:0x00007faac7b3efb0 @expected=nil>, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
+# => #<Spectus::Result::Pass:0x00007faac7b3edf8 @message="Info: expected nil to equal NilClass.", @subject=#<Proc:0x00007faac7b3f0c8 (irb):4>, @challenge=#<Defi::Challenge:0x00007faac7b3f050 @method=:call, @args=[]>, @actual=nil, @expected=#<Matchi::Matchers::Equal::Matcher:0x00007faac7b3efb0 @expected=nil>, @got=false, @error=nil, @level=:Medium, @negate=false, @valid=false>
 ```
 
 Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.

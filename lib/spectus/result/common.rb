@@ -84,13 +84,27 @@ module Spectus
         raise ::NotImplementedError
       end
 
+      # The state of error.
+      #
+      # @return [Boolean] The test raised an error?
+      def error?
+        !error.nil?
+      end
+
+      # The type of exception, if any.
+      #
+      # @return [String] The type of exception, or an empty string.
+      def maybe_exception
+        error? ? " (#{error.class})" : ''
+      end
+
       # The summary of the result.
       #
       # @return [String] A string representing the summary of the result.
       def summary
         return error.message if error?
 
-        "Expected #{actual.inspect}#{maybe_negate} to #{definition}"
+        "expected #{actual.inspect}#{maybe_negate} to #{definition}"
       end
 
       # :nocov:

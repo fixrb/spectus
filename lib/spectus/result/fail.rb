@@ -44,18 +44,11 @@ module Spectus
         false
       end
 
-      # The state of error.
-      #
-      # @return [Boolean] The test raised an error?
-      def error?
-        !failure?
-      end
-
       # The state of failure.
       #
       # @return [Boolean] The test was a failure?
       def failure?
-        error.nil?
+        !error?
       end
 
       # The state of info.
@@ -70,13 +63,6 @@ module Spectus
       # @return [Boolean] The test was a success?
       def success?
         false
-      end
-
-      # The type of exception, if any.
-      #
-      # @return [String] The type of exception, or an empty string.
-      def maybe_exception
-        failure? ? '' : " (#{error.class})"
       end
 
       # The title of the exam.
