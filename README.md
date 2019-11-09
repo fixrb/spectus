@@ -1,6 +1,6 @@
 # Spectus
 
-[![Build Status](https://travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
+[![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/spectus/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/spectus.svg)][gem]
 [![Inline docs](https://inch-ci.org/github/fixrb/spectus.svg?branch=master)][inchpages]
@@ -12,11 +12,10 @@
 
 * Home page: https://github.com/fixrb/spectus
 * Bugs/issues: https://github.com/fixrb/spectus/issues
-* Support: https://stackoverflow.com/questions/tagged/spectus
 
 ## Rubies
 
-* [MRI](https://www.ruby-lang.org/en/)
+* [MRI](https://www.ruby-lang.org/)
 * [Rubinius](https://rubinius.com/)
 * [JRuby](https://www.jruby.org/)
 
@@ -78,10 +77,10 @@ greeting # => "Hello, Alice!"
 
 ## Results
 
-There are two cases:
+There are two possibilities:
 
-* when an expectation is `true`, an instance of `Spectus::Result::Pass` is returned;
-* when an expectation is `false`, an instance of `Spectus::Result::Fail` is raised.
+* when an expectation is `true`, a `Spectus::Result::Pass` object is returned;
+* when an expectation is `false`, a `Spectus::Result::Fail` error is raised.
 
 Both instances share the same interface.
 
@@ -184,7 +183,6 @@ See `LICENSE.md` file.
 [gem]: https://rubygems.org/gems/spectus
 [travis]: https://travis-ci.org/fixrb/spectus
 [codeclimate]: https://codeclimate.com/github/fixrb/spectus
-[gemnasium]: https://gemnasium.com/fixrb/spectus
 [inchpages]: https://inch-ci.org/github/fixrb/spectus
 [rubydoc]: https://rubydoc.info/gems/spectus/frames
 
