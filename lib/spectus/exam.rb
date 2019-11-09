@@ -8,17 +8,25 @@ module Spectus
   class Exam
     # Execute the untested code from the passed block against the matcher.
     #
-    # @param matcher    [#matches?]   The matcher.
-    # @param is_negate  [Boolean]     Positive or negative assertion?
-    # @param actual     [#object_id]  The actual value.
-    # @param exception  [Exception]   An exception.
-    def initialize(actual:, exception:, is_negate:, matcher:)
-      @actual     = actual
-      @exception  = exception
-      @is_negate  = is_negate
-      @matcher    = matcher
-      @got        = is_negate ^ matcher.matches? { actual } if exception.nil?
+    # rubocop:disable Lint/RescueException
+    #
+    # @param challenge    [Defi::Challenge] The challenge for the subject.
+    # @param is_isolation [Boolean]         Compute actual in isolation?
+    # @param is_negate    [Boolean]         Positive or negative assertion?
+    # @param matcher      [#matches?]       The matcher.
+    # @param exception    [Exception]       An exception.
+    def initialize(challenge:, is_isolation:, is_negate:, matcher:, subject:)
+      @got = is_negate ^ matcher.matches? do
+        @actual = if is_isolation
+                    ::Aw.fork! { challenge.to(subject) }
+                  else
+                    challenge.to(subject)
+                  end
+      end
+    rescue ::Exception => e
+      @exception = e
     end
+    # rubocop:enable Lint/RescueException
 
     # @!attribute [r] actual
     #
@@ -36,25 +44,11 @@ module Spectus
     #   expectation is true or false.
     attr_reader :got
 
-    # @!attribute [r] matcher
-    #
-    # @return [#matches?] The matcher that performed a boolean comparison
-    #   between the actual value and the expected value.
-    attr_reader :matcher
-
-    # @note The boolean comparison between the actual value and the expected
-    #   value can be evaluated to a negative assertion.
-    #
-    # @return [Boolean] Positive or negative assertion?
-    def negate?
-      @is_negate
-    end
-
     # Report to the spec requirement level if the test pass or fail.
     #
     # @return [Boolean] Report if the test pass or fail?
     def valid?
-      !exception.nil? ? false : got
+      exception.nil? ? got : false
     end
   end
 end

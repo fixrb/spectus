@@ -40,7 +40,7 @@ Metrics/ClassLength:
 # Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
-  Max: 20
+  Max: 15
 
 # Offense count: 2
 # Configuration parameters: CountKeywordArgs.

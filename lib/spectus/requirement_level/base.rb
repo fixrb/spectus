@@ -24,28 +24,16 @@ module Spectus
                                  "for #{matcher.inspect}:#{matcher.class}"
         end
 
-        @subject    = subject
         @challenge  = challenge
-
-        # rubocop:disable Lint/HandleExceptions
-        # rubocop:disable Lint/RescueException
-        begin
-          actual = if is_isolation
-                     ::Aw.fork! { challenge.to(subject) }
-                   else
-                     challenge.to(subject)
-                   end
-        rescue ::Exception => e
-          # An exception is catched.
-        end
-        # rubocop:enable Lint/HandleExceptions
-        # rubocop:enable Lint/RescueException
-
-        @exam = Exam.new(
-          actual:     actual,
-          exception:  e,
-          is_negate:  is_negate,
-          matcher:    matcher
+        @is_negate  = is_negate
+        @matcher    = matcher
+        @subject    = subject
+        @exam       = Exam.new(
+          challenge:    challenge,
+          is_isolation: is_isolation,
+          is_negate:    is_negate,
+          matcher:      matcher,
+          subject:      subject
         )
       end
 
@@ -58,6 +46,12 @@ module Spectus
       #
       # @return [#Exam] The exam.
       attr_reader :exam
+
+      # @!attribute [r] matcher
+      #
+      # @return [#matches?] The matcher that performed a boolean comparison
+      #   between the actual value and the expected value.
+      attr_reader :matcher
 
       # @!attribute [r] subject
       #
@@ -90,9 +84,9 @@ module Spectus
           actual:     exam.actual,
           challenge:  challenge,
           error:      exam.exception,
-          expected:   exam.matcher,
+          expected:   matcher,
           got:        exam.got,
-          is_negate:  exam.negate?,
+          is_negate:  negate?,
           is_valid:   exam.valid?,
           level:      level,
           subject:    subject
@@ -102,6 +96,14 @@ module Spectus
       # @return [Symbol] The requirement level.
       def level
         self.class.name.split('::').fetch(-1).to_sym
+      end
+
+      # @note The boolean comparison between the actual value and the expected
+      #   value can be evaluated to a negative assertion.
+      #
+      # @return [Boolean] Positive or negative assertion?
+      def negate?
+        @is_negate
       end
     end
   end
