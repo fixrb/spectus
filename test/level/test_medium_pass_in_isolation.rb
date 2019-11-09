@@ -17,11 +17,12 @@ subject = -> { front_object.upcase }
 result = it(&subject).SHOULD! eql('foo')
 
 raise unless result.success? == false
-raise unless result.info? == true
-raise unless result.to_sym == :info
-raise unless result.to_char == 'I'
-raise unless result.to_char(true) == "\e[33mI\e[0m"
-raise unless result.message == 'Info: expected "FOO" to eql "foo".'
+raise unless result.info? == false
+raise unless result.warning? == true
+raise unless result.to_sym == :warning
+raise unless result.to_char == 'W'
+raise unless result.to_char(true) == "\e[34mW\e[0m"
+raise unless result.message == 'Warning: expected "FOO" to eql "foo".'
 raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },
@@ -86,11 +87,12 @@ print "\e[32m.\e[0m"
 result = it(&subject).SHOULD_NOT! eql('FOO')
 
 raise unless result.success? == false
-raise unless result.info? == true
-raise unless result.to_sym == :info
-raise unless result.to_char == 'I'
-raise unless result.to_char(true) == "\e[33mI\e[0m"
-raise unless result.message == 'Info: expected "FOO" not to eql "FOO".'
+raise unless result.info? == false
+raise unless result.warning? == true
+raise unless result.to_sym == :warning
+raise unless result.to_char == 'W'
+raise unless result.to_char(true) == "\e[34mW\e[0m"
+raise unless result.message == 'Warning: expected "FOO" not to eql "FOO".'
 raise unless result.to_h == {
   subject:    subject,
   challenge:  { method: :call, args: [] },

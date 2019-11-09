@@ -98,6 +98,13 @@ module Spectus
         error? ? " (#{error.class})" : ''
       end
 
+      # The state of success.
+      #
+      # @return [Boolean] The test was a success?
+      def success?
+        got.equal?(true)
+      end
+
       # The summary of the result.
       #
       # @return [String] A string representing the summary of the result.

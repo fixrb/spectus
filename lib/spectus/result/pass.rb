@@ -35,6 +35,11 @@ module Spectus
         @subject    = subject
       end
 
+      # The message.
+      #
+      # @return [String] The message that describe the exam.
+      alias message to_s
+
       # The value of the expectation of the spec.
       #
       # @return [Boolean] The spec passed or failed?
@@ -53,33 +58,34 @@ module Spectus
       #
       # @return [Boolean] The test was an info?
       def info?
-        !success?
+        got.nil?
       end
 
-      # The state of success.
+      # The state of warning.
       #
-      # @return [Boolean] The test was a success?
-      def success?
-        got.equal?(true)
+      # @return [Boolean] The test was a warning?
+      def warning?
+        got.equal?(false)
       end
-
-      # The message.
-      #
-      # @return [String] The message that describe the exam.
-      alias message to_s
 
       # The title of the exam.
       #
       # @return [String] The title of the exam.
       def title
-        success? ? 'Success' : 'Info'
+        return 'Success' if success?
+        return 'Warning' if warning?
+
+        'Info'
       end
 
       # Identify the state of the result.
       #
       # @return [Symbol] The identifier of the state.
       def to_sym
-        success? ? :success : :info
+        return :success if success?
+        return :warning if warning?
+
+        :info
       end
 
       # Express the result with one char.
@@ -90,6 +96,8 @@ module Spectus
       def to_char(is_color = false)
         if success?
           is_color ? "\e[32m.\e[0m" : '.'
+        elsif warning?
+          is_color ? "\e[34mW\e[0m" : 'W'
         else
           is_color ? "\e[33mI\e[0m" : 'I'
         end

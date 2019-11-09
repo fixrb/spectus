@@ -58,10 +58,10 @@ module Spectus
         false
       end
 
-      # The state of success.
+      # The state of warning.
       #
-      # @return [Boolean] The test was a success?
-      def success?
+      # @return [Boolean] The test was a warning?
+      def warning?
         false
       end
 
