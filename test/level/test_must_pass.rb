@@ -22,16 +22,16 @@ raise unless result.to_char == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected true to be_true.'
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     true,
-  expected:   { BeTrue: [] },
-  got:        true,
-  error:      nil,
-  level:      :Must,
-  negate:     false,
-  valid:      true,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             true,
+  expected:           { BeTrue: [] },
+  got:                true,
+  error:              nil,
+  requirement_level:  :MUST,
+  negate:             false,
+  valid:              true,
+  result:             true
 }
 
 print "\e[32m.\e[0m"
@@ -45,16 +45,16 @@ raise unless result.to_char == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected true not to be_false.'
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     true,
-  expected:   { BeFalse: [] },
-  got:        true,
-  error:      nil,
-  level:      :Must,
-  negate:     true,
-  valid:      true,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             true,
+  expected:           { BeFalse: [] },
+  got:                true,
+  error:              nil,
+  requirement_level:  :MUST,
+  negate:             true,
+  valid:              true,
+  result:             true
 }
 
 print "\e[32m.\e[0m"

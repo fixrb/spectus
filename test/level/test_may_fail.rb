@@ -25,16 +25,16 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.message == 'Failure: expected "FOO" to eql "foo".'
 
   raise unless raised_result.to_h == {
-    subject:    subject,
-    challenge:  { method: :call, args: [], opts: {}, block: nil },
-    actual:     'FOO',
-    expected:   { Eql: ['foo'] },
-    got:        false,
-    error:      nil,
-    level:      :May,
-    negate:     false,
-    valid:      false,
-    result:     false
+    subject:            subject,
+    challenge:          { method: :call, args: [], opts: {}, block: nil },
+    actual:             'FOO',
+    expected:           { Eql: ['foo'] },
+    got:                false,
+    error:              nil,
+    requirement_level:  :MAY,
+    negate:             false,
+    valid:              false,
+    result:             false
   }
 
   print "\e[32m.\e[0m"
@@ -57,16 +57,16 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.message.start_with?('Error: ')
 
   raise unless raised_result.to_h == {
-    subject:    subject,
-    challenge:  { method: :call, args: [], opts: {}, block: nil },
-    actual:     nil,
-    expected:   { Eql: ['foo'] },
-    got:        nil,
-    error:      raised_result.error,
-    level:      :May,
-    negate:     false,
-    valid:      false,
-    result:     false
+    subject:            subject,
+    challenge:          { method: :call, args: [], opts: {}, block: nil },
+    actual:             nil,
+    expected:           { Eql: ['foo'] },
+    got:                nil,
+    error:              raised_result.error,
+    requirement_level:  :MAY,
+    negate:             false,
+    valid:              false,
+    result:             false
   }
 
   print "\e[32m.\e[0m"

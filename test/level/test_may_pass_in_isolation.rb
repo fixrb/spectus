@@ -24,16 +24,16 @@ raise unless result.to_char(true) == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "FOO" to eql "FOO".'
 
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     'FOO',
-  expected:   { Eql: ['FOO'] },
-  got:        true,
-  error:      nil,
-  level:      :May,
-  negate:     false,
-  valid:      true,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             'FOO',
+  expected:           { Eql: ['FOO'] },
+  got:                true,
+  error:              nil,
+  requirement_level:  :MAY,
+  negate:             false,
+  valid:              true,
+  result:             true
 }
 
 print "\e[32m.\e[0m"
@@ -53,16 +53,16 @@ raise unless result.to_char(true) == "\e[33mI\e[0m"
 raise unless result.message.start_with?('Info: ')
 
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     nil,
-  expected:   { Eql: ['foo'] },
-  got:        nil,
-  error:      result.error,
-  level:      :May,
-  negate:     false,
-  valid:      false,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             nil,
+  expected:           { Eql: ['foo'] },
+  got:                nil,
+  error:              result.error,
+  requirement_level:  :MAY,
+  negate:             false,
+  valid:              false,
+  result:             true
 }
 
 print "\e[32m.\e[0m"

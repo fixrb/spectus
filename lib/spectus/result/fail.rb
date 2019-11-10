@@ -10,29 +10,29 @@ module Spectus
 
       # Initialize the result Fail class.
       #
-      # @param subject    [#object_id] The untrusted object to be tested.
-      # @param challenge  [Defi::Challenge] The challenge for the subject.
       # @param actual     [#object_id] The value that the subject return through
       #   its challenge.
+      # @param challenge  [Defi::Challenge] The challenge for the subject.
+      # @param error      [Exception, nil] Any possible raised exception.
       # @param expected   [#matches?] The definition of the expected value.
       # @param got        [#object_id] The result of the boolean comparison
       #   between the actual value and the expected value.
-      # @param error      [Exception, nil] Any possible raised exception.
-      # @param level      [:Must, :Should, :May] The level of the expectation.
       # @param is_negate  [Boolean] Evaluate to a negative assertion?
       # @param is_valid   [Boolean] Report if the test was true or false?
+      # @param requirement_level  [:MUST, :SHOULD, :MAY] The expectation.
+      # @param subject    [#object_id] The untrusted object to be tested.
       def initialize(actual:, challenge:, error:, expected:, got:, is_negate:,
-                     is_valid:, level:, subject:)
+                     is_valid:, requirement_level:, subject:)
 
-        @actual     = actual
-        @challenge  = challenge
-        @error      = error
-        @expected   = expected
-        @got        = got
-        @is_negate  = is_negate
-        @is_valid   = is_valid
-        @level      = level
-        @subject    = subject
+        @actual             = actual
+        @challenge          = challenge
+        @error              = error
+        @expected           = expected
+        @got                = got
+        @is_negate          = is_negate
+        @is_valid           = is_valid
+        @requirement_level  = requirement_level
+        @subject            = subject
 
         super(to_s)
       end

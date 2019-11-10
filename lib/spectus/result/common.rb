@@ -9,21 +9,21 @@ module Spectus
     # Common collection of methods for Result's classes.
     #
     module Common
-      # @!attribute [r] subject
+      # @!attribute [r] actual
       #
-      # @return [#object_id] The untrusted object to be tested.
-      attr_reader :subject
+      # @return [#object_id] The value that the subject return through its
+      #   challenge.
+      attr_reader :actual
 
       # @!attribute [r] challenge
       #
       # @return [Symbol] The method to call on the subject.
       attr_reader :challenge
 
-      # @!attribute [r] actual
+      # @!attribute [r] error
       #
-      # @return [#object_id] The value that the subject return through its
-      #   challenge.
-      attr_reader :actual
+      # @return [Exception, nil] Any possible raised exception.
+      attr_reader :error
 
       # @!attribute [r] expected
       #
@@ -36,15 +36,15 @@ module Spectus
       #   actual value and the expected value.
       attr_reader :got
 
-      # @!attribute [r] error
+      # @!attribute [r] requirement_level
       #
-      # @return [Exception, nil] Any possible raised exception.
-      attr_reader :error
+      # @return [:Must, :Should, :May] The requirement_level of the expectation.
+      attr_reader :requirement_level
 
-      # @!attribute [r] level
+      # @!attribute [r] subject
       #
-      # @return [:Must, :Should, :May] The level of the expectation.
-      attr_reader :level
+      # @return [#object_id] The untrusted object to be tested.
+      attr_reader :subject
 
       # The readable definition.
       #
@@ -129,16 +129,16 @@ module Spectus
       # @return [Hash] The properties of the result.
       def to_h
         {
-          subject:    subject,
-          challenge:  challenge.to_h,
-          actual:     actual,
-          expected:   expected.to_h,
-          got:        got,
-          error:      error,
-          level:      level,
-          negate:     negate?,
-          valid:      valid?,
-          result:     pass?
+          actual:             actual,
+          challenge:          challenge.to_h,
+          error:              error,
+          expected:           expected.to_h,
+          got:                got,
+          negate:             negate?,
+          requirement_level:  requirement_level,
+          result:             pass?,
+          subject:            subject,
+          valid:              valid?
         }
       end
 

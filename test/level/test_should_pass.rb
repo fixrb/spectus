@@ -23,16 +23,16 @@ raise unless result.to_char == 'W'
 raise unless result.to_char(true) == "\e[34mW\e[0m"
 raise unless result.message == 'Warning: expected "FOO" to eql "foo".'
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     'FOO',
-  expected:   { Eql: ['foo'] },
-  got:        false,
-  error:      nil,
-  level:      :Should,
-  negate:     false,
-  valid:      false,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             'FOO',
+  expected:           { Eql: ['foo'] },
+  got:                false,
+  error:              nil,
+  requirement_level:  :SHOULD,
+  negate:             false,
+  valid:              false,
+  result:             true
 }
 
 print "\e[32m.\e[0m"
@@ -46,16 +46,16 @@ raise unless result.to_char == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "FOO" not to eql "foo".'
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     'FOO',
-  expected:   { Eql: ['foo'] },
-  got:        true,
-  error:      nil,
-  level:      :Should,
-  negate:     true,
-  valid:      true,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             'FOO',
+  expected:           { Eql: ['foo'] },
+  got:                true,
+  error:              nil,
+  requirement_level:  :SHOULD,
+  negate:             true,
+  valid:              true,
+  result:             true
 }
 
 print "\e[32m.\e[0m"
@@ -70,16 +70,16 @@ raise unless result.to_char == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "FOO" to eql "FOO".'
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     'FOO',
-  expected:   { Eql: ['FOO'] },
-  got:        true,
-  error:      nil,
-  level:      :Should,
-  negate:     false,
-  valid:      true,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             'FOO',
+  expected:           { Eql: ['FOO'] },
+  got:                true,
+  error:              nil,
+  requirement_level:  :SHOULD,
+  negate:             false,
+  valid:              true,
+  result:             true
 }
 
 print "\e[32m.\e[0m"
@@ -94,16 +94,16 @@ raise unless result.to_char == 'W'
 raise unless result.to_char(true) == "\e[34mW\e[0m"
 raise unless result.message == 'Warning: expected "FOO" not to eql "FOO".'
 raise unless result.to_h == {
-  subject:    subject,
-  challenge:  { method: :call, args: [], opts: {}, block: nil },
-  actual:     'FOO',
-  expected:   { Eql: ['FOO'] },
-  got:        false,
-  error:      nil,
-  level:      :Should,
-  negate:     true,
-  valid:      false,
-  result:     true
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             'FOO',
+  expected:           { Eql: ['FOO'] },
+  got:                false,
+  error:              nil,
+  requirement_level:  :SHOULD,
+  negate:             true,
+  valid:              false,
+  result:             true
 }
 
 print "\e[32m.\e[0m"

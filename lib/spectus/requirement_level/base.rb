@@ -81,21 +81,21 @@ module Spectus
       # @return [Hash] List of parameters.
       def details
         {
-          actual:     exam.actual,
-          challenge:  challenge,
-          error:      exam.exception,
-          expected:   matcher,
-          got:        exam.got,
-          is_negate:  negate?,
-          is_valid:   exam.valid?,
-          level:      level,
-          subject:    subject
+          actual:             exam.actual,
+          challenge:          challenge,
+          error:              exam.exception,
+          expected:           matcher,
+          got:                exam.got,
+          is_negate:          negate?,
+          is_valid:           exam.valid?,
+          requirement_level:  requirement_level,
+          subject:            subject
         }
       end
 
       # @return [Symbol] The requirement level.
-      def level
-        self.class.name.split('::').fetch(-1).to_sym
+      def requirement_level
+        self.class.name.split('::').fetch(-1).upcase.to_sym
       end
 
       # @note The boolean comparison between the actual value and the expected
