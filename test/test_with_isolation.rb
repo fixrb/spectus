@@ -23,7 +23,7 @@ raise unless result.message == 'Success: expected "Hello, Alice!" ' \
                               'to eql "Hello, Alice!".'
 raise unless result.to_h == {
   subject:    result.subject,
-  challenge:  { method: :call, args: [] },
+  challenge:  { method: :call, args: [], opts: {}, block: nil },
   actual:     result.actual,
   expected:   result.expected.to_h,
   got:        true,
@@ -47,7 +47,7 @@ raise unless result.message == 'Success: expected "Hello, Bob!" ' \
                               'to eql "Hello, Bob!".'
 raise unless result.to_h == {
   subject:    result.subject,
-  challenge:  { method: :call, args: [] },
+  challenge:  { method: :call, args: [], opts: {}, block: nil },
   actual:     result.actual,
   expected:   result.expected.to_h,
   got:        true,

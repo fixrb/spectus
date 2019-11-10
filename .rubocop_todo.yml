@@ -19,18 +19,18 @@ Layout/AlignHash:
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
-    - 'test/level/test_high_fail.rb'
-    - 'test/level/test_high_fail_in_isolation.rb'
-    - 'test/level/test_high_pass.rb'
-    - 'test/level/test_high_pass_in_isolation.rb'
-    - 'test/level/test_low_fail.rb'
-    - 'test/level/test_low_fail_in_isolation.rb'
-    - 'test/level/test_low_pass.rb'
-    - 'test/level/test_low_pass_in_isolation.rb'
-    - 'test/level/test_medium_fail.rb'
-    - 'test/level/test_medium_fail_in_isolation.rb'
-    - 'test/level/test_medium_pass.rb'
-    - 'test/level/test_medium_pass_in_isolation.rb'
+    - 'test/level/test_may_fail.rb'
+    - 'test/level/test_may_fail_in_isolation.rb'
+    - 'test/level/test_may_pass.rb'
+    - 'test/level/test_may_pass_in_isolation.rb'
+    - 'test/level/test_must_fail.rb'
+    - 'test/level/test_must_fail_in_isolation.rb'
+    - 'test/level/test_must_pass.rb'
+    - 'test/level/test_must_pass_in_isolation.rb'
+    - 'test/level/test_should_fail.rb'
+    - 'test/level/test_should_fail_in_isolation.rb'
+    - 'test/level/test_should_pass.rb'
+    - 'test/level/test_should_pass_in_isolation.rb'
 
 # Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
@@ -47,28 +47,28 @@ Metrics/ParameterLists:
 # Configuration parameters: PreferredName.
 Naming/RescuedExceptionsVariableName:
   Exclude:
-    - 'test/level/test_high_fail.rb'
-    - 'test/level/test_high_fail_in_isolation.rb'
-    - 'test/level/test_low_fail.rb'
-    - 'test/level/test_low_fail_in_isolation.rb'
-    - 'test/level/test_medium_fail.rb'
-    - 'test/level/test_medium_fail_in_isolation.rb'
+    - 'test/level/test_may_fail.rb'
+    - 'test/level/test_may_fail_in_isolation.rb'
+    - 'test/level/test_must_fail.rb'
+    - 'test/level/test_must_fail_in_isolation.rb'
+    - 'test/level/test_should_fail.rb'
+    - 'test/level/test_should_fail_in_isolation.rb'
 
 # Offense count: 14
 Style/MixinUsage:
   Exclude:
-    - 'test/level/test_high_fail.rb'
-    - 'test/level/test_high_fail_in_isolation.rb'
-    - 'test/level/test_high_pass.rb'
-    - 'test/level/test_high_pass_in_isolation.rb'
-    - 'test/level/test_low_fail.rb'
-    - 'test/level/test_low_fail_in_isolation.rb'
-    - 'test/level/test_low_pass.rb'
-    - 'test/level/test_low_pass_in_isolation.rb'
-    - 'test/level/test_medium_fail.rb'
-    - 'test/level/test_medium_fail_in_isolation.rb'
-    - 'test/level/test_medium_pass.rb'
-    - 'test/level/test_medium_pass_in_isolation.rb'
+    - 'test/level/test_may_fail.rb'
+    - 'test/level/test_may_fail_in_isolation.rb'
+    - 'test/level/test_may_pass.rb'
+    - 'test/level/test_may_pass_in_isolation.rb'
+    - 'test/level/test_must_fail.rb'
+    - 'test/level/test_must_fail_in_isolation.rb'
+    - 'test/level/test_must_pass.rb'
+    - 'test/level/test_must_pass_in_isolation.rb'
+    - 'test/level/test_should_fail.rb'
+    - 'test/level/test_should_fail_in_isolation.rb'
+    - 'test/level/test_should_pass.rb'
+    - 'test/level/test_should_pass_in_isolation.rb'
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
 
