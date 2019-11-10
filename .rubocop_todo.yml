@@ -32,11 +32,6 @@ Layout/EmptyLines:
     - 'test/level/test_medium_pass.rb'
     - 'test/level/test_medium_pass_in_isolation.rb'
 
-# Offense count: 1
-# Configuration parameters: CountComments.
-Metrics/ClassLength:
-  Max: 103
-
 # Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:

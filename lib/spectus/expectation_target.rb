@@ -35,11 +35,11 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(matcher)
       RequirementLevel::Must.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: false,
         is_negate:    false,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -49,11 +49,11 @@ module Spectus
     # @see MUST
     def MUST!(matcher)
       RequirementLevel::Must.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: true,
         is_negate:    false,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -68,11 +68,11 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(matcher)
       RequirementLevel::Must.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: false,
         is_negate:    true,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -82,11 +82,11 @@ module Spectus
     # @see MUST_NOT
     def MUST_NOT!(matcher)
       RequirementLevel::Must.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: true,
         is_negate:    true,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -103,11 +103,11 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(matcher)
       RequirementLevel::Should.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: false,
         is_negate:    false,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -117,11 +117,11 @@ module Spectus
     # @see SHOULD
     def SHOULD!(matcher)
       RequirementLevel::Should.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: true,
         is_negate:    false,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -139,11 +139,11 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(matcher)
       RequirementLevel::Should.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: false,
         is_negate:    true,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -153,11 +153,11 @@ module Spectus
     # @see SHOULD_NOT
     def SHOULD_NOT!(matcher)
       RequirementLevel::Should.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: true,
         is_negate:    true,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -181,11 +181,11 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(matcher)
       RequirementLevel::May.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: false,
         is_negate:    false,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
@@ -195,43 +195,15 @@ module Spectus
     # @see MAY
     def MAY!(matcher)
       RequirementLevel::May.new(
-        challenge:    challenge,
+        challenge:    @challenge,
         is_isolation: true,
         is_negate:    false,
         matcher:      matcher,
-        subject:      subject
+        subject:      @subject
       ).call
     end
 
     # rubocop:enable Naming/MethodName
-
-    # rubocop:disable Style/AccessModifierDeclarations
-
-    # @!attribute [r] actual
-    #
-    # @return [#object_id] The actual object.
-    attr_reader :actual
-    private :actual
-
-    # @!attribute [r] challenge
-    #
-    # @return [Defi::Challenge] The challenge to call against the subject.
-    attr_reader :challenge
-    private :challenge
-
-    # @!attribute [r] exception
-    #
-    # @return [Exception] The exception object.
-    attr_reader :exception
-    private :exception
-
-    # @!attribute [r] subject
-    #
-    # @return [BasicObject] The front object to be tested.
-    attr_reader :subject
-    private :subject
-
-    # rubocop:enable Style/AccessModifierDeclarations
   end
 end
 
