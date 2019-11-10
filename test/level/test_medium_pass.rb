@@ -29,7 +29,7 @@ raise unless result.to_h == {
   expected:   { Eql: ['foo'] },
   got:        false,
   error:      nil,
-  level:      :Medium,
+  level:      :Should,
   negate:     false,
   valid:      false,
   result:     true
@@ -52,7 +52,7 @@ raise unless result.to_h == {
   expected:   { Eql: ['foo'] },
   got:        true,
   error:      nil,
-  level:      :Medium,
+  level:      :Should,
   negate:     true,
   valid:      true,
   result:     true
@@ -76,7 +76,7 @@ raise unless result.to_h == {
   expected:   { Eql: ['FOO'] },
   got:        true,
   error:      nil,
-  level:      :Medium,
+  level:      :Should,
   negate:     false,
   valid:      true,
   result:     true
@@ -100,7 +100,7 @@ raise unless result.to_h == {
   expected:   { Eql: ['FOO'] },
   got:        false,
   error:      nil,
-  level:      :Medium,
+  level:      :Should,
   negate:     true,
   valid:      false,
   result:     true

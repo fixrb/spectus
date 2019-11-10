@@ -23,7 +23,7 @@ raise unless result.to_h == {
   expected:   result.expected.to_h,
   got:        true,
   error:      nil,
-  level:      :High,
+  level:      :Must,
   negate:     false,
   valid:      true,
   result:     true
@@ -46,7 +46,7 @@ raise unless result.to_h == {
   expected:   result.expected.to_h,
   got:        true,
   error:      nil,
-  level:      :High,
+  level:      :Must,
   negate:     false,
   valid:      true,
   result:     true

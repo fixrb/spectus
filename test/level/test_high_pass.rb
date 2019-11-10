@@ -28,7 +28,7 @@ raise unless result.to_h == {
   expected:   { BeTrue: [] },
   got:        true,
   error:      nil,
-  level:      :High,
+  level:      :Must,
   negate:     false,
   valid:      true,
   result:     true
@@ -51,7 +51,7 @@ raise unless result.to_h == {
   expected:   { BeFalse: [] },
   got:        true,
   error:      nil,
-  level:      :High,
+  level:      :Must,
   negate:     true,
   valid:      true,
   result:     true

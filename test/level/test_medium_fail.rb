@@ -32,7 +32,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
-    level:      :Medium,
+    level:      :Should,
     negate:     false,
     valid:      false,
     result:     false
@@ -60,7 +60,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
-    level:      :Medium,
+    level:      :Should,
     negate:     true,
     valid:      false,
     result:     false

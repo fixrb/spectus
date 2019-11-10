@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require_relative 'high'
+require_relative 'must'
 
 module Spectus
   module RequirementLevel
-    # Medium requirement level's class.
+    # Should requirement level's class.
     #
     # @api private
     #
-    class Medium < High
+    class Should < Must
       # Evaluate the expectation.
       #
       # @return [Boolean] Report if the medium expectation pass or fail?

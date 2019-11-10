@@ -18,7 +18,7 @@ module Spectus
       # @param got        [#object_id] The result of the boolean comparison
       #   between the actual value and the expected value.
       # @param error      [Exception, nil] Any possible raised exception.
-      # @param level      [:High, :Medium, :Low] The level of the expectation.
+      # @param level      [:Must, :Should, :May] The level of the expectation.
       # @param is_negate  [Boolean] Evaluate to a negative assertion?
       # @param is_valid   [Boolean] Report if the test was true or false?
       def initialize(actual:, challenge:, error:, expected:, got:, is_negate:,

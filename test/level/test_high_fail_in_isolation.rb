@@ -33,7 +33,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['foo'] },
     got:        false,
     error:      nil,
-    level:      :High,
+    level:      :Must,
     negate:     false,
     valid:      false,
     result:     false
@@ -61,7 +61,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['FOO'] },
     got:        false,
     error:      nil,
-    level:      :High,
+    level:      :Must,
     negate:     true,
     valid:      false,
     result:     false
@@ -93,7 +93,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
-    level:      :High,
+    level:      :Must,
     negate:     false,
     valid:      false,
     result:     false
@@ -121,7 +121,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
-    level:      :High,
+    level:      :Must,
     negate:     true,
     valid:      false,
     result:     false
@@ -153,7 +153,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
-    level:      :High,
+    level:      :Must,
     negate:     false,
     valid:      false,
     result:     false
@@ -181,7 +181,7 @@ rescue Spectus::Result::Fail => raised_result
     expected:   { Eql: ['foo'] },
     got:        nil,
     error:      raised_result.error,
-    level:      :High,
+    level:      :Must,
     negate:     true,
     valid:      false,
     result:     false

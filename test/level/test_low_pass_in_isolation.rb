@@ -30,7 +30,7 @@ raise unless result.to_h == {
   expected:   { Eql: ['FOO'] },
   got:        true,
   error:      nil,
-  level:      :Low,
+  level:      :May,
   negate:     false,
   valid:      true,
   result:     true
@@ -59,7 +59,7 @@ raise unless result.to_h == {
   expected:   { Eql: ['foo'] },
   got:        nil,
   error:      result.error,
-  level:      :Low,
+  level:      :May,
   negate:     false,
   valid:      false,
   result:     true

@@ -34,7 +34,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(matcher)
-      RequirementLevel::High.new(
+      RequirementLevel::Must.new(
         challenge:    challenge,
         is_isolation: false,
         is_negate:    false,
@@ -48,7 +48,7 @@ module Spectus
     #
     # @see MUST
     def MUST!(matcher)
-      RequirementLevel::High.new(
+      RequirementLevel::Must.new(
         challenge:    challenge,
         is_isolation: true,
         is_negate:    false,
@@ -67,7 +67,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(matcher)
-      RequirementLevel::High.new(
+      RequirementLevel::Must.new(
         challenge:    challenge,
         is_isolation: false,
         is_negate:    true,
@@ -81,7 +81,7 @@ module Spectus
     #
     # @see MUST_NOT
     def MUST_NOT!(matcher)
-      RequirementLevel::High.new(
+      RequirementLevel::Must.new(
         challenge:    challenge,
         is_isolation: true,
         is_negate:    true,
@@ -102,7 +102,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(matcher)
-      RequirementLevel::Medium.new(
+      RequirementLevel::Should.new(
         challenge:    challenge,
         is_isolation: false,
         is_negate:    false,
@@ -116,7 +116,7 @@ module Spectus
     #
     # @see SHOULD
     def SHOULD!(matcher)
-      RequirementLevel::Medium.new(
+      RequirementLevel::Should.new(
         challenge:    challenge,
         is_isolation: true,
         is_negate:    false,
@@ -138,7 +138,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(matcher)
-      RequirementLevel::Medium.new(
+      RequirementLevel::Should.new(
         challenge:    challenge,
         is_isolation: false,
         is_negate:    true,
@@ -152,7 +152,7 @@ module Spectus
     #
     # @see SHOULD_NOT
     def SHOULD_NOT!(matcher)
-      RequirementLevel::Medium.new(
+      RequirementLevel::Should.new(
         challenge:    challenge,
         is_isolation: true,
         is_negate:    true,
@@ -180,7 +180,7 @@ module Spectus
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(matcher)
-      RequirementLevel::Low.new(
+      RequirementLevel::May.new(
         challenge:    challenge,
         is_isolation: false,
         is_negate:    false,
@@ -194,7 +194,7 @@ module Spectus
     #
     # @see MAY
     def MAY!(matcher)
-      RequirementLevel::Low.new(
+      RequirementLevel::May.new(
         challenge:    challenge,
         is_isolation: true,
         is_negate:    false,
@@ -235,6 +235,6 @@ module Spectus
   end
 end
 
-require_relative File.join('requirement_level', 'high')
-require_relative File.join('requirement_level', 'low')
-require_relative File.join('requirement_level', 'medium')
+require_relative File.join('requirement_level', 'must')
+require_relative File.join('requirement_level', 'should')
+require_relative File.join('requirement_level', 'may')

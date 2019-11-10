@@ -43,7 +43,7 @@ module Spectus
 
       # @!attribute [r] level
       #
-      # @return [:High, :Medium, :Low] The level of the expectation.
+      # @return [:Must, :Should, :May] The level of the expectation.
       attr_reader :level
 
       # The readable definition.
