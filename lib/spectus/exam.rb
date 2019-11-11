@@ -16,9 +16,9 @@ module Spectus
     # @param matcher      [#matches?]       The matcher.
     # @param exception    [Exception]       An exception.
     def initialize(challenge:, is_isolation:, is_negate:, matcher:, subject:)
-      @got = is_negate ^ matcher.matches? do
+      @got = is_negate ^ matcher.matches?(context: self) do
         @actual = if is_isolation
-                    ::Aw.fork! { challenge.to(subject) }
+                    challenge.to!(subject)
                   else
                     challenge.to(subject)
                   end
@@ -31,7 +31,7 @@ module Spectus
     # @!attribute [r] actual
     #
     # @return [#object_id] The actual value.
-    attr_reader :actual
+    attr_accessor :actual
 
     # @!attribute [r] exception
     #

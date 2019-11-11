@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'aw'
-
 module Spectus
   # Namespace for the requirement levels.
   #
