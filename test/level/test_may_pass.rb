@@ -49,7 +49,7 @@ raise unless result.info? == true
 raise unless result.to_sym == :info
 raise unless result.to_char == 'I'
 raise unless result.to_char(true) == "\e[33mI\e[0m"
-raise unless result.message.start_with?('Info: ')
+raise unless result.message == 'Info: undefined method `bar\' for "foo":String (NoMethodError).'
 
 raise unless result.to_h == {
   subject:            subject,

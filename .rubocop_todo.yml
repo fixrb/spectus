@@ -72,7 +72,7 @@ Style/MixinUsage:
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
 
-# Offense count: 2
+# Offense count: 10
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https

@@ -84,7 +84,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
-  raise unless raised_result.message.start_with?('Error: ')
+  raise unless raised_result.message == "Error: undefined method `bar' for \"foo\":String (NoMethodError)."
 
   raise unless raised_result.to_h == {
     subject:            subject,
@@ -112,7 +112,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
-  raise unless raised_result.message.start_with?('Error: ')
+  raise unless raised_result.message == 'Error: undefined method `bar\' for "foo":String (NoMethodError).'
 
   raise unless raised_result.to_h == {
     subject:            subject,
@@ -144,7 +144,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
-  raise unless raised_result.message.start_with?('Error: ')
+  raise unless raised_result.message == 'Error: invalid option (ArgumentError).'
 
   raise unless raised_result.to_h == {
     subject:            subject,
@@ -172,7 +172,7 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_sym == :error
   raise unless raised_result.to_char == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
-  raise unless raised_result.message.start_with?('Error: ')
+  raise unless raised_result.message == 'Error: invalid option (ArgumentError).'
 
   raise unless raised_result.to_h == {
     subject:            subject,
