@@ -28,18 +28,12 @@ module Spectus
     end
     # rubocop:enable Lint/RescueException
 
-    # @!attribute [r] actual
-    #
     # @return [#object_id] The actual value.
     attr_accessor :actual
 
-    # @!attribute [r] exception
-    #
     # @return [Exception, nil] An exception.
     attr_reader :exception
 
-    # @!attribute [r] got
-    #
     # @return [Boolean, nil] Report to the spec requirement level if the
     #   expectation is true or false.
     attr_reader :got

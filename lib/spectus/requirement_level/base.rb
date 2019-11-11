@@ -35,24 +35,16 @@ module Spectus
         )
       end
 
-      # @!attribute [r] challenge
-      #
       # @return [Defi::Challenge] The challenge to test the subject.
       attr_reader :challenge
 
-      # @!attribute [r] exam
-      #
       # @return [#Exam] The exam.
       attr_reader :exam
 
-      # @!attribute [r] matcher
-      #
       # @return [#matches?] The matcher that performed a boolean comparison
       #   between the actual value and the expected value.
       attr_reader :matcher
 
-      # @!attribute [r] subject
-      #
       # @return [#object_id] The subject to test.
       attr_reader :subject
 

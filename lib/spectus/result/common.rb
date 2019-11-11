@@ -9,40 +9,26 @@ module Spectus
     # Common collection of methods for Result's classes.
     #
     module Common
-      # @!attribute [r] actual
-      #
       # @return [#object_id] The value that the subject return through its
       #   challenge.
       attr_reader :actual
 
-      # @!attribute [r] challenge
-      #
       # @return [Symbol] The method to call on the subject.
       attr_reader :challenge
 
-      # @!attribute [r] error
-      #
       # @return [Exception, nil] Any possible raised exception.
       attr_reader :error
 
-      # @!attribute [r] expected
-      #
       # @return [#matches?] The definition of the expected value.
       attr_reader :expected
 
-      # @!attribute [r] got
-      #
       # @return [#object_id] The result of the boolean comparison between the
       #   actual value and the expected value.
       attr_reader :got
 
-      # @!attribute [r] requirement_level
-      #
       # @return [:Must, :Should, :May] The requirement_level of the expectation.
       attr_reader :requirement_level
 
-      # @!attribute [r] subject
-      #
       # @return [#object_id] The untrusted object to be tested.
       attr_reader :subject
 
