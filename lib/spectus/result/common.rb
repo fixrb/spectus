@@ -95,7 +95,13 @@ module Spectus
       #
       # @return [String] The type of exception, or an empty string.
       def maybe_exception
-        error? ? " (#{error.class})" : ''
+        if error?
+          " (#{error.class})"
+        elsif actual.is_a?(::Exception)
+          " (#{actual.class})"
+        else
+          ''
+        end
       end
 
       # The state of success.
@@ -110,6 +116,7 @@ module Spectus
       # @return [String] A string representing the summary of the result.
       def summary
         return error.message if error?
+        return actual.message if actual.is_a?(::Exception)
 
         "expected #{actual.inspect}#{maybe_negate} to #{definition}"
       end

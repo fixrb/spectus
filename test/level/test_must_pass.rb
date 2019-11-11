@@ -60,4 +60,31 @@ raise unless result.to_h == {
 print "\e[32m.\e[0m"
 
 
+# @note When challenging the subject against a not implemented method.
+subject = -> { front_object.bar }
+
+result = it(&subject).MUST raise_exception(NoMethodError)
+
+raise unless result.success? == true
+raise unless result.info? == false
+raise unless result.to_sym == :success
+raise unless result.to_char == '.'
+raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.message == "Success: undefined method `bar' for true:TrueClass (NoMethodError)."
+raise unless result.to_h == {
+  subject:            subject,
+  challenge:          { method: :call, args: [], opts: {}, block: nil },
+  actual:             result.actual,
+  expected:           { RaiseException: [NoMethodError] },
+  got:                true,
+  error:              nil,
+  requirement_level:  :MUST,
+  negate:             false,
+  valid:              true,
+  result:             true
+}
+
+print "\e[32m.\e[0m"
+
+
 puts "\e[32mSuccess!\e[0m"

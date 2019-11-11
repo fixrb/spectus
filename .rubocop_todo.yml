@@ -6,7 +6,7 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 467
+# Offense count: 477
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
 # SupportedHashRocketStyles: key, separator, table
@@ -15,7 +15,7 @@
 Layout/AlignHash:
   Enabled: false
 
-# Offense count: 45
+# Offense count: 46
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
@@ -72,7 +72,7 @@ Style/MixinUsage:
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
 
-# Offense count: 10
+# Offense count: 11
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
