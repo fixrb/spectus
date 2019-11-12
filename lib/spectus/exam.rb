@@ -16,20 +16,25 @@ module Spectus
     # @param matcher      [#matches?]       The matcher.
     # @param exception    [Exception]       An exception.
     def initialize(challenge:, is_isolation:, is_negate:, matcher:, subject:)
-      @got = is_negate ^ matcher.matches?(context: self) do
-        @actual = if is_isolation
-                    challenge.to!(subject)
-                  else
-                    challenge.to(subject)
-                  end
+      @got = is_negate ^ matcher.matches? do
+        value = if is_isolation
+                  challenge.to!(subject)
+                else
+                  challenge.to(subject)
+                end
+
+        @actual = value.object
+
+        value.call
       end
     rescue ::Exception => e
-      @exception = e
+      @actual     = nil
+      @exception  = e
     end
     # rubocop:enable Lint/RescueException
 
     # @return [#object_id] The actual value.
-    attr_accessor :actual
+    attr_reader :actual
 
     # @return [Exception, nil] An exception.
     attr_reader :exception
