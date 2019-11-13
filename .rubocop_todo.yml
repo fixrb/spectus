@@ -32,7 +32,7 @@ Layout/EmptyLines:
     - 'test/level/test_should_pass.rb'
     - 'test/level/test_should_pass_in_isolation.rb'
 
-# Offense count: 3
+# Offense count: 4
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
   Max: 15

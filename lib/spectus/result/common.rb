@@ -141,6 +141,24 @@ module Spectus
       def to_s
         "#{title}: #{summary}#{maybe_exception}."
       end
+
+      # A string containing a human-readable representation of the result.
+      #
+      # @api public
+      #
+      # @return [String] The human-readable representation of the result.
+      def inspect
+        "#{self.class}("                                      \
+        "actual: #{actual.inspect}, "                         \
+        "challenge: #{challenge.inspect}, "                   \
+        "error: #{error.inspect}, "                           \
+        "expected: #{expected.inspect}, "                     \
+        "got: #{got.inspect}, "                               \
+        "negate: #{negate?.inspect}, "                        \
+        "requirement_level: #{requirement_level.inspect}, "   \
+        "valid: #{valid?.inspect}"                            \
+        ')'
+      end
     end
   end
 end

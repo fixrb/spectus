@@ -5,7 +5,7 @@ require_relative 'common'
 module Spectus
   module Result
     # The class that is responsible for reporting that the expectation is true.
-    class Pass < ::BasicObject
+    class Pass
       include Common
 
       # Initialize the result Pass class.
