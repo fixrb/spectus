@@ -21,7 +21,6 @@ raise unless result.info? == false
 raise unless result.to_sym == :success
 raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
-raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "FOO" to eql "FOO".'
 
 raise unless result.to_h == {
@@ -51,7 +50,6 @@ raise unless result.info? == true
 raise unless result.to_sym == :info
 raise unless result.to_char(is_color: false) == 'I'
 raise unless result.to_char(is_color: true) == "\e[33mI\e[0m"
-raise unless result.to_char == "\e[33mI\e[0m"
 raise unless result.message == 'Info: undefined method `bar\' for "foo":String (NoMethodError).'
 
 raise unless result.to_h == {

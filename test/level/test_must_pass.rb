@@ -20,7 +20,6 @@ raise unless result.info? == false
 raise unless result.to_sym == :success
 raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
-raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected true to be_true.'
 raise unless result.to_h == {
   subject:            subject,
@@ -44,7 +43,6 @@ raise unless result.info? == false
 raise unless result.to_sym == :success
 raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
-raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected true not to be_false.'
 raise unless result.to_h == {
   subject:            subject,
@@ -72,7 +70,6 @@ raise unless result.info? == false
 raise unless result.to_sym == :success
 raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
-raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == "Success: undefined method `bar' for true:TrueClass (NoMethodError)."
 raise unless result.to_h == {
   subject:            subject,

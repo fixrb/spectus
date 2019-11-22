@@ -84,7 +84,7 @@ module Spectus
       # @param is_color [Boolean] Enable the color?
       #
       # @return [String] The char that identify the result.
-      def to_char(is_color: true)
+      def to_char(is_color: false)
         if failure?
           is_color ? "\e[35mF\e[0m" : 'F'
         else
