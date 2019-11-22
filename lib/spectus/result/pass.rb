@@ -93,7 +93,7 @@ module Spectus
       # @param is_color [Boolean] Enable the color?
       #
       # @return [String] The char that identify the result.
-      def to_char(is_color = false)
+      def to_char(is_color = true)
         if success?
           is_color ? "\e[32m.\e[0m" : '.'
         elsif warning?

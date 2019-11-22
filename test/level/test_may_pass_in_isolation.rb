@@ -19,8 +19,9 @@ result = it(&subject).MAY! eql('FOO')
 raise unless result.success? == true
 raise unless result.info? == false
 raise unless result.to_sym == :success
-raise unless result.to_char == '.'
+raise unless result.to_char(false) == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "FOO" to eql "FOO".'
 
 raise unless result.to_h == {
@@ -48,8 +49,9 @@ raise unless result.error.class == NoMethodError
 raise unless result.success? == false
 raise unless result.info? == true
 raise unless result.to_sym == :info
-raise unless result.to_char == 'I'
+raise unless result.to_char(false) == 'I'
 raise unless result.to_char(true) == "\e[33mI\e[0m"
+raise unless result.to_char == "\e[33mI\e[0m"
 raise unless result.message == 'Info: undefined method `bar\' for "foo":String (NoMethodError).'
 
 raise unless result.to_h == {

@@ -53,23 +53,6 @@ module Spectus
         @is_negate
       end
 
-      # :nocov:
-
-      # @note Abstract method.
-      def to_char(*)
-        raise ::NotImplementedError
-      end
-
-      # @note Abstract method.
-      def pass?
-        raise ::NotImplementedError
-      end
-
-      # @note Abstract method.
-      def to_sym
-        raise ::NotImplementedError
-      end
-
       # The state of error.
       #
       # @return [Boolean] The test raised an error?
@@ -106,8 +89,6 @@ module Spectus
 
         "expected #{actual.inspect}#{maybe_negate} to #{definition}"
       end
-
-      # :nocov:
 
       # The value of the boolean comparison between the actual value and the
       # expected value.
@@ -148,16 +129,14 @@ module Spectus
       #
       # @return [String] The human-readable representation of the result.
       def inspect
-        "#{self.class}("                                      \
-        "actual: #{actual.inspect}, "                         \
-        "challenge: #{challenge.inspect}, "                   \
-        "error: #{error.inspect}, "                           \
-        "expected: #{expected.inspect}, "                     \
-        "got: #{got.inspect}, "                               \
-        "negate: #{negate?.inspect}, "                        \
-        "requirement_level: #{requirement_level.inspect}, "   \
-        "valid: #{valid?.inspect}"                            \
-        ')'
+        "#{self.class}(actual: #{actual.inspect}, "                       \
+                      "challenge: #{challenge.inspect}, "                 \
+                      "error: #{error.inspect}, "                         \
+                      "expected: #{expected.inspect}, "                   \
+                      "got: #{got.inspect}, "                             \
+                      "negate: #{negate?.inspect}, "                      \
+                      "requirement_level: #{requirement_level.inspect}, " \
+                      "valid: #{valid?.inspect})"                         \
       end
     end
   end

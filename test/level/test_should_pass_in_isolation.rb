@@ -20,8 +20,9 @@ raise unless result.success? == false
 raise unless result.info? == false
 raise unless result.warning? == true
 raise unless result.to_sym == :warning
-raise unless result.to_char == 'W'
+raise unless result.to_char(false) == 'W'
 raise unless result.to_char(true) == "\e[34mW\e[0m"
+raise unless result.to_char == "\e[34mW\e[0m"
 raise unless result.message == 'Warning: expected "FOO" to eql "foo".'
 raise unless result.to_h == {
   subject:            subject,
@@ -43,8 +44,9 @@ result = it(&subject).SHOULD_NOT! eql('foo')
 raise unless result.success? == true
 raise unless result.info? == false
 raise unless result.to_sym == :success
-raise unless result.to_char == '.'
+raise unless result.to_char(false) == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "FOO" not to eql "foo".'
 raise unless result.to_h == {
   subject:            subject,
@@ -68,8 +70,9 @@ raise unless result.info? == false
 raise unless result.warning? == false
 raise unless result.error? == false
 raise unless result.to_sym == :success
-raise unless result.to_char == '.'
+raise unless result.to_char(false) == '.'
 raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "FOO" to eql "FOO".'
 raise unless result.to_h == {
   subject:            subject,
@@ -92,8 +95,9 @@ raise unless result.success? == false
 raise unless result.info? == false
 raise unless result.warning? == true
 raise unless result.to_sym == :warning
-raise unless result.to_char == 'W'
+raise unless result.to_char(false) == 'W'
 raise unless result.to_char(true) == "\e[34mW\e[0m"
+raise unless result.to_char == "\e[34mW\e[0m"
 raise unless result.message == 'Warning: expected "FOO" not to eql "FOO".'
 raise unless result.to_h == {
   subject:            subject,

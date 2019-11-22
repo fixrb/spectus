@@ -20,8 +20,9 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
   raise unless raised_result.error? == false
   raise unless raised_result.to_sym == :failure
-  raise unless raised_result.to_char == 'F'
+  raise unless raised_result.to_char(false) == 'F'
   raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
+  raise unless raised_result.to_char == "\e[35mF\e[0m"
   raise unless raised_result.message == 'Failure: expected "FOO" to eql "foo".'
 
   raise unless raised_result.to_h == {
@@ -52,8 +53,9 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == false
   raise unless raised_result.error? == true
   raise unless raised_result.to_sym == :error
-  raise unless raised_result.to_char == 'E'
+  raise unless raised_result.to_char(false) == 'E'
   raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
+  raise unless raised_result.to_char == "\e[31mE\e[0m"
   raise unless raised_result.message == 'Error: invalid option (ArgumentError).'
 
   raise unless raised_result.to_h == {
