@@ -119,7 +119,7 @@ module Spectus
       # The representation of the result.
       #
       # @return [String] A string representing the result.
-      def to_s
+      def to_s(**)
         "#{title}: #{summary}#{maybe_exception}."
       end
 

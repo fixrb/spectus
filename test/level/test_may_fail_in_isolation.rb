@@ -32,8 +32,9 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char(is_color: false) == 'F'
   raise unless raised_result.to_char(is_color: true)  == "\e[35mF\e[0m"
 
-  raise unless raised_result.message  == 'Failure: expected "FOO" to eql "foo".'
-  raise unless raised_result.to_s     == 'Failure: expected "FOO" to eql "foo".'
+  raise unless raised_result.message                == 'Failure: expected "FOO" to eql "foo".'
+  raise unless raised_result.to_s(is_color: false)  == 'Failure: expected "FOO" to eql "foo".'
+  raise unless raised_result.to_s(is_color: true)   == "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
 
   raise unless raised_result.inspect == 'Spectus::Result::Fail(actual: "FOO", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Eql("foo"), got: false, negate: false, requirement_level: :MAY, valid: false)'
 

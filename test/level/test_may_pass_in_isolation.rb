@@ -30,8 +30,9 @@ raise unless result.to_sym == :success
 raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
 
-raise unless result.message == 'Success: expected "FOO" to eql "FOO".'
-raise unless result.to_s    == 'Success: expected "FOO" to eql "FOO".'
+raise unless result.message               == 'Success: expected "FOO" to eql "FOO".'
+raise unless result.to_s(is_color: false) == 'Success: expected "FOO" to eql "FOO".'
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" to eql \"FOO\".\e[0m"
 
 raise unless result.inspect == 'Spectus::Result::Pass(actual: "FOO", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Eql("FOO"), got: true, negate: false, requirement_level: :MAY, valid: true)'
 

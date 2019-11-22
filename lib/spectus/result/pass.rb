@@ -102,6 +102,21 @@ module Spectus
           is_color ? "\e[33mI\e[0m" : 'I'
         end
       end
+
+      # The representation of the result.
+      #
+      # @return [String] A string representing the result.
+      def to_s(is_color: false)
+        return super unless is_color
+
+        if success?
+          "\e[32m#{super}\e[0m"
+        elsif warning?
+          "\e[34m#{super}\e[0m"
+        else
+          "\e[33m#{super}\e[0m"
+        end
+      end
     end
   end
 end
