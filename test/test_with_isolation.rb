@@ -17,8 +17,8 @@ result = it { greeting.gsub!('world', 'Alice') }.MUST! eql('Hello, Alice!')
 raise unless result.success? == true
 raise unless result.info? == false
 raise unless result.to_sym == :success
-raise unless result.to_char(false) == '.'
-raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.to_char(is_color: false) == '.'
+raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
 raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "Hello, Alice!" ' \
                               'to eql "Hello, Alice!".'
@@ -42,8 +42,8 @@ result = it { greeting.gsub!('world', 'Bob') }.MUST! eql('Hello, Bob!')
 raise unless result.success? == true
 raise unless result.info? == false
 raise unless result.to_sym == :success
-raise unless result.to_char(false) == '.'
-raise unless result.to_char(true) == "\e[32m.\e[0m"
+raise unless result.to_char(is_color: false) == '.'
+raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
 raise unless result.to_char == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "Hello, Bob!" ' \
                               'to eql "Hello, Bob!".'

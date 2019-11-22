@@ -21,8 +21,8 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
   raise unless raised_result.error? == false
   raise unless raised_result.to_sym == :failure
-  raise unless raised_result.to_char(false) == 'F'
-  raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
+  raise unless raised_result.to_char(is_color: false) == 'F'
+  raise unless raised_result.to_char(is_color: true) == "\e[35mF\e[0m"
   raise unless raised_result.to_char == "\e[35mF\e[0m"
   raise unless raised_result.message ==
                'Failure: expected "FOO" to eql "foo".'
@@ -50,8 +50,8 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == true
   raise unless raised_result.error? == false
   raise unless raised_result.to_sym == :failure
-  raise unless raised_result.to_char(false) == 'F'
-  raise unless raised_result.to_char(true) == "\e[35mF\e[0m"
+  raise unless raised_result.to_char(is_color: false) == 'F'
+  raise unless raised_result.to_char(is_color: true) == "\e[35mF\e[0m"
   raise unless raised_result.to_char == "\e[35mF\e[0m"
   raise unless raised_result.message ==
                'Failure: expected "FOO" not to eql "FOO".'
@@ -84,8 +84,8 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == false
   raise unless raised_result.error? == true
   raise unless raised_result.to_sym == :error
-  raise unless raised_result.to_char(false) == 'E'
-  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
+  raise unless raised_result.to_char(is_color: false) == 'E'
+  raise unless raised_result.to_char(is_color: true) == "\e[31mE\e[0m"
   raise unless raised_result.to_char == "\e[31mE\e[0m"
   raise unless raised_result.message == "Error: undefined method `bar' for \"foo\":String (NoMethodError)."
 
@@ -113,8 +113,8 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == false
   raise unless raised_result.error? == true
   raise unless raised_result.to_sym == :error
-  raise unless raised_result.to_char(false) == 'E'
-  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
+  raise unless raised_result.to_char(is_color: false) == 'E'
+  raise unless raised_result.to_char(is_color: true) == "\e[31mE\e[0m"
   raise unless raised_result.to_char == "\e[31mE\e[0m"
   raise unless raised_result.message == 'Error: undefined method `bar\' for "foo":String (NoMethodError).'
 
@@ -146,8 +146,8 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == false
   raise unless raised_result.error? == true
   raise unless raised_result.to_sym == :error
-  raise unless raised_result.to_char(false) == 'E'
-  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
+  raise unless raised_result.to_char(is_color: false) == 'E'
+  raise unless raised_result.to_char(is_color: true) == "\e[31mE\e[0m"
   raise unless raised_result.to_char == "\e[31mE\e[0m"
   raise unless raised_result.message == 'Error: invalid option (ArgumentError).'
 
@@ -175,8 +175,8 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.failure? == false
   raise unless raised_result.error? == true
   raise unless raised_result.to_sym == :error
-  raise unless raised_result.to_char(false) == 'E'
-  raise unless raised_result.to_char(true) == "\e[31mE\e[0m"
+  raise unless raised_result.to_char(is_color: false) == 'E'
+  raise unless raised_result.to_char(is_color: true) == "\e[31mE\e[0m"
   raise unless raised_result.to_char == "\e[31mE\e[0m"
   raise unless raised_result.message == 'Error: invalid option (ArgumentError).'
 
