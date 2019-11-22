@@ -18,12 +18,24 @@ begin
   it(&subject).MAY! eql('foo')
   raise
 rescue Spectus::Result::Fail => raised_result
+  raise unless raised_result.error?   == false
   raise unless raised_result.failure? == true
-  raise unless raised_result.error? == false
+  raise unless raised_result.info?    == false
+  raise unless raised_result.negate?  == false
+  raise unless raised_result.pass?    == false
+  raise unless raised_result.success? == false
+  raise unless raised_result.valid?   == false
+  raise unless raised_result.warning? == false
+
   raise unless raised_result.to_sym == :failure
+
   raise unless raised_result.to_char(is_color: false) == 'F'
-  raise unless raised_result.to_char(is_color: true) == "\e[35mF\e[0m"
-  raise unless raised_result.message == 'Failure: expected "FOO" to eql "foo".'
+  raise unless raised_result.to_char(is_color: true)  == "\e[35mF\e[0m"
+
+  raise unless raised_result.message  == 'Failure: expected "FOO" to eql "foo".'
+  raise unless raised_result.to_s     == 'Failure: expected "FOO" to eql "foo".'
+
+  raise unless raised_result.inspect == 'Spectus::Result::Fail(actual: "FOO", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Eql("foo"), got: false, negate: false, requirement_level: :MAY, valid: false)'
 
   raise unless raised_result.to_h == {
     subject:            subject,

@@ -16,12 +16,24 @@ subject = -> { front_object.upcase }
 
 result = it(&subject).MAY! eql('FOO')
 
-raise unless result.success? == true
-raise unless result.info? == false
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
 raise unless result.to_sym == :success
+
 raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
+
 raise unless result.message == 'Success: expected "FOO" to eql "FOO".'
+raise unless result.to_s    == 'Success: expected "FOO" to eql "FOO".'
+
+raise unless result.inspect == 'Spectus::Result::Pass(actual: "FOO", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Eql("FOO"), got: true, negate: false, requirement_level: :MAY, valid: true)'
 
 raise unless result.to_h == {
   subject:            subject,
