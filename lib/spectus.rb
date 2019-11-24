@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'matchi'
+require 'matchi/helper'
 
 # Namespace for the Spectus library.
 #

@@ -21,11 +21,11 @@ raise unless result.warning? == true
 raise unless result.to_sym == :warning
 
 raise unless result.to_char(is_color: false) == 'W'
-raise unless result.to_char(is_color: true)  == "\e[36mW\e[0m"
+raise unless result.to_char(is_color: true)  == "\e[33mW\e[0m"
 
 raise unless result.message                == 'Warning: expected "FOO" to eql "foo".'
 raise unless result.to_s(is_color: false)  == 'Warning: expected "FOO" to eql "foo".'
-raise unless result.to_s(is_color: true)   == "\e[36mWarning: expected \"FOO\" to eql \"foo\".\e[0m"
+raise unless result.to_s(is_color: true)   == "\e[33mWarning: expected \"FOO\" to eql \"foo\".\e[0m"
 
 print "\e[32m.\e[0m"
 
@@ -59,7 +59,7 @@ raise unless result.info? == false
 raise unless result.warning? == true
 raise unless result.to_sym == :warning
 raise unless result.to_char(is_color: false) == 'W'
-raise unless result.to_char(is_color: true) == "\e[36mW\e[0m"
+raise unless result.to_char(is_color: true) == "\e[33mW\e[0m"
 raise unless result.message == 'Warning: expected "FOO" not to eql "FOO".'
 
 print "\e[32m.\e[0m"

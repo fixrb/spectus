@@ -97,9 +97,9 @@ module Spectus
         if success?
           is_color ? "\e[32m.\e[0m" : '.'
         elsif warning?
-          is_color ? "\e[36mW\e[0m" : 'W'
+          is_color ? "\e[33mW\e[0m" : 'W'
         else
-          is_color ? "\e[33mI\e[0m" : 'I'
+          is_color ? "\e[36mI\e[0m" : 'I'
         end
       end
 
@@ -112,9 +112,9 @@ module Spectus
         if success?
           "\e[32m#{super}\e[0m"
         elsif warning?
-          "\e[36m#{super}\e[0m"
-        else
           "\e[33m#{super}\e[0m"
+        else
+          "\e[36m#{super}\e[0m"
         end
       end
     end
