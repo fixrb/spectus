@@ -16,18 +16,6 @@ raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected "Hello, Alice!" ' \
                               'to eql "Hello, Alice!".'
-raise unless result.to_h == {
-  subject:            result.subject,
-  challenge:          { method: :call, args: [], opts: {}, block: nil },
-  actual:             result.actual,
-  expected:           result.expected.to_h,
-  got:                true,
-  error:              nil,
-  requirement_level:  :MUST,
-  negate:             false,
-  valid:              true,
-  result:             true
-}
 
 print "\e[32m.\e[0m"
 
@@ -39,17 +27,5 @@ raise unless result.to_sym == :success
 raise unless result.to_char(is_color: false) == '.'
 raise unless result.to_char(is_color: true) == "\e[32m.\e[0m"
 raise unless result.message == 'Success: expected nil to be_nil.'
-raise unless result.to_h == {
-  subject:            result.subject,
-  challenge:          { method: :call, args: [], opts: {}, block: nil },
-  actual:             result.actual,
-  expected:           result.expected.to_h,
-  got:                true,
-  error:              nil,
-  requirement_level:  :MUST,
-  negate:             false,
-  valid:              true,
-  result:             true
-}
 
 print "\e[32m.\e[0m"

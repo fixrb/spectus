@@ -24,19 +24,6 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char(is_color: true) == "\e[35mF\e[0m"
   raise unless raised_result.message == 'Failure: expected "FOO" to eql "foo".'
 
-  raise unless raised_result.to_h == {
-    subject:            subject,
-    challenge:          { method: :call, args: [], opts: {}, block: nil },
-    actual:             'FOO',
-    expected:           { Eql: ['foo'] },
-    got:                false,
-    error:              nil,
-    requirement_level:  :MAY,
-    negate:             false,
-    valid:              false,
-    result:             false
-  }
-
   print "\e[32m.\e[0m"
 end
 
@@ -55,19 +42,6 @@ rescue Spectus::Result::Fail => raised_result
   raise unless raised_result.to_char(is_color: false) == 'E'
   raise unless raised_result.to_char(is_color: true) == "\e[31mE\e[0m"
   raise unless raised_result.message == 'Error: invalid option (ArgumentError).'
-
-  raise unless raised_result.to_h == {
-    subject:            subject,
-    challenge:          { method: :call, args: [], opts: {}, block: nil },
-    actual:             nil,
-    expected:           { Eql: ['foo'] },
-    got:                nil,
-    error:              raised_result.error,
-    requirement_level:  :MAY,
-    negate:             false,
-    valid:              false,
-    result:             false
-  }
 
   print "\e[32m.\e[0m"
 end

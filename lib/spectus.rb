@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative File.join('spectus', 'matchers')
+require 'matchi'
 
 # Namespace for the Spectus library.
 #
@@ -10,7 +10,7 @@ require_relative File.join('spectus', 'matchers')
 #   require 'spectus'
 #   it { 42 }.MUST equal 42 # => #<Spectus::Result::Pass...>
 module Spectus
-  include Matchers
+  include ::Matchi::Helper
 
   # Expectations are built with this method.
   #

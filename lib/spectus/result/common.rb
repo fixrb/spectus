@@ -98,24 +98,6 @@ module Spectus
         @is_valid
       end
 
-      # Properties of the result.
-      #
-      # @return [Hash] The properties of the result.
-      def to_h
-        {
-          actual:             actual,
-          challenge:          challenge.to_h,
-          error:              error,
-          expected:           expected.to_h,
-          got:                got,
-          negate:             negate?,
-          requirement_level:  requirement_level,
-          result:             pass?,
-          subject:            subject,
-          valid:              valid?
-        }
-      end
-
       # The representation of the result.
       #
       # @return [String] A string representing the result.

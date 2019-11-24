@@ -34,20 +34,7 @@ raise unless result.message               == 'Success: expected "FOO" to eql "FO
 raise unless result.to_s(is_color: false) == 'Success: expected "FOO" to eql "FOO".'
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" to eql \"FOO\".\e[0m"
 
-raise unless result.inspect == 'Spectus::Result::Pass(actual: "FOO", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Eql("FOO"), got: true, negate: false, requirement_level: :MAY, valid: true)'
-
-raise unless result.to_h == {
-  subject:            subject,
-  challenge:          { method: :call, args: [], opts: {}, block: nil },
-  actual:             'FOO',
-  expected:           { Eql: ['FOO'] },
-  got:                true,
-  error:              nil,
-  requirement_level:  :MAY,
-  negate:             false,
-  valid:              true,
-  result:             true
-}
+raise unless result.inspect == 'Spectus::Result::Pass(actual: "FOO", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Eql("FOO"), got: true, negate: false, requirement_level: :MAY, valid: true)'
 
 print "\e[32m.\e[0m"
 
@@ -64,19 +51,6 @@ raise unless result.to_sym == :info
 raise unless result.to_char(is_color: false) == 'I'
 raise unless result.to_char(is_color: true) == "\e[33mI\e[0m"
 raise unless result.message == 'Info: undefined method `bar\' for "foo":String (NoMethodError).'
-
-raise unless result.to_h == {
-  subject:            subject,
-  challenge:          { method: :call, args: [], opts: {}, block: nil },
-  actual:             nil,
-  expected:           { Eql: ['foo'] },
-  got:                nil,
-  error:              result.error,
-  requirement_level:  :MAY,
-  negate:             false,
-  valid:              false,
-  result:             true
-}
 
 print "\e[32m.\e[0m"
 

@@ -6,14 +6,17 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 477
+# Offense count: 57
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
 # SupportedHashRocketStyles: key, separator, table
 # SupportedColonStyles: key, separator, table
 # SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
 Layout/AlignHash:
-  Enabled: false
+  Exclude:
+    - 'lib/spectus/expectation_target.rb'
+    - 'lib/spectus/requirement_level/base.rb'
+    - 'test/test_invalid_matcher.rb'
 
 # Offense count: 46
 # Cop supports --auto-correct.
@@ -36,7 +39,7 @@ Layout/EmptyLines:
 Metrics/AbcSize:
   Max: 17
 
-# Offense count: 4
+# Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
   Max: 15
@@ -76,9 +79,9 @@ Style/MixinUsage:
     - 'test/test_with_isolation.rb'
     - 'test/test_without_isolation.rb'
 
-# Offense count: 19
+# Offense count: 22
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
-  Max: 239
+  Max: 256
