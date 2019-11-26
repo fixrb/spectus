@@ -7,7 +7,8 @@ require 'rubocop/rake_task'
 RuboCop::RakeTask.new
 
 Rake::TestTask.new do |t|
-  t.pattern = File.join('test', '**', 'test_*.rb')
+  # t.pattern = File.join('test', '**', 'test_*.rb')
+  t.pattern = File.join('test', 'all.rb')
   t.verbose = true
   t.warning = true
 end

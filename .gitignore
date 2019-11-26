@@ -9,5 +9,6 @@
 /doc/
 /pkg/
 /spec/reports/
+/test/scaffold.rb
 /tmp/
 .DS_Store

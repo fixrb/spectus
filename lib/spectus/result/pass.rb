@@ -58,7 +58,7 @@ module Spectus
       #
       # @return [Boolean] The test was an info?
       def info?
-        got.nil?
+        !error.nil?
       end
 
       # The state of warning.
