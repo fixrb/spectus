@@ -43,7 +43,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -79,7 +79,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -115,7 +115,7 @@ raise unless result.message               == "Success: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Success: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: false, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -151,7 +151,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -187,7 +187,7 @@ raise unless result.message               == "Warning: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -223,7 +223,7 @@ raise unless result.message               == "Warning: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"boo\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -259,7 +259,7 @@ raise unless result.message               == "Success: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Success: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: false, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -295,7 +295,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -331,7 +331,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -367,7 +367,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -403,7 +403,7 @@ raise unless result.message               == "Success: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Success: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: false, requirement_level: :MAY, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -439,7 +439,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -475,7 +475,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -511,7 +511,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -547,7 +547,7 @@ raise unless result.message               == "Failure: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Failure: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -583,7 +583,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -619,7 +619,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -655,7 +655,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -691,7 +691,7 @@ raise unless result.message               == "Warning: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Warning: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -727,7 +727,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -763,7 +763,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -799,7 +799,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -835,7 +835,7 @@ raise unless result.message               == "Success: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Success: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: false, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -871,7 +871,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -907,7 +907,7 @@ raise unless result.message               == "Warning: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -943,7 +943,7 @@ raise unless result.message               == "Warning: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"boo\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -979,7 +979,7 @@ raise unless result.message               == "Success: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Success: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: false, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1015,7 +1015,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1051,7 +1051,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1087,7 +1087,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1123,7 +1123,7 @@ raise unless result.message               == "Success: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Success: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: false, requirement_level: :MAY, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1159,7 +1159,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1195,7 +1195,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1231,7 +1231,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1267,7 +1267,7 @@ raise unless result.message               == "Failure: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Failure: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1303,7 +1303,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1339,7 +1339,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1375,7 +1375,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception NoMethodError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1411,7 +1411,7 @@ raise unless result.message               == "Warning: undefined method `boom' f
 raise unless result.to_s(is_color: false) == "Warning: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(NoMethodError), got: false, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1447,7 +1447,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::RaiseException(NoMethodError), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 
 # ------------------------------------------------------------------------------
@@ -1484,7 +1484,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1520,7 +1520,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1556,7 +1556,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1592,7 +1592,7 @@ raise unless result.message               == "Success: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Success: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: false, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1628,7 +1628,7 @@ raise unless result.message               == "Warning: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1664,7 +1664,7 @@ raise unless result.message               == "Warning: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"boo\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1700,7 +1700,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1736,7 +1736,7 @@ raise unless result.message               == "Success: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Success: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: false, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1772,7 +1772,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1808,7 +1808,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1844,7 +1844,7 @@ raise unless result.message               == "Info: undefined method `boom' for 
 raise unless result.to_s(is_color: false) == "Info: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[36mInfo: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1880,7 +1880,7 @@ raise unless result.message               == "Success: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Success: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: false, requirement_level: :MAY, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1916,7 +1916,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1952,7 +1952,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1988,7 +1988,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2024,7 +2024,7 @@ raise unless result.message               == "Failure: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Failure: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2060,7 +2060,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2096,7 +2096,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2132,7 +2132,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2168,7 +2168,7 @@ raise unless result.message               == "Warning: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Warning: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2204,7 +2204,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2240,7 +2240,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2276,7 +2276,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2312,7 +2312,7 @@ raise unless result.message               == "Success: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Success: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: false, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2348,7 +2348,7 @@ raise unless result.message               == "Warning: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2384,7 +2384,7 @@ raise unless result.message               == "Warning: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Warning: expected \"boo\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2420,7 +2420,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2456,7 +2456,7 @@ raise unless result.message               == "Success: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Success: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: false, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2492,7 +2492,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2528,7 +2528,7 @@ raise unless result.message               == "Failure: expected \"boo\" to raise
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2564,7 +2564,7 @@ raise unless result.message               == "Info: undefined method `boom' for 
 raise unless result.to_s(is_color: false) == "Info: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[36mInfo: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2600,7 +2600,7 @@ raise unless result.message               == "Success: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Success: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: false, requirement_level: :MAY, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2636,7 +2636,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2672,7 +2672,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2708,7 +2708,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2744,7 +2744,7 @@ raise unless result.message               == "Failure: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Failure: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2780,7 +2780,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2816,7 +2816,7 @@ raise unless result.message               == "Success: expected \"boo\" not to r
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to raise_exception ArgumentError."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2852,7 +2852,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::RaiseException(ArgumentError), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2888,7 +2888,7 @@ raise unless result.message               == "Warning: wrong number of arguments
 raise unless result.to_s(is_color: false) == "Warning: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::RaiseException(ArgumentError), got: false, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2924,7 +2924,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2960,7 +2960,7 @@ raise unless result.message               == "Failure: expected \"boo\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2996,7 +2996,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3032,7 +3032,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3068,7 +3068,7 @@ raise unless result.message               == "Warning: expected \"FOO\" to equal
 raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3104,7 +3104,7 @@ raise unless result.message               == "Warning: expected \"boo\" to equal
 raise unless result.to_s(is_color: false) == "Warning: expected \"boo\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"boo\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3140,7 +3140,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3176,7 +3176,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3212,7 +3212,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3248,7 +3248,7 @@ raise unless result.message               == "Failure: expected \"boo\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3284,7 +3284,7 @@ raise unless result.message               == "Info: undefined method `boom' for 
 raise unless result.to_s(is_color: false) == "Info: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[36mInfo: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3320,7 +3320,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3356,7 +3356,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -3392,7 +3392,7 @@ raise unless result.message               == "Success: expected \"boo\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -3428,7 +3428,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3464,7 +3464,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3500,7 +3500,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -3536,7 +3536,7 @@ raise unless result.message               == "Success: expected \"boo\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -3572,7 +3572,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3608,7 +3608,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3644,7 +3644,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3680,7 +3680,7 @@ raise unless result.message               == "Failure: expected \"boo\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3716,7 +3716,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3752,7 +3752,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3788,7 +3788,7 @@ raise unless result.message               == "Warning: expected \"FOO\" to equal
 raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3824,7 +3824,7 @@ raise unless result.message               == "Warning: expected \"boo\" to equal
 raise unless result.to_s(is_color: false) == "Warning: expected \"boo\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"boo\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3860,7 +3860,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3896,7 +3896,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3932,7 +3932,7 @@ raise unless result.message               == "Failure: expected \"FOO\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3968,7 +3968,7 @@ raise unless result.message               == "Failure: expected \"boo\" to equal
 raise unless result.to_s(is_color: false) == "Failure: expected \"boo\" to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: false, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -4004,7 +4004,7 @@ raise unless result.message               == "Info: undefined method `boom' for 
 raise unless result.to_s(is_color: false) == "Info: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[36mInfo: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -4040,7 +4040,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: false, requirement_level: :MAY, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -4076,7 +4076,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -4112,7 +4112,7 @@ raise unless result.message               == "Success: expected \"boo\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :MUST, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -4148,7 +4148,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -4184,7 +4184,7 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :MUST, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -4220,7 +4220,7 @@ raise unless result.message               == "Success: expected \"FOO\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -4256,7 +4256,7 @@ raise unless result.message               == "Success: expected \"boo\" not to e
 raise unless result.to_s(is_color: false) == "Success: expected \"boo\" not to equal 42."
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Matchi::Matcher::Equal(42), got: true, negate: true, requirement_level: :SHOULD, valid: true)"
+raise unless result.inspect == "Spectus::Result::Pass(actual: \"boo\", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -4292,7 +4292,7 @@ raise unless result.message               == "Error: undefined method `boom' for
 raise unless result.to_s(is_color: false) == "Error: undefined method `boom' for \"foo\":String (NoMethodError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: undefined method `boom' for \"foo\":String (NoMethodError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -4328,4 +4328,4 @@ raise unless result.message               == "Error: wrong number of arguments (
 raise unless result.to_s(is_color: false) == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)."
 raise unless result.to_s(is_color: true)  == "\e[31mError: wrong number of arguments (given 1, expected 0) (ArgumentError).\e[0m"
 
-raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: Matchi::Matcher::Equal(42), got: nil, negate: true, requirement_level: :SHOULD, valid: false)"
+raise unless result.inspect == "Spectus::Result::Fail(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"

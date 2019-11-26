@@ -19,12 +19,15 @@ module Spectus
       # @return [Exception, nil] Any possible raised exception.
       attr_reader :error
 
-      # @return [#matches?] The definition of the expected value.
+      # @return [#object_id] The expected value.
       attr_reader :expected
 
       # @return [#object_id] The result of the boolean comparison between the
-      #   actual value and the expected value.
+      #   actual value and the expected value through the matcher.
       attr_reader :got
+
+      # @return [#object_id] The matcher.
+      attr_reader :matcher
 
       # @return [:Must, :Should, :May] The requirement_level of the expectation.
       attr_reader :requirement_level
@@ -36,7 +39,7 @@ module Spectus
       #
       # @return [String] A readable string of the definition.
       def definition
-        expected.to_s
+        [matcher, expected&.inspect].compact.join(' ')
       end
 
       # The negation, if any.
@@ -116,6 +119,7 @@ module Spectus
                       "error: #{error.inspect}, "                         \
                       "expected: #{expected.inspect}, "                   \
                       "got: #{got.inspect}, "                             \
+                      "matcher: #{matcher.inspect}, "                     \
                       "negate: #{negate?.inspect}, "                      \
                       "requirement_level: #{requirement_level.inspect}, " \
                       "valid: #{valid?.inspect})"                         \

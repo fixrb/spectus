@@ -69,10 +69,11 @@ module Spectus
           actual:             exam.actual,
           challenge:          challenge,
           error:              exam.exception,
-          expected:           matcher,
+          expected:           matcher.expected,
           got:                exam.got,
           is_negate:          negate?,
           is_valid:           exam.valid?,
+          matcher:            matcher.class.to_sym,
           requirement_level:  requirement_level,
           subject:            subject
         }

@@ -10,19 +10,20 @@ module Spectus
 
       # Initialize the result Pass class.
       #
-      # @param actual     [#object_id] The value that the subject return through
-      #   its challenge.
+      # @param actual     [#object_id] The value that the subject returned
+      #   through its challenge.
       # @param challenge  [Defi::Challenge] The challenge for the subject.
       # @param error      [Exception, nil] Any possible raised exception.
-      # @param expected   [#matches?] The definition of the expected value.
-      # @param got        [#object_id] The result of the boolean comparison
-      #   between the actual value and the expected value.
-      # @param is_negate  [Boolean] Evaluate to a negative assertion?
+      # @param expected   [#object_id] The expected value.
+      # @param got        [Boolean, nil] The result of the boolean comparison
+      #   between the actual value and the expected value through the matcher.
+      # @param is_negate  [Boolean] Evaluated to a negative assertion?
       # @param is_valid   [Boolean] Report if the test was true or false?
-      # @param requirement_level  [:MUST, :SHOULD, :MAY] The expectation.
-      # @param subject    [#object_id] The untrusted object to be tested.
+      # @param matcher    [Symbol] The matcher.
+      # @param requirement_level [:MUST, :SHOULD, :MAY] The requirement level.
+      # @param subject    [#object_id] The tested object.
       def initialize(actual:, challenge:, error:, expected:, got:, is_negate:,
-                     is_valid:, requirement_level:, subject:)
+                     is_valid:, matcher:, requirement_level:, subject:)
 
         @actual             = actual
         @challenge          = challenge
@@ -31,6 +32,7 @@ module Spectus
         @got                = got
         @is_negate          = is_negate
         @is_valid           = is_valid
+        @matcher            = matcher
         @requirement_level  = requirement_level
         @subject            = subject
       end
