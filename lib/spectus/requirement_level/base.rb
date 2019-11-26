@@ -17,11 +17,6 @@ module Spectus
       # @param matcher      [#matches?]       The matcher.
       # @param subject      [#object_id]      The subject of the test.
       def initialize(challenge:, is_isolation:, is_negate:, matcher:, subject:)
-        unless matcher.respond_to?(:matches?)
-          raise ::NoMethodError, "undefined method `matches?' " \
-                                 "for #{matcher.inspect}:#{matcher.class}"
-        end
-
         @challenge  = challenge
         @is_negate  = is_negate
         @matcher    = matcher
