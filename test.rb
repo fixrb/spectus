@@ -17,9 +17,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -48,9 +53,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -79,9 +89,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -110,9 +125,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -141,9 +161,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -172,9 +197,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -203,9 +233,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -234,9 +269,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -265,9 +305,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -296,9 +341,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -327,9 +377,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -358,9 +413,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -389,9 +449,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -420,9 +485,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -451,9 +521,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -482,9 +557,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -513,9 +593,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -544,9 +629,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -575,9 +665,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -606,9 +701,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -637,9 +737,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -668,9 +773,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -699,9 +809,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -730,9 +845,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -761,9 +881,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -792,9 +917,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -823,9 +953,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -854,9 +989,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -885,9 +1025,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -916,9 +1061,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -947,9 +1097,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -978,9 +1133,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1009,9 +1169,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1040,9 +1205,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1071,9 +1241,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1102,9 +1277,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1133,9 +1313,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1164,9 +1349,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1195,9 +1385,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual.is_a?(NoMethodError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1226,9 +1421,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1258,9 +1458,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1289,9 +1494,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1320,9 +1530,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1351,9 +1566,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1382,9 +1602,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1413,9 +1638,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1444,9 +1674,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1475,9 +1710,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1506,9 +1746,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1537,9 +1782,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1568,9 +1818,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :info
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1599,9 +1854,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1630,9 +1890,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1661,9 +1926,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1692,9 +1962,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1723,9 +1998,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1754,9 +2034,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1785,9 +2070,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1816,9 +2106,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1847,9 +2142,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -1878,9 +2178,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1909,9 +2214,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -1940,9 +2250,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -1971,9 +2286,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2002,9 +2322,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2033,9 +2358,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2064,9 +2394,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2095,9 +2430,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2126,9 +2466,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -2157,9 +2502,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -2188,9 +2538,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :info
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2219,9 +2574,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :success
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2250,9 +2610,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2281,9 +2646,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2312,9 +2682,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2343,9 +2718,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -2374,9 +2754,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2405,9 +2790,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2436,9 +2826,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2467,9 +2862,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual.is_a?(ArgumentError)
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2498,9 +2898,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -2529,9 +2934,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -2560,9 +2970,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2591,9 +3006,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2622,9 +3042,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2653,9 +3078,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2684,9 +3114,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2715,9 +3150,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2746,9 +3186,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -2777,9 +3222,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -2808,9 +3258,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :info
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2839,9 +3294,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2870,9 +3330,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2901,9 +3366,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -2932,9 +3402,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2963,9 +3438,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -2994,9 +3474,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3025,9 +3510,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3056,9 +3546,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3087,9 +3582,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3118,9 +3618,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -3149,9 +3654,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -3180,9 +3690,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3211,9 +3726,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3242,9 +3762,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3273,9 +3798,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :warning
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3304,9 +3834,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3335,9 +3870,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3366,9 +3906,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -3397,9 +3942,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :failure
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == false
 
 raise unless result.error?    == false
 raise unless result.failure?  == true
@@ -3428,9 +3978,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :info
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3459,9 +4014,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MAY
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3490,9 +4050,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3521,9 +4086,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3552,9 +4122,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3583,9 +4158,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :MUST
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3614,9 +4194,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "FOO"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3645,9 +4230,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :success
 
 raise unless result.actual == "boo"
+
+raise unless result.error == nil
+
+raise unless result.got == true
 
 raise unless result.error?    == false
 raise unless result.failure?  == false
@@ -3676,9 +4266,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(NoMethodError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
@@ -3707,9 +4302,14 @@ result = begin
            e
          end
 
+raise unless result.requirement_level == :SHOULD
 raise unless result.to_sym == :error
 
 raise unless result.actual == nil
+
+raise unless result.error.is_a?(ArgumentError)
+
+raise unless result.got == nil
 
 raise unless result.error?    == true
 raise unless result.failure?  == false
