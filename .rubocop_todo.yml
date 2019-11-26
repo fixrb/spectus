@@ -6,7 +6,7 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 53
+# Offense count: 54
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
 # SupportedHashRocketStyles: key, separator, table
@@ -17,11 +17,11 @@ Layout/AlignHash:
     - 'lib/spectus/expectation_target.rb'
     - 'lib/spectus/requirement_level/base.rb'
 
-# Offense count: 1
+# Offense count: 2
 Metrics/AbcSize:
-  Max: 17
+  Max: 19
 
-# Offense count: 3
+# Offense count: 4
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
   Max: 12
@@ -29,4 +29,4 @@ Metrics/MethodLength:
 # Offense count: 2
 # Configuration parameters: CountKeywordArgs.
 Metrics/ParameterLists:
-  Max: 9
+  Max: 10

@@ -12,7 +12,7 @@ module Spectus
       #
       # @param actual     [#object_id] The value that the subject returned
       #   through its challenge.
-      # @param challenge  [Defi::Challenge] The challenge for the subject.
+      # @param challenge  [Hash] Some params to challenge the subject.
       # @param error      [Exception, nil] Any possible raised exception.
       # @param expected   [#object_id] The expected value.
       # @param got        [Boolean, nil] The result of the boolean comparison

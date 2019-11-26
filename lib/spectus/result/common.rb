@@ -13,7 +13,7 @@ module Spectus
       #   challenge.
       attr_reader :actual
 
-      # @return [Symbol] The method to call on the subject.
+      # @return [Hash] Some params to challenge the subject.
       attr_reader :challenge
 
       # @return [Exception, nil] Any possible raised exception.

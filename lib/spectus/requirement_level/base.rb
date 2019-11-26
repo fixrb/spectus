@@ -67,7 +67,7 @@ module Spectus
       def details
         {
           actual:             exam.actual,
-          challenge:          challenge,
+          challenge:          challenge.to_h,
           error:              exam.exception,
           expected:           matcher.expected,
           got:                exam.got,
