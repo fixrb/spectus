@@ -12,7 +12,6 @@ module Spectus
       #
       # @param actual     [#object_id] The value that the subject returned
       #   through its challenge.
-      # @param challenge  [Hash] Some params to challenge the subject.
       # @param error      [Exception, nil] Any possible raised exception.
       # @param expected   [#object_id] The expected value.
       # @param got        [Boolean, nil] The result of the boolean comparison
@@ -22,11 +21,10 @@ module Spectus
       # @param matcher    [Symbol] The matcher.
       # @param requirement_level [:MUST, :SHOULD, :MAY] The requirement level.
       # @param subject    [#object_id] The tested object.
-      def initialize(actual:, challenge:, error:, expected:, got:, is_negate:,
+      def initialize(actual:, error:, expected:, got:, is_negate:,
                      is_valid:, matcher:, requirement_level:, subject:)
 
         @actual             = actual
-        @challenge          = challenge
         @error              = error
         @expected           = expected
         @got                = got

@@ -13,9 +13,6 @@ module Spectus
       #   challenge.
       attr_reader :actual
 
-      # @return [Hash] Some params to challenge the subject.
-      attr_reader :challenge
-
       # @return [Exception, nil] Any possible raised exception.
       attr_reader :error
 
@@ -115,7 +112,6 @@ module Spectus
       # @return [String] The human-readable representation of the result.
       def inspect
         "#{self.class}(actual: #{actual.inspect}, "                       \
-                      "challenge: #{challenge.inspect}, "                 \
                       "error: #{error.inspect}, "                         \
                       "expected: #{expected.inspect}, "                   \
                       "got: #{got.inspect}, "                             \

@@ -11,27 +11,21 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param challenge    [Defi::Challenge] The challenge for the subject.
       # @param is_isolation [Boolean]         Compute actual in isolation?
       # @param is_negate    [Boolean]         Positive or negative assertion?
       # @param matcher      [#matches?]       The matcher.
       # @param subject      [#object_id]      The subject of the test.
-      def initialize(challenge:, is_isolation:, is_negate:, matcher:, subject:)
-        @challenge  = challenge
+      def initialize(is_isolation:, is_negate:, matcher:, subject:)
         @is_negate  = is_negate
         @matcher    = matcher
         @subject    = subject
         @exam       = Exam.new(
-          challenge:    challenge,
           is_isolation: is_isolation,
           is_negate:    is_negate,
           matcher:      matcher,
           subject:      subject
         )
       end
-
-      # @return [Defi::Challenge] The challenge to test the subject.
-      attr_reader :challenge
 
       # @return [#Exam] The exam.
       attr_reader :exam
@@ -67,7 +61,6 @@ module Spectus
       def details
         {
           actual:             exam.actual,
-          challenge:          challenge.to_h,
           error:              exam.exception,
           expected:           matcher.expected,
           got:                exam.got,

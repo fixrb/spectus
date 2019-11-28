@@ -16,8 +16,7 @@ module Spectus
     #
     # @param subject [Proc] The value which is compared with the expected value.
     def initialize(&subject)
-      @subject    = subject
-      @challenge  = ::Defi.send(:call)
+      @subject = subject
     end
 
     # rubocop:disable Naming/MethodName
@@ -35,7 +34,6 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(matcher)
       RequirementLevel::Must.new(
-        challenge:    @challenge,
         is_isolation: false,
         is_negate:    false,
         matcher:      matcher,
@@ -49,7 +47,6 @@ module Spectus
     # @see MUST
     def MUST!(matcher)
       RequirementLevel::Must.new(
-        challenge:    @challenge,
         is_isolation: true,
         is_negate:    false,
         matcher:      matcher,
@@ -68,7 +65,6 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(matcher)
       RequirementLevel::Must.new(
-        challenge:    @challenge,
         is_isolation: false,
         is_negate:    true,
         matcher:      matcher,
@@ -82,7 +78,6 @@ module Spectus
     # @see MUST_NOT
     def MUST_NOT!(matcher)
       RequirementLevel::Must.new(
-        challenge:    @challenge,
         is_isolation: true,
         is_negate:    true,
         matcher:      matcher,
@@ -103,7 +98,6 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(matcher)
       RequirementLevel::Should.new(
-        challenge:    @challenge,
         is_isolation: false,
         is_negate:    false,
         matcher:      matcher,
@@ -117,7 +111,6 @@ module Spectus
     # @see SHOULD
     def SHOULD!(matcher)
       RequirementLevel::Should.new(
-        challenge:    @challenge,
         is_isolation: true,
         is_negate:    false,
         matcher:      matcher,
@@ -139,7 +132,6 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(matcher)
       RequirementLevel::Should.new(
-        challenge:    @challenge,
         is_isolation: false,
         is_negate:    true,
         matcher:      matcher,
@@ -153,7 +145,6 @@ module Spectus
     # @see SHOULD_NOT
     def SHOULD_NOT!(matcher)
       RequirementLevel::Should.new(
-        challenge:    @challenge,
         is_isolation: true,
         is_negate:    true,
         matcher:      matcher,
@@ -181,7 +172,6 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(matcher)
       RequirementLevel::May.new(
-        challenge:    @challenge,
         is_isolation: false,
         is_negate:    false,
         matcher:      matcher,
@@ -195,7 +185,6 @@ module Spectus
     # @see MAY
     def MAY!(matcher)
       RequirementLevel::May.new(
-        challenge:    @challenge,
         is_isolation: true,
         is_negate:    false,
         matcher:      matcher,
