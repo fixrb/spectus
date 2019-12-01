@@ -6232,9 +6232,9 @@ raise unless result.to_char                   == "F"
 raise unless result.to_char(is_color: false)  == "F"
 raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
 
-raise unless result.message               == "Failure: expected 42 not to equal 42."
-raise unless result.to_s(is_color: false) == "Failure: expected 42 not to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 not to equal 42.\e[0m"
+raise unless result.message               == "Failure: expected not to equal 42."
+raise unless result.to_s(is_color: false) == "Failure: expected not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected not to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
 
@@ -6484,9 +6484,9 @@ raise unless result.to_char                   == "F"
 raise unless result.to_char(is_color: false)  == "F"
 raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
 
-raise unless result.message               == "Failure: expected 42 not to equal 42."
-raise unless result.to_s(is_color: false) == "Failure: expected 42 not to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 not to equal 42.\e[0m"
+raise unless result.message               == "Failure: expected not to equal 42."
+raise unless result.to_s(is_color: false) == "Failure: expected not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected not to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
 
