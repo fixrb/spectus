@@ -5224,9 +5224,9 @@ raise unless result.to_char                   == "."
 raise unless result.to_char(is_color: false)  == "."
 raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
 
-raise unless result.message               == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+raise unless result.message               == "Success: expected to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MAY, valid: true)"
 
@@ -5476,9 +5476,9 @@ raise unless result.to_char                   == "."
 raise unless result.to_char(is_color: false)  == "."
 raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
 
-raise unless result.message               == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+raise unless result.message               == "Success: expected to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MAY, valid: true)"
 
@@ -5728,9 +5728,9 @@ raise unless result.to_char                   == "."
 raise unless result.to_char(is_color: false)  == "."
 raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
 
-raise unless result.message               == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+raise unless result.message               == "Success: expected to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MUST, valid: true)"
 
@@ -5980,9 +5980,9 @@ raise unless result.to_char                   == "."
 raise unless result.to_char(is_color: false)  == "."
 raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
 
-raise unless result.message               == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+raise unless result.message               == "Success: expected to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MUST, valid: true)"
 
@@ -6736,9 +6736,9 @@ raise unless result.to_char                   == "."
 raise unless result.to_char(is_color: false)  == "."
 raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
 
-raise unless result.message               == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+raise unless result.message               == "Success: expected to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: true)"
 
@@ -6988,9 +6988,9 @@ raise unless result.to_char                   == "."
 raise unless result.to_char(is_color: false)  == "."
 raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
 
-raise unless result.message               == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+raise unless result.message               == "Success: expected to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: true)"
 
@@ -7240,9 +7240,9 @@ raise unless result.to_char                   == "W"
 raise unless result.to_char(is_color: false)  == "W"
 raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
 
-raise unless result.message               == "Warning: expected 42 not to equal 42."
-raise unless result.to_s(is_color: false) == "Warning: expected 42 not to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 not to equal 42.\e[0m"
+raise unless result.message               == "Warning: expected not to equal 42."
+raise unless result.to_s(is_color: false) == "Warning: expected not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected not to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"
 
@@ -7492,9 +7492,9 @@ raise unless result.to_char                   == "W"
 raise unless result.to_char(is_color: false)  == "W"
 raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
 
-raise unless result.message               == "Warning: expected 42 not to equal 42."
-raise unless result.to_s(is_color: false) == "Warning: expected 42 not to equal 42."
-raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 not to equal 42.\e[0m"
+raise unless result.message               == "Warning: expected not to equal 42."
+raise unless result.to_s(is_color: false) == "Warning: expected not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected not to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"
 

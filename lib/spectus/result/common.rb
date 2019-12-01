@@ -83,7 +83,7 @@ module Spectus
         return error.message if error?
         return actual.message if actual.is_a?(::Exception)
 
-        if false && pass? #&& actual == expected
+        if pass? && actual == expected
           "expected#{maybe_negate} to #{definition}"
         else
           "expected #{actual.inspect}#{maybe_negate} to #{definition}"
