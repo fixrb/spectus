@@ -92,7 +92,7 @@ module Spectus
       # The representation of the result.
       #
       # @return [String] A string representing the result.
-      def to_s(is_color: false)
+      def to_s(is_color: false, prefix: nil, subject: nil)
         return super unless is_color
 
         if failure?

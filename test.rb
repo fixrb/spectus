@@ -156,6 +156,42 @@ raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MAY raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MAY
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MAY raise_exception(NoMethodError)
          rescue Spectus::Result::Fail => e
            e
@@ -368,6 +404,42 @@ raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MAY! raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MAY
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -588,6 +660,42 @@ raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MUST raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MUST raise_exception(NoMethodError)
          rescue Spectus::Result::Fail => e
            e
@@ -800,6 +908,42 @@ raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MUST! raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1020,6 +1164,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MUST_NOT raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MUST_NOT raise_exception(NoMethodError)
          rescue Spectus::Result::Fail => e
            e
@@ -1232,6 +1412,42 @@ raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MUST_NOT! raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -1452,6 +1668,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.SHOULD raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :warning
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == true
+
+raise unless result.to_char                   == "W"
+raise unless result.to_char(is_color: false)  == "W"
+raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
+
+raise unless result.message               == "Warning: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Warning: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.SHOULD raise_exception(NoMethodError)
          rescue Spectus::Result::Fail => e
            e
@@ -1664,6 +1916,42 @@ raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to raise
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.SHOULD! raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :warning
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == true
+
+raise unless result.to_char                   == "W"
+raise unless result.to_char(is_color: false)  == "W"
+raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
+
+raise unless result.message               == "Warning: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Warning: expected 42 to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -1884,6 +2172,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.SHOULD_NOT raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.SHOULD_NOT raise_exception(NoMethodError)
          rescue Spectus::Result::Fail => e
            e
@@ -2096,6 +2420,42 @@ raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.SHOULD_NOT! raise_exception(NoMethodError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception NoMethodError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception NoMethodError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -2317,6 +2677,42 @@ raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MAY raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MAY
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MAY raise_exception(ArgumentError)
          rescue Spectus::Result::Fail => e
            e
@@ -2529,6 +2925,42 @@ raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MAY! raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MAY
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MAY, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -2749,6 +3181,42 @@ raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MUST raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MUST raise_exception(ArgumentError)
          rescue Spectus::Result::Fail => e
            e
@@ -2961,6 +3429,42 @@ raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to raise
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MUST! raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -3181,6 +3685,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MUST_NOT raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MUST_NOT raise_exception(ArgumentError)
          rescue Spectus::Result::Fail => e
            e
@@ -3393,6 +3933,42 @@ raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MUST_NOT! raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -3613,6 +4189,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.SHOULD raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :warning
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == true
+
+raise unless result.to_char                   == "W"
+raise unless result.to_char(is_color: false)  == "W"
+raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
+
+raise unless result.message               == "Warning: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Warning: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.SHOULD raise_exception(ArgumentError)
          rescue Spectus::Result::Fail => e
            e
@@ -3825,6 +4437,42 @@ raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to raise
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.SHOULD! raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :warning
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == true
+
+raise unless result.to_char                   == "W"
+raise unless result.to_char(is_color: false)  == "W"
+raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
+
+raise unless result.message               == "Warning: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Warning: expected 42 to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -4045,6 +4693,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.SHOULD_NOT raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.SHOULD_NOT raise_exception(ArgumentError)
          rescue Spectus::Result::Fail => e
            e
@@ -4257,6 +4941,42 @@ raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to r
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.SHOULD_NOT! raise_exception(ArgumentError)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: false) == "Success: expected 42 not to raise_exception ArgumentError."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 not to raise_exception ArgumentError.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -4477,6 +5197,42 @@ raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MAY equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MAY
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MAY, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MAY equal(42)
          rescue Spectus::Result::Fail => e
            e
@@ -4689,6 +5445,42 @@ raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to equal
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MAY, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MAY! equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MAY
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MAY, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -4909,6 +5701,42 @@ raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MUST equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MUST, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MUST equal(42)
          rescue Spectus::Result::Fail => e
            e
@@ -5121,6 +5949,42 @@ raise unless result.to_s(is_color: false) == "Failure: expected \"FOO\" to equal
 raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :MUST, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MUST! equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :MUST, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -5341,6 +6205,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.MUST_NOT equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 not to equal 42."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 not to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.MUST_NOT equal(42)
          rescue Spectus::Result::Fail => e
            e
@@ -5553,6 +6453,42 @@ raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to e
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :MUST, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.MUST_NOT! equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :MUST
+raise unless result.to_sym == :failure
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == true
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == false
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "F"
+raise unless result.to_char(is_color: false)  == "F"
+raise unless result.to_char(is_color: true)   == "\e[35mF\e[0m"
+
+raise unless result.message               == "Failure: expected 42 not to equal 42."
+raise unless result.to_s(is_color: false) == "Failure: expected 42 not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[35mFailure: expected 42 not to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Fail(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :MUST, valid: false)"
 
 # ------------------------------------------------------------------------------
 
@@ -5773,6 +6709,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.SHOULD equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.SHOULD equal(42)
          rescue Spectus::Result::Fail => e
            e
@@ -5985,6 +6957,42 @@ raise unless result.to_s(is_color: false) == "Warning: expected \"FOO\" to equal
 raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected \"FOO\" to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.SHOULD! equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :success
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == true
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == false
+raise unless result.pass?     == true
+raise unless result.success?  == true
+raise unless result.valid?    == true
+raise unless result.warning?  == false
+
+raise unless result.to_char                   == "."
+raise unless result.to_char(is_color: false)  == "."
+raise unless result.to_char(is_color: true)   == "\e[32m.\e[0m"
+
+raise unless result.message               == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: false) == "Success: expected 42 to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected 42 to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, requirement_level: :SHOULD, valid: true)"
 
 # ------------------------------------------------------------------------------
 
@@ -6205,6 +7213,42 @@ raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: ni
 # ------------------------------------------------------------------------------
 
 result = begin
+           it { 42 }.SHOULD_NOT equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :warning
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == true
+
+raise unless result.to_char                   == "W"
+raise unless result.to_char(is_color: false)  == "W"
+raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
+
+raise unless result.message               == "Warning: expected 42 not to equal 42."
+raise unless result.to_s(is_color: false) == "Warning: expected 42 not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 not to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
            it { ArgumentError.new }.SHOULD_NOT equal(42)
          rescue Spectus::Result::Fail => e
            e
@@ -6417,6 +7461,42 @@ raise unless result.to_s(is_color: false) == "Success: expected \"FOO\" not to e
 raise unless result.to_s(is_color: true)  == "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
 
 raise unless result.inspect == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: true)"
+
+# ------------------------------------------------------------------------------
+
+result = begin
+           it { 42 }.SHOULD_NOT! equal(42)
+         rescue Spectus::Result::Fail => e
+           e
+         end
+
+raise unless result.requirement_level == :SHOULD
+raise unless result.to_sym == :warning
+
+raise unless result.actual == 42
+
+raise unless result.error == nil
+
+raise unless result.got == false
+
+raise unless result.error?    == false
+raise unless result.failure?  == false
+raise unless result.info?     == false
+raise unless result.negate?   == true
+raise unless result.pass?     == true
+raise unless result.success?  == false
+raise unless result.valid?    == false
+raise unless result.warning?  == true
+
+raise unless result.to_char                   == "W"
+raise unless result.to_char(is_color: false)  == "W"
+raise unless result.to_char(is_color: true)   == "\e[33mW\e[0m"
+
+raise unless result.message               == "Warning: expected 42 not to equal 42."
+raise unless result.to_s(is_color: false) == "Warning: expected 42 not to equal 42."
+raise unless result.to_s(is_color: true)  == "\e[33mWarning: expected 42 not to equal 42.\e[0m"
+
+raise unless result.inspect == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, requirement_level: :SHOULD, valid: false)"
 
 # ------------------------------------------------------------------------------
 

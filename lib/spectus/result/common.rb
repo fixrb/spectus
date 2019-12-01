@@ -83,7 +83,11 @@ module Spectus
         return error.message if error?
         return actual.message if actual.is_a?(::Exception)
 
-        "expected #{actual.inspect}#{maybe_negate} to #{definition}"
+        if false && pass? #&& actual == expected
+          "expected#{maybe_negate} to #{definition}"
+        else
+          "expected #{actual.inspect}#{maybe_negate} to #{definition}"
+        end
       end
 
       # The value of the boolean comparison between the actual value and the
@@ -97,8 +101,9 @@ module Spectus
       # The representation of the result.
       #
       # @return [String] A string representing the result.
-      def to_s(**)
-        "#{title}: #{summary}#{maybe_exception}."
+      def to_s(prefix: nil, subject: nil, **)
+        prefix = prefix.nil? ? '' : "#{prefix} "
+        "#{prefix}#{title}: #{summary}#{maybe_exception}."
       end
 
       # A string containing a human-readable representation of the result.

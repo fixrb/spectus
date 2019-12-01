@@ -10,16 +10,16 @@ module Spectus
     #
     # rubocop:disable Lint/RescueException
     #
-    # @param is_isolation [Boolean]         Compute actual in isolation?
-    # @param is_negate    [Boolean]         Positive or negative assertion?
-    # @param matcher      [#matches?]       The matcher.
-    # @param exception    [Exception]       An exception.
-    def initialize(is_isolation:, is_negate:, matcher:, subject:)
+    # @param callable     [#call]     The object to test.
+    # @param is_isolation [Boolean]   Compute actual in isolation?
+    # @param is_negate    [Boolean]   Positive or negative assertion?
+    # @param matcher      [#matches?] The matcher.
+    def initialize(callable:, is_isolation:, is_negate:, matcher:)
       @got = is_negate ^ matcher.matches? do
         value = if is_isolation
-                  challenge.to!(subject)
+                  send_call.to!(callable)
                 else
-                  challenge.to(subject)
+                  send_call.to(callable)
                 end
 
         @actual = value.object
@@ -42,8 +42,8 @@ module Spectus
     #   expectation is true or false.
     attr_reader :got
 
-    # @return [Defi::Challenge] The challenge for the subject.
-    def challenge
+    # @return [Defi::Challenge] The challenge for the callable object.
+    def send_call
       ::Defi.send(:call)
     end
 
