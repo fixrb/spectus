@@ -101,9 +101,8 @@ module Spectus
       # The representation of the result.
       #
       # @return [String] A string representing the result.
-      def to_s(prefix: nil, subject: nil, **)
-        prefix = prefix.nil? ? '' : "#{prefix} "
-        "#{prefix}#{title}: #{summary}#{maybe_exception}."
+      def to_s(**)
+        "#{title}: #{summary}#{maybe_exception}."
       end
 
       # A string containing a human-readable representation of the result.
