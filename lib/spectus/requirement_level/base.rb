@@ -18,8 +18,8 @@ module Spectus
       def initialize(is_isolation:, is_negate:, matcher:, subject:)
         @is_negate  = is_negate
         @matcher    = matcher
-        @subject    = subject
-        @exam       = Exam.new(
+
+        @exam = Exam.new(
           is_isolation: is_isolation,
           is_negate:    is_negate,
           matcher:      matcher,
@@ -33,9 +33,6 @@ module Spectus
       # @return [#matches?] The matcher that performed a boolean comparison
       #   between the actual value and the expected value.
       attr_reader :matcher
-
-      # @return [#object_id] The subject to test.
-      attr_reader :subject
 
       # The result of the expectation.
       #
@@ -66,8 +63,7 @@ module Spectus
           is_negate:          negate?,
           is_valid:           exam.valid?,
           matcher:            matcher.class.to_sym,
-          requirement_level:  requirement_level,
-          subject:            subject
+          requirement_level:  requirement_level
         }
       end
 

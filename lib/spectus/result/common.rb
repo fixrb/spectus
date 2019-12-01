@@ -9,8 +9,7 @@ module Spectus
     # Common collection of methods for Result's classes.
     #
     module Common
-      # @return [#object_id] The value that the subject return through its
-      #   challenge.
+      # @return [#object_id] Returned value by the challenged subject.
       attr_reader :actual
 
       # @return [Exception, nil] Any possible raised exception.
@@ -28,9 +27,6 @@ module Spectus
 
       # @return [:Must, :Should, :May] The requirement_level of the expectation.
       attr_reader :requirement_level
-
-      # @return [#object_id] The untrusted object to be tested.
-      attr_reader :subject
 
       # The readable definition.
       #
