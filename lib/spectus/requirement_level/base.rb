@@ -53,8 +53,7 @@ module Spectus
 
       # @raise [Result::Fail] A failed spec result.
       def fail!
-        exception = Result::Fail.new(**details)
-        raise exception, exception.message, caller[2..-1]
+        raise Result::Fail.new(**details)
       end
 
       # @return [Hash] List of parameters.
