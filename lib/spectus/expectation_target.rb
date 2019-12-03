@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'defi'
-
 module Spectus
   # Wraps the target of an expectation.
   #
