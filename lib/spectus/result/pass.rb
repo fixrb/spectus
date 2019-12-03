@@ -8,35 +8,6 @@ module Spectus
     class Pass
       include Common
 
-      # Initialize the result Pass class.
-      #
-      # @param actual     [#object_id] Returned value by the challenged subject.
-      # @param error      [Exception, nil] Any possible raised exception.
-      # @param expected   [#object_id] The expected value.
-      # @param got        [Boolean, nil] The result of the boolean comparison
-      #   between the actual value and the expected value through the matcher.
-      # @param is_negate  [Boolean] Evaluated to a negative assertion?
-      # @param is_valid   [Boolean] Report if the test was true or false?
-      # @param matcher    [Symbol] The matcher.
-      # @param requirement_level [:MUST, :SHOULD, :MAY] The requirement level.
-      def initialize(actual:, error:, expected:, got:, is_negate:,
-                     is_valid:, matcher:, requirement_level:)
-
-        @actual             = actual
-        @error              = error
-        @expected           = expected
-        @got                = got
-        @is_negate          = is_negate
-        @is_valid           = is_valid
-        @matcher            = matcher
-        @requirement_level  = requirement_level
-      end
-
-      # The message.
-      #
-      # @return [String] The message that describe the exam.
-      alias message to_s
-
       # The value of the expectation of the spec.
       #
       # @return [Boolean] The spec passed or failed?
@@ -65,16 +36,6 @@ module Spectus
         got.equal?(false)
       end
 
-      # The title of the exam.
-      #
-      # @return [String] The title of the exam.
-      def title
-        return 'Success' if success?
-        return 'Warning' if warning?
-
-        'Info'
-      end
-
       # Identify the state of the result.
       #
       # @return [Symbol] The identifier of the state.
@@ -87,31 +48,14 @@ module Spectus
 
       # Express the result with one char.
       #
-      # @param is_color [Boolean] Enable the color?
-      #
       # @return [String] The char that identify the result.
-      def to_char(is_color: false)
+      def to_s
         if success?
-          is_color ? "\e[32m.\e[0m" : '.'
+          "\e[32m.\e[0m"
         elsif warning?
-          is_color ? "\e[33mW\e[0m" : 'W'
+          "\e[33mW\e[0m"
         else
-          is_color ? "\e[36mI\e[0m" : 'I'
-        end
-      end
-
-      # The representation of the result.
-      #
-      # @return [String] A string representing the result.
-      def to_s(is_color: false)
-        return super unless is_color
-
-        if success?
-          "\e[32m#{super}\e[0m"
-        elsif warning?
-          "\e[33m#{super}\e[0m"
-        else
-          "\e[36m#{super}\e[0m"
+          "\e[36mI\e[0m"
         end
       end
     end

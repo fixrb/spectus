@@ -25,21 +25,31 @@ module Spectus
       # @return [#object_id] The matcher.
       attr_reader :matcher
 
-      # @return [:Must, :Should, :May] The requirement_level of the expectation.
-      attr_reader :requirement_level
+      # @return [:Must, :Should, :May] The requirement level of the expectation.
+      attr_reader :level
 
-      # The readable definition.
+      # Common initialize method.
       #
-      # @return [String] A readable string of the definition.
-      def definition
-        [matcher, expected&.inspect].compact.join(' ')
-      end
+      # @param actual     [#object_id] Returned value by the challenged subject.
+      # @param error      [Exception, nil] Any possible raised exception.
+      # @param expected   [#object_id] The expected value.
+      # @param got        [Boolean, nil] The result of the boolean comparison
+      #   between the actual value and the expected value through the matcher.
+      # @param is_negate  [Boolean] Evaluated to a negative assertion?
+      # @param is_valid   [Boolean] Report if the test was true or false?
+      # @param matcher    [Symbol] The matcher.
+      # @param level      [:MUST, :SHOULD, :MAY] The requirement level.
+      def initialize(actual:, error:, expected:, got:, is_negate:,
+                     is_valid:, matcher:, level:)
 
-      # The negation, if any.
-      #
-      # @return [String] The negation, or an empty string.
-      def maybe_negate
-        negate? ? ' not' : ''
+        @actual     = actual
+        @error      = error
+        @expected   = expected
+        @got        = got
+        @is_negate  = is_negate
+        @is_valid   = is_valid
+        @matcher    = matcher
+        @level      = level
       end
 
       # The value of the negate instance variable.
@@ -56,19 +66,6 @@ module Spectus
         !error.nil?
       end
 
-      # The type of exception, if any.
-      #
-      # @return [String] The type of exception, or an empty string.
-      def maybe_exception
-        if error?
-          " (#{error.class})"
-        elsif actual.is_a?(::Exception)
-          " (#{actual.class})"
-        else
-          ''
-        end
-      end
-
       # The state of success.
       #
       # @return [Boolean] The test was a success?
@@ -76,18 +73,11 @@ module Spectus
         got.equal?(true)
       end
 
-      # The summary of the result.
+      # The title of the result.
       #
-      # @return [String] A string representing the summary of the result.
-      def summary
-        return error.message if error?
-        return actual.message if actual.is_a?(::Exception)
-
-        if actual == expected
-          "expected#{maybe_negate} to #{definition}"
-        else
-          "expected #{actual.inspect}#{maybe_negate} to #{definition}"
-        end
+      # @return [String] The title of the result.
+      def title
+        to_sym.to_s.capitalize
       end
 
       # The value of the boolean comparison between the actual value and the
@@ -98,27 +88,20 @@ module Spectus
         @is_valid
       end
 
-      # The representation of the result.
-      #
-      # @return [String] A string representing the result.
-      def to_s(**)
-        "#{title}: #{summary}#{maybe_exception}."
-      end
-
       # A string containing a human-readable representation of the result.
       #
       # @api public
       #
       # @return [String] The human-readable representation of the result.
       def inspect
-        "#{self.class}(actual: #{actual.inspect}, "                       \
-                      "error: #{error.inspect}, "                         \
-                      "expected: #{expected.inspect}, "                   \
-                      "got: #{got.inspect}, "                             \
-                      "matcher: #{matcher.inspect}, "                     \
-                      "negate: #{negate?.inspect}, "                      \
-                      "requirement_level: #{requirement_level.inspect}, " \
-                      "valid: #{valid?.inspect})"                         \
+        "#{self.class}(actual: #{actual.inspect}, "     \
+                      "error: #{error.inspect}, "       \
+                      "expected: #{expected.inspect}, " \
+                      "got: #{got.inspect}, "           \
+                      "matcher: #{matcher.inspect}, "   \
+                      "negate: #{negate?.inspect}, "    \
+                      "level: #{level.inspect}, "       \
+                      "valid: #{valid?.inspect})"       \
       end
     end
   end

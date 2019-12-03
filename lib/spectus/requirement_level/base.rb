@@ -56,19 +56,19 @@ module Spectus
       # @return [Hash] List of parameters.
       def details
         {
-          actual:             exam.actual,
-          error:              exam.exception,
-          expected:           matcher.expected,
-          got:                exam.got,
-          is_negate:          negate?,
-          is_valid:           exam.valid?,
-          matcher:            matcher.class.to_sym,
-          requirement_level:  requirement_level
+          actual:     exam.actual,
+          error:      exam.exception,
+          expected:   matcher.expected,
+          got:        exam.got,
+          is_negate:  negate?,
+          is_valid:   exam.valid?,
+          matcher:    matcher.class.to_sym,
+          level:      level
         }
       end
 
       # @return [Symbol] The requirement level.
-      def requirement_level
+      def level
         self.class.name.split('::').fetch(-1).upcase.to_sym
       end
 
