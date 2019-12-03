@@ -60,7 +60,7 @@ include Spectus
 
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST! eql 'Hello, Alice!'
-# => Spectus::Result::Pass(actual: "Hello, Alice!", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Eql("Hello, Alice!"), got: true, negate: false, requirement_level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
 greeting # => "Hello, world!"
 ```
 
@@ -71,7 +71,7 @@ include Spectus
 
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST eql 'Hello, Alice!'
-# => Spectus::Result::Pass(actual: "Hello, Alice!", challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Eql("Hello, Alice!"), got: true, negate: false, requirement_level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
 greeting # => "Hello, Alice!"
 ```
 
@@ -98,7 +98,7 @@ Given the "`ルビー`" object, when it receives `valid_encoding?` method, then 
 
 ```ruby
 it { 'ルビー'.valid_encoding? }.MUST be_true
-# => Spectus::Result::Pass(actual: true, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: BeTrue(), got: true, negate: false, requirement_level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: true, error: nil, expected: nil, got: true, matcher: :be_true, negate: false, level: :MUST, valid: true)
 ```
 
 The result of the test shows that the spec passed.
@@ -109,7 +109,7 @@ Given the "`foo`" object, when it receives `length` method, then it **MUST NOT**
 
 ```ruby
 it { 'foo'.length }.MUST_NOT raise_exception NoMethodError
-# => Spectus::Result::Pass(actual: 3, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: RaiseException(NoMethodError), got: true, negate: true, requirement_level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: 3, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)
 ```
 
 The result of the test shows that the spec passed.
@@ -120,7 +120,7 @@ Given the `BasicObject` object, when it receives `superclass` method, then it **
 
 ```ruby
 it { BasicObject.superclass }.SHOULD equal NilClass
-# => Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: nil, expected: Equal(NilClass), got: false, negate: false, requirement_level: :SHOULD, valid: false)
+# => Spectus::Result::Pass(actual: nil, error: nil, expected: NilClass, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)
 ```
 
 Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
@@ -146,7 +146,7 @@ Given the "`foo`" object, when it receives `blank?` method, then it **MAY** be `
 
 ```ruby
 it { 'foo'.blank? }.MAY be_false
-# => Spectus::Result::Pass(actual: nil, challenge: Defi(method: :call, args: [], opts: {}, block: ), error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: BeFalse(), got: nil, negate: false, requirement_level: :MAY, valid: false)
+# => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_false, negate: false, level: :MAY, valid: false)
 ```
 
 The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
