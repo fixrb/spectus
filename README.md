@@ -132,10 +132,7 @@ Given the "`1`" object, when it receives `+(1)` method, then it **SHOULD NOT** r
 
 ```ruby
 it { '1' + 1 }.SHOULD_NOT eql '11'
-# Traceback (most recent call last):
-#         2: from ./bin/console:8:in `<main>'
-#         1: from (irb):5
-# Spectus::Result::Fail (Error: no implicit conversion of Integer into String (TypeError).)
+# raise Spectus::Result::Fail(actual: nil, error: #<TypeError: no implicit conversion of Integer into String>, expected: "11", got: nil, matcher: :eql, negate: true, level: :SHOULD, valid: false)
 ```
 
 There was a `TypeError` exception, the result of the test shows that the spec failed.
