@@ -8,11 +8,18 @@ module Spectus
     class Fail < ::StandardError
       include Common
 
-      # The value of the expectation of the spec.
+      # Did the test fail?
       #
       # @return [Boolean] The spec passed or failed?
-      def pass?
-        false
+      def failed?
+        true
+      end
+
+      # Did the test pass?
+      #
+      # @return [Boolean] The spec passed or failed?
+      def passed?
+        !failed?
       end
 
       # The state of failure.
@@ -46,8 +53,14 @@ module Spectus
       # Express the result with one char.
       #
       # @return [String] The char that identify the result.
-      def to_s
+      def char
         failure? ? "\e[35mF\e[0m" : "\e[31mE\e[0m"
+      end
+
+      def to_s
+        return "#{super}: #{error.message} (#{error.class})" if error?
+
+        super
       end
     end
   end

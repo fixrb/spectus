@@ -25,7 +25,7 @@ module Spectus
       # @return [#object_id] The matcher.
       attr_reader :matcher
 
-      # @return [:Must, :Should, :May] The requirement level of the expectation.
+      # @return [:MUST, :SHOULD, :MAY] The requirement level of the expectation.
       attr_reader :level
 
       # Common initialize method.
@@ -50,6 +50,8 @@ module Spectus
         @is_valid   = is_valid
         @matcher    = matcher
         @level      = level
+
+        super(to_s) if failed?
       end
 
       # The value of the negate instance variable.
@@ -73,10 +75,10 @@ module Spectus
         got.equal?(true)
       end
 
-      # The title of the result.
+      # The state of the result.
       #
       # @return [String] The title of the result.
-      def title
+      def to_s
         to_sym.to_s.capitalize
       end
 

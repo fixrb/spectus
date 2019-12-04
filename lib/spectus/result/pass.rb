@@ -8,11 +8,18 @@ module Spectus
     class Pass
       include Common
 
-      # The value of the expectation of the spec.
+      # Did the test fail?
       #
       # @return [Boolean] The spec passed or failed?
-      def pass?
-        true
+      def failed?
+        false
+      end
+
+      # Did the test pass?
+      #
+      # @return [Boolean] The spec passed or failed?
+      def passed?
+        !failed?
       end
 
       # The state of failure.
@@ -49,7 +56,7 @@ module Spectus
       # Express the result with one char.
       #
       # @return [String] The char that identify the result.
-      def to_s
+      def char
         if success?
           "\e[32m.\e[0m"
         elsif warning?

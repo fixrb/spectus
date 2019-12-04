@@ -18,17 +18,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -43,19 +44,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -68,19 +71,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -93,19 +98,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -118,19 +125,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -143,19 +152,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -168,19 +179,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -193,17 +206,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -218,19 +232,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -243,19 +259,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -268,19 +286,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -293,19 +313,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -318,19 +340,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -343,19 +367,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -368,17 +394,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -393,19 +420,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -418,19 +447,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -443,19 +474,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -468,19 +501,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -493,19 +528,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -518,19 +555,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -543,17 +582,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -568,19 +608,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -593,19 +635,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -618,19 +662,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -643,19 +689,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -668,19 +716,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -693,19 +743,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -718,19 +770,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(NoMethodError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -743,19 +797,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -768,17 +824,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -793,17 +850,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -818,17 +876,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -843,17 +902,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -868,17 +928,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -893,19 +954,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(NoMethodError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -918,19 +981,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -943,17 +1008,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -968,17 +1034,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -993,17 +1060,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -1018,17 +1086,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -1043,17 +1112,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -1068,17 +1138,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -1093,19 +1164,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -1118,17 +1191,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -1143,17 +1217,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -1168,17 +1243,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -1193,17 +1269,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -1218,17 +1295,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -1243,17 +1321,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -1268,19 +1347,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -1293,17 +1374,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -1318,17 +1400,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -1343,17 +1426,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -1368,17 +1452,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -1393,17 +1478,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -1418,17 +1504,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -1443,19 +1530,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -1468,17 +1557,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -1493,17 +1583,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -1518,17 +1609,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -1543,17 +1635,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -1568,17 +1661,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -1593,17 +1687,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<NoMethodError: undefined method `boom' for \"foo\":String>, error: nil, expected: NoMethodError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(NoMethodError)
 raise unless result.error     == nil
@@ -1618,19 +1713,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: NoMethodError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -1643,17 +1740,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -1668,17 +1766,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -1693,17 +1792,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -1718,17 +1818,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -1743,17 +1844,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -1770,17 +1872,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Info"
+raise unless result.to_s      == "Info"
 raise unless result.to_sym    == :info
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == true
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[36mI\e[0m"
+raise unless result.char      == "\e[36mI\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
 raise unless result.error.is_a?(NoMethodError)
@@ -1795,17 +1898,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -1820,19 +1924,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -1845,19 +1951,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -1870,19 +1978,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -1895,19 +2005,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -1920,19 +2032,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -1945,17 +2059,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Info"
+raise unless result.to_s      == "Info"
 raise unless result.to_sym    == :info
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == true
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[36mI\e[0m"
+raise unless result.char      == "\e[36mI\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
 raise unless result.error.is_a?(NoMethodError)
@@ -1970,17 +2085,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MAY, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -1995,19 +2111,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2020,19 +2138,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2045,19 +2165,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2070,19 +2192,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2095,19 +2219,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2120,19 +2246,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -2145,17 +2273,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -2170,19 +2299,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2195,19 +2326,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2220,19 +2353,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2245,19 +2380,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2270,19 +2407,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2295,19 +2434,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -2320,17 +2461,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -2345,19 +2487,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2370,19 +2514,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2395,19 +2541,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2420,19 +2568,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2445,19 +2595,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2470,19 +2622,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -2495,19 +2649,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2520,17 +2676,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -2545,17 +2702,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -2570,17 +2728,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -2595,17 +2754,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -2620,17 +2780,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -2645,19 +2806,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -2670,19 +2833,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -2695,17 +2860,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -2720,17 +2886,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -2745,17 +2912,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -2770,17 +2938,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -2795,17 +2964,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -2820,19 +2990,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -2845,17 +3017,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -2870,17 +3043,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -2895,17 +3069,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -2920,17 +3095,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -2945,17 +3121,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -2970,17 +3147,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -2995,19 +3173,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -3020,17 +3200,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: false, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -3045,17 +3226,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -3070,17 +3252,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -3095,17 +3278,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -3120,17 +3304,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -3145,17 +3330,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -3170,19 +3356,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -3195,17 +3383,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -3220,17 +3409,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -3245,17 +3435,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -3270,17 +3461,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -3295,17 +3487,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -3320,17 +3513,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -3345,19 +3539,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: ArgumentError, got: nil, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -3370,17 +3566,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, error: nil, expected: ArgumentError, got: false, matcher: :raise_exception, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -3395,17 +3592,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -3420,17 +3618,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -3445,17 +3644,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -3470,17 +3670,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -3495,17 +3696,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: ArgumentError, got: true, matcher: :raise_exception, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -3521,17 +3723,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Info"
+raise unless result.to_s      == "Info"
 raise unless result.to_sym    == :info
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == true
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[36mI\e[0m"
+raise unless result.char      == "\e[36mI\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
 raise unless result.error.is_a?(NoMethodError)
@@ -3546,19 +3749,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -3571,19 +3776,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3596,19 +3803,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3621,17 +3830,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MAY, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -3646,19 +3856,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3671,19 +3883,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3696,17 +3910,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Info"
+raise unless result.to_s      == "Info"
 raise unless result.to_sym    == :info
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == true
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[36mI\e[0m"
+raise unless result.char      == "\e[36mI\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
 raise unless result.error.is_a?(NoMethodError)
@@ -3721,19 +3936,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -3746,19 +3963,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3771,19 +3990,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3796,17 +4017,18 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MAY, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -3821,19 +4043,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3846,19 +4070,21 @@ result = begin
          end
 
 raise unless result.level     == :MAY
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MAY, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3871,19 +4097,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -3896,19 +4124,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -3921,19 +4151,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3946,19 +4178,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -3971,17 +4205,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MUST, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -3996,19 +4231,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4021,19 +4258,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4046,19 +4285,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -4071,19 +4312,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -4096,19 +4339,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"boo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "boo"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4121,19 +4366,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == "FOO"
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4146,17 +4393,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MUST, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -4171,19 +4419,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4196,19 +4446,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: Exception, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :MUST, valid: false)"
 raise unless result.actual    == Exception
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4221,19 +4473,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -4246,19 +4500,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -4271,17 +4527,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -4296,17 +4553,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -4321,19 +4579,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4346,17 +4606,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -4371,17 +4632,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -4396,19 +4658,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -4421,19 +4685,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -4446,17 +4712,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -4471,17 +4738,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -4496,19 +4764,21 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Failure"
+raise unless result.to_s      == "Failure"
 raise unless result.to_sym    == :failure
 raise unless result.error?    == false
 raise unless result.failure?  == true
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[35mF\e[0m"
+raise unless result.char      == "\e[35mF\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, level: :MUST, valid: false)"
 raise unless result.actual    == 42
+raise unless result.message   == "Failure"
 raise unless result.error     == nil
 raise unless result.got       == false
 
@@ -4521,17 +4791,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -4546,17 +4817,18 @@ result = begin
          end
 
 raise unless result.level     == :MUST
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :MUST, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -4571,19 +4843,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -4596,19 +4870,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -4621,17 +4897,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -4646,17 +4923,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -4671,17 +4949,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :SHOULD, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -4696,17 +4975,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -4721,17 +5001,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -4746,19 +5027,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -4771,19 +5054,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -4796,17 +5081,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -4821,17 +5107,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -4846,17 +5133,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :SHOULD, valid: true)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -4871,17 +5159,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -4896,17 +5185,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == false
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -4921,19 +5211,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -4946,19 +5238,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -4971,17 +5265,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -4996,17 +5291,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -5021,17 +5317,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -5046,17 +5343,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -5071,17 +5369,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
@@ -5096,19 +5395,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<NoMethodError: undefined method `boom' for \"foo\":String>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: undefined method `boom' for \"foo\":String (NoMethodError)"
 raise unless result.error.is_a?(NoMethodError)
 raise unless result.got       == nil
 
@@ -5121,19 +5422,21 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Error"
+raise unless result.to_s      == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.to_sym    == :error
 raise unless result.error?    == true
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == false
+raise unless result.failed?   == true
+raise unless result.passed?   == false
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[31mE\e[0m"
+raise unless result.char      == "\e[31mE\e[0m"
 raise unless result.inspect   == "Spectus::Result::Fail(actual: nil, error: #<ArgumentError: wrong number of arguments (given 1, expected 0)>, expected: 42, got: nil, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == nil
+raise unless result.message   == "Error: wrong number of arguments (given 1, expected 0) (ArgumentError)"
 raise unless result.error.is_a?(ArgumentError)
 raise unless result.got       == nil
 
@@ -5146,17 +5449,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"boo\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "boo"
 raise unless result.error     == nil
@@ -5171,17 +5475,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: \"FOO\", error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == "FOO"
 raise unless result.error     == nil
@@ -5196,17 +5501,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Warning"
+raise unless result.to_s      == "Warning"
 raise unless result.to_sym    == :warning
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == false
 raise unless result.valid?    == false
 raise unless result.warning?  == true
-raise unless result.to_s      == "\e[33mW\e[0m"
+raise unless result.char      == "\e[33mW\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: false, matcher: :equal, negate: true, level: :SHOULD, valid: false)"
 raise unless result.actual    == 42
 raise unless result.error     == nil
@@ -5221,17 +5527,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: #<ArgumentError: ArgumentError>, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual.is_a?(ArgumentError)
 raise unless result.error     == nil
@@ -5246,17 +5553,18 @@ result = begin
          end
 
 raise unless result.level     == :SHOULD
-raise unless result.title     == "Success"
+raise unless result.to_s      == "Success"
 raise unless result.to_sym    == :success
 raise unless result.error?    == false
 raise unless result.failure?  == false
 raise unless result.info?     == false
 raise unless result.negate?   == true
-raise unless result.pass?     == true
+raise unless result.failed?   == false
+raise unless result.passed?   == true
 raise unless result.success?  == true
 raise unless result.valid?    == true
 raise unless result.warning?  == false
-raise unless result.to_s      == "\e[32m.\e[0m"
+raise unless result.char      == "\e[32m.\e[0m"
 raise unless result.inspect   == "Spectus::Result::Pass(actual: Exception, error: nil, expected: 42, got: true, matcher: :equal, negate: true, level: :SHOULD, valid: true)"
 raise unless result.actual    == Exception
 raise unless result.error     == nil
