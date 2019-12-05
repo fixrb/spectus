@@ -32,10 +32,10 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(matcher)
       RequirementLevel::Must.new(
-        callable:     @callable,
-        is_isolation: false,
-        is_negate:    false,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  false,
+        negate:     false,
+        matcher:    matcher
       ).call
     end
 
@@ -45,10 +45,10 @@ module Spectus
     # @see MUST
     def MUST!(matcher)
       RequirementLevel::Must.new(
-        callable:     @callable,
-        is_isolation: true,
-        is_negate:    false,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  true,
+        negate:     false,
+        matcher:    matcher
       ).call
     end
 
@@ -63,10 +63,10 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(matcher)
       RequirementLevel::Must.new(
-        callable:     @callable,
-        is_isolation: false,
-        is_negate:    true,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  false,
+        negate:     true,
+        matcher:    matcher
       ).call
     end
 
@@ -76,10 +76,10 @@ module Spectus
     # @see MUST_NOT
     def MUST_NOT!(matcher)
       RequirementLevel::Must.new(
-        callable:     @callable,
-        is_isolation: true,
-        is_negate:    true,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  true,
+        negate:     true,
+        matcher:    matcher
       ).call
     end
 
@@ -96,10 +96,10 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(matcher)
       RequirementLevel::Should.new(
-        callable:     @callable,
-        is_isolation: false,
-        is_negate:    false,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  false,
+        negate:     false,
+        matcher:    matcher
       ).call
     end
 
@@ -109,10 +109,10 @@ module Spectus
     # @see SHOULD
     def SHOULD!(matcher)
       RequirementLevel::Should.new(
-        callable:     @callable,
-        is_isolation: true,
-        is_negate:    false,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  true,
+        negate:     false,
+        matcher:    matcher
       ).call
     end
 
@@ -130,10 +130,10 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(matcher)
       RequirementLevel::Should.new(
-        callable:     @callable,
-        is_isolation: false,
-        is_negate:    true,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  false,
+        negate:     true,
+        matcher:    matcher
       ).call
     end
 
@@ -143,10 +143,10 @@ module Spectus
     # @see SHOULD_NOT
     def SHOULD_NOT!(matcher)
       RequirementLevel::Should.new(
-        callable:     @callable,
-        is_isolation: true,
-        is_negate:    true,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  true,
+        negate:     true,
+        matcher:    matcher
       ).call
     end
 
@@ -170,10 +170,10 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(matcher)
       RequirementLevel::May.new(
-        callable:     @callable,
-        is_isolation: false,
-        is_negate:    false,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  false,
+        negate:     false,
+        matcher:    matcher
       ).call
     end
 
@@ -183,10 +183,10 @@ module Spectus
     # @see MAY
     def MAY!(matcher)
       RequirementLevel::May.new(
-        callable:     @callable,
-        is_isolation: true,
-        is_negate:    false,
-        matcher:      matcher
+        callable:   @callable,
+        isolation:  true,
+        negate:     false,
+        matcher:    matcher
       ).call
     end
 

@@ -30,26 +30,26 @@ module Spectus
 
       # Common initialize method.
       #
-      # @param actual     [#object_id] Returned value by the challenged subject.
-      # @param error      [Exception, nil] Any possible raised exception.
-      # @param expected   [#object_id] The expected value.
-      # @param got        [Boolean, nil] The result of the boolean comparison
+      # @param actual   [#object_id] Returned value by the challenged subject.
+      # @param error    [Exception, nil] Any possible raised exception.
+      # @param expected [#object_id] The expected value.
+      # @param got      [Boolean, nil] The result of the boolean comparison
       #   between the actual value and the expected value through the matcher.
-      # @param is_negate  [Boolean] Evaluated to a negative assertion?
-      # @param is_valid   [Boolean] Report if the test was true or false?
-      # @param matcher    [Symbol] The matcher.
-      # @param level      [:MUST, :SHOULD, :MAY] The requirement level.
-      def initialize(actual:, error:, expected:, got:, is_negate:,
-                     is_valid:, matcher:, level:)
+      # @param negate   [Boolean] Evaluated to a negative assertion?
+      # @param valid    [Boolean] Report if the test was true or false?
+      # @param matcher  [Symbol] The matcher.
+      # @param level    [:MUST, :SHOULD, :MAY] The requirement level.
+      def initialize(actual:, error:, expected:, got:, negate:, valid:,
+                     matcher:, level:)
 
-        @actual     = actual
-        @error      = error
-        @expected   = expected
-        @got        = got
-        @is_negate  = is_negate
-        @is_valid   = is_valid
-        @matcher    = matcher
-        @level      = level
+        @actual   = actual
+        @error    = error
+        @expected = expected
+        @got      = got
+        @negate   = negate
+        @valid    = valid
+        @matcher  = matcher
+        @level    = level
 
         super(to_s) if failed?
       end
@@ -58,7 +58,7 @@ module Spectus
       #
       # @return [Boolean] Evaluated to a negative assertion?
       def negate?
-        @is_negate
+        @negate
       end
 
       # The state of error.
@@ -87,7 +87,7 @@ module Spectus
       #
       # @return [Boolean] The test was true or false?
       def valid?
-        @is_valid
+        @valid
       end
 
       # A string containing a human-readable representation of the result.

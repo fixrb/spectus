@@ -11,19 +11,19 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param callable     [#call]     The object to test.
-      # @param is_isolation [Boolean]   Compute actual in isolation?
-      # @param is_negate    [Boolean]   Positive or negative assertion?
-      # @param matcher      [#matches?] The matcher.
-      def initialize(callable:, is_isolation:, is_negate:, matcher:)
-        @is_negate  = is_negate
-        @matcher    = matcher
+      # @param callable   [#call]     The object to test.
+      # @param isolation  [Boolean]   Compute actual in isolation?
+      # @param negate  [Boolean]   Positive or negative assertion?
+      # @param matcher    [#matches?] The matcher.
+      def initialize(callable:, isolation:, negate:, matcher:)
+        @negate   = negate
+        @matcher  = matcher
 
         @exam = Exam.new(
-          callable:     callable,
-          is_isolation: is_isolation,
-          is_negate:    is_negate,
-          matcher:      matcher
+          callable:   callable,
+          isolation:  isolation,
+          negate:     negate,
+          matcher:    matcher
         )
       end
 
@@ -56,14 +56,14 @@ module Spectus
       # @return [Hash] List of parameters.
       def details
         {
-          actual:     exam.actual,
-          error:      exam.exception,
-          expected:   matcher.expected,
-          got:        exam.got,
-          is_negate:  negate?,
-          is_valid:   exam.valid?,
-          matcher:    matcher.class.to_sym,
-          level:      level
+          actual:   exam.actual,
+          error:    exam.exception,
+          expected: matcher.expected,
+          got:      exam.got,
+          negate:   negate?,
+          valid:    exam.valid?,
+          matcher:  matcher.class.to_sym,
+          level:    level
         }
       end
 
@@ -77,7 +77,7 @@ module Spectus
       #
       # @return [Boolean] Positive or negative assertion?
       def negate?
-        @is_negate
+        @negate
       end
     end
   end

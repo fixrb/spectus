@@ -12,13 +12,13 @@ module Spectus
     #
     # rubocop:disable Lint/RescueException
     #
-    # @param callable     [#call]     The object to test.
-    # @param is_isolation [Boolean]   Compute actual in isolation?
-    # @param is_negate    [Boolean]   Positive or negative assertion?
-    # @param matcher      [#matches?] The matcher.
-    def initialize(callable:, is_isolation:, is_negate:, matcher:)
-      @got = is_negate ^ matcher.matches? do
-        value = if is_isolation
+    # @param callable   [#call]     The object to test.
+    # @param isolation  [Boolean]   Compute actual in isolation?
+    # @param negate     [Boolean]   Positive or negative assertion?
+    # @param matcher    [#matches?] The matcher.
+    def initialize(callable:, isolation:, negate:, matcher:)
+      @got = negate ^ matcher.matches? do
+        value = if isolation
                   send_call.to!(callable)
                 else
                   send_call.to(callable)
