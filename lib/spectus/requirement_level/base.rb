@@ -11,9 +11,9 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param callable   [#call]     The object to test.
+      # @param callable   [#call]     The callable object to test.
       # @param isolation  [Boolean]   Compute actual in isolation?
-      # @param negate  [Boolean]   Positive or negative assertion?
+      # @param negate     [Boolean]   Positive or negative assertion?
       # @param matcher    [#matches?] The matcher.
       def initialize(callable:, isolation:, negate:, matcher:)
         @negate   = negate

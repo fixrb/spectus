@@ -12,7 +12,7 @@ module Spectus
     #
     # rubocop:disable Lint/RescueException
     #
-    # @param callable   [#call]     The object to test.
+    # @param callable   [#call]     The callable object to test.
     # @param isolation  [Boolean]   Compute actual in isolation?
     # @param negate     [Boolean]   Positive or negative assertion?
     # @param matcher    [#matches?] The matcher.
