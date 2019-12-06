@@ -8,6 +8,8 @@ module Spectus
     class Pass
       include Common
 
+      alias_method :message, :to_s
+
       # Did the test fail?
       #
       # @return [Boolean] The spec passed or failed?

@@ -75,13 +75,6 @@ module Spectus
         got.equal?(true)
       end
 
-      # The state of the result.
-      #
-      # @return [String] The title of the result.
-      def to_s
-        to_sym.to_s.capitalize
-      end
-
       # The value of the boolean comparison between the actual value and the
       # expected value.
       #
@@ -104,6 +97,50 @@ module Spectus
                       "negate: #{negate?.inspect}, "    \
                       "level: #{level.inspect}, "       \
                       "valid: #{valid?.inspect})"       \
+      end
+
+      # The readable definition.
+      #
+      # @return [String] A readable string of the definition.
+      def definition
+        [matcher, expected&.inspect].compact.join(' ')
+      end
+
+      # The negation, if any.
+      #
+      # @return [String] The negation, or an empty string.
+      def maybe_negate
+        negate? ? ' not' : ''
+      end
+
+      # The summary of the result.
+      #
+      # @return [String] A string representing the summary of the result.
+      def summary
+        return error.message if error?
+        return actual.message if actual.is_a?(::Exception)
+
+        if actual == expected
+          "expected#{maybe_negate} to #{definition}"
+        else
+          "expected #{actual.inspect}#{maybe_negate} to #{definition}"
+        end
+      end
+
+      # The representation of the result.
+      #
+      # @return [String] A string representing the result.
+      def to_s
+        "#{titre}: #{summary}."
+      end
+
+      # Titre for the result.
+      #
+      # @return [String] A string representing the titre.
+      def titre
+        return error.class.name if error?
+
+        to_sym.to_s.capitalize
       end
     end
   end

@@ -7,8 +7,8 @@ module Spectus
   #
   # @example
   #   it { actual value } # => ExpectationTarget wrapping the block
-  class ExpectationTarget
-    # Create a new expection target
+  class ExpectationTarget < ::BasicObject
+    # Create a new expectation target
     #
     # @api private
     #
@@ -32,7 +32,7 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST(matcher)
       RequirementLevel::Must.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  false,
         negate:     false,
         matcher:    matcher
@@ -45,7 +45,7 @@ module Spectus
     # @see MUST
     def MUST!(matcher)
       RequirementLevel::Must.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  true,
         negate:     false,
         matcher:    matcher
@@ -63,7 +63,7 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MUST_NOT(matcher)
       RequirementLevel::Must.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  false,
         negate:     true,
         matcher:    matcher
@@ -76,7 +76,7 @@ module Spectus
     # @see MUST_NOT
     def MUST_NOT!(matcher)
       RequirementLevel::Must.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  true,
         negate:     true,
         matcher:    matcher
@@ -96,7 +96,7 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD(matcher)
       RequirementLevel::Should.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  false,
         negate:     false,
         matcher:    matcher
@@ -109,7 +109,7 @@ module Spectus
     # @see SHOULD
     def SHOULD!(matcher)
       RequirementLevel::Should.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  true,
         negate:     false,
         matcher:    matcher
@@ -130,7 +130,7 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(matcher)
       RequirementLevel::Should.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  false,
         negate:     true,
         matcher:    matcher
@@ -143,7 +143,7 @@ module Spectus
     # @see SHOULD_NOT
     def SHOULD_NOT!(matcher)
       RequirementLevel::Should.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  true,
         negate:     true,
         matcher:    matcher
@@ -170,7 +170,7 @@ module Spectus
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
     def MAY(matcher)
       RequirementLevel::May.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  false,
         negate:     false,
         matcher:    matcher
@@ -183,7 +183,7 @@ module Spectus
     # @see MAY
     def MAY!(matcher)
       RequirementLevel::May.new(
-        callable:   @callable,
+        callable:   callable,
         isolation:  true,
         negate:     false,
         matcher:    matcher
@@ -191,6 +191,11 @@ module Spectus
     end
 
     # rubocop:enable Naming/MethodName
+
+    protected
+
+    # @return [#call] The callable object to test.
+    attr_reader :callable
   end
 end
 

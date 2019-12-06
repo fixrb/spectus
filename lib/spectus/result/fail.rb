@@ -56,12 +56,6 @@ module Spectus
       def char
         failure? ? "\e[35mF\e[0m" : "\e[31mE\e[0m"
       end
-
-      def to_s
-        return "#{super}: #{error.message} (#{error.class})" if error?
-
-        super
-      end
     end
   end
 end
