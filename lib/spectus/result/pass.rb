@@ -60,11 +60,11 @@ module Spectus
       # @return [String] The char that identify the result.
       def char
         if success?
-          "\e[32m.\e[0m"
+          color('.')
         elsif warning?
-          "\e[33mW\e[0m"
+          color('W')
         else
-          "\e[36mI\e[0m"
+          color('I')
         end
       end
     end

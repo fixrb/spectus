@@ -138,9 +138,20 @@ module Spectus
       #
       # @return [String] A string representing the titre.
       def titre
-        return error.class.name if error?
+        if error?
+          error.class.name
+        else
+          to_sym.to_s.capitalize
+        end
+      end
 
-        to_sym.to_s.capitalize
+      def color(text)
+        return "\e[32m#{text}\e[0m" if success?
+        return "\e[36m#{text}\e[0m" if info?
+        return "\e[33m#{text}\e[0m" if warning?
+        return "\e[35m#{text}\e[0m" if failure?
+
+        "\e[31m#{text}\e[0m"
       end
     end
   end

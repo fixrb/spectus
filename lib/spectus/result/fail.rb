@@ -54,7 +54,11 @@ module Spectus
       #
       # @return [String] The char that identify the result.
       def char
-        failure? ? "\e[35mF\e[0m" : "\e[31mE\e[0m"
+        if failure?
+          color('F')
+        else
+          color('E')
+        end
       end
     end
   end
