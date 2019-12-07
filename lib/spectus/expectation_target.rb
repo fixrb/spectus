@@ -7,7 +7,7 @@ module Spectus
   #
   # @example
   #   it { actual value } # => ExpectationTarget wrapping the block
-  class ExpectationTarget < ::BasicObject
+  class ExpectationTarget
     # Create a new expectation target
     #
     # @api private
