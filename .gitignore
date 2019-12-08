@@ -1,4 +1,6 @@
 /.bundle/
+/.byebug_history
+/.irb_history
 /.ruby-version
 /.yardoc
 /Gemfile.lock
@@ -7,5 +9,6 @@
 /doc/
 /pkg/
 /spec/reports/
+/scaffold.rb
 /tmp/
 .DS_Store

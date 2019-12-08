@@ -16,7 +16,7 @@ module Spectus
       def result(isolation = false)
         state = sandbox(isolation)
 
-        if state.valid? || state.exception.class.equal?(::NoMethodError)
+        if state.valid? || state.exception.is_a?(::NoMethodError)
           pass!(state)
         else
           fail!(state)
