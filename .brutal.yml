@@ -1,0 +1,63 @@
+---
+header: |
+  # frozen_string_literal: true
+
+  require 'simplecov'
+
+  SimpleCov.command_name 'Brutal test suite'
+  SimpleCov.start
+
+  require 'spectus'
+
+  include Spectus
+challenges:
+  - .level
+  - .to_s
+  - .to_sym
+  - .error?
+  - .failure?
+  - .info?
+  - .negate?
+  - .failed?
+  - .passed?
+  - .success?
+  - .valid?
+  - .warning?
+  - .char
+  - .message
+  - .to_s
+  - .inspect
+  - .color('foo')
+  - .actual.class
+  - .error.class
+  - .got.class
+subject: |
+    begin
+      it { %{lambda} }.%{level} %{matcher}
+    rescue ::Spectus::Result::Fail => e
+      e
+    end
+variables:
+  :lambda:
+    - 42
+    - "'foo'.upcase"
+    - "'foo'.gsub!('f', 'b')"
+    - "'foo'.boom"
+    - "'foo'.empty?(4)"
+    - ArgumentError.new
+    - Exception
+  :level:
+    - MUST
+    - SHOULD
+    - MAY
+    - MUST_NOT
+    - SHOULD_NOT
+    - MUST!
+    - SHOULD!
+    - MAY!
+    - MUST_NOT!
+    - SHOULD_NOT!
+  :matcher:
+    - raise_exception(NoMethodError)
+    - raise_exception(ArgumentError)
+    - equal(42)
