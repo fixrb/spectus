@@ -1,4 +1,4 @@
-# Spectus 🚦
+# Spectus 🚥
 
 [![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/spectus/badges/gpa.svg)][codeclimate]

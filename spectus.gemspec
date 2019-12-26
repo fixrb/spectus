@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.version      = File.read('VERSION.semver').chomp
   spec.author       = 'Cyril Kato'
   spec.email        = 'contact@cyril.email'
-  spec.summary      = "Expectation library with RFC 2119's requirement levels 🚦"
+  spec.summary      = "Expectation library with RFC 2119's requirement levels 🚥"
   spec.description  = spec.summary
   spec.homepage     = 'https://github.com/fixrb/spectus'
   spec.license      = 'MIT'
