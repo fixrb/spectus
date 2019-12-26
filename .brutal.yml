@@ -1,6 +1,6 @@
 ---
 header: |
-  # frozen_string_literal: true
+  # frozen_string_literal: false
 
   require 'simplecov'
 
@@ -10,54 +10,58 @@ header: |
   require 'spectus'
 
   include Spectus
-challenges:
-  - .level
-  - .to_s
-  - .to_sym
-  - .error?
-  - .failure?
-  - .info?
-  - .negate?
-  - .failed?
-  - .passed?
-  - .success?
-  - .valid?
-  - .warning?
-  - .char
-  - .message
-  - .to_s
-  - .inspect
-  - .color('foo')
-  - .actual.class
-  - .error.class
-  - .got.class
+
+front_object: |
+  "foo"
+
 subject: |
-    begin
-      it { %{lambda} }.%{level} %{matcher}
-    rescue ::Spectus::Result::Fail => e
-      e
-    end
+  begin
+    it { %{front_object}.%{challenge} }.%{level} %{matcher}
+  rescue ::Spectus::Result::Fail => e
+    e
+  end
+
 variables:
-  :lambda:
-    - 42
-    - "'foo'.upcase"
-    - "'foo'.gsub!('f', 'b')"
-    - "'foo'.boom"
-    - "'foo'.empty?(4)"
-    - ArgumentError.new
-    - Exception
-  :level:
-    - MUST
-    - SHOULD
-    - MAY
-    - MUST_NOT
-    - SHOULD_NOT
-    - MUST!
-    - SHOULD!
-    - MAY!
-    - MUST_NOT!
-    - SHOULD_NOT!
-  :matcher:
-    - raise_exception(NoMethodError)
-    - raise_exception(ArgumentError)
-    - equal(42)
+  challenge:
+    - "upcase"
+    - "gsub!('f', 'b')"
+    - "boom"
+    - "empty?(4)"
+  level:
+    - "MUST"
+    - "SHOULD"
+    - "MAY"
+    - "MUST_NOT"
+    - "SHOULD_NOT"
+    - "MUST!"
+    - "SHOULD!"
+    - "MAY!"
+    - "MUST_NOT!"
+    - "SHOULD_NOT!"
+  matcher:
+    - "raise_exception(NoMethodError)"
+    - "raise_exception(ArgumentError)"
+    - "eql('foo')"
+    - "equal(42)"
+
+actual_values:
+  - "%{subject}.level"
+  - "%{subject}.to_s"
+  - "%{subject}.to_sym"
+  - "%{subject}.error?"
+  - "%{subject}.failure?"
+  - "%{subject}.info?"
+  - "%{subject}.negate?"
+  - "%{subject}.failed?"
+  - "%{subject}.passed?"
+  - "%{subject}.success?"
+  - "%{subject}.valid?"
+  - "%{subject}.warning?"
+  - "%{subject}.char"
+  - "%{subject}.message"
+  - "%{subject}.to_s"
+  - "%{subject}.inspect"
+  - "%{subject}.color('foo')"
+  - "%{subject}.actual.class"
+  - "%{subject}.error.class"
+  - "%{subject}.got.class"

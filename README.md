@@ -1,4 +1,4 @@
-# Spectus
+# Spectus 🚦
 
 [![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/spectus/badges/gpa.svg)][codeclimate]
@@ -148,19 +148,6 @@ it { 'foo'.blank? }.MAY be_false
 
 The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
 
-## Security
-
-As a basic form of security __Spectus__ provides a set of SHA512 checksums for
-every Gem release.  These checksums can be found in the `checksum/` directory.
-Although these checksums do not prevent malicious users from tampering with a
-built Gem they can be used for basic integrity verification purposes.
-
-The checksum of a file can be checked using the `sha512sum` command.  For
-example:
-
-    $ sha512sum pkg/spectus-2.3.0.gem
-    e9e35e1953104e2d428b0f217e418db3c1baecd9e011b2545f9fcba4ff7e3bba674c6b928b3d8db842a139cd7cc9806d77ebdc7f710ece4f2aecb343703e2451  pkg/spectus-2.3.0.gem
-
 ## Versioning
 
 __Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
@@ -185,6 +172,9 @@ See `LICENSE.md` file.
 
 ***
 
-This project is sponsored by:
-
-[![Sashite](https://pbs.twimg.com/profile_images/618485028322975744/PZ9qPuI__400x400.png)](https://sashite.com/)
+<p>
+  This project is sponsored by:<br />
+  <a href="https://sashite.com/"><img
+    src="https://github.com/fixrb/spectus/raw/master/img/sashite.png"
+    alt="Sashite" /></a>
+</p>

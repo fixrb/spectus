@@ -117,10 +117,11 @@ module Spectus
       #
       # @return [String] A string representing the summary of the result.
       def summary
-        return error.message if error?
-        return actual.message if actual.is_a?(::Exception)
-
-        if actual == expected
+        if error?
+          error.message
+        elsif actual.is_a?(::Exception)
+          actual.message
+        elsif actual == expected
           "expected#{maybe_negate} to #{definition}"
         else
           "expected #{actual.inspect}#{maybe_negate} to #{definition}"
