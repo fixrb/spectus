@@ -142,7 +142,7 @@ The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https
 ### More Examples
 
 An exhaustive list of examples can also be viewed here:
-[test.rb](https://github.com/fixrb/spectus/raw/master/test.rb)
+[test.rb](https://github.com/fixrb/spectus/blob/master/test.rb)
 
 ## Contact
 
