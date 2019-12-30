@@ -1,32 +1,46 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative 'common'
 
 module Spectus
   module Result
     # The class that is responsible for reporting that the expectation is false.
     class Fail < ::StandardError
-      include Base
+      include Common
 
-      # The value of the expectation of the spec.
+      # Did the test fail?
       #
-      # @return [Boolean] The spec was false.
-      def result?
-        false
+      # @return [Boolean] The spec passed or failed?
+      def failed?
+        true
+      end
+
+      # Did the test pass?
+      #
+      # @return [Boolean] The spec passed or failed?
+      def passed?
+        !failed?
       end
 
       # The state of failure.
       #
-      # @return [Boolean] The test was a failure.
+      # @return [Boolean] The test was a failure?
       def failure?
-        error.nil?
+        !error?
       end
 
-      # The state of error.
+      # The state of info.
       #
-      # @return [Boolean] The test was an error.
-      def error?
-        !failure?
+      # @return [Boolean] The test was an info?
+      def info?
+        false
+      end
+
+      # The state of warning.
+      #
+      # @return [Boolean] The test was a warning?
+      def warning?
+        false
       end
 
       # Identify the state of the result.
@@ -38,14 +52,23 @@ module Spectus
 
       # Express the result with one char.
       #
-      # @param color [Boolean] Enable the color.
-      #
       # @return [String] The char that identify the result.
-      def to_char(color = false)
+      def char
         if failure?
-          color ? "\e[35mF\e[0m" : 'F'
+          'F'
         else
-          color ? "\e[31mE\e[0m" : 'E'
+          'E'
+        end
+      end
+
+      # Express the result with one emoji.
+      #
+      # @return [String] The emoji that identify the result.
+      def emoji
+        if failure?
+          '❌'
+        else
+          '💥'
         end
       end
     end

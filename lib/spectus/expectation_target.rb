@@ -1,49 +1,49 @@
 # frozen_string_literal: true
 
-require 'defi'
-
 module Spectus
   # Wraps the target of an expectation.
-  #
-  # @api public
   #
   # @example
   #   it { actual value } # => ExpectationTarget wrapping the block
   class ExpectationTarget
-    # Create a new expection target
+    # Create a new expectation target
     #
-    # @api private
-    #
-    # @param subject [Proc] The value which is compared with the expected value.
-    def initialize(&subject)
-      @subject    = subject
-      @challenges = [block_challenge]
+    # @param callable [Proc] The object to test.
+    def initialize(&callable)
+      @callable = callable
     end
 
-    # rubocop:disable Style/MethodName
-    # rubocop:disable Naming/UncommunicativeMethodParamName
+    # rubocop:disable Naming/MethodName
 
-    # @api public
-    #
     # This word, or the terms "REQUIRED" or "SHALL", mean that the
     # definition is an absolute requirement of the specification.
     #
     # @example _Absolute requirement_ definition
     #   it { 'foo'.upcase }.MUST eql 'FOO'
     #
-    # @param m [#matches?] The matcher.
+    # @param matcher [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def MUST(m)
-      RequirementLevel::High.new(m, false, subject, *challenges).result
+    def MUST(matcher)
+      RequirementLevel::Must.new(
+        callable:   callable,
+        isolation:  false,
+        negate:     false,
+        matcher:    matcher
+      ).call
     end
 
     # @example _Absolute requirement_ definition with isolation
     #   it { 'foo'.upcase }.MUST! eql 'FOO'
     #
     # @see MUST
-    def MUST!(m)
-      RequirementLevel::High.new(m, false, subject, *challenges).result(true)
+    def MUST!(matcher)
+      RequirementLevel::Must.new(
+        callable:   callable,
+        isolation:  true,
+        negate:     false,
+        matcher:    matcher
+      ).call
     end
 
     # This phrase, or the phrase "SHALL NOT", mean that the
@@ -52,19 +52,29 @@ module Spectus
     # @example _Absolute prohibition_ definition
     #   it { 'foo'.size }.MUST_NOT equal 42
     #
-    # @param m [#matches?] The matcher.
+    # @param matcher [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def MUST_NOT(m)
-      RequirementLevel::High.new(m, true, subject, *challenges).result
+    def MUST_NOT(matcher)
+      RequirementLevel::Must.new(
+        callable:   callable,
+        isolation:  false,
+        negate:     true,
+        matcher:    matcher
+      ).call
     end
 
     # @example _Absolute prohibition_ definition with isolation
     #   it { 'foo'.size }.MUST_NOT! equal 42
     #
     # @see MUST_NOT
-    def MUST_NOT!(m)
-      RequirementLevel::High.new(m, true, subject, *challenges).result(true)
+    def MUST_NOT!(matcher)
+      RequirementLevel::Must.new(
+        callable:   callable,
+        isolation:  true,
+        negate:     true,
+        matcher:    matcher
+      ).call
     end
 
     # This word, or the adjective "RECOMMENDED", mean that there
@@ -75,19 +85,29 @@ module Spectus
     # @example _Recommended_ definition
     #   it { 'foo'.valid_encoding? }.SHOULD equal true
     #
-    # @param m [#matches?] The matcher.
+    # @param matcher [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def SHOULD(m)
-      RequirementLevel::Medium.new(m, false, subject, *challenges).result
+    def SHOULD(matcher)
+      RequirementLevel::Should.new(
+        callable:   callable,
+        isolation:  false,
+        negate:     false,
+        matcher:    matcher
+      ).call
     end
 
     # @example _Recommended_ definition with isolation
     #   it { 'foo'.valid_encoding? }.SHOULD! equal true
     #
     # @see SHOULD
-    def SHOULD!(m)
-      RequirementLevel::Medium.new(m, false, subject, *challenges).result(true)
+    def SHOULD!(matcher)
+      RequirementLevel::Should.new(
+        callable:   callable,
+        isolation:  true,
+        negate:     false,
+        matcher:    matcher
+      ).call
     end
 
     # This phrase, or the phrase "NOT RECOMMENDED" mean that
@@ -99,19 +119,29 @@ module Spectus
     # @example _Not recommended_ definition
     #   it { ''.blank? }.SHOULD_NOT raise_exception NoMethodError
     #
-    # @param m [#matches?] The matcher.
+    # @param matcher [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def SHOULD_NOT(m)
-      RequirementLevel::Medium.new(m, true, subject, *challenges).result
+    def SHOULD_NOT(matcher)
+      RequirementLevel::Should.new(
+        callable:   callable,
+        isolation:  false,
+        negate:     true,
+        matcher:    matcher
+      ).call
     end
 
     # @example _Not recommended_ definition with isolation
     #   it { ''.blank? }.SHOULD_NOT! raise_exception NoMethodError
     #
     # @see SHOULD_NOT
-    def SHOULD_NOT!(m)
-      RequirementLevel::Medium.new(m, true, subject, *challenges).result(true)
+    def SHOULD_NOT!(matcher)
+      RequirementLevel::Should.new(
+        callable:   callable,
+        isolation:  true,
+        negate:     true,
+        matcher:    matcher
+      ).call
     end
 
     # This word, or the adjective "OPTIONAL", mean that an item is
@@ -129,53 +159,40 @@ module Spectus
     # @example _Optional_ definition
     #   it { 'foo'.bar }.MAY match /^foo$/
     #
-    # @param m [#matches?] The matcher.
+    # @param matcher [#matches?] The matcher.
     #
     # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
-    def MAY(m)
-      RequirementLevel::Low.new(m, false, subject, *challenges).result
+    def MAY(matcher)
+      RequirementLevel::May.new(
+        callable:   callable,
+        isolation:  false,
+        negate:     false,
+        matcher:    matcher
+      ).call
     end
 
     # @example _Optional_ definition with isolation
     #   it { 'foo'.bar }.MAY! match /^foo$/
     #
     # @see MAY
-    def MAY!(m)
-      RequirementLevel::Low.new(m, false, subject, *challenges).result(true)
+    def MAY!(matcher)
+      RequirementLevel::May.new(
+        callable:   callable,
+        isolation:  true,
+        negate:     false,
+        matcher:    matcher
+      ).call
     end
 
-    # rubocop:enable Style/MethodName
-    # rubocop:enable Naming/UncommunicativeMethodParamName
+    # rubocop:enable Naming/MethodName
 
-    # rubocop:disable Style/AccessModifierDeclarations
+    protected
 
-    # @!attribute [r] subject
-    #
-    # @return [BasicObject] The front object to be tested.
-    attr_reader :subject
-    private :subject
-
-    # @!attribute [r] challenges
-    #
-    # @return [Array] The challenges to call on the subject.
-    attr_reader :challenges
-    private :challenges
-
-    # rubocop:enable Style/AccessModifierDeclarations
-
-    private
-
-    # The first default challenge for blocks.
-    #
-    # @since 2.10.0
-    #
-    # @return [Defi] The challenge for blocks.
-    def block_challenge
-      ::Defi.send(:call)
-    end
+    # @return [#call] The callable object to test.
+    attr_reader :callable
   end
 end
 
-require_relative File.join('requirement_level', 'high')
-require_relative File.join('requirement_level', 'medium')
-require_relative File.join('requirement_level', 'low')
+require_relative File.join('requirement_level', 'must')
+require_relative File.join('requirement_level', 'should')
+require_relative File.join('requirement_level', 'may')

@@ -1,109 +1,84 @@
 # frozen_string_literal: true
 
-require 'aw'
-
 module Spectus
   # Namespace for the requirement levels.
-  #
-  # @api private
-  #
   module RequirementLevel
     # Requirement level's base class.
-    #
     class Base
       # Initialize the requirement level class.
       #
-      # @param matcher    [#matches?]   The matcher.
-      # @param negate     [Boolean]     Evaluate to a negative assertion.
-      # @param subject    [#object_id]  The front object to test.
-      # @param challenges [Array]       A list of challenges.
-      def initialize(matcher, negate, subject, *challenges)
-        @matcher    = matcher
-        @negate     = negate
-        @subject    = subject
-        @challenges = challenges
+      # @param callable   [#call]     The callable object to test.
+      # @param isolation  [Boolean]   Compute actual in isolation?
+      # @param negate     [Boolean]   Positive or negative assertion?
+      # @param matcher    [#matches?] The matcher.
+      def initialize(callable:, isolation:, negate:, matcher:)
+        @negate   = negate
+        @matcher  = matcher
+
+        @exam = Exam.new(
+          callable:   callable,
+          isolation:  isolation,
+          negate:     negate,
+          matcher:    matcher
+        )
       end
 
-      # @!attribute [r] matcher
-      #
-      # @return [#matches?] The matcher.
+      # @return [#Exam] The exam.
+      attr_reader :exam
+
+      # @return [#matches?] The matcher that performed a boolean comparison
+      #   between the actual value and the expected value.
       attr_reader :matcher
 
-      # The value of the negate instance variable.
+      # The result of the expectation.
       #
-      # @return [Boolean] Evaluated to a negative assertion or not.
-      def negate?
-        @negate
+      # @return [Result::Fail, Result::Pass] The test result.
+      def call
+        pass? ? pass! : fail!
       end
-
-      # @!attribute [r] subject
-      #
-      # @return [#object_id] The front object to test.
-      attr_reader :subject
-
-      # @!attribute [r] challenges
-      #
-      # @return [Array] A list of challenges.
-      attr_reader :challenges
 
       protected
 
-      # @param state [Sandbox] The sandbox that tested the code.
-      #
-      # @return [Result::Pass] Pass the spec.
-      def pass!(state)
-        r = Report.new(matcher, negate?, state, true)
-
-        Result::Pass.new(r, *result_signature(state))
+      # @return [Result::Pass] A passed spec result.
+      def pass!
+        Result::Pass.new(**details)
       end
 
-      # @param state [Sandbox] The sandbox that tested the code.
-      #
-      # @raise [Result::Fail] Fail the spec.
-      def fail!(state)
-        r = Report.new(matcher, negate?, state, false)
-
-        raise Result::Fail.new(r, *result_signature(state)), r, caller[2..-1]
+      # @raise [Result::Fail] A failed spec result.
+      def fail!
+        raise Result::Fail.new(**details)
       end
 
-      # @param state [Sandbox] The sandbox that tested the code.
-      #
-      # @return [Array] List of parameters.
-      def result_signature(state)
-        [
-          subject,
-          state.last_challenge,
-          state.actual,
-          matcher,
-          state.got,
-          state.exception,
-          level,
-          negate?,
-          state.valid?
-        ]
+      # @return [Hash] List of parameters.
+      def details
+        {
+          actual:   exam.actual,
+          error:    exam.exception,
+          expected: matcher.expected,
+          got:      exam.got,
+          negate:   negate?,
+          valid:    exam.valid?,
+          matcher:  matcher.class.to_sym,
+          level:    level
+        }
       end
 
       # @return [Symbol] The requirement level.
       def level
-        self.class.name.split('::').last.to_sym
+        self.class.name.split('::').fetch(-1).upcase.to_sym
       end
 
-      # @param isolation [Boolean] Test in isolation.
+      # @note The boolean comparison between the actual value and the expected
+      #   value can be evaluated to a negative assertion.
       #
-      # @return [Sandbox] The sandbox.
-      def sandbox(isolation)
-        isolation ? ::Aw.fork! { execute } : execute
-      end
-
-      # @return [Sandbox] The sandbox.
-      def execute
-        Sandbox.new(matcher, negate?, subject, *challenges)
+      # @return [Boolean] Positive or negative assertion?
+      def negate?
+        @negate
       end
     end
   end
 end
 
-require_relative File.join('..', 'report')
+require_relative File.join('..', 'exam')
 require_relative File.join('..', 'result', 'fail')
 require_relative File.join('..', 'result', 'pass')
-require_relative File.join('..', 'sandbox')
