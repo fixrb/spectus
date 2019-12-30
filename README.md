@@ -1,4 +1,4 @@
-# Spectus 🚥
+# Spectus
 
 [![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/spectus/badges/gpa.svg)][codeclimate]
@@ -6,7 +6,7 @@
 [![Inline docs](https://inch-ci.org/github/fixrb/spectus.svg?branch=master)][inchpages]
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
-> Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'s requirement levels.
+> Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'s requirement levels 🚥
 
 ## Installation
 

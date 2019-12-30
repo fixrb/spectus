@@ -21,7 +21,7 @@ Layout/HashAlignment:
 Metrics/AbcSize:
   Max: 17
 
-# Offense count: 1
+# Offense count: 2
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
   Max: 12
