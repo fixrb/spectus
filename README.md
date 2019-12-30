@@ -44,8 +44,8 @@ Thus,
 
 Both results share a common interface, and can be classified respectively as:
 
-* a _success_, a _warning_ or an _info_;
-* a _failure_ or an _error_.
+* a ✅ _success_, a ⚠️ _warning_ or an 💡 _info_;
+* a ❌ _failure_ or an 💥 _error_.
 
 ## Code Isolation
 
