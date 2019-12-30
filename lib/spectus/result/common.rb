@@ -2,12 +2,8 @@
 
 module Spectus
   # Namespace for the results.
-  #
-  # @api private
-  #
   module Result
     # Common collection of methods for Result's classes.
-    #
     module Common
       # @return [#object_id] Returned value by the challenged subject.
       attr_reader :actual
@@ -85,8 +81,6 @@ module Spectus
 
       # A string containing a human-readable representation of the result.
       #
-      # @api public
-      #
       # @return [String] The human-readable representation of the result.
       def inspect
         "#{self.class}(actual: #{actual.inspect}, "     \
@@ -128,6 +122,20 @@ module Spectus
         end
       end
 
+      # Express the result with one colored char.
+      #
+      # @return [String] The colored char that identify the result.
+      def colored_char
+        color(char)
+      end
+
+      # The colored string representation of the result.
+      #
+      # @return [String] A string representing the result.
+      def colored_string
+        color(to_s)
+      end
+
       # The representation of the result.
       #
       # @return [String] A string representing the result.
@@ -146,13 +154,20 @@ module Spectus
         end
       end
 
-      def color(text)
-        return "\e[32m#{text}\e[0m" if success?
-        return "\e[36m#{text}\e[0m" if info?
-        return "\e[33m#{text}\e[0m" if warning?
-        return "\e[35m#{text}\e[0m" if failure?
+      protected
 
-        "\e[31m#{text}\e[0m"
+      def color(str)
+        if success?
+          "\e[32m#{str}\e[0m"
+        elsif info?
+          "\e[36m#{str}\e[0m"
+        elsif warning?
+          "\e[33m#{str}\e[0m"
+        elsif failure?
+          "\e[35m#{str}\e[0m"
+        else
+          "\e[31m#{str}\e[0m"
+        end
       end
     end
   end

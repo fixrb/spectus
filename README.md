@@ -6,18 +6,7 @@
 [![Inline docs](https://inch-ci.org/github/fixrb/spectus.svg?branch=master)][inchpages]
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
-> Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'s requirement levels, and some matchers for Ruby.
-
-## Contact
-
-* Home page: https://github.com/fixrb/spectus
-* Bugs/issues: https://github.com/fixrb/spectus/issues
-
-## Rubies
-
-* [MRI](https://www.ruby-lang.org/)
-* [Rubinius](https://rubinius.com/)
-* [JRuby](https://www.jruby.org/)
+> Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'s requirement levels.
 
 ## Installation
 
@@ -39,6 +28,8 @@ Or install it yourself as:
 
 An expectation is an assertion that is either `true` or `false`.
 
+There are several scenarios:
+
 | Requirement levels        | **MUST** | **SHOULD** | **MAY** |
 | ------------------------- | -------- | ---------- | ------- |
 | Implemented & Matched     | `true`   | `true`     | `true`  |
@@ -46,43 +37,43 @@ An expectation is an assertion that is either `true` or `false`.
 | Implemented & Exception   | `false`  | `false`    | `false` |
 | Not implemented           | `false`  | `false`    | `true`  |
 
-## Isolation
+Thus,
 
-There are two cases:
+* when an expectation is `true`, a `Spectus::Result::Pass` instance is returned;
+* when an expectation is `false`, a `Spectus::Result::Fail` exception is raised.
 
-* when the requirement level of an expectation ends with `!`, the test is performed in isolation;
-* when the requirement level of an expectation does not end with `!`, the test is performed without isolation.
+Both results share a common interface, and can be classified respectively as:
 
-Example of test in isolation:
+* a _success_, a _warning_ or an _info_;
+* a _failure_ or an _error_.
 
-```ruby
-include Spectus
+## Code Isolation
 
-greeting = 'Hello, world!'
-it { greeting.gsub!('world', 'Alice') }.MUST! eql 'Hello, Alice!'
-# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
-greeting # => "Hello, world!"
-```
+When executing expectations, side-effects may occur.
+Because they may or may not be desired, each requirement level has 2 versions:
+
+* if it does not end with `!`, its test is performed without isolation;
+* if it ends with `!`, its test is performed in isolation.
 
 Example of test without isolation:
 
 ```ruby
 include Spectus
-
 greeting = 'Hello, world!'
 it { greeting.gsub!('world', 'Alice') }.MUST eql 'Hello, Alice!'
 # => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
 greeting # => "Hello, Alice!"
 ```
 
-## Results
+Example of test in isolation:
 
-There are two possibilities:
-
-* when an expectation is `true`, a `Spectus::Result::Pass` object is returned;
-* when an expectation is `false`, a `Spectus::Result::Fail` error is raised.
-
-Both instances share the same interface.
+```ruby
+include Spectus
+greeting = 'Hello, world!'
+it { greeting.gsub!('world', 'Alice') }.MUST! eql 'Hello, Alice!'
+# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
+greeting # => "Hello, world!"
+```
 
 ## Usage
 
@@ -92,7 +83,7 @@ To begin with, let's include __Spectus__:
 include Spectus
 ```
 
-### Absolute requirement
+### Absolute Requirement
 
 Given the "`ルビー`" object, when it receives `valid_encoding?` method, then it **MUST** be `true`:
 
@@ -103,7 +94,7 @@ it { 'ルビー'.valid_encoding? }.MUST be_true
 
 The result of the test shows that the spec passed.
 
-### Absolute prohibition
+### Absolute Prohibition
 
 Given the "`foo`" object, when it receives `length` method, then it **MUST NOT** raise the `NoMethodError` exception:
 
@@ -126,7 +117,7 @@ it { BasicObject.superclass }.SHOULD equal NilClass
 Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
 However, because there isn't any exception, the result of the test shows that the spec passed.
 
-### Not recommended
+### Not Recommended
 
 Given the "`1`" object, when it receives `+(1)` method, then it **SHOULD NOT** return the "`11`" value:
 
@@ -148,27 +139,29 @@ it { 'foo'.blank? }.MAY be_false
 
 The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
 
+### More Examples
+
+An exhaustive list of examples can also be viewed here:
+[test.rb](https://github.com/fixrb/spectus/raw/master/test.rb)
+
+## Contact
+
+* Home page: https://github.com/fixrb/spectus
+* Bugs/issues: https://github.com/fixrb/spectus/issues
+
+## Rubies
+
+* [MRI](https://www.ruby-lang.org/)
+* [Rubinius](https://rubinius.com/)
+* [JRuby](https://www.jruby.org/)
+
 ## Versioning
 
 __Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
 
-## Contributing
-
-1. [Fork it](https://github.com/fixrb/spectus/fork)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
-
 ## License
 
-See `LICENSE.md` file.
-
-[gem]: https://rubygems.org/gems/spectus
-[travis]: https://travis-ci.org/fixrb/spectus
-[codeclimate]: https://codeclimate.com/github/fixrb/spectus
-[inchpages]: https://inch-ci.org/github/fixrb/spectus
-[rubydoc]: https://rubydoc.info/gems/spectus/frames
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ***
 
@@ -178,3 +171,9 @@ See `LICENSE.md` file.
     src="https://github.com/fixrb/spectus/raw/master/img/sashite.png"
     alt="Sashite" /></a>
 </p>
+
+[gem]: https://rubygems.org/gems/spectus
+[travis]: https://travis-ci.org/fixrb/spectus
+[codeclimate]: https://codeclimate.com/github/fixrb/spectus
+[inchpages]: https://inch-ci.org/github/fixrb/spectus
+[rubydoc]: https://rubydoc.info/gems/spectus/frames

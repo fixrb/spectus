@@ -5,9 +5,6 @@ require_relative 'base'
 module Spectus
   module RequirementLevel
     # Must requirement level's class.
-    #
-    # @api private
-    #
     class Must < Base
       # Evaluate the expectation.
       #

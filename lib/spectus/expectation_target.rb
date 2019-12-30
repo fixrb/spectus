@@ -3,14 +3,10 @@
 module Spectus
   # Wraps the target of an expectation.
   #
-  # @api public
-  #
   # @example
   #   it { actual value } # => ExpectationTarget wrapping the block
   class ExpectationTarget
     # Create a new expectation target
-    #
-    # @api private
     #
     # @param callable [Proc] The object to test.
     def initialize(&callable)
@@ -19,8 +15,6 @@ module Spectus
 
     # rubocop:disable Naming/MethodName
 
-    # @api public
-    #
     # This word, or the terms "REQUIRED" or "SHALL", mean that the
     # definition is an absolute requirement of the specification.
     #

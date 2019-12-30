@@ -2,12 +2,8 @@
 
 module Spectus
   # Namespace for the requirement levels.
-  #
-  # @api private
-  #
   module RequirementLevel
     # Requirement level's base class.
-    #
     class Base
       # Initialize the requirement level class.
       #

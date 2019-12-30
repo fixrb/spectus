@@ -55,9 +55,20 @@ module Spectus
       # @return [String] The char that identify the result.
       def char
         if failure?
-          color('F')
+          'F'
         else
-          color('E')
+          'E'
+        end
+      end
+
+      # Express the result with one emoji.
+      #
+      # @return [String] The emoji that identify the result.
+      def emoji
+        if failure?
+          '❌'
+        else
+          '💥'
         end
       end
     end

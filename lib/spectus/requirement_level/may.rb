@@ -5,9 +5,6 @@ require_relative 'must'
 module Spectus
   module RequirementLevel
     # May requirement level's class.
-    #
-    # @api private
-    #
     class May < Must
       # Evaluate the expectation.
       #

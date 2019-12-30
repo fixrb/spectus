@@ -4,9 +4,6 @@ require 'defi'
 
 module Spectus
   # This class evaluate the expectation with the passed block.
-  #
-  # @api private
-  #
   class Exam
     # Execute the untested code from the passed block against the matcher.
     #
