@@ -44,8 +44,8 @@ Thus,
 
 Both results share a common interface, and can be classified respectively as:
 
-* a ✅ _success_, a ⚠️ _warning_ or an 💡 _info_;
-* a ❌ _failure_ or an 💥 _error_.
+* ✅ a _success_, ⚠️ a _warning_ or 💡 an _info_;
+* ❌ a _failure_ or 💥 an _error_.
 
 ## Code Isolation
 
@@ -141,19 +141,13 @@ The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https
 
 ### More Examples
 
-An exhaustive list of examples can also be viewed here:
+A full list of unit tests can be viewed here:
 [test.rb](https://github.com/fixrb/spectus/blob/master/test.rb)
 
 ## Contact
 
 * Home page: https://github.com/fixrb/spectus
 * Bugs/issues: https://github.com/fixrb/spectus/issues
-
-## Rubies
-
-* [MRI](https://www.ruby-lang.org/)
-* [Rubinius](https://rubinius.com/)
-* [JRuby](https://www.jruby.org/)
 
 ## Versioning
 

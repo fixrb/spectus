@@ -4,4 +4,3 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   Exclude:
     - 'test.rb'
-  TargetRubyVersion: 2.7.0

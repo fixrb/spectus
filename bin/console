@@ -3,6 +3,6 @@
 
 require 'bundler/setup'
 require 'spectus'
-
 require 'irb'
+
 IRB.start

@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license      = 'MIT'
   spec.files        = Dir['LICENSE.md', 'README.md', 'lib/**/*']
 
-  spec.required_ruby_version = '>= 2.7.0'
+  spec.required_ruby_version = '>= 2.3.0'
 
   spec.add_dependency 'defi',                   '~> 2.0.3'
   spec.add_dependency 'matchi',                 '~> 2.0.0'
