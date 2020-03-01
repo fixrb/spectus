@@ -4,31 +4,28 @@ header: |
 
   require 'simplecov'
 
-  SimpleCov.command_name 'Brutal test suite'
-  SimpleCov.start
+  ::SimpleCov.command_name 'Brutal test suite'
+  ::SimpleCov.start
 
   require 'spectus'
 
-  include Spectus
-
-front_object: |
-  'foo'
+  self.class.include ::Spectus
 
 subject: |
   begin
-    it { %{front_object}.%{challenge} }.%{level} %{matcher}
+    it { 'foo'.%{challenge} }.%{level} %{matcher}
   rescue ::Spectus::Result::Fail => e
     e
   end
 
-variables:
-  challenge:
+contexts:
+  :challenge:
     - "upcase"
     - "itself"
     - "gsub!('f', 'b')"
     - "boom"
     - "empty?(4)"
-  level:
+  :level:
     - MUST
     - SHOULD
     - MAY
@@ -39,13 +36,13 @@ variables:
     - "MAY!"
     - "MUST_NOT!"
     - "SHOULD_NOT!"
-  matcher:
+  :matcher:
     - "raise_exception(NoMethodError)"
     - "raise_exception(ArgumentError)"
     - "eql('foo')"
     - "equal(42)"
 
-actual_values:
+actuals:
   - "%{subject}.level"
   - "%{subject}.to_sym"
   - "%{subject}.error?"

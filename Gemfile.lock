@@ -10,48 +10,50 @@ GEM
   specs:
     ast (2.4.0)
     aw (0.1.11)
-    brutal (0.4.0)
+    brutal (1.0.0)
     defi (2.0.4)
       aw (~> 0.1.10)
     docile (1.3.2)
     jaro_winkler (1.5.4)
-    json (2.3.0)
     matchi (2.0.0)
     parallel (1.19.1)
-    parser (2.7.0.2)
+    parser (2.7.0.3)
       ast (~> 2.4.0)
     rainbow (3.0.0)
     rake (13.0.1)
-    rubocop (0.79.0)
+    rexml (3.2.4)
+    rubocop (0.80.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
       rainbow (>= 2.2.2, < 4.0)
+      rexml
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
     rubocop-performance (1.5.2)
       rubocop (>= 0.71.0)
+    rubocop-thread_safety (0.3.4)
+      rubocop (>= 0.51.0)
     ruby-progressbar (1.10.1)
-    simplecov (0.17.1)
+    simplecov (0.18.5)
       docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.2)
-    unicode-display_width (1.6.0)
+      simplecov-html (~> 0.11)
+    simplecov-html (0.12.2)
+    unicode-display_width (1.6.1)
     yard (0.9.24)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  brutal (~> 0.4)
-  bundler (~> 2.1)
-  rake (~> 13.0)
-  rubocop
+  brutal (~> 1.0.0)
+  bundler
+  rake
   rubocop-performance
-  simplecov (~> 0.17)
+  rubocop-thread_safety
+  simplecov
   spectus!
-  yard (~> 0.9)
+  yard
 
 BUNDLED WITH
-   2.1.2
+   2.1.4
