@@ -7,7 +7,7 @@ header: |
   ::SimpleCov.command_name 'Brutal test suite'
   ::SimpleCov.start
 
-  require 'spectus'
+  require './lib/spectus'
 
   self.class.include ::Spectus
 
@@ -19,13 +19,13 @@ subject: |
   end
 
 contexts:
-  :challenge:
+  challenge:
     - "upcase"
     - "itself"
     - "gsub!('f', 'b')"
     - "boom"
     - "empty?(4)"
-  :level:
+  level:
     - MUST
     - SHOULD
     - MAY
@@ -36,7 +36,7 @@ contexts:
     - "MAY!"
     - "MUST_NOT!"
     - "SHOULD_NOT!"
-  :matcher:
+  matcher:
     - "raise_exception(NoMethodError)"
     - "raise_exception(ArgumentError)"
     - "eql('foo')"

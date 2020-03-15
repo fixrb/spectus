@@ -5,7 +5,7 @@ require 'simplecov'
 ::SimpleCov.command_name 'Brutal test suite'
 ::SimpleCov.start
 
-require 'spectus'
+require './lib/spectus'
 
 self.class.include ::Spectus
 
