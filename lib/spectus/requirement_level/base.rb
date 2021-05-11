@@ -32,36 +32,21 @@ module Spectus
 
       # The result of the expectation.
       #
-      # @return [Result::Fail, Result::Pass] The test result.
+      # @raise [Result::Fail] The expectation is `false`.
+      # @return [Result::Pass] The expectation is `true`.
       def call
-        pass? ? pass! : fail!
+        Result.call(pass?,
+                    actual:   exam.actual,
+                    error:    exam.exception,
+                    expected: matcher.expected,
+                    got:      exam.got,
+                    negate:   negate?,
+                    valid:    exam.valid?,
+                    matcher:  matcher.class.to_sym,
+                    level:    level)
       end
 
       protected
-
-      # @return [Result::Pass] A passed spec result.
-      def pass!
-        Result::Pass.new(**details)
-      end
-
-      # @raise [Result::Fail] A failed spec result.
-      def fail!
-        raise Result::Fail.new(**details)
-      end
-
-      # @return [Hash] List of parameters.
-      def details
-        {
-          actual:   exam.actual,
-          error:    exam.exception,
-          expected: matcher.expected,
-          got:      exam.got,
-          negate:   negate?,
-          valid:    exam.valid?,
-          matcher:  matcher.class.to_sym,
-          level:    level
-        }
-      end
 
       # @return [Symbol] The requirement level.
       def level
@@ -79,6 +64,5 @@ module Spectus
   end
 end
 
+require_relative File.join("..", "result")
 require_relative File.join("..", "exam")
-require_relative File.join("..", "result", "fail")
-require_relative File.join("..", "result", "pass")

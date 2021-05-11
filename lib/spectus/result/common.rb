@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Spectus
-  # Namespace for the results.
   module Result
     # Common collection of methods for Result's classes.
     module Common

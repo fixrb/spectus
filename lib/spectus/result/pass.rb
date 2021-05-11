@@ -8,6 +8,11 @@ module Spectus
     class Pass
       include Common
 
+      # @return [Pass] A passed spec result.
+      def self.call(**details)
+        new(**details)
+      end
+
       alias message to_s
 
       # Did the test fail?

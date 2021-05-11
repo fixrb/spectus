@@ -8,6 +8,11 @@ module Spectus
     class Fail < ::StandardError
       include Common
 
+      # @raise [Fail] A failed spec result.
+      def self.call(**details)
+        raise new(**details)
+      end
+
       # Did the test fail?
       #
       # @return [Boolean] The spec passed or failed?
