@@ -1,9 +1,9 @@
 # Spectus
 
-[![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=master)][travis]
+[![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=main)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/spectus/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/spectus.svg)][gem]
-[![Inline docs](https://inch-ci.org/github/fixrb/spectus.svg?branch=master)][inchpages]
+[![Inline docs](https://inch-ci.org/github/fixrb/spectus.svg?branch=main)][inchpages]
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 > Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'s requirement levels 🚥
@@ -142,7 +142,7 @@ The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https
 ### More Examples
 
 A full list of unit tests can be viewed here:
-[test.rb](https://github.com/fixrb/spectus/blob/master/test.rb)
+[test.rb](https://github.com/fixrb/spectus/blob/main/test.rb)
 
 ## Contact
 
@@ -162,7 +162,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 <p>
   This project is sponsored by:<br />
   <a href="https://sashite.com/"><img
-    src="https://github.com/fixrb/spectus/raw/master/img/sashite.png"
+    src="https://github.com/fixrb/spectus/raw/main/img/sashite.png"
     alt="Sashite" /></a>
 </p>
 
