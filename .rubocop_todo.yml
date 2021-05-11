@@ -17,15 +17,15 @@ Layout/HashAlignment:
     - 'lib/spectus/expectation_target.rb'
     - 'lib/spectus/requirement_level/base.rb'
 
-# Offense count: 2
+# Offense count: 1
+# Configuration parameters: IgnoredMethods, CountRepeatedAttributes.
+Metrics/AbcSize:
+  Max: 18
+
+# Offense count: 1
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
   Max: 12
-
-# Offense count: 1
-# Configuration parameters: CountKeywordArgs, MaxOptionalParameters.
-Metrics/ParameterLists:
-  Max: 8
 
 # Offense count: 3
 Style/MixinUsage:

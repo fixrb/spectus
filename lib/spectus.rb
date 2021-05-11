@@ -6,14 +6,14 @@ require "matchi/helper"
 #
 # @example It MUST equal 42.
 #   require 'spectus'
-#   it { 42 }.MUST equal 42 # => #<Spectus::Result::Pass...>
+#   it { 42 }.MUST equal 42 # => #<Expresenter::Pass...>
 module Spectus
   include ::Matchi::Helper
 
   # Expectations are built with this method.
   #
   # @example An _absolute requirement_ definition.
-  #   it { 42 }.MUST equal 42 # => #<Spectus::Result::Pass...>
+  #   it { 42 }.MUST equal 42 # => #<Expresenter::Pass...>
   #
   # @param input [Proc] The code to test.
   #

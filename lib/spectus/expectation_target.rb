@@ -23,7 +23,7 @@ module Spectus
     #
     # @param matcher [#matches?] The matcher.
     #
-    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
+    # @return [Expresenter::Fail, Expresenter::Pass] Report if the spec pass or fail.
     def MUST(matcher)
       RequirementLevel::Must.new(
         callable:   callable,
@@ -54,7 +54,7 @@ module Spectus
     #
     # @param matcher [#matches?] The matcher.
     #
-    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
+    # @return [Expresenter::Fail, Expresenter::Pass] Report if the spec pass or fail.
     def MUST_NOT(matcher)
       RequirementLevel::Must.new(
         callable:   callable,
@@ -87,7 +87,7 @@ module Spectus
     #
     # @param matcher [#matches?] The matcher.
     #
-    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
+    # @return [Expresenter::Fail, Expresenter::Pass] Report if the spec pass or fail.
     def SHOULD(matcher)
       RequirementLevel::Should.new(
         callable:   callable,
@@ -121,7 +121,7 @@ module Spectus
     #
     # @param matcher [#matches?] The matcher.
     #
-    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
+    # @return [Expresenter::Fail, Expresenter::Pass] Report if the spec pass or fail.
     def SHOULD_NOT(matcher)
       RequirementLevel::Should.new(
         callable:   callable,
@@ -161,7 +161,7 @@ module Spectus
     #
     # @param matcher [#matches?] The matcher.
     #
-    # @return [Result::Fail, Result::Pass] Report if the spec pass or fail.
+    # @return [Expresenter::Fail, Expresenter::Pass] Report if the spec pass or fail.
     def MAY(matcher)
       RequirementLevel::May.new(
         callable:   callable,

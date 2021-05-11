@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "expresenter"
+
 module Spectus
   # Namespace for the requirement levels.
   module RequirementLevel
@@ -32,18 +34,19 @@ module Spectus
 
       # The result of the expectation.
       #
-      # @raise [Result::Fail] The expectation is `false`.
-      # @return [Result::Pass] The expectation is `true`.
+      # @raise [Expresenter::Fail] The expectation is `false`.
+      # @return [Expresenter::Pass] The expectation is `true`.
       def call
-        Result.call(pass?,
-                    actual:   exam.actual,
-                    error:    exam.exception,
-                    expected: matcher.expected,
-                    got:      exam.got,
-                    negate:   negate?,
-                    valid:    exam.valid?,
-                    matcher:  matcher.class.to_sym,
-                    level:    level)
+        ::Expresenter.call(pass?).with(
+          actual:   exam.actual,
+          error:    exam.exception,
+          expected: matcher.expected,
+          got:      exam.got,
+          negate:   negate?,
+          valid:    exam.valid?,
+          matcher:  matcher.class.to_sym,
+          level:    level
+        )
       end
 
       protected
@@ -64,5 +67,4 @@ module Spectus
   end
 end
 
-require_relative File.join("..", "result")
 require_relative File.join("..", "exam")

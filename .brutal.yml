@@ -15,7 +15,7 @@ header: |
 subject: |
   begin
     it { "foo".%{challenge} }.%{level} %{matcher}
-  rescue ::Spectus::Result::Fail => e
+  rescue ::Expresenter::Fail => e
     e
   end
 
