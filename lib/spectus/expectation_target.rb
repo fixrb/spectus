@@ -193,6 +193,6 @@ module Spectus
   end
 end
 
-require_relative File.join('requirement_level', 'must')
-require_relative File.join('requirement_level', 'should')
-require_relative File.join('requirement_level', 'may')
+require_relative File.join("requirement_level", "must")
+require_relative File.join("requirement_level", "should")
+require_relative File.join("requirement_level", "may")

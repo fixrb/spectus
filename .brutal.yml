@@ -1,19 +1,20 @@
 ---
 header: |
+  #!/usr/bin/env ruby
   # frozen_string_literal: false
 
-  require 'simplecov'
+  require "simplecov"
 
-  ::SimpleCov.command_name 'Brutal test suite'
+  ::SimpleCov.command_name "Brutal test suite"
   ::SimpleCov.start
 
-  require './lib/spectus'
+  require "./lib/spectus"
 
   self.class.include ::Spectus
 
 subject: |
   begin
-    it { 'foo'.%{challenge} }.%{level} %{matcher}
+    it { "foo".%{challenge} }.%{level} %{matcher}
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -22,7 +23,7 @@ contexts:
   challenge:
     - "upcase"
     - "itself"
-    - "gsub!('f', 'b')"
+    - 'gsub!("f", "b")'
     - "boom"
     - "empty?(4)"
   level:
@@ -39,7 +40,7 @@ contexts:
   matcher:
     - "raise_exception(NoMethodError)"
     - "raise_exception(ArgumentError)"
-    - "eql('foo')"
+    - 'eql("foo")'
     - "equal(42)"
 
 actuals:

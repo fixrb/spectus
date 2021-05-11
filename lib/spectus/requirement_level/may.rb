@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'must'
+require_relative "must"
 
 module Spectus
   module RequirementLevel

@@ -1,14 +1,31 @@
-require:
-  - rubocop-performance
-  - rubocop-thread_safety
-
 inherit_from: .rubocop_todo.yml
 
 AllCops:
   NewCops: enable
+  TargetRubyVersion: 2.7
 
   Exclude:
     - test.rb
 
+require:
+  - rubocop-md
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-thread_safety
+
+# Enforcing double quotes reduces the times where you need to switch to Crystal.
 Style/StringLiterals:
-  EnforcedStyle: single_quotes
+  EnforcedStyle: double_quotes
+
+# We do not need to support Ruby 1.9, so this is good to use.
+Style/SymbolArray:
+  Enabled: true
+
+# Most readable form.
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+# Check with yard instead.
+Style/Documentation:
+  Enabled: false

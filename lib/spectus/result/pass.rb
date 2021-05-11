@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'common'
+require_relative "common"
 
 module Spectus
   module Result
@@ -60,11 +60,11 @@ module Spectus
       # @return [String] The char that identify the result.
       def char
         if success?
-          '.'
+          "."
         elsif warning?
-          'W'
+          "W"
         else
-          'I'
+          "I"
         end
       end
 
@@ -73,11 +73,11 @@ module Spectus
       # @return [String] The emoji that identify the result.
       def emoji
         if success?
-          '✅'
+          "✅"
         elsif warning?
-          '⚠️'
+          "⚠️"
         else
-          '💡'
+          "💡"
         end
       end
     end

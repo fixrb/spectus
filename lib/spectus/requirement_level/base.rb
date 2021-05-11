@@ -65,7 +65,7 @@ module Spectus
 
       # @return [Symbol] The requirement level.
       def level
-        self.class.name.split('::').fetch(-1).upcase.to_sym
+        self.class.name.split("::").fetch(-1).upcase.to_sym
       end
 
       # @note The boolean comparison between the actual value and the expected
@@ -79,6 +79,6 @@ module Spectus
   end
 end
 
-require_relative File.join('..', 'exam')
-require_relative File.join('..', 'result', 'fail')
-require_relative File.join('..', 'result', 'pass')
+require_relative File.join("..", "exam")
+require_relative File.join("..", "result", "fail")
+require_relative File.join("..", "result", "pass")

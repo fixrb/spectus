@@ -13,7 +13,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'spectus'
+gem "spectus"
 ```
 
 And then execute:
@@ -59,8 +59,8 @@ Example of test without isolation:
 
 ```ruby
 include Spectus
-greeting = 'Hello, world!'
-it { greeting.gsub!('world', 'Alice') }.MUST eql 'Hello, Alice!'
+greeting = "Hello, world!"
+it { greeting.gsub!("world", "Alice") }.MUST eql "Hello, Alice!"
 # => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
 greeting # => "Hello, Alice!"
 ```
@@ -69,8 +69,8 @@ Example of test in isolation:
 
 ```ruby
 include Spectus
-greeting = 'Hello, world!'
-it { greeting.gsub!('world', 'Alice') }.MUST! eql 'Hello, Alice!'
+greeting = "Hello, world!"
+it { greeting.gsub!("world", "Alice") }.MUST! eql "Hello, Alice!"
 # => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
 greeting # => "Hello, world!"
 ```
@@ -88,7 +88,7 @@ include Spectus
 Given the "`ルビー`" object, when it receives `valid_encoding?` method, then it **MUST** be `true`:
 
 ```ruby
-it { 'ルビー'.valid_encoding? }.MUST be_true
+it { "ルビー".valid_encoding? }.MUST be_true
 # => Spectus::Result::Pass(actual: true, error: nil, expected: nil, got: true, matcher: :be_true, negate: false, level: :MUST, valid: true)
 ```
 
@@ -99,7 +99,7 @@ The result of the test shows that the spec passed.
 Given the "`foo`" object, when it receives `length` method, then it **MUST NOT** raise the `NoMethodError` exception:
 
 ```ruby
-it { 'foo'.length }.MUST_NOT raise_exception NoMethodError
+it { "foo".length }.MUST_NOT raise_exception NoMethodError
 # => Spectus::Result::Pass(actual: 3, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)
 ```
 
@@ -122,7 +122,7 @@ However, because there isn't any exception, the result of the test shows that th
 Given the "`1`" object, when it receives `+(1)` method, then it **SHOULD NOT** return the "`11`" value:
 
 ```ruby
-it { '1' + 1 }.SHOULD_NOT eql '11'
+it { "1" + 1 }.SHOULD_NOT eql "11"
 # raise Spectus::Result::Fail(actual: nil, error: #<TypeError: no implicit conversion of Integer into String>, expected: "11", got: nil, matcher: :eql, negate: true, level: :SHOULD, valid: false)
 ```
 
@@ -133,7 +133,7 @@ There was a `TypeError` exception, the result of the test shows that the spec fa
 Given the "`foo`" object, when it receives `blank?` method, then it **MAY** be `false`:
 
 ```ruby
-it { 'foo'.blank? }.MAY be_false
+it { "foo".blank? }.MAY be_false
 # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_false, negate: false, level: :MAY, valid: false)
 ```
 

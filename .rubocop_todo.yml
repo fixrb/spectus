@@ -6,14 +6,7 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-# Configuration parameters: Include.
-# Include: **/*.gemspec
-Gemspec/RequiredRubyVersion:
-  Exclude:
-    - 'spectus.gemspec'
-
-# Offense count: 51
+# Offense count: 44
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
 # SupportedHashRocketStyles: key, separator, table
@@ -25,6 +18,12 @@ Layout/HashAlignment:
     - 'lib/spectus/requirement_level/base.rb'
 
 # Offense count: 2
+# Configuration parameters: CheckForMethodsWithNoSideEffects.
+Lint/Void:
+  Exclude:
+    - 'README.md'
+
+# Offense count: 2
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
 Metrics/MethodLength:
   Max: 12
@@ -33,3 +32,14 @@ Metrics/MethodLength:
 # Configuration parameters: CountKeywordArgs.
 Metrics/ParameterLists:
   Max: 8
+
+# Offense count: 3
+Style/MixinUsage:
+  Exclude:
+    - 'README.md'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+Style/StringConcatenation:
+  Exclude:
+    - 'README.md'

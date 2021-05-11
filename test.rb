@@ -1,11 +1,12 @@
+#!/usr/bin/env ruby
 # frozen_string_literal: false
 
-require 'simplecov'
+require "simplecov"
 
-::SimpleCov.command_name 'Brutal test suite'
+::SimpleCov.command_name "Brutal test suite"
 ::SimpleCov.start
 
-require './lib/spectus'
+require "./lib/spectus"
 
 self.class.include ::Spectus
 
@@ -13,7 +14,7 @@ self.class.include ::Spectus
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST raise_exception(NoMethodError)
+    it { "foo".upcase }.MUST raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -45,7 +46,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST raise_exception(ArgumentError)
+    it { "foo".upcase }.MUST raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -77,7 +78,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST eql('foo')
+    it { "foo".upcase }.MUST eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -109,7 +110,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST equal(42)
+    it { "foo".upcase }.MUST equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -141,7 +142,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD raise_exception(NoMethodError)
+    it { "foo".upcase }.SHOULD raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -173,7 +174,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD raise_exception(ArgumentError)
+    it { "foo".upcase }.SHOULD raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -205,7 +206,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD eql('foo')
+    it { "foo".upcase }.SHOULD eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -237,7 +238,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD equal(42)
+    it { "foo".upcase }.SHOULD equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -269,7 +270,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY raise_exception(NoMethodError)
+    it { "foo".upcase }.MAY raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -301,7 +302,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY raise_exception(ArgumentError)
+    it { "foo".upcase }.MAY raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -333,7 +334,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY eql('foo')
+    it { "foo".upcase }.MAY eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -365,7 +366,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY equal(42)
+    it { "foo".upcase }.MAY equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -397,7 +398,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT raise_exception(NoMethodError)
+    it { "foo".upcase }.MUST_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -429,7 +430,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT raise_exception(ArgumentError)
+    it { "foo".upcase }.MUST_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -461,7 +462,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT eql('foo')
+    it { "foo".upcase }.MUST_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -493,7 +494,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT equal(42)
+    it { "foo".upcase }.MUST_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -525,7 +526,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT raise_exception(NoMethodError)
+    it { "foo".upcase }.SHOULD_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -557,7 +558,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT raise_exception(ArgumentError)
+    it { "foo".upcase }.SHOULD_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -589,7 +590,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT eql('foo')
+    it { "foo".upcase }.SHOULD_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -621,7 +622,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT equal(42)
+    it { "foo".upcase }.SHOULD_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -653,7 +654,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST! raise_exception(NoMethodError)
+    it { "foo".upcase }.MUST! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -685,7 +686,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST! raise_exception(ArgumentError)
+    it { "foo".upcase }.MUST! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -717,7 +718,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST! eql('foo')
+    it { "foo".upcase }.MUST! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -749,7 +750,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST! equal(42)
+    it { "foo".upcase }.MUST! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -781,7 +782,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD! raise_exception(NoMethodError)
+    it { "foo".upcase }.SHOULD! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -813,7 +814,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD! raise_exception(ArgumentError)
+    it { "foo".upcase }.SHOULD! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -845,7 +846,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD! eql('foo')
+    it { "foo".upcase }.SHOULD! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -877,7 +878,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD! equal(42)
+    it { "foo".upcase }.SHOULD! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -909,7 +910,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY! raise_exception(NoMethodError)
+    it { "foo".upcase }.MAY! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -941,7 +942,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY! raise_exception(ArgumentError)
+    it { "foo".upcase }.MAY! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -973,7 +974,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY! eql('foo')
+    it { "foo".upcase }.MAY! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1005,7 +1006,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MAY! equal(42)
+    it { "foo".upcase }.MAY! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1037,7 +1038,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT! raise_exception(NoMethodError)
+    it { "foo".upcase }.MUST_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1069,7 +1070,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT! raise_exception(ArgumentError)
+    it { "foo".upcase }.MUST_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1101,7 +1102,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT! eql('foo')
+    it { "foo".upcase }.MUST_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1133,7 +1134,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.MUST_NOT! equal(42)
+    it { "foo".upcase }.MUST_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1165,7 +1166,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT! raise_exception(NoMethodError)
+    it { "foo".upcase }.SHOULD_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1197,7 +1198,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT! raise_exception(ArgumentError)
+    it { "foo".upcase }.SHOULD_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1229,7 +1230,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT! eql('foo')
+    it { "foo".upcase }.SHOULD_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1261,7 +1262,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.upcase }.SHOULD_NOT! equal(42)
+    it { "foo".upcase }.SHOULD_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1293,7 +1294,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST raise_exception(NoMethodError)
+    it { "foo".itself }.MUST raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1325,7 +1326,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST raise_exception(ArgumentError)
+    it { "foo".itself }.MUST raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1357,7 +1358,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST eql('foo')
+    it { "foo".itself }.MUST eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1389,7 +1390,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST equal(42)
+    it { "foo".itself }.MUST equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1421,7 +1422,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD raise_exception(NoMethodError)
+    it { "foo".itself }.SHOULD raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1453,7 +1454,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD raise_exception(ArgumentError)
+    it { "foo".itself }.SHOULD raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1485,7 +1486,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD eql('foo')
+    it { "foo".itself }.SHOULD eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1517,7 +1518,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD equal(42)
+    it { "foo".itself }.SHOULD equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1549,7 +1550,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY raise_exception(NoMethodError)
+    it { "foo".itself }.MAY raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1581,7 +1582,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY raise_exception(ArgumentError)
+    it { "foo".itself }.MAY raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1613,7 +1614,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY eql('foo')
+    it { "foo".itself }.MAY eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1645,7 +1646,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY equal(42)
+    it { "foo".itself }.MAY equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1677,7 +1678,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT raise_exception(NoMethodError)
+    it { "foo".itself }.MUST_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1709,7 +1710,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT raise_exception(ArgumentError)
+    it { "foo".itself }.MUST_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1741,7 +1742,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT eql('foo')
+    it { "foo".itself }.MUST_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1773,7 +1774,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT equal(42)
+    it { "foo".itself }.MUST_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1805,7 +1806,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT raise_exception(NoMethodError)
+    it { "foo".itself }.SHOULD_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1837,7 +1838,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT raise_exception(ArgumentError)
+    it { "foo".itself }.SHOULD_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1869,7 +1870,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT eql('foo')
+    it { "foo".itself }.SHOULD_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1901,7 +1902,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT equal(42)
+    it { "foo".itself }.SHOULD_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1933,7 +1934,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST! raise_exception(NoMethodError)
+    it { "foo".itself }.MUST! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1965,7 +1966,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST! raise_exception(ArgumentError)
+    it { "foo".itself }.MUST! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -1997,7 +1998,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST! eql('foo')
+    it { "foo".itself }.MUST! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2029,7 +2030,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST! equal(42)
+    it { "foo".itself }.MUST! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2061,7 +2062,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD! raise_exception(NoMethodError)
+    it { "foo".itself }.SHOULD! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2093,7 +2094,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD! raise_exception(ArgumentError)
+    it { "foo".itself }.SHOULD! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2125,7 +2126,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD! eql('foo')
+    it { "foo".itself }.SHOULD! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2157,7 +2158,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD! equal(42)
+    it { "foo".itself }.SHOULD! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2189,7 +2190,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY! raise_exception(NoMethodError)
+    it { "foo".itself }.MAY! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2221,7 +2222,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY! raise_exception(ArgumentError)
+    it { "foo".itself }.MAY! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2253,7 +2254,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY! eql('foo')
+    it { "foo".itself }.MAY! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2285,7 +2286,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MAY! equal(42)
+    it { "foo".itself }.MAY! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2317,7 +2318,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT! raise_exception(NoMethodError)
+    it { "foo".itself }.MUST_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2349,7 +2350,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT! raise_exception(ArgumentError)
+    it { "foo".itself }.MUST_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2381,7 +2382,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT! eql('foo')
+    it { "foo".itself }.MUST_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2413,7 +2414,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.MUST_NOT! equal(42)
+    it { "foo".itself }.MUST_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2445,7 +2446,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT! raise_exception(NoMethodError)
+    it { "foo".itself }.SHOULD_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2477,7 +2478,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT! raise_exception(ArgumentError)
+    it { "foo".itself }.SHOULD_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2509,7 +2510,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT! eql('foo')
+    it { "foo".itself }.SHOULD_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2541,7 +2542,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.itself }.SHOULD_NOT! equal(42)
+    it { "foo".itself }.SHOULD_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2573,7 +2574,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.MUST raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2605,7 +2606,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.MUST raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2637,7 +2638,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST eql('foo')
+    it { "foo".gsub!("f", "b") }.MUST eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2669,7 +2670,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST equal(42)
+    it { "foo".gsub!("f", "b") }.MUST equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2701,7 +2702,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.SHOULD raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2733,7 +2734,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.SHOULD raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2765,7 +2766,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD eql('foo')
+    it { "foo".gsub!("f", "b") }.SHOULD eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2797,7 +2798,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD equal(42)
+    it { "foo".gsub!("f", "b") }.SHOULD equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2829,7 +2830,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.MAY raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2861,7 +2862,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.MAY raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2893,7 +2894,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY eql('foo')
+    it { "foo".gsub!("f", "b") }.MAY eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2925,7 +2926,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY equal(42)
+    it { "foo".gsub!("f", "b") }.MAY equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2957,7 +2958,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.MUST_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -2989,7 +2990,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.MUST_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3021,7 +3022,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT eql('foo')
+    it { "foo".gsub!("f", "b") }.MUST_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3053,7 +3054,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT equal(42)
+    it { "foo".gsub!("f", "b") }.MUST_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3085,7 +3086,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3117,7 +3118,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3149,7 +3150,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT eql('foo')
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3181,7 +3182,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT equal(42)
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3213,7 +3214,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST! raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.MUST! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3245,7 +3246,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST! raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.MUST! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3277,7 +3278,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST! eql('foo')
+    it { "foo".gsub!("f", "b") }.MUST! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3309,7 +3310,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST! equal(42)
+    it { "foo".gsub!("f", "b") }.MUST! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3341,7 +3342,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD! raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.SHOULD! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3373,7 +3374,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD! raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.SHOULD! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3405,7 +3406,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD! eql('foo')
+    it { "foo".gsub!("f", "b") }.SHOULD! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3437,7 +3438,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD! equal(42)
+    it { "foo".gsub!("f", "b") }.SHOULD! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3469,7 +3470,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY! raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.MAY! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3501,7 +3502,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY! raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.MAY! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3533,7 +3534,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY! eql('foo')
+    it { "foo".gsub!("f", "b") }.MAY! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3565,7 +3566,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MAY! equal(42)
+    it { "foo".gsub!("f", "b") }.MAY! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3597,7 +3598,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT! raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.MUST_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3629,7 +3630,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT! raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.MUST_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3661,7 +3662,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT! eql('foo')
+    it { "foo".gsub!("f", "b") }.MUST_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3693,7 +3694,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.MUST_NOT! equal(42)
+    it { "foo".gsub!("f", "b") }.MUST_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3725,7 +3726,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT! raise_exception(NoMethodError)
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3757,7 +3758,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT! raise_exception(ArgumentError)
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3789,7 +3790,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT! eql('foo')
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3821,7 +3822,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.gsub!('f', 'b') }.SHOULD_NOT! equal(42)
+    it { "foo".gsub!("f", "b") }.SHOULD_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3853,7 +3854,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST raise_exception(NoMethodError)
+    it { "foo".boom }.MUST raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3885,7 +3886,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST raise_exception(ArgumentError)
+    it { "foo".boom }.MUST raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3917,7 +3918,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST eql('foo')
+    it { "foo".boom }.MUST eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3949,7 +3950,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST equal(42)
+    it { "foo".boom }.MUST equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -3981,7 +3982,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD raise_exception(NoMethodError)
+    it { "foo".boom }.SHOULD raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4013,7 +4014,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD raise_exception(ArgumentError)
+    it { "foo".boom }.SHOULD raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4045,7 +4046,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD eql('foo')
+    it { "foo".boom }.SHOULD eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4077,7 +4078,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD equal(42)
+    it { "foo".boom }.SHOULD equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4109,7 +4110,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY raise_exception(NoMethodError)
+    it { "foo".boom }.MAY raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4141,7 +4142,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY raise_exception(ArgumentError)
+    it { "foo".boom }.MAY raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4173,7 +4174,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY eql('foo')
+    it { "foo".boom }.MAY eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4205,7 +4206,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY equal(42)
+    it { "foo".boom }.MAY equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4237,7 +4238,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT raise_exception(NoMethodError)
+    it { "foo".boom }.MUST_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4269,7 +4270,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT raise_exception(ArgumentError)
+    it { "foo".boom }.MUST_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4301,7 +4302,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT eql('foo')
+    it { "foo".boom }.MUST_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4333,7 +4334,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT equal(42)
+    it { "foo".boom }.MUST_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4365,7 +4366,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT raise_exception(NoMethodError)
+    it { "foo".boom }.SHOULD_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4397,7 +4398,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT raise_exception(ArgumentError)
+    it { "foo".boom }.SHOULD_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4429,7 +4430,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT eql('foo')
+    it { "foo".boom }.SHOULD_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4461,7 +4462,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT equal(42)
+    it { "foo".boom }.SHOULD_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4493,7 +4494,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST! raise_exception(NoMethodError)
+    it { "foo".boom }.MUST! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4525,7 +4526,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST! raise_exception(ArgumentError)
+    it { "foo".boom }.MUST! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4557,7 +4558,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST! eql('foo')
+    it { "foo".boom }.MUST! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4589,7 +4590,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST! equal(42)
+    it { "foo".boom }.MUST! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4621,7 +4622,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD! raise_exception(NoMethodError)
+    it { "foo".boom }.SHOULD! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4653,7 +4654,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD! raise_exception(ArgumentError)
+    it { "foo".boom }.SHOULD! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4685,7 +4686,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD! eql('foo')
+    it { "foo".boom }.SHOULD! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4717,7 +4718,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD! equal(42)
+    it { "foo".boom }.SHOULD! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4749,7 +4750,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY! raise_exception(NoMethodError)
+    it { "foo".boom }.MAY! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4781,7 +4782,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY! raise_exception(ArgumentError)
+    it { "foo".boom }.MAY! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4813,7 +4814,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY! eql('foo')
+    it { "foo".boom }.MAY! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4845,7 +4846,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MAY! equal(42)
+    it { "foo".boom }.MAY! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4877,7 +4878,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT! raise_exception(NoMethodError)
+    it { "foo".boom }.MUST_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4909,7 +4910,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT! raise_exception(ArgumentError)
+    it { "foo".boom }.MUST_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4941,7 +4942,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT! eql('foo')
+    it { "foo".boom }.MUST_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -4973,7 +4974,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.MUST_NOT! equal(42)
+    it { "foo".boom }.MUST_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5005,7 +5006,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT! raise_exception(NoMethodError)
+    it { "foo".boom }.SHOULD_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5037,7 +5038,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT! raise_exception(ArgumentError)
+    it { "foo".boom }.SHOULD_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5069,7 +5070,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT! eql('foo')
+    it { "foo".boom }.SHOULD_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5101,7 +5102,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.boom }.SHOULD_NOT! equal(42)
+    it { "foo".boom }.SHOULD_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5133,7 +5134,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.MUST raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5165,7 +5166,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.MUST raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5197,7 +5198,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST eql('foo')
+    it { "foo".empty?(4) }.MUST eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5229,7 +5230,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST equal(42)
+    it { "foo".empty?(4) }.MUST equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5261,7 +5262,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.SHOULD raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5293,7 +5294,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.SHOULD raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5325,7 +5326,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD eql('foo')
+    it { "foo".empty?(4) }.SHOULD eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5357,7 +5358,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD equal(42)
+    it { "foo".empty?(4) }.SHOULD equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5389,7 +5390,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.MAY raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5421,7 +5422,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.MAY raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5453,7 +5454,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY eql('foo')
+    it { "foo".empty?(4) }.MAY eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5485,7 +5486,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY equal(42)
+    it { "foo".empty?(4) }.MAY equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5517,7 +5518,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.MUST_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5549,7 +5550,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.MUST_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5581,7 +5582,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT eql('foo')
+    it { "foo".empty?(4) }.MUST_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5613,7 +5614,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT equal(42)
+    it { "foo".empty?(4) }.MUST_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5645,7 +5646,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.SHOULD_NOT raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5677,7 +5678,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.SHOULD_NOT raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5709,7 +5710,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT eql('foo')
+    it { "foo".empty?(4) }.SHOULD_NOT eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5741,7 +5742,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT equal(42)
+    it { "foo".empty?(4) }.SHOULD_NOT equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5773,7 +5774,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST! raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.MUST! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5805,7 +5806,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST! raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.MUST! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5837,7 +5838,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST! eql('foo')
+    it { "foo".empty?(4) }.MUST! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5869,7 +5870,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST! equal(42)
+    it { "foo".empty?(4) }.MUST! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5901,7 +5902,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD! raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.SHOULD! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5933,7 +5934,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD! raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.SHOULD! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5965,7 +5966,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD! eql('foo')
+    it { "foo".empty?(4) }.SHOULD! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -5997,7 +5998,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD! equal(42)
+    it { "foo".empty?(4) }.SHOULD! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6029,7 +6030,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY! raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.MAY! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6061,7 +6062,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY! raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.MAY! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6093,7 +6094,7 @@ raise if actual.got.class != TrueClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY! eql('foo')
+    it { "foo".empty?(4) }.MAY! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6125,7 +6126,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MAY! equal(42)
+    it { "foo".empty?(4) }.MAY! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6157,7 +6158,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT! raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.MUST_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6189,7 +6190,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT! raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.MUST_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6221,7 +6222,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT! eql('foo')
+    it { "foo".empty?(4) }.MUST_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6253,7 +6254,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.MUST_NOT! equal(42)
+    it { "foo".empty?(4) }.MUST_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6285,7 +6286,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT! raise_exception(NoMethodError)
+    it { "foo".empty?(4) }.SHOULD_NOT! raise_exception(NoMethodError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6317,7 +6318,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT! raise_exception(ArgumentError)
+    it { "foo".empty?(4) }.SHOULD_NOT! raise_exception(ArgumentError)
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6349,7 +6350,7 @@ raise if actual.got.class != FalseClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT! eql('foo')
+    it { "foo".empty?(4) }.SHOULD_NOT! eql("foo")
   rescue ::Spectus::Result::Fail => e
     e
   end
@@ -6381,7 +6382,7 @@ raise if actual.got.class != NilClass
 
 actual = begin
   begin
-    it { 'foo'.empty?(4) }.SHOULD_NOT! equal(42)
+    it { "foo".empty?(4) }.SHOULD_NOT! equal(42)
   rescue ::Spectus::Result::Fail => e
     e
   end

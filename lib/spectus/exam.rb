@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'defi'
+require "defi"
 
 module Spectus
   # This class evaluate the expectation with the passed block.

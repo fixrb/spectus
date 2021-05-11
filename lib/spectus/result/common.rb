@@ -97,14 +97,14 @@ module Spectus
       #
       # @return [String] A readable string of the definition.
       def definition
-        [matcher, expected&.inspect].compact.join(' ')
+        [matcher, expected&.inspect].compact.join(" ")
       end
 
       # The negation, if any.
       #
       # @return [String] The negation, or an empty string.
       def maybe_negate
-        negate? ? ' not' : ''
+        negate? ? " not" : ""
       end
 
       # The summary of the result.
