@@ -39,13 +39,21 @@ There are several scenarios:
 
 Thus,
 
-* when an expectation is `true`, a `Spectus::Result::Pass` instance is returned;
-* when an expectation is `false`, a `Spectus::Result::Fail` exception is raised.
+* when an assertion is `true`, a `Spectus::Result::Pass` instance is returned;
+* when an assertion is `false`, a `Spectus::Result::Fail` exception is raised.
 
-Both results share a common interface, and can be classified respectively as:
+Both results share a common interface.
 
-* ✅ a _success_, ⚠️ a _warning_ or 💡 an _info_;
-* ❌ a _failure_ or 💥 an _error_.
+Passed expectations can be classified as:
+
+* ✅ success
+* ⚠️ warning
+* 💡 info
+
+Failed expectations can be classified as:
+
+* ❌ failure
+* 💥 error
 
 ## Code Isolation
 
@@ -141,8 +149,8 @@ The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https
 
 ### More Examples
 
-A full list of unit tests can be viewed here:
-[test.rb](https://github.com/fixrb/spectus/blob/main/test.rb)
+A full list of unit tests can be viewed (and executed) here:
+[./test.rb](https://github.com/fixrb/spectus/blob/main/test.rb)
 
 ## Contact
 
