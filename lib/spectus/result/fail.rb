@@ -15,13 +15,6 @@ module Spectus
         true
       end
 
-      # Did the test pass?
-      #
-      # @return [Boolean] The spec passed or failed?
-      def passed?
-        !failed?
-      end
-
       # The state of failure.
       #
       # @return [Boolean] The test was a failure?

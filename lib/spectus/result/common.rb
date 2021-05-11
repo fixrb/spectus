@@ -50,6 +50,13 @@ module Spectus
         super(to_s) if failed?
       end
 
+      # Did the test pass?
+      #
+      # @return [Boolean] The spec passed or failed?
+      def passed?
+        !failed?
+      end
+
       # The value of the negate instance variable.
       #
       # @return [Boolean] Evaluated to a negative assertion?
