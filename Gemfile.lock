@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    spectus (3.2.0)
+    spectus (3.3.0)
       defi (~> 2.0.4)
-      expresenter (~> 1.0.1)
+      expresenter (~> 1.1.0)
       matchi (~> 2.0.0)
 
 GEM
@@ -14,8 +14,8 @@ GEM
     brutal (1.1.1)
     defi (2.0.4)
       aw (~> 0.1.10)
-    docile (1.3.5)
-    expresenter (1.0.1)
+    docile (1.4.0)
+    expresenter (1.1.0)
     matchi (2.0.0)
     parallel (1.20.1)
     parser (3.0.1.1)
