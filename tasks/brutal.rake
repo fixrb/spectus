@@ -2,6 +2,6 @@
 
 desc "Generate the picture of the behavior of the code"
 task :brutal do
-  sh("bundle exec brutal")
-  sh("chmod +x test.rb")
+  `bundle exec brutal`
+  `chmod +x test.rb`
 end
