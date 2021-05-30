@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
   spec.add_dependency "defi",         "~> 2.0.4"
-  spec.add_dependency "expresenter",  "~> 1.1.0"
+  spec.add_dependency "expresenter",  "~> 1.2.0"
   spec.add_dependency "matchi",       "~> 2.0.0"
 
   spec.add_development_dependency "brutal"

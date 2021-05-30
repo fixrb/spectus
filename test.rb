@@ -23,7 +23,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -55,7 +55,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -87,7 +87,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -119,7 +119,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -151,7 +151,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -183,7 +183,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -215,7 +215,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -247,7 +247,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to equal 42.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -279,7 +279,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -311,7 +311,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -343,7 +343,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -375,7 +375,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -407,7 +407,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -439,7 +439,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -471,7 +471,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -503,7 +503,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -535,7 +535,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -567,7 +567,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -599,7 +599,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -631,7 +631,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -663,7 +663,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -695,7 +695,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -727,7 +727,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -759,7 +759,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -791,7 +791,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -823,7 +823,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -855,7 +855,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -887,7 +887,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"FOO\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"FOO\" to equal 42.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -919,7 +919,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -951,7 +951,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -983,7 +983,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1015,7 +1015,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"FOO\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"FOO\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1047,7 +1047,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1079,7 +1079,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1111,7 +1111,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1143,7 +1143,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1175,7 +1175,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1207,7 +1207,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1239,7 +1239,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1271,7 +1271,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"FOO\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"FOO\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1303,7 +1303,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1335,7 +1335,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1367,7 +1367,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1399,7 +1399,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1431,7 +1431,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"foo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1463,7 +1463,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"foo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1495,7 +1495,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1527,7 +1527,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"foo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"foo\" to equal 42.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1559,7 +1559,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1591,7 +1591,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1623,7 +1623,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1655,7 +1655,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1687,7 +1687,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1719,7 +1719,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1751,7 +1751,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected not to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1783,7 +1783,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1815,7 +1815,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1847,7 +1847,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1879,7 +1879,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected not to eql \"foo\".\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1911,7 +1911,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1943,7 +1943,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -1975,7 +1975,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2007,7 +2007,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2039,7 +2039,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2071,7 +2071,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"foo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2103,7 +2103,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"foo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2135,7 +2135,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2167,7 +2167,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"foo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"foo\" to equal 42.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2199,7 +2199,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2231,7 +2231,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2263,7 +2263,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2295,7 +2295,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"foo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"foo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2327,7 +2327,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2359,7 +2359,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2391,7 +2391,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected not to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2423,7 +2423,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2455,7 +2455,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2487,7 +2487,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2519,7 +2519,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected not to eql \"foo\".\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2551,7 +2551,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"foo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"foo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2583,7 +2583,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2615,7 +2615,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2647,7 +2647,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2679,7 +2679,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2711,7 +2711,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2743,7 +2743,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2775,7 +2775,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2807,7 +2807,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to equal 42.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2839,7 +2839,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2871,7 +2871,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2903,7 +2903,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2935,7 +2935,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2967,7 +2967,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -2999,7 +2999,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3031,7 +3031,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3063,7 +3063,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3095,7 +3095,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3127,7 +3127,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3159,7 +3159,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3191,7 +3191,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3223,7 +3223,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3255,7 +3255,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3287,7 +3287,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3319,7 +3319,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3351,7 +3351,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3383,7 +3383,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3415,7 +3415,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3447,7 +3447,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: expected \"boo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: expected \"boo\" to equal 42.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3479,7 +3479,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3511,7 +3511,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3543,7 +3543,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to eql \"foo\".\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3575,7 +3575,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: expected \"boo\" to equal 42.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: expected \"boo\" to equal 42.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3607,7 +3607,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3639,7 +3639,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3671,7 +3671,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3703,7 +3703,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3735,7 +3735,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception NoMethodError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3767,7 +3767,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to raise_exception ArgumentError.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3799,7 +3799,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to eql \"foo\".\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to eql \"foo\".\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3831,7 +3831,7 @@ end
 raise if actual.actual.class != String
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: expected \"boo\" not to equal 42.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: expected \"boo\" not to equal 42.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3863,7 +3863,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -3895,7 +3895,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -3927,7 +3927,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -3959,7 +3959,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -3991,7 +3991,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4023,7 +4023,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4055,7 +4055,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4087,7 +4087,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4119,7 +4119,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4151,7 +4151,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "I"
 raise if actual.colored_char != "\e[36mI\e[0m"
-raise if actual.colored_string != "\e[36mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[36m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💡"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4183,7 +4183,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "I"
 raise if actual.colored_char != "\e[36mI\e[0m"
-raise if actual.colored_string != "\e[36mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[36m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💡"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4215,7 +4215,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "I"
 raise if actual.colored_char != "\e[36mI\e[0m"
-raise if actual.colored_string != "\e[36mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[36m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💡"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4247,7 +4247,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4279,7 +4279,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4311,7 +4311,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4343,7 +4343,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4375,7 +4375,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4407,7 +4407,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4439,7 +4439,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4471,7 +4471,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4503,7 +4503,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4535,7 +4535,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4567,7 +4567,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4599,7 +4599,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4631,7 +4631,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4663,7 +4663,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4695,7 +4695,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4727,7 +4727,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4759,7 +4759,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4791,7 +4791,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "I"
 raise if actual.colored_char != "\e[36mI\e[0m"
-raise if actual.colored_string != "\e[36mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[36m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💡"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4823,7 +4823,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "I"
 raise if actual.colored_char != "\e[36mI\e[0m"
-raise if actual.colored_string != "\e[36mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[36m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💡"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4855,7 +4855,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "I"
 raise if actual.colored_char != "\e[36mI\e[0m"
-raise if actual.colored_string != "\e[36mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[36m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💡"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4887,7 +4887,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -4919,7 +4919,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4951,7 +4951,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -4983,7 +4983,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -5015,7 +5015,7 @@ end
 raise if actual.actual.class != NoMethodError
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5047,7 +5047,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -5079,7 +5079,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -5111,7 +5111,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mNoMethodError: undefined method `boom' for \"foo\":String.\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mNoMethodError\e[22m: undefined method `boom' for \"foo\":String.\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != NoMethodError
 raise if actual.error? != true
@@ -5143,7 +5143,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5175,7 +5175,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5207,7 +5207,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5239,7 +5239,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5271,7 +5271,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5303,7 +5303,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5335,7 +5335,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5367,7 +5367,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5399,7 +5399,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5431,7 +5431,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5463,7 +5463,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5495,7 +5495,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5527,7 +5527,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5559,7 +5559,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5591,7 +5591,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5623,7 +5623,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5655,7 +5655,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5687,7 +5687,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5719,7 +5719,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5751,7 +5751,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5783,7 +5783,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5815,7 +5815,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5847,7 +5847,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5879,7 +5879,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5911,7 +5911,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -5943,7 +5943,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -5975,7 +5975,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6007,7 +6007,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6039,7 +6039,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6071,7 +6071,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "."
 raise if actual.colored_char != "\e[32m.\e[0m"
-raise if actual.colored_string != "\e[32mSuccess: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[32m\e[1mSuccess\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "✅"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -6103,7 +6103,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6135,7 +6135,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6167,7 +6167,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6199,7 +6199,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "F"
 raise if actual.colored_char != "\e[35mF\e[0m"
-raise if actual.colored_string != "\e[35mFailure: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[35m\e[1mFailure\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "❌"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -6231,7 +6231,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6263,7 +6263,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6295,7 +6295,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6327,7 +6327,7 @@ end
 raise if actual.actual.class != ArgumentError
 raise if actual.char != "W"
 raise if actual.colored_char != "\e[33mW\e[0m"
-raise if actual.colored_string != "\e[33mWarning: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[33m\e[1mWarning\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "⚠️"
 raise if actual.error.class != NilClass
 raise if actual.error? != false
@@ -6359,7 +6359,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true
@@ -6391,7 +6391,7 @@ end
 raise if actual.actual.class != NilClass
 raise if actual.char != "E"
 raise if actual.colored_char != "\e[31mE\e[0m"
-raise if actual.colored_string != "\e[31mArgumentError: wrong number of arguments (given 1, expected 0).\e[0m"
+raise if actual.colored_string != "\e[31m\e[1mArgumentError\e[22m: wrong number of arguments (given 1, expected 0).\e[0m"
 raise if actual.emoji != "💥"
 raise if actual.error.class != ArgumentError
 raise if actual.error? != true

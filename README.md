@@ -1,7 +1,6 @@
 # Spectus
 
 [![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=main)][travis]
-[![Code Climate](https://codeclimate.com/github/fixrb/spectus/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/spectus.svg)][gem]
 [![Inline docs](https://inch-ci.org/github/fixrb/spectus.svg?branch=main)][inchpages]
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
@@ -18,11 +17,15 @@ gem "spectus"
 
 And then execute:
 
-    $ bundle
+```sh
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install spectus
+```sh
+gem install spectus
+```
 
 ## Usage
 
@@ -132,7 +135,7 @@ __Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The [gem](https://rubygems.org/gems/spectus) is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ***
 
@@ -145,6 +148,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 [gem]: https://rubygems.org/gems/spectus
 [travis]: https://travis-ci.org/fixrb/spectus
-[codeclimate]: https://codeclimate.com/github/fixrb/spectus
 [inchpages]: https://inch-ci.org/github/fixrb/spectus
 [rubydoc]: https://rubydoc.info/gems/spectus/frames
