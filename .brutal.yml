@@ -62,6 +62,7 @@ actuals:
   - "%{subject}.to_s"
   - "%{subject}.colored_string"
   - "%{subject}.inspect"
-  - "%{subject}.actual.class"
+  - "%{subject}.actual.inspect"
+  - "%{subject}.expected"
   - "%{subject}.error.class"
   - "%{subject}.got.class"
