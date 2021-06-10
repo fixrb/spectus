@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    spectus (3.3.2)
+    spectus (3.3.3)
       defi (~> 2.0.5)
-      expresenter (~> 1.2.0)
-      matchi (~> 2.0.1)
+      expresenter (~> 1.2.1)
+      matchi (~> 2.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -15,8 +15,8 @@ GEM
     defi (2.0.5)
       aw (~> 0.1.12)
     docile (1.4.0)
-    expresenter (1.2.0)
-    matchi (2.0.1)
+    expresenter (1.2.1)
+    matchi (2.0.2)
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -24,7 +24,7 @@ GEM
     rake (13.0.3)
     regexp_parser (2.1.1)
     rexml (3.2.5)
-    rubocop (1.16.0)
+    rubocop (1.16.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
