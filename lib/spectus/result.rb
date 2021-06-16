@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_relative File.join("result", "fail")
+require_relative File.join("result", "pass")
+
 module Spectus
   # Namespace for the results.
   module Result
@@ -13,6 +16,3 @@ module Spectus
     end
   end
 end
-
-require_relative File.join("result", "fail")
-require_relative File.join("result", "pass")

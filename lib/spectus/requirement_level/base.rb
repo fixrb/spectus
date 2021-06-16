@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_relative File.join("..", "exam")
+require_relative File.join("..", "result")
+
 module Spectus
   # Namespace for the requirement levels.
   module RequirementLevel
@@ -32,8 +35,8 @@ module Spectus
 
       # The result of the expectation.
       #
-      # @raise [Spectus::Result::Fail] The expectation is `false`.
-      # @return [Spectus::Result::Pass] The expectation is `true`.
+      # @raise [Spectus::Result::Fail] The expectation failed.
+      # @return [Spectus::Result::Pass] The expectation passed.
       def call
         Result.call(pass?).with(
           actual:   exam.actual,
@@ -64,6 +67,3 @@ module Spectus
     end
   end
 end
-
-require_relative File.join("..", "exam")
-require_relative File.join("..", "result")
