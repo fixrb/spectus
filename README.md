@@ -38,7 +38,7 @@ qualifying it with `MUST`, `SHOULD` and `MAY`, we can draw up several scenarios:
 | Implemented & Exception   | `false`  | `false`    | `false` |
 | Not implemented           | `false`  | `false`    | `true`  |
 
-When an expectation is evaluated by Spectus,
+When an expectation is evaluated by __Spectus__,
 
 * in case of a _passed_ expectation, a `Spectus::Result::Pass` instance is _returned_;
 * in case of a _failed_ expectation, a `Spectus::Result::Fail` exception is _raised_.
@@ -90,104 +90,87 @@ t = Spec.new(4)
 
 t.test_a # => raises an exception:
 # Traceback (most recent call last):
-#         6: from ./bin/console:8:in `<main>'
-#         5: from (irb):23
-#         4: from (irb):11:in `test_a'
-#         3: from /Users/cyril/github/fixrb/spectus/lib/spectus/expectation_target.rb:34:in `MUST'
-#         2: from /Users/cyril/github/fixrb/spectus/lib/spectus/requirement_level/base.rb:38:in `call'
-#         1: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/expresenter-1.2.1/lib/expresenter/fail.rb:19:in `with'
+#         3: from ./bin/console:8:in `<main>'
+#         2: from (irb):23
+#         1: from (irb):11:in `test_a'
 # Spectus::Result::Fail (NoMethodError: undefined method `upcase' for 4:Integer)
 
 t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for 4:Integer>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY, valid: false)
 
 t.test_c # => raises an exception:
 # Traceback (most recent call last):
-#         6: from ./bin/console:8:in `<main>'
-#         5: from (irb):25
-#         4: from (irb):19:in `test_c'
-#         3: from /Users/cyril/github/fixrb/spectus/lib/spectus/expectation_target.rb:100:in `SHOULD'
-#         2: from /Users/cyril/github/fixrb/spectus/lib/spectus/requirement_level/base.rb:38:in `call'
-#         1: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/expresenter-1.2.1/lib/expresenter/fail.rb:19:in `with'
+#         3: from ./bin/console:8:in `<main>'
+#         2: from (irb):25
+#         1: from (irb):19:in `test_c'
 # Spectus::Result::Fail (NoMethodError: undefined method `length' for 4:Integer.)
 ```
 
 ## More examples
 
-### Absolute Requirement
-
-Given the "`ルビー`" object, when it receives `valid_encoding?` method, then it **MUST** be `true`:
+To make __Spectus__ available:
 
 ```ruby
 require "spectus"
 
 include Spectus
-
-it { "ルビー".valid_encoding? }.MUST be_true
-# => Spectus::Result::Pass(actual: true, error: nil, expected: nil, got: true, matcher: :be_true, negate: false, level: :MUST, valid: true)
 ```
 
-The result of the test shows that the spec passed.
+All examples here assume that this has been done.
+
+### Absolute Requirement
+
+There's only one bat:
+
+```ruby
+it { "🦇".size }.MUST equal 1
+# => Spectus::Result::Pass(actual: 1, error: nil, expected: 1, got: true, matcher: :equal, negate: false, level: :MUST, valid: true)
+```
 
 ### Absolute Prohibition
 
-Given the "`foo`" object, when it receives `length` method, then it **MUST NOT** raise the `NoMethodError` exception:
+The true from the false:
 
 ```ruby
-require "spectus"
-
-include Spectus
-
-it { "foo".length }.MUST_NOT raise_exception NoMethodError
-# => Spectus::Result::Pass(actual: 3, error: nil, expected: NoMethodError, got: true, matcher: :raise_exception, negate: true, level: :MUST, valid: true)
+it { false }.MUST_NOT be_true
+# => Spectus::Result::Pass(actual: false, error: nil, expected: nil, got: true, matcher: :be_true, negate: true, level: :MUST, valid: true)
 ```
-
-The result of the test shows that the spec passed.
 
 ### Recommended
 
-Given the `BasicObject` object, when it receives `superclass` method, then it **SHOULD** return the explicit blank class `NilClass`:
+A well-known joke. An addition of `0.1` and `0.2` is deadly precise:
 
 ```ruby
-require "spectus"
-
-include Spectus
-
-it { BasicObject.superclass }.SHOULD equal NilClass
-# => Spectus::Result::Pass(actual: nil, error: nil, expected: NilClass, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)
+it { 0.1 + 0.2 }.SHOULD equal 0.3
+# => Spectus::Result::Pass(actual: 0.30000000000000004, error: nil, expected: 0.3, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)
 ```
-
-Instead of the expected `NilClass` class, its sole instance (which is `nil`) was returned.
-However, because there isn't any exception, the result of the test shows that the spec passed.
 
 ### Not Recommended
 
-Given the "`1`" object, when it receives `+(1)` method, then it **SHOULD NOT** return the "`11`" value:
+The situation should still be under control:
 
 ```ruby
-require "spectus"
-
-include Spectus
-
-it { "1" + 1 }.SHOULD_NOT eql "11"
-# raise Spectus::Result::Fail(actual: nil, error: #<TypeError: no implicit conversion of Integer into String>, expected: "11", got: nil, matcher: :eql, negate: true, level: :SHOULD, valid: false)
+it { BOOM }.SHOULD_NOT raise_exception SystemExit
 ```
 
-There was a `TypeError` exception, the result of the test shows that the spec failed.
+```txt
+Traceback (most recent call last):
+        2: from ./bin/console:8:in `<main>'
+        1: from (irb):8
+Spectus::Result::Fail (NameError: uninitialized constant BOOM.)
+```
 
 ### Optional
 
-Given the "`foo`" object, when it receives `blank?` method, then it **MAY** be `false`:
+An empty array is blank, right?
 
 ```ruby
-require "spectus"
-
-include Spectus
-
-it { "foo".blank? }.MAY be_false
-# => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_false, negate: false, level: :MAY, valid: false)
+it { [].blank? }.MAY be_true
+# => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY, valid: false)
 ```
 
-The optional `blank?` method is not implemented (unlike in [Ruby on Rails](https://api.rubyonrails.org/classes/Object.html#method-i-blank-3F), for instance), so the result of the test shows that the spec passed.
+Damn, I forgot to load activesupport. 🤦‍♂️
+
+That said, the test is passing due to the _not-implemented-like_ raised exception: `NoMethodError`.
 
 ## Code Isolation
 
@@ -200,26 +183,22 @@ Because they may or may not be desired, each requirement level has 2 versions:
 Example of test without isolation:
 
 ```ruby
-require "spectus"
-
-include Spectus
-
 greeting = "Hello, world!"
+
 it { greeting.gsub!("world", "Alice") }.MUST eql "Hello, Alice!"
 # => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
+
 greeting # => "Hello, Alice!"
 ```
 
 Example of test in isolation:
 
 ```ruby
-require "spectus"
-
-include Spectus
-
 greeting = "Hello, world!"
+
 it { greeting.gsub!("world", "Alice") }.MUST! eql "Hello, Alice!"
 # => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
+
 greeting # => "Hello, world!"
 ```
 
