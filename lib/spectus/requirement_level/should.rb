@@ -10,7 +10,7 @@ module Spectus
       #
       # @return [Boolean] Report if the medium expectation pass or fail?
       def pass?
-        super || exam.exception.nil?
+        super || experiment.error.nil?
       end
     end
   end

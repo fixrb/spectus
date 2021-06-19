@@ -78,11 +78,11 @@ end
 ```ruby
 t = Spec.new("foo")
 
-t.test_a # => Spectus::Result::Pass(actual: "FOO", error: nil, expected: "FOO", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
+t.test_a # => Spectus::Result::Pass(actual: "FOO", error: nil, expected: "FOO", got: true, matcher: :eql, negate: false, level: :MUST)
 
-t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY, valid: false)
+t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
 
-t.test_c # => Spectus::Result::Pass(actual: 3, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)
+t.test_c # => Spectus::Result::Pass(actual: 3, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD)
 ```
 
 ```ruby
@@ -95,7 +95,7 @@ t.test_a # => raises an exception:
 #         1: from (irb):11:in `test_a'
 # Spectus::Result::Fail (NoMethodError: undefined method `upcase' for 4:Integer)
 
-t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for 4:Integer>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY, valid: false)
+t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for 4:Integer>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
 
 t.test_c # => raises an exception:
 # Traceback (most recent call last):
@@ -123,7 +123,7 @@ There's only one bat:
 
 ```ruby
 it { "🦇".size }.MUST equal 1
-# => Spectus::Result::Pass(actual: 1, error: nil, expected: 1, got: true, matcher: :equal, negate: false, level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: 1, error: nil, expected: 1, got: true, matcher: :equal, negate: false, level: :MUST)
 ```
 
 ### Absolute Prohibition
@@ -132,7 +132,7 @@ The true from the false:
 
 ```ruby
 it { false }.MUST_NOT be_true
-# => Spectus::Result::Pass(actual: false, error: nil, expected: nil, got: true, matcher: :be_true, negate: true, level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: false, error: nil, expected: nil, got: true, matcher: :be_true, negate: true, level: :MUST)
 ```
 
 ### Recommended
@@ -141,7 +141,7 @@ A well-known joke. An addition of `0.1` and `0.2` is deadly precise:
 
 ```ruby
 it { 0.1 + 0.2 }.SHOULD equal 0.3
-# => Spectus::Result::Pass(actual: 0.30000000000000004, error: nil, expected: 0.3, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)
+# => Spectus::Result::Pass(actual: 0.30000000000000004, error: nil, expected: 0.3, got: false, matcher: :equal, negate: false, level: :SHOULD)
 ```
 
 ### Not Recommended
@@ -165,7 +165,7 @@ An empty array is blank, right?
 
 ```ruby
 it { [].blank? }.MAY be_true
-# => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY, valid: false)
+# => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
 ```
 
 Damn, I forgot to load activesupport. 🤦‍♂️
@@ -186,7 +186,7 @@ Example of test without isolation:
 greeting = "Hello, world!"
 
 it { greeting.gsub!("world", "Alice") }.MUST eql "Hello, Alice!"
-# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST)
 
 greeting # => "Hello, Alice!"
 ```
@@ -197,7 +197,7 @@ Example of test in isolation:
 greeting = "Hello, world!"
 
 it { greeting.gsub!("world", "Alice") }.MUST! eql "Hello, Alice!"
-# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
+# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST)
 
 greeting # => "Hello, world!"
 ```

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative File.join("..", "exam")
+require "test_tube"
+
 require_relative File.join("..", "result")
 
 module Spectus
@@ -12,22 +13,21 @@ module Spectus
       #
       # @param callable   [#call]     The callable object to test.
       # @param isolation  [Boolean]   Compute actual in isolation?
-      # @param negate     [Boolean]   Positive or negative assertion?
+      # @param negate     [Boolean]   Invert the matcher or not.
       # @param matcher    [#matches?] The matcher.
-      def initialize(callable:, isolation:, negate:, matcher:)
-        @negate   = negate
-        @matcher  = matcher
-
-        @exam = Exam.new(
-          callable:   callable,
+      def initialize(callable:, isolation:, matcher:, negate:)
+        @negate     = negate
+        @matcher    = matcher
+        @experiment = ::TestTube.invoke(
+          callable,
           isolation:  isolation,
-          negate:     negate,
-          matcher:    matcher
+          matcher:    matcher,
+          negate:     negate
         )
       end
 
-      # @return [#Exam] The exam.
-      attr_reader :exam
+      # @return [TestTube::Base] The experiment.
+      attr_reader :experiment
 
       # @return [#matches?] The matcher that performed a boolean comparison
       #   between the actual value and the expected value.
@@ -39,20 +39,21 @@ module Spectus
       # @return [Spectus::Result::Pass] The expectation passed.
       def call
         Result.call(pass?).with(
-          actual:   exam.actual,
-          error:    exam.exception,
+          actual:   experiment.actual,
+          error:    experiment.error,
           expected: matcher.expected,
-          got:      exam.got,
-          negate:   negate?,
-          valid:    exam.valid?,
+          got:      experiment.got,
+          level:    level,
           matcher:  matcher.class.to_sym,
-          level:    level
+          negate:   negate?
         )
       end
 
       protected
 
-      # @return [Symbol] The requirement level.
+      # Some key words for use in RFCs to indicate requirement levels.
+      #
+      # @return [:MUST, :SHOULD, :MAY] The requirement level.
       def level
         self.class.name.split("::").fetch(-1).upcase.to_sym
       end
@@ -60,7 +61,7 @@ module Spectus
       # @note The boolean comparison between the actual value and the expected
       #   value can be evaluated to a negative assertion.
       #
-      # @return [Boolean] Positive or negative assertion?
+      # @return [Boolean] Invert the matcher or not.
       def negate?
         @negate
       end

@@ -10,7 +10,7 @@ module Spectus
       #
       # @return [Boolean] Report if the low expectation pass or fail?
       def pass?
-        super || exam.exception.is_a?(::NoMethodError)
+        super || experiment.error.is_a?(::NoMethodError)
       end
     end
   end

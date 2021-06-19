@@ -33,9 +33,9 @@ require_relative File.join("spectus", "expectation_target")
 #   end
 #
 #   t = Spec.new("foo")
-#   t.test_a # => Spectus::Result::Pass(actual: "FOO", error: nil, expected: "FOO", got: true, matcher: :eql, negate: false, level: :MUST, valid: true)
-#   t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY, valid: false)
-#   t.test_c # => Spectus::Result::Pass(actual: 3, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD, valid: false)
+#   t.test_a # => Spectus::Result::Pass(actual: "FOO", error: nil, expected: "FOO", got: true, matcher: :eql, negate: false, level: :MUST)
+#   t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
+#   t.test_c # => Spectus::Result::Pass(actual: 3, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD)
 #
 # Or even directly used like this.
 #
@@ -44,7 +44,7 @@ require_relative File.join("spectus", "expectation_target")
 #
 #   include Spectus
 #
-#   it { 42 }.MUST equal 42 # => #<Spectus::Result::Pass...>
+#   it { 42 }.MUST equal 42 # => Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MUST
 #
 # It also includes a collection of expectation matchers 🤹
 #
@@ -103,7 +103,7 @@ module Spectus
   # Expectations are built with this method.
   #
   # @example An _absolute requirement_ definition.
-  #   it { 42 }.MUST equal 42 # => #<Spectus::Result::Pass...>
+  #   it { 42 }.MUST equal 42 # => Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MUST
   #
   # @param input [Proc] The code to test.
   #

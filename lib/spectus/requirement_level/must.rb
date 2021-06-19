@@ -10,7 +10,7 @@ module Spectus
       #
       # @return [Boolean] Report if the high expectation pass or fail?
       def pass?
-        exam.valid?
+        experiment.got.equal?(true)
       end
     end
   end
