@@ -1,8 +1,10 @@
 # Spectus
 
-[![Build Status](https://api.travis-ci.org/fixrb/spectus.svg?branch=main)](https://travis-ci.org/fixrb/spectus)
-[![Gem Version](https://badge.fury.io/rb/spectus.svg)](https://rubygems.org/gems/spectus)
-[![Documentation](https://img.shields.io/:yard-docs-38c800.svg)](https://rubydoc.info/gems/spectus/frames)
+[![Version](https://img.shields.io/github/v/tag/fixrb/spectus?label=Version&logo=github)](https://github.com/fixrb/spectus/releases)
+[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/spectus/main)
+[![CI](https://github.com/fixrb/spectus/workflows/CI/badge.svg?branch=main)](https://github.com/fixrb/spectus/actions?query=workflow%3Aci+branch%3Amain)
+[![RuboCop](https://github.com/fixrb/spectus/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/spectus/actions?query=workflow%3Arubocop+branch%3Amain)
+[![License](https://img.shields.io/github/license/fixrb/spectus?label=License&logo=github)](https://github.com/fixrb/spectus/raw/main/LICENSE.md)
 
 > Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) requirement levels 🚥
 
