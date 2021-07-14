@@ -28,93 +28,26 @@ Or install it yourself as:
 gem install spectus
 ```
 
-## Overview
-
-Assuming that an expectation is an assertion that is either `true` or `false`,
-qualifying it with `MUST`, `SHOULD` and `MAY`, we can draw up several scenarios:
-
-| Requirement levels        | **MUST** | **SHOULD** | **MAY** |
-| ------------------------- | -------- | ---------- | ------- |
-| Implemented & Matched     | `true`   | `true`     | `true`  |
-| Implemented & Not matched | `false`  | `true`     | `false` |
-| Implemented & Exception   | `false`  | `false`    | `false` |
-| Not implemented           | `false`  | `false`    | `true`  |
-
-When an expectation is evaluated by __Spectus__,
-
-* in case of a _passed_ expectation, a `Spectus::Result::Pass` instance is _returned_;
-* in case of a _failed_ expectation, a `Spectus::Result::Fail` exception is _raised_.
-
 ## Usage
 
-The __Spectus__ library is basically a module containing an `it` instance method that accept a block representing the actual value to be evaluated through an expectation.
-
-The `Spectus` module can be included inside a class and used as follows:
-
-```ruby
-require "spectus"
-
-class Spec
-  include ::Spectus
-
-  attr_reader :subject
-
-  def initialize(subject)
-    @subject = subject
-  end
-
-  def test_a
-    it { subject.upcase }.MUST eql "FOO"
-  end
-
-  def test_b
-    it { subject.blank? }.MAY be_true
-  end
-
-  def test_c
-    it { subject.length }.SHOULD equal 42
-  end
-end
-```
-
-```ruby
-t = Spec.new("foo")
-
-t.test_a # => Spectus::Result::Pass(actual: "FOO", error: nil, expected: "FOO", got: true, matcher: :eql, negate: false, level: :MUST)
-
-t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
-
-t.test_c # => Spectus::Result::Pass(actual: 3, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD)
-```
-
-```ruby
-t = Spec.new(4)
-
-t.test_a # => raises an exception:
-# Traceback (most recent call last):
-#         3: from ./bin/console:8:in `<main>'
-#         2: from (irb):23
-#         1: from (irb):11:in `test_a'
-# Spectus::Result::Fail (NoMethodError: undefined method `upcase' for 4:Integer)
-
-t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for 4:Integer>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
-
-t.test_c # => raises an exception:
-# Traceback (most recent call last):
-#         3: from ./bin/console:8:in `<main>'
-#         2: from (irb):25
-#         1: from (irb):19:in `test_c'
-# Spectus::Result::Fail (NoMethodError: undefined method `length' for 4:Integer.)
-```
-
-## More examples
+The __Spectus__ library is basically a module defining methods that can be used to qualify expectations in specifications.
 
 To make __Spectus__ available:
 
 ```ruby
 require "spectus"
+```
 
-include Spectus
+For convenience, we will also instantiate some matchers from the [Matchi library](https://github.com/fixrb/matchi):
+
+```sh
+gem install matchi
+```
+
+```ruby
+require "matchi/helper"
+
+include Matchi::Helper
 ```
 
 All examples here assume that this has been done.
@@ -124,8 +57,9 @@ All examples here assume that this has been done.
 There's only one bat:
 
 ```ruby
-it { "🦇".size }.MUST equal 1
-# => Spectus::Result::Pass(actual: 1, error: nil, expected: 1, got: true, matcher: :equal, negate: false, level: :MUST)
+definition = Spectus.must equal 1
+definition.call { "🦇".size }
+# => Expresenter::Pass(actual: 1, error: nil, expected: 1, got: true, matcher: :equal, negate: false, level: :MUST
 ```
 
 ### Absolute Prohibition
@@ -133,8 +67,9 @@ it { "🦇".size }.MUST equal 1
 The true from the false:
 
 ```ruby
-it { false }.MUST_NOT be_true
-# => Spectus::Result::Pass(actual: false, error: nil, expected: nil, got: true, matcher: :be_true, negate: true, level: :MUST)
+definition = Spectus.must_not be_true
+definition.call { false }
+# => Expresenter::Pass(actual: false, error: nil, expected: nil, got: true, matcher: :be_true, negate: true, level: :MUST
 ```
 
 ### Recommended
@@ -142,8 +77,9 @@ it { false }.MUST_NOT be_true
 A well-known joke. An addition of `0.1` and `0.2` is deadly precise:
 
 ```ruby
-it { 0.1 + 0.2 }.SHOULD equal 0.3
-# => Spectus::Result::Pass(actual: 0.30000000000000004, error: nil, expected: 0.3, got: false, matcher: :equal, negate: false, level: :SHOULD)
+definition = Spectus.should equal 0.3
+definition.call { 0.1 + 0.2 }
+# => Expresenter::Pass(actual: 0.30000000000000004, error: nil, expected: 0.3, got: false, matcher: :equal, negate: false, level: :SHOULD
 ```
 
 ### Not Recommended
@@ -151,14 +87,19 @@ it { 0.1 + 0.2 }.SHOULD equal 0.3
 The situation should still be under control:
 
 ```ruby
-it { BOOM }.SHOULD_NOT raise_exception SystemExit
+definition = Spectus.should_not raise_exception SystemExit
+definition.call { BOOM }
 ```
 
 ```txt
 Traceback (most recent call last):
-        2: from ./bin/console:8:in `<main>'
-        1: from (irb):8
-Spectus::Result::Fail (NameError: uninitialized constant BOOM.)
+        6: from /Users/cyril/.rbenv/versions/2.7.3/bin/irb:23:in `<main>'
+        5: from /Users/cyril/.rbenv/versions/2.7.3/bin/irb:23:in `load'
+        4: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        3: from (irb):11
+        2: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/spectus-4.0.0/lib/spectus/requirement/base.rb:32:in `call'
+        1: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/expresenter-1.3.0/lib/expresenter/fail.rb:25:in `with'
+Expresenter::Fail (NameError: uninitialized constant BOOM.)
 ```
 
 ### Optional
@@ -166,8 +107,9 @@ Spectus::Result::Fail (NameError: uninitialized constant BOOM.)
 An empty array is blank, right?
 
 ```ruby
-it { [].blank? }.MAY be_true
-# => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
+definition = Spectus.may be_true
+definition.call { [].blank? }
+# => Expresenter::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY
 ```
 
 Damn, I forgot to load activesupport. 🤦‍♂️
@@ -187,8 +129,9 @@ Example of test without isolation:
 ```ruby
 greeting = "Hello, world!"
 
-it { greeting.gsub!("world", "Alice") }.MUST eql "Hello, Alice!"
-# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST)
+definition = Spectus.must eql "Hello, Alice!"
+definition.call { greeting.gsub!("world", "Alice") }
+# => Expresenter::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST
 
 greeting # => "Hello, Alice!"
 ```
@@ -198,8 +141,9 @@ Example of test in isolation:
 ```ruby
 greeting = "Hello, world!"
 
-it { greeting.gsub!("world", "Alice") }.MUST! eql "Hello, Alice!"
-# => Spectus::Result::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST)
+definition = Spectus.must! eql "Hello, Alice!"
+definition.call { greeting.gsub!("world", "Alice") }
+# => Expresenter::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST
 
 greeting # => "Hello, world!"
 ```

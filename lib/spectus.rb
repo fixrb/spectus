@@ -1,114 +1,226 @@
 # frozen_string_literal: true
 
-require "matchi/helper"
-
-require_relative File.join("spectus", "expectation_target")
+require_relative File.join("spectus", "requirement")
 
 # Namespace for the Spectus library.
 #
-# This module defines the {#it} method to create expectations, which can be
-# automatically included into classes.
-#
-# @example
-#   class Spec
-#     include ::Spectus
-#
-#     attr_reader :subject
-#
-#     def initialize(subject)
-#       @subject = subject
-#     end
-#
-#     def test_a
-#       it { subject.upcase }.MUST eql "FOO"
-#     end
-#
-#     def test_b
-#       it { subject.blank? }.MAY be_true
-#     end
-#
-#     def test_c
-#       it { subject.length }.SHOULD equal 42
-#     end
-#   end
-#
-#   t = Spec.new("foo")
-#   t.test_a # => Spectus::Result::Pass(actual: "FOO", error: nil, expected: "FOO", got: true, matcher: :eql, negate: false, level: :MUST)
-#   t.test_b # => Spectus::Result::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for "foo":String>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY)
-#   t.test_c # => Spectus::Result::Pass(actual: 3, error: nil, expected: 42, got: false, matcher: :equal, negate: false, level: :SHOULD)
-#
-# Or even directly used like this.
-#
-# @example
-#   require 'spectus'
-#
-#   include Spectus
-#
-#   it { 42 }.MUST equal 42 # => Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MUST
-#
-# It also includes a collection of expectation matchers 🤹
-#
-# @example Equivalence matcher
-#   matcher = eql("foo") # => Matchi::Matcher::Eql.new("foo")
-#   matcher.matches? { "foo" } # => true
-#   matcher.matches? { "bar" } # => false
-#
-# @example Identity matcher
-#   object = "foo"
-#
-#   matcher = equal(object) # => Matchi::Matcher::Equal.new(object)
-#   matcher.matches? { object } # => true
-#   matcher.matches? { "foo" } # => false
-#
-# @example Regular expressions matcher
-#   matcher = match(/^foo$/) # => Matchi::Matcher::Match.new(/^foo$/)
-#   matcher.matches? { "foo" } # => true
-#   matcher.matches? { "bar" } # => false
-#
-# @example Expecting errors matcher
-#   matcher = raise_exception(NameError) # => Matchi::Matcher::RaiseException.new(NameError)
-#   matcher.matches? { Boom } # => true
-#   matcher.matches? { true } # => false
-#
-# @example Truth matcher
-#   matcher = be_true # => Matchi::Matcher::BeTrue.new
-#   matcher.matches? { true } # => true
-#   matcher.matches? { false } # => false
-#   matcher.matches? { nil } # => false
-#   matcher.matches? { 4 } # => false
-#
-# @example Untruth matcher
-#   matcher = be_false # => Matchi::Matcher::BeFalse.new
-#   matcher.matches? { false } # => true
-#   matcher.matches? { true } # => false
-#   matcher.matches? { nil } # => false
-#   matcher.matches? { 4 } # => false
-#
-# @example Nil matcher
-#   matcher = be_nil # => Matchi::Matcher::BeNil.new
-#   matcher.matches? { nil } # => true
-#   matcher.matches? { false } # => false
-#   matcher.matches? { true } # => false
-#   matcher.matches? { 4 } # => false
-#
-# @example Type/class matcher
-#   matcher = be_an_instance_of(String) # => Matchi::Matcher::BeAnInstanceOf.new(String)
-#   matcher.matches? { "foo" } # => true
-#   matcher.matches? { 4 } # => false
-#
-# @see https://github.com/fixrb/matchi
+# This module defines methods that can be used to qualify expectations in
+# specifications.
 module Spectus
-  include ::Matchi::Helper
+  # This method mean that the definition is an absolute requirement of the specification.
+  #
+  # @example An absolute requirement definition
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.must eql "FOO"
+  #   # => #<MUST Matchi::Matcher::Eql("FOO") isolate=false negate=false>
+  #
+  # @param matcher [#matches?] The matcher.
+  #
+  # @return [Requirement::Required] An absolute requirement level instance.
+  #
+  # @api public
+  def self.must(matcher)
+    Requirement::Required.new(
+      isolate: false,
+      negate:  false,
+      matcher: matcher
+    )
+  end
 
-  # Expectations are built with this method.
+  # @example An absolute requirement definition with isolation
+  #   require "spectus"
+  #   require "matchi/helper"
   #
-  # @example An _absolute requirement_ definition.
-  #   it { 42 }.MUST equal 42 # => Spectus::Result::Pass(actual: 42, error: nil, expected: 42, got: true, matcher: :equal, negate: false, level: :MUST
+  #   include Matchi::Helper
   #
-  # @param input [Proc] The code to test.
+  #   Spectus.must! eql "FOO"
+  #   # => #<MUST Matchi::Matcher::Eql("FOO") isolate=true negate=false>
   #
-  # @return [ExpectationTarget] The expectation target.
-  def it(&input)
-    ExpectationTarget.new(&input)
+  # @see must
+  def self.must!(matcher)
+    Requirement::Required.new(
+      isolate: true,
+      negate:  false,
+      matcher: matcher
+    )
+  end
+
+  # This method mean that the definition is an absolute prohibition of the specification.
+  #
+  # @example An absolute prohibition definition
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.must_not equal 42
+  #   # => #<MUST Matchi::Matcher::Equal(42) isolate=false negate=true>
+  #
+  # @param matcher [#matches?] The matcher.
+  #
+  # @return [Requirement::Required] An absolute prohibition level instance.
+  def self.must_not(matcher)
+    Requirement::Required.new(
+      isolate: false,
+      negate:  true,
+      matcher: matcher
+    )
+  end
+
+  # @example An absolute prohibition definition with isolation
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.must_not! equal 42
+  #   # => #<MUST Matchi::Matcher::Equal(42) isolate=true negate=true>
+  #
+  # @see must_not
+  def self.must_not!(matcher)
+    Requirement::Required.new(
+      isolate: true,
+      negate:  true,
+      matcher: matcher
+    )
+  end
+
+  # This method mean that there may exist valid reasons in particular
+  # circumstances to ignore a particular item, but the full implications must be
+  # understood and carefully weighed before choosing a different course.
+  #
+  # @example A recommended definition
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.should equal true
+  #   # => #<SHOULD Matchi::Matcher::Equal(true) isolate=false negate=false>
+  #
+  # @param matcher [#matches?] The matcher.
+  #
+  # @return [Requirement::Recommended] A recommended requirement level instance.
+  def self.should(matcher)
+    Requirement::Recommended.new(
+      isolate: false,
+      negate:  false,
+      matcher: matcher
+    )
+  end
+
+  # @example A recommended definition with isolation
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.should! equal true
+  #   # => #<SHOULD Matchi::Matcher::Equal(true) isolate=true negate=false>
+  #
+  # @see should
+  def self.should!(matcher)
+    Requirement::Recommended.new(
+      isolate: true,
+      negate:  false,
+      matcher: matcher
+    )
+  end
+
+  # This method mean that there may exist valid reasons in particular
+  # circumstances when the particular behavior is acceptable or even useful, but
+  # the full implications should be understood and the case carefully weighed
+  # before implementing any behavior described with this label.
+  #
+  # @example A not recommended definition
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.should_not raise_exception NoMethodError
+  #   # => #<SHOULD Matchi::Matcher::RaiseException(NoMethodError) isolate=false negate=true>
+  #
+  # @param matcher [#matches?] The matcher.
+  #
+  # @return [Requirement::Recommended] A not recommended requirement level
+  #   instance.
+  def self.should_not(matcher)
+    Requirement::Recommended.new(
+      isolate: false,
+      negate:  true,
+      matcher: matcher
+    )
+  end
+
+  # @example A not recommended definition with isolation
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.should_not! raise_exception NoMethodError
+  #   # => #<SHOULD Matchi::Matcher::RaiseException(NoMethodError) isolate=true negate=true>
+  #
+  # @see should_not
+  def self.should_not!(matcher)
+    Requirement::Recommended.new(
+      isolate: true,
+      negate:  true,
+      matcher: matcher
+    )
+  end
+
+  # This method mean that an item is truly optional.
+  # One vendor may choose to include the item because a particular marketplace
+  # requires it or because the vendor feels that it enhances the product while
+  # another vendor may omit the same item. An implementation which does not
+  # include a particular option must be prepared to interoperate with another
+  # implementation which does include the option, though perhaps with reduced
+  # functionality. In the same vein an implementation which does include a
+  # particular option must be prepared to interoperate with another
+  # implementation which does not include the option (except, of course, for the
+  # feature the option provides).
+  #
+  # @example An optional definition
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.may match /^foo$/
+  #   # => #<MAY Matchi::Matcher::Match(/^foo$/) isolate=false negate=false>
+  #
+  # @param matcher [#matches?] The matcher.
+  #
+  # @return [Requirement::Optional] An optional requirement level instance.
+  def self.may(matcher)
+    Requirement::Optional.new(
+      isolate: false,
+      negate:  false,
+      matcher: matcher
+    )
+  end
+
+  # @example An optional definition with isolation
+  #   require "spectus"
+  #   require "matchi/helper"
+  #
+  #   include Matchi::Helper
+  #
+  #   Spectus.may! match /^foo$/
+  #   # => #<MAY Matchi::Matcher::Match(/^foo$/) isolate=true negate=false>
+  #
+  # @see may
+  def self.may!(matcher)
+    Requirement::Optional.new(
+      isolate: true,
+      negate:  false,
+      matcher: matcher
+    )
   end
 end

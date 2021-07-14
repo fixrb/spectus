@@ -13,11 +13,11 @@ Gem::Specification.new do |spec|
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
   spec.add_dependency "expresenter",  "~> 1.3.0"
-  spec.add_dependency "matchi",       "~> 2.1.0"
-  spec.add_dependency "test_tube",    "~> 1.1.0"
+  spec.add_dependency "test_tube",    "~> 2.0.0"
 
   spec.add_development_dependency "brutal"
   spec.add_development_dependency "bundler"
+  spec.add_development_dependency "matchi"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rubocop-md"
   spec.add_development_dependency "rubocop-performance"
