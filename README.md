@@ -54,7 +54,7 @@ All examples here assume that this has been done.
 
 ### Absolute Requirement
 
-There's only one bat:
+There is exactly one bat:
 
 ```ruby
 definition = Spectus.must equal 1
@@ -62,9 +62,11 @@ definition.call { "🦇".size }
 # => Expresenter::Pass(actual: 1, error: nil, expected: 1, got: true, matcher: :equal, negate: false, level: :MUST
 ```
 
+The test is passed.
+
 ### Absolute Prohibition
 
-The true from the false:
+Truth and lies:
 
 ```ruby
 definition = Spectus.must_not be_true
@@ -74,7 +76,7 @@ definition.call { false }
 
 ### Recommended
 
-A well-known joke. An addition of `0.1` and `0.2` is deadly precise:
+A well-known joke. The addition of `0.1` and `0.2` is deadly precise:
 
 ```ruby
 definition = Spectus.should equal 0.3
@@ -84,23 +86,20 @@ definition.call { 0.1 + 0.2 }
 
 ### Not Recommended
 
-The situation should still be under control:
+This should not be wrong:
 
 ```ruby
-definition = Spectus.should_not raise_exception SystemExit
-definition.call { BOOM }
+definition = Spectus.should_not match "123456"
+
+definition.call do
+  require "securerandom"
+
+  SecureRandom.hex(3)
+end
+# => Expresenter::Pass(actual: "ce22e3", error: nil, expected: "123456", got: true, matcher: :match, negate: true, level: :SHOULD
 ```
 
-```txt
-Traceback (most recent call last):
-        6: from /Users/cyril/.rbenv/versions/2.7.3/bin/irb:23:in `<main>'
-        5: from /Users/cyril/.rbenv/versions/2.7.3/bin/irb:23:in `load'
-        4: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
-        3: from (irb):11
-        2: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/spectus-4.0.0/lib/spectus/requirement/base.rb:32:in `call'
-        1: from /Users/cyril/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/expresenter-1.3.0/lib/expresenter/fail.rb:25:in `with'
-Expresenter::Fail (NameError: uninitialized constant BOOM.)
-```
+In any case, as long as there are no exceptions, the test passes.
 
 ### Optional
 
@@ -112,9 +111,9 @@ definition.call { [].blank? }
 # => Expresenter::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY
 ```
 
-Damn, I forgot to load activesupport. 🤦‍♂️
+My bad! ActiveSupport was not imported. 🤦‍♂️
 
-That said, the test is passing due to the _not-implemented-like_ raised exception: `NoMethodError`.
+Anyways, the test passes because the exception produced is `NoMethodError`, meaning that the functionality is not implemented.
 
 ## Code Isolation
 
