@@ -152,6 +152,7 @@ greeting # => "Hello, world!"
 
 * Home page: https://github.com/fixrb/spectus
 * Bugs/issues: https://github.com/fixrb/spectus/issues
+* Blog post: https://batman.buzz/a-spectus-tutorial-expectations-with-rfc-2119-compliance-1fc769861c1
 
 ## Versioning
 
@@ -159,7 +160,7 @@ __Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
-The [gem](https://rubygems.org/gems/spectus) is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The [gem](https://rubygems.org/gems/spectus) is available as open source under the terms of the [MIT License](https://github.com/fixrb/spectus/raw/main/LICENSE.md).
 
 ***
 

@@ -28,7 +28,7 @@ module Spectus
       #
       # @api public
       def call(&block)
-        test = ::TestTube.invoke(isolation: @isolate, matcher: @matcher, negate: @negate, &block)
+        test = ::TestTube.invoke(isolate: @isolate, matcher: @matcher, negate: @negate, &block)
 
         ::Expresenter.call(passed?(test)).with(
           actual:   test.actual,
