@@ -31,13 +31,13 @@ module Spectus
         test = ::TestTube.invoke(isolate: @isolate, matcher: @matcher, negate: @negate, &block)
 
         ::Expresenter.call(passed?(test)).with(
-          actual:   test.actual,
-          error:    test.error,
-          expected: @matcher.expected,
-          got:      test.got,
-          level:    self.class.level,
-          matcher:  @matcher.class.to_sym,
-          negate:   @negate
+          actual:     test.actual,
+          definition: @matcher.to_s,
+          error:      test.error,
+          expected:   @matcher.expected,
+          got:        test.got,
+          level:      self.class.level,
+          negate:     @negate
         )
       end
 
@@ -47,13 +47,11 @@ module Spectus
       #
       # @example The human-readable representation of an absolute requirement.
       #   require "spectus"
-      #   require "matchi/helper"
+      #   require "matchi/be"
       #
-      #   include Matchi::Helper
-      #
-      #   definition = Spectus.must equal 1
+      #   definition = Spectus.must Matchi::Be.new(1)
       #   definition.inspect
-      #   # => #<MUST Matchi::Matcher::Equal(1) isolate=false negate=false>
+      #   # => "#<MUST Matchi::Be(1) isolate=false negate=false>"
       #
       # @return [String] The human-readable representation of the definition.
       #

@@ -9,9 +9,10 @@ header: |
   ::SimpleCov.start
 
   require "./lib/spectus"
-  require "matchi/helper"
 
-  self.class.include Matchi::Helper
+  require "matchi/be"
+  require "matchi/eq"
+  require "matchi/raise_exception"
 
 subject: |
   begin
@@ -39,10 +40,10 @@ contexts:
     - "must_not!"
     - "should_not!"
   matcher:
-    - "raise_exception(NoMethodError)"
-    - "raise_exception(ArgumentError)"
-    - 'eql("foo")'
-    - "equal(42)"
+    - "Matchi::RaiseException.new(NoMethodError)"
+    - "Matchi::RaiseException.new(ArgumentError)"
+    - 'Matchi::Eq.new("foo")'
+    - "Matchi::Be.new(42)"
 
 actuals:
   - "%{subject}.level"

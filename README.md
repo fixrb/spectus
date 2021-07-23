@@ -45,9 +45,7 @@ gem install matchi
 ```
 
 ```ruby
-require "matchi/helper"
-
-include Matchi::Helper
+require "matchi"
 ```
 
 All examples here assume that this has been done.
@@ -57,9 +55,9 @@ All examples here assume that this has been done.
 There is exactly one bat:
 
 ```ruby
-definition = Spectus.must equal 1
+definition = Spectus.must Matchi::Be.new(1)
 definition.call { "🦇".size }
-# => Expresenter::Pass(actual: 1, error: nil, expected: 1, got: true, matcher: :equal, negate: false, level: :MUST
+# => Expresenter::Pass(actual: 1, definition: "be 1", error: nil, expected: 1, got: true, negate: false, level: :MUST)
 ```
 
 The test is passed.
@@ -69,9 +67,9 @@ The test is passed.
 Truth and lies:
 
 ```ruby
-definition = Spectus.must_not be_true
+definition = Spectus.must_not Matchi::Be.new(true)
 definition.call { false }
-# => Expresenter::Pass(actual: false, error: nil, expected: nil, got: true, matcher: :be_true, negate: true, level: :MUST
+# => Expresenter::Pass(actual: false, definition: "be true", error: nil, expected: true, got: true, negate: true, level: :MUST)
 ```
 
 ### Recommended
@@ -79,9 +77,9 @@ definition.call { false }
 A well-known joke. The addition of `0.1` and `0.2` is deadly precise:
 
 ```ruby
-definition = Spectus.should equal 0.3
+definition = Spectus.should Matchi::Be.new(0.3)
 definition.call { 0.1 + 0.2 }
-# => Expresenter::Pass(actual: 0.30000000000000004, error: nil, expected: 0.3, got: false, matcher: :equal, negate: false, level: :SHOULD
+# => Expresenter::Pass(actual: 0.30000000000000004, definition: "be 0.3", error: nil, expected: 0.3, got: false, negate: false, level: :SHOULD)
 ```
 
 ### Not Recommended
@@ -89,14 +87,14 @@ definition.call { 0.1 + 0.2 }
 This should not be wrong:
 
 ```ruby
-definition = Spectus.should_not match "123456"
+definition = Spectus.should_not Matchi::Match.new("123456")
 
 definition.call do
   require "securerandom"
 
   SecureRandom.hex(3)
 end
-# => Expresenter::Pass(actual: "ce22e3", error: nil, expected: "123456", got: true, matcher: :match, negate: true, level: :SHOULD
+# => Expresenter::Pass(actual: "bb5716", definition: "match \"123456\"", error: nil, expected: "123456", got: true, negate: true, level: :SHOULD)
 ```
 
 In any case, as long as there are no exceptions, the test passes.
@@ -106,9 +104,9 @@ In any case, as long as there are no exceptions, the test passes.
 An empty array is blank, right?
 
 ```ruby
-definition = Spectus.may be_true
+definition = Spectus.may Matchi::Be.new(true)
 definition.call { [].blank? }
-# => Expresenter::Pass(actual: nil, error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: nil, got: nil, matcher: :be_true, negate: false, level: :MAY
+# => Expresenter::Pass(actual: nil, definition: "be true", error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: true, got: nil, negate: false, level: :MAY)
 ```
 
 My bad! ActiveSupport was not imported. 🤦‍♂️
@@ -128,9 +126,9 @@ Example of test without isolation:
 ```ruby
 greeting = "Hello, world!"
 
-definition = Spectus.must eql "Hello, Alice!"
+definition = Spectus.must Matchi::Eq.new("Hello, Alice!")
 definition.call { greeting.gsub!("world", "Alice") }
-# => Expresenter::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST
+# => Expresenter::Pass(actual: "Hello, Alice!", definition: "eq \"Hello, Alice!\"", error: nil, expected: "Hello, Alice!", got: true, negate: false, level: :MUST)
 
 greeting # => "Hello, Alice!"
 ```
@@ -140,9 +138,9 @@ Example of test in isolation:
 ```ruby
 greeting = "Hello, world!"
 
-definition = Spectus.must! eql "Hello, Alice!"
+definition = Spectus.must! Matchi::Eq.new("Hello, Alice!")
 definition.call { greeting.gsub!("world", "Alice") }
-# => Expresenter::Pass(actual: "Hello, Alice!", error: nil, expected: "Hello, Alice!", got: true, matcher: :eql, negate: false, level: :MUST
+# => Expresenter::Pass(actual: "Hello, Alice!", definition: "eq \"Hello, Alice!\"", error: nil, expected: "Hello, Alice!", got: true, negate: false, level: :MUST)
 
 greeting # => "Hello, world!"
 ```

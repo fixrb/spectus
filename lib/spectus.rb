@@ -7,16 +7,15 @@ require_relative File.join("spectus", "requirement")
 # This module defines methods that can be used to qualify expectations in
 # specifications.
 module Spectus
-  # This method mean that the definition is an absolute requirement of the specification.
+  # This method mean that the definition is an absolute requirement of the
+  # specification.
   #
   # @example An absolute requirement definition
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/eq"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.must eql "FOO"
-  #   # => #<MUST Matchi::Matcher::Eql("FOO") isolate=false negate=false>
+  #   Spectus.must Matchi::Eq.new("FOO")
+  #   # => #<MUST Matchi::Eq("FOO") isolate=false negate=false>
   #
   # @param matcher [#matches?] The matcher.
   #
@@ -33,12 +32,10 @@ module Spectus
 
   # @example An absolute requirement definition with isolation
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/eq"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.must! eql "FOO"
-  #   # => #<MUST Matchi::Matcher::Eql("FOO") isolate=true negate=false>
+  #   Spectus.must! Matchi::Eq.new("FOO")
+  #   # => #<MUST Matchi::Eq("FOO") isolate=true negate=false>
   #
   # @see must
   def self.must!(matcher)
@@ -53,12 +50,10 @@ module Spectus
   #
   # @example An absolute prohibition definition
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/be"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.must_not equal 42
-  #   # => #<MUST Matchi::Matcher::Equal(42) isolate=false negate=true>
+  #   Spectus.must_not Matchi::Be.new(42)
+  #   # => #<MUST Matchi::Be(42) isolate=false negate=true>
   #
   # @param matcher [#matches?] The matcher.
   #
@@ -73,12 +68,10 @@ module Spectus
 
   # @example An absolute prohibition definition with isolation
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/be"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.must_not! equal 42
-  #   # => #<MUST Matchi::Matcher::Equal(42) isolate=true negate=true>
+  #   Spectus.must_not! Matchi::Be.new(42)
+  #   # => #<MUST Matchi::Be(42) isolate=true negate=true>
   #
   # @see must_not
   def self.must_not!(matcher)
@@ -95,12 +88,10 @@ module Spectus
   #
   # @example A recommended definition
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/be"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.should equal true
-  #   # => #<SHOULD Matchi::Matcher::Equal(true) isolate=false negate=false>
+  #   Spectus.should Matchi::Be.new(true)
+  #   # => #<SHOULD Matchi::Be(true) isolate=false negate=false>
   #
   # @param matcher [#matches?] The matcher.
   #
@@ -115,12 +106,10 @@ module Spectus
 
   # @example A recommended definition with isolation
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/be"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.should! equal true
-  #   # => #<SHOULD Matchi::Matcher::Equal(true) isolate=true negate=false>
+  #   Spectus.should! Matchi::Be.new(true)
+  #   # => #<SHOULD Matchi::Be(true) isolate=true negate=false>
   #
   # @see should
   def self.should!(matcher)
@@ -138,12 +127,10 @@ module Spectus
   #
   # @example A not recommended definition
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/raise_exception"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.should_not raise_exception NoMethodError
-  #   # => #<SHOULD Matchi::Matcher::RaiseException(NoMethodError) isolate=false negate=true>
+  #   Spectus.should_not Matchi::RaiseException.new(NoMethodError)
+  #   # => #<SHOULD Matchi::RaiseException(NoMethodError) isolate=false negate=true>
   #
   # @param matcher [#matches?] The matcher.
   #
@@ -159,12 +146,10 @@ module Spectus
 
   # @example A not recommended definition with isolation
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/raise_exception"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.should_not! raise_exception NoMethodError
-  #   # => #<SHOULD Matchi::Matcher::RaiseException(NoMethodError) isolate=true negate=true>
+  #   Spectus.should_not! Matchi::RaiseException.new(NoMethodError)
+  #   # => #<SHOULD Matchi::RaiseException(NoMethodError) isolate=true negate=true>
   #
   # @see should_not
   def self.should_not!(matcher)
@@ -188,12 +173,10 @@ module Spectus
   #
   # @example An optional definition
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/match"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.may match /^foo$/
-  #   # => #<MAY Matchi::Matcher::Match(/^foo$/) isolate=false negate=false>
+  #   Spectus.may Matchi::Match.new(/^foo$/)
+  #   # => #<MAY Matchi::Match(/^foo$/) isolate=false negate=false>
   #
   # @param matcher [#matches?] The matcher.
   #
@@ -208,12 +191,10 @@ module Spectus
 
   # @example An optional definition with isolation
   #   require "spectus"
-  #   require "matchi/helper"
+  #   require "matchi/match"
   #
-  #   include Matchi::Helper
-  #
-  #   Spectus.may! match /^foo$/
-  #   # => #<MAY Matchi::Matcher::Match(/^foo$/) isolate=true negate=false>
+  #   Spectus.may! Matchi::Match.new(/^foo$/)
+  #   # => #<MAY Matchi::Match(/^foo$/) isolate=true negate=false>
   #
   # @see may
   def self.may!(matcher)

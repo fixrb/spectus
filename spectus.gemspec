@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
-  spec.add_dependency "expresenter",  "~> 1.3.0"
+  spec.add_dependency "expresenter",  "~> 1.4.0"
   spec.add_dependency "test_tube",    "~> 2.1.0"
 
   spec.add_development_dependency "brutal"
