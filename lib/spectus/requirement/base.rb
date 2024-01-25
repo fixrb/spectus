@@ -10,11 +10,9 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param isolate  [Boolean]   Compute actual in a subprocess.
       # @param matcher  [#matches?] The matcher.
       # @param negate   [Boolean]   Invert the matcher or not.
-      def initialize(isolate:, matcher:, negate:)
-        @isolate  = isolate
+      def initialize(matcher:, negate:)
         @matcher  = matcher
         @negate   = negate
       end
@@ -27,8 +25,8 @@ module Spectus
       # @see https://github.com/fixrb/expresenter
       #
       # @api public
-      def call(&block)
-        test = ::TestTube.invoke(isolate: @isolate, matcher: @matcher, negate: @negate, &block)
+      def call(&)
+        test = ::TestTube.invoke(matcher: @matcher, negate: @negate, &)
 
         ::Expresenter.call(passed?(test)).with(
           actual:     test.actual,
@@ -51,13 +49,13 @@ module Spectus
       #
       #   definition = Spectus.must Matchi::Be.new(1)
       #   definition.inspect
-      #   # => "#<MUST Matchi::Be(1) isolate=false negate=false>"
+      #   # => "#<MUST Matchi::Be(1) negate=false>"
       #
       # @return [String] The human-readable representation of the definition.
       #
       # @api public
       def inspect
-        "#<#{self.class.level} #{@matcher.inspect} isolate=#{@isolate} negate=#{@negate}>"
+        "#<#{self.class.level} #{@matcher.inspect} negate=#{@negate}>"
       end
 
       # :nocov:

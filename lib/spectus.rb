@@ -15,7 +15,7 @@ module Spectus
   #   require "matchi/eq"
   #
   #   Spectus.must Matchi::Eq.new("FOO")
-  #   # => #<MUST Matchi::Eq("FOO") isolate=false negate=false>
+  #   # => #<MUST Matchi::Eq("FOO") negate=false>
   #
   # @param matcher [#matches?] The matcher.
   #
@@ -23,27 +23,7 @@ module Spectus
   #
   # @api public
   def self.must(matcher)
-    Requirement::Required.new(
-      isolate: false,
-      negate:  false,
-      matcher: matcher
-    )
-  end
-
-  # @example An absolute requirement definition with isolation
-  #   require "spectus"
-  #   require "matchi/eq"
-  #
-  #   Spectus.must! Matchi::Eq.new("FOO")
-  #   # => #<MUST Matchi::Eq("FOO") isolate=true negate=false>
-  #
-  # @see must
-  def self.must!(matcher)
-    Requirement::Required.new(
-      isolate: true,
-      negate:  false,
-      matcher: matcher
-    )
+    Requirement::Required.new(negate: false, matcher:)
   end
 
   # This method mean that the definition is an absolute prohibition of the specification.
@@ -53,33 +33,13 @@ module Spectus
   #   require "matchi/be"
   #
   #   Spectus.must_not Matchi::Be.new(42)
-  #   # => #<MUST Matchi::Be(42) isolate=false negate=true>
+  #   # => #<MUST Matchi::Be(42) negate=true>
   #
   # @param matcher [#matches?] The matcher.
   #
   # @return [Requirement::Required] An absolute prohibition level instance.
   def self.must_not(matcher)
-    Requirement::Required.new(
-      isolate: false,
-      negate:  true,
-      matcher: matcher
-    )
-  end
-
-  # @example An absolute prohibition definition with isolation
-  #   require "spectus"
-  #   require "matchi/be"
-  #
-  #   Spectus.must_not! Matchi::Be.new(42)
-  #   # => #<MUST Matchi::Be(42) isolate=true negate=true>
-  #
-  # @see must_not
-  def self.must_not!(matcher)
-    Requirement::Required.new(
-      isolate: true,
-      negate:  true,
-      matcher: matcher
-    )
+    Requirement::Required.new(negate: true, matcher:)
   end
 
   # This method mean that there may exist valid reasons in particular
@@ -91,33 +51,13 @@ module Spectus
   #   require "matchi/be"
   #
   #   Spectus.should Matchi::Be.new(true)
-  #   # => #<SHOULD Matchi::Be(true) isolate=false negate=false>
+  #   # => #<SHOULD Matchi::Be(true) negate=false>
   #
   # @param matcher [#matches?] The matcher.
   #
   # @return [Requirement::Recommended] A recommended requirement level instance.
   def self.should(matcher)
-    Requirement::Recommended.new(
-      isolate: false,
-      negate:  false,
-      matcher: matcher
-    )
-  end
-
-  # @example A recommended definition with isolation
-  #   require "spectus"
-  #   require "matchi/be"
-  #
-  #   Spectus.should! Matchi::Be.new(true)
-  #   # => #<SHOULD Matchi::Be(true) isolate=true negate=false>
-  #
-  # @see should
-  def self.should!(matcher)
-    Requirement::Recommended.new(
-      isolate: true,
-      negate:  false,
-      matcher: matcher
-    )
+    Requirement::Recommended.new(negate: false, matcher:)
   end
 
   # This method mean that there may exist valid reasons in particular
@@ -130,34 +70,14 @@ module Spectus
   #   require "matchi/raise_exception"
   #
   #   Spectus.should_not Matchi::RaiseException.new(NoMethodError)
-  #   # => #<SHOULD Matchi::RaiseException(NoMethodError) isolate=false negate=true>
+  #   # => #<SHOULD Matchi::RaiseException(NoMethodError) negate=true>
   #
   # @param matcher [#matches?] The matcher.
   #
   # @return [Requirement::Recommended] A not recommended requirement level
   #   instance.
   def self.should_not(matcher)
-    Requirement::Recommended.new(
-      isolate: false,
-      negate:  true,
-      matcher: matcher
-    )
-  end
-
-  # @example A not recommended definition with isolation
-  #   require "spectus"
-  #   require "matchi/raise_exception"
-  #
-  #   Spectus.should_not! Matchi::RaiseException.new(NoMethodError)
-  #   # => #<SHOULD Matchi::RaiseException(NoMethodError) isolate=true negate=true>
-  #
-  # @see should_not
-  def self.should_not!(matcher)
-    Requirement::Recommended.new(
-      isolate: true,
-      negate:  true,
-      matcher: matcher
-    )
+    Requirement::Recommended.new(negate: true, matcher:)
   end
 
   # This method mean that an item is truly optional.
@@ -176,32 +96,12 @@ module Spectus
   #   require "matchi/match"
   #
   #   Spectus.may Matchi::Match.new(/^foo$/)
-  #   # => #<MAY Matchi::Match(/^foo$/) isolate=false negate=false>
+  #   # => #<MAY Matchi::Match(/^foo$/) negate=false>
   #
   # @param matcher [#matches?] The matcher.
   #
   # @return [Requirement::Optional] An optional requirement level instance.
   def self.may(matcher)
-    Requirement::Optional.new(
-      isolate: false,
-      negate:  false,
-      matcher: matcher
-    )
-  end
-
-  # @example An optional definition with isolation
-  #   require "spectus"
-  #   require "matchi/match"
-  #
-  #   Spectus.may! Matchi::Match.new(/^foo$/)
-  #   # => #<MAY Matchi::Match(/^foo$/) isolate=true negate=false>
-  #
-  # @see may
-  def self.may!(matcher)
-    Requirement::Optional.new(
-      isolate: true,
-      negate:  false,
-      matcher: matcher
-    )
+    Requirement::Optional.new(negate: false, matcher:)
   end
 end

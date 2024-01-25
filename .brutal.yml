@@ -34,11 +34,6 @@ contexts:
     - may
     - must_not
     - should_not
-    - "must!"
-    - "should!"
-    - "may!"
-    - "must_not!"
-    - "should_not!"
   matcher:
     - "Matchi::RaiseException.new(NoMethodError)"
     - "Matchi::RaiseException.new(ArgumentError)"

@@ -1,12 +1,14 @@
 # Spectus
 
-[![Version](https://img.shields.io/github/v/tag/fixrb/spectus?label=Version&logo=github)](https://github.com/fixrb/spectus/releases)
+[![Version](https://img.shields.io/github/v/tag/fixrb/spectus?label=Version&logo=github)](https://github.com/fixrb/spectus/tags)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/spectus/main)
-[![CI](https://github.com/fixrb/spectus/workflows/CI/badge.svg?branch=main)](https://github.com/fixrb/spectus/actions?query=workflow%3Aci+branch%3Amain)
+[![Ruby](https://github.com/fixrb/spectus/workflows/Ruby/badge.svg?branch=main)](https://github.com/fixrb/spectus/actions?query=workflow%3Aruby+branch%3Amain)
 [![RuboCop](https://github.com/fixrb/spectus/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/spectus/actions?query=workflow%3Arubocop+branch%3Amain)
 [![License](https://img.shields.io/github/license/fixrb/spectus?label=License&logo=github)](https://github.com/fixrb/spectus/raw/main/LICENSE.md)
 
-> Expectation library with [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) requirement levels 🚥
+> A Ruby library for defining expectations with precision, using [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) compliance levels. 🚥
+
+![A traffic light with three distinct sections](https://github.com/fixrb/spectus/raw/main/img/spectus.png)
 
 ## Installation
 
@@ -19,7 +21,7 @@ gem "spectus"
 And then execute:
 
 ```sh
-bundle
+bundle install
 ```
 
 Or install it yourself as:
@@ -113,43 +115,11 @@ My bad! ActiveSupport was not imported. 🤦‍♂️
 
 Anyways, the test passes because the exception produced is `NoMethodError`, meaning that the functionality is not implemented.
 
-## Code Isolation
-
-When executing expectations, side-effects may occur.
-Because they may or may not be desired, each requirement level has 2 versions:
-
-* if it does not end with `!`, its test is performed without isolation;
-* if it ends with `!`, its test is performed in isolation.
-
-Example of test without isolation:
-
-```ruby
-greeting = "Hello, world!"
-
-definition = Spectus.must Matchi::Eq.new("Hello, Alice!")
-definition.call { greeting.gsub!("world", "Alice") }
-# => Expresenter::Pass(actual: "Hello, Alice!", definition: "eq \"Hello, Alice!\"", error: nil, expected: "Hello, Alice!", got: true, negate: false, level: :MUST)
-
-greeting # => "Hello, Alice!"
-```
-
-Example of test in isolation:
-
-```ruby
-greeting = "Hello, world!"
-
-definition = Spectus.must! Matchi::Eq.new("Hello, Alice!")
-definition.call { greeting.gsub!("world", "Alice") }
-# => Expresenter::Pass(actual: "Hello, Alice!", definition: "eq \"Hello, Alice!\"", error: nil, expected: "Hello, Alice!", got: true, negate: false, level: :MUST)
-
-greeting # => "Hello, world!"
-```
-
 ## Contact
 
 * Home page: https://github.com/fixrb/spectus
 * Bugs/issues: https://github.com/fixrb/spectus/issues
-* Blog post: https://batman.buzz/a-spectus-tutorial-expectations-with-rfc-2119-compliance-1fc769861c1
+* Blog post: https://cyrilllllll.medium.com/a-spectus-tutorial-expectations-with-rfc-2119-compliance-1fc769861c1
 
 ## Versioning
 
@@ -159,11 +129,11 @@ __Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 The [gem](https://rubygems.org/gems/spectus) is available as open source under the terms of the [MIT License](https://github.com/fixrb/spectus/raw/main/LICENSE.md).
 
-***
+---
 
 <p>
   This project is sponsored by:<br />
   <a href="https://sashite.com/"><img
     src="https://github.com/fixrb/spectus/raw/main/img/sashite.png"
-    alt="Sashite" /></a>
+    alt="Sashité" /></a>
 </p>
