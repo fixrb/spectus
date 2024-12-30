@@ -10,7 +10,7 @@ module Spectus
     class Base
       # Initialize the requirement level class.
       #
-      # @param matcher  [#matches?] The matcher.
+      # @param matcher  [#match?] The matcher.
       # @param negate   [Boolean]   Invert the matcher or not.
       def initialize(matcher:, negate:)
         @matcher  = matcher
@@ -32,7 +32,6 @@ module Spectus
           actual:     test.actual,
           definition: @matcher.to_s,
           error:      test.error,
-          expected:   @matcher.expected,
           got:        test.got,
           level:      self.class.level,
           negate:     @negate

@@ -6,7 +6,6 @@ gemspec
 
 gem "brutal"
 gem "bundler"
-gem "matchi"
 gem "rake"
 gem "rubocop-md"
 gem "rubocop-performance"

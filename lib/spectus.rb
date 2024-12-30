@@ -17,7 +17,7 @@ module Spectus
   #   Spectus.must Matchi::Eq.new("FOO")
   #   # => #<MUST Matchi::Eq("FOO") negate=false>
   #
-  # @param matcher [#matches?] The matcher.
+  # @param matcher [#match?] The matcher.
   #
   # @return [Requirement::Required] An absolute requirement level instance.
   #
@@ -35,7 +35,7 @@ module Spectus
   #   Spectus.must_not Matchi::Be.new(42)
   #   # => #<MUST Matchi::Be(42) negate=true>
   #
-  # @param matcher [#matches?] The matcher.
+  # @param matcher [#match?] The matcher.
   #
   # @return [Requirement::Required] An absolute prohibition level instance.
   def self.must_not(matcher)
@@ -53,7 +53,7 @@ module Spectus
   #   Spectus.should Matchi::Be.new(true)
   #   # => #<SHOULD Matchi::Be(true) negate=false>
   #
-  # @param matcher [#matches?] The matcher.
+  # @param matcher [#match?] The matcher.
   #
   # @return [Requirement::Recommended] A recommended requirement level instance.
   def self.should(matcher)
@@ -72,7 +72,7 @@ module Spectus
   #   Spectus.should_not Matchi::RaiseException.new(NoMethodError)
   #   # => #<SHOULD Matchi::RaiseException(NoMethodError) negate=true>
   #
-  # @param matcher [#matches?] The matcher.
+  # @param matcher [#match?] The matcher.
   #
   # @return [Requirement::Recommended] A not recommended requirement level
   #   instance.
@@ -98,7 +98,7 @@ module Spectus
   #   Spectus.may Matchi::Match.new(/^foo$/)
   #   # => #<MAY Matchi::Match(/^foo$/) negate=false>
   #
-  # @param matcher [#matches?] The matcher.
+  # @param matcher [#match?] The matcher.
   #
   # @return [Requirement::Optional] An optional requirement level instance.
   def self.may(matcher)

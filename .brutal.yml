@@ -57,8 +57,6 @@ actuals:
   - "%{subject}.message"
   - "%{subject}.to_s"
   - "%{subject}.colored_string"
-  - "%{subject}.inspect"
   - "%{subject}.actual.inspect"
-  - "%{subject}.expected"
   - "%{subject}.error.class"
   - "%{subject}.got.class"
