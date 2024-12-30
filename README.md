@@ -8,8 +8,6 @@
 
 > A Ruby library for defining expectations with precision, using [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) compliance levels. 🚥
 
-![A traffic light with three distinct sections](https://github.com/fixrb/spectus/raw/main/img/spectus.png)
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -41,10 +39,6 @@ require "spectus"
 ```
 
 For convenience, we will also instantiate some matchers from the [Matchi library](https://github.com/fixrb/matchi):
-
-```sh
-gem install matchi
-```
 
 ```ruby
 require "matchi"
@@ -129,11 +123,6 @@ __Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 The [gem](https://rubygems.org/gems/spectus) is available as open source under the terms of the [MIT License](https://github.com/fixrb/spectus/raw/main/LICENSE.md).
 
----
+## Sponsors
 
-<p>
-  This project is sponsored by:<br />
-  <a href="https://sashite.com/"><img
-    src="https://github.com/fixrb/spectus/raw/main/img/sashite.png"
-    alt="Sashité" /></a>
-</p>
+This project is sponsored by [Sashité](https://sashite.com/)
