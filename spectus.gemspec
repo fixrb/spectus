@@ -10,11 +10,10 @@ Gem::Specification.new do |spec|
   spec.homepage               = "https://github.com/fixrb/spectus"
   spec.license                = "MIT"
   spec.files                  = Dir["LICENSE.md", "README.md", "lib/**/*"]
-  spec.required_ruby_version  = ">= 3.2.0"
+  spec.required_ruby_version  = ">= 3.1.0"
 
   spec.metadata["rubygems_mfa_required"] = "true"
 
-  spec.add_dependency "expresenter", "~> 1.5.0"
-  spec.add_dependency "matchi", "~> 4.0"
-  spec.add_dependency "test_tube", "~> 4.0.0"
+  spec.add_dependency "expresenter", "~> 1.5.1"
+  spec.add_dependency "test_tube", "~> 4.0.1"
 end

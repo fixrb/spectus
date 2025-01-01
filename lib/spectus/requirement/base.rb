@@ -6,23 +6,42 @@ require "test_tube"
 module Spectus
   # Namespace for the requirement levels.
   module Requirement
-    # Requirement level's base class.
+    # Base class for implementing RFC 2119 requirement levels.
+    #
+    # This class provides the core functionality for running tests against
+    # different requirement levels (MUST, SHOULD, MAY). It uses TestTube for
+    # test execution and Expresenter for result presentation.
+    #
+    # @see https://github.com/fixrb/test_tube Test execution
+    # @see https://github.com/fixrb/expresenter Result presentation
     class Base
       # Initialize the requirement level class.
       #
-      # @param matcher  [#match?] The matcher.
-      # @param negate   [Boolean]   Invert the matcher or not.
+      # @param matcher [#match?] The matcher used to evaluate the test
+      # @param negate [Boolean] When true, inverts the matcher's result
+      #
+      # @raise [ArgumentError] If matcher doesn't respond to match?
       def initialize(matcher:, negate:)
-        @matcher  = matcher
-        @negate   = negate
+        raise ::ArgumentError, "matcher must respond to match?" unless matcher.respond_to?(:match?)
+
+        @matcher = matcher
+        @negate  = negate
       end
 
-      # Test result.
+      # Execute the test and return its result.
       #
-      # @raise [::Expresenter::Fail] A failed spec exception.
-      # @return [::Expresenter::Pass] A passed spec instance.
+      # Runs the provided block through the matcher and evaluates the result
+      # according to the requirement level's rules. The result is presented
+      # through an Expresenter instance containing all test details.
       #
-      # @see https://github.com/fixrb/expresenter
+      # @example
+      #   test = Base.new(matcher: SomeMatcher.new, negate: false)
+      #   test.call { some_value }
+      #   # => #<Expresenter::Pass actual: some_value, ...>
+      #
+      # @yield The block containing the code to test
+      # @raise [::Expresenter::Fail] When the test fails
+      # @return [::Expresenter::Pass] When the test passes
       #
       # @api public
       def call(&)
@@ -38,36 +57,16 @@ module Spectus
         )
       end
 
-      # :nocov:
-
-      # A string containing a human-readable representation of the definition.
-      #
-      # @example The human-readable representation of an absolute requirement.
-      #   require "spectus"
-      #   require "matchi/be"
-      #
-      #   definition = Spectus.must Matchi::Be.new(1)
-      #   definition.inspect
-      #   # => "#<MUST Matchi::Be(1) negate=false>"
-      #
-      # @return [String] The human-readable representation of the definition.
-      #
-      # @api public
-      def inspect
-        "#<#{self.class.level} #{@matcher.inspect} negate=#{@negate}>"
-      end
-
-      # :nocov:
-
       private
 
-      # Code experiment result.
+      # Determine if the test passed according to the requirement level's rules.
       #
-      # @param test [::TestTube::Base] The state of the experiment.
+      # This base implementation considers the test passed if the matcher
+      # returned true. Subclasses may override this method to implement
+      # specific requirement level rules.
       #
-      # @see https://github.com/fixrb/test_tube
-      #
-      # @return [Boolean] The result of the test (passed or failed).
+      # @param test [::TestTube::Base] The test execution state
+      # @return [Boolean] true if the test passed, false otherwise
       def passed?(test)
         test.got.equal?(true)
       end

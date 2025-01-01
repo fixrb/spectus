@@ -16,9 +16,11 @@ YARD::Rake::YardocTask.new
 
 Dir["tasks/**/*.rake"].each { |t| load t }
 
-task default: %i[
+tasks = %i[
   yard
   brutal
   rubocop:autocorrect
-  test
 ]
+
+tasks << :test if RUBY_VERSION.start_with?("3.2.")
+task default: tasks

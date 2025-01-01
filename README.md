@@ -2,126 +2,143 @@
 
 [![Version](https://img.shields.io/github/v/tag/fixrb/spectus?label=Version&logo=github)](https://github.com/fixrb/spectus/tags)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/spectus/main)
-[![Ruby](https://github.com/fixrb/spectus/workflows/Ruby/badge.svg?branch=main)](https://github.com/fixrb/spectus/actions?query=workflow%3Aruby+branch%3Amain)
-[![RuboCop](https://github.com/fixrb/spectus/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/spectus/actions?query=workflow%3Arubocop+branch%3Amain)
 [![License](https://img.shields.io/github/license/fixrb/spectus?label=License&logo=github)](https://github.com/fixrb/spectus/raw/main/LICENSE.md)
 
-> A Ruby library for defining expectations with precision, using [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) compliance levels. 🚥
+> A Ruby testing library that brings precision to your expectations using RFC 2119 compliance levels. 🚥
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem "spectus"
-```
-
-And then execute:
-
-```sh
-bundle install
-```
-
-Or install it yourself as:
-
-```sh
-gem install spectus
-```
-
-## Usage
-
-The __Spectus__ library is basically a module defining methods that can be used to qualify expectations in specifications.
-
-To make __Spectus__ available:
+## Quick Start
 
 ```ruby
 require "spectus"
-```
-
-For convenience, we will also instantiate some matchers from the [Matchi library](https://github.com/fixrb/matchi):
-
-```ruby
 require "matchi"
+
+# Define a must-have requirement
+test = Spectus.must Matchi::Eq.new(42)
+test.call { 42 } # => Pass ✅
+
+# Define an optional feature
+test = Spectus.may Matchi::Be.new(:empty?)
+test.call { [].empty? } # => Pass ✅
 ```
 
-All examples here assume that this has been done.
+## Installation
 
-### Absolute Requirement
-
-There is exactly one bat:
+Add to your Gemfile:
 
 ```ruby
-definition = Spectus.must Matchi::Be.new(1)
-definition.call { "🦇".size }
-# => Expresenter::Pass(actual: 1, definition: "be 1", error: nil, expected: 1, got: true, negate: false, level: :MUST)
+gem "spectus"
+gem "matchi" # For matchers
 ```
 
-The test is passed.
+Or install directly:
 
-### Absolute Prohibition
-
-Truth and lies:
-
-```ruby
-definition = Spectus.must_not Matchi::Be.new(true)
-definition.call { false }
-# => Expresenter::Pass(actual: false, definition: "be true", error: nil, expected: true, got: true, negate: true, level: :MUST)
+```bash
+gem install spectus
+gem install matchi
 ```
 
-### Recommended
+## Understanding RFC 2119
 
-A well-known joke. The addition of `0.1` and `0.2` is deadly precise:
+Spectus implements [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) requirement levels to bring clarity and precision to test expectations:
+
+- **MUST** (✅): Absolute requirement, no exceptions
+- **SHOULD** (⚠️): Strong recommendation with valid exceptions
+- **MAY** (💡): Optional feature
+
+This approach helps you clearly communicate the importance of each test in your suite.
+
+## Features
+
+### Requirement Levels
+
+| Level | Description | Pass Conditions |
+|-------|-------------|-----------------|
+| MUST | Absolute requirement | Only when exact match |
+| SHOULD | Recommended behavior | When matches or has valid reason not to |
+| MAY | Optional feature | When matches or not implemented |
+
+### Results Classification
+
+- **Pass Results:**
+  - ✅ Success (MUST level met)
+  - ⚠️ Warning (SHOULD level met)
+  - 💡 Info (MAY level met)
+
+- **Fail Results:**
+  - ❌ Failure (requirement not met)
+  - 💥 Error (unexpected exception)
+
+## Usage Examples
+
+### Testing Required Behavior
 
 ```ruby
-definition = Spectus.should Matchi::Be.new(0.3)
-definition.call { 0.1 + 0.2 }
-# => Expresenter::Pass(actual: 0.30000000000000004, definition: "be 0.3", error: nil, expected: 0.3, got: false, negate: false, level: :SHOULD)
+test = Spectus.must Matchi::Be.new(1)
+test.call { "🦇".size } # Must be exactly 1
 ```
 
-### Not Recommended
-
-This should not be wrong:
+### Testing Recommended Behavior
 
 ```ruby
-definition = Spectus.should_not Matchi::Match.new("123456")
+test = Spectus.should Matchi::Be.new(0.3)
+test.call { 0.1 + 0.2 } # Should be close to 0.3
+```
 
-definition.call do
-  require "securerandom"
+### Testing Optional Features
 
-  SecureRandom.hex(3)
+```ruby
+test = Spectus.may Matchi::Be.new(true)
+test.call { [].blank? } # May implement blank? method
+```
+
+## Advanced Usage
+
+<details>
+<summary>Click to expand custom matcher example</summary>
+
+```ruby
+class PositiveNumber
+  def match?
+    yield.positive?
+  end
 end
-# => Expresenter::Pass(actual: "bb5716", definition: "match \"123456\"", error: nil, expected: "123456", got: true, negate: true, level: :SHOULD)
+
+test = Spectus.must PositiveNumber.new
+test.call { 42 } # => Pass
 ```
+</details>
 
-In any case, as long as there are no exceptions, the test passes.
-
-### Optional
-
-An empty array is blank, right?
+<details>
+<summary>Click to expand integration example</summary>
 
 ```ruby
-definition = Spectus.may Matchi::Be.new(true)
-definition.call { [].blank? }
-# => Expresenter::Pass(actual: nil, definition: "be true", error: #<NoMethodError: undefined method `blank?' for []:Array>, expected: true, got: nil, negate: false, level: :MAY)
+require "spectus"
+require "matchi"
+
+RSpec.describe Calculator do
+  it "must perform exact arithmetic" do
+    test = Spectus.must Matchi::Eq.new(4)
+    expect { test.call { 2 + 2 } }.not_to raise_error
+  end
+end
 ```
+</details>
 
-My bad! ActiveSupport was not imported. 🤦‍♂️
+## Related Projects
 
-Anyways, the test passes because the exception produced is `NoMethodError`, meaning that the functionality is not implemented.
-
-## Contact
-
-* Home page: https://github.com/fixrb/spectus
-* Bugs/issues: https://github.com/fixrb/spectus/issues
-* Blog post: https://cyrilllllll.medium.com/a-spectus-tutorial-expectations-with-rfc-2119-compliance-1fc769861c1
-
-## Versioning
-
-__Spectus__ follows [Semantic Versioning 2.0](https://semver.org/).
+- [Matchi](https://github.com/fixrb/matchi) - Collection of compatible matchers
+- [Test Tube](https://github.com/fixrb/test_tube) - Underlying test execution engine
+- [Expresenter](https://github.com/fixrb/expresenter) - Test result presentation
 
 ## License
 
-The [gem](https://rubygems.org/gems/spectus) is available as open source under the terms of the [MIT License](https://github.com/fixrb/spectus/raw/main/LICENSE.md).
+Released under the [MIT License](LICENSE.md).
+
+## Support
+
+- Issues: [GitHub Issues](https://github.com/fixrb/spectus/issues)
+- Documentation: [RubyDoc](https://rubydoc.info/github/fixrb/spectus/main)
+- Blog Post: [Medium Article](https://cyrilllllll.medium.com/a-spectus-tutorial-expectations-with-rfc-2119-compliance-1fc769861c1)
 
 ## Sponsors
 
