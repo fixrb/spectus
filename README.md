@@ -138,7 +138,7 @@ Released under the [MIT License](LICENSE.md).
 
 - Issues: [GitHub Issues](https://github.com/fixrb/spectus/issues)
 - Documentation: [RubyDoc](https://rubydoc.info/github/fixrb/spectus/main)
-- Blog Post: [Medium Article](https://cyrilllllll.medium.com/a-spectus-tutorial-expectations-with-rfc-2119-compliance-1fc769861c1)
+- Blog Post: [Fix Article](https://fixrb.dev/framework/testing/2024/12/30/the-three-levels-of-requirements-inspired-by-rfc-2119.html)
 
 ## Sponsors
 
