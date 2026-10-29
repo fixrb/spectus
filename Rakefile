@@ -6,7 +6,7 @@ require "rubocop/rake_task"
 require "yard"
 
 Rake::TestTask.new do |t|
-  t.pattern = "test.rb"
+  t.pattern = File.join("test", "test_*.rb")
   t.verbose = true
   t.warning = true
 end
@@ -14,13 +14,8 @@ end
 RuboCop::RakeTask.new
 YARD::Rake::YardocTask.new
 
-Dir["tasks/**/*.rake"].each { |t| load t }
-
-tasks = %i[
+task default: %i[
+  rubocop
+  test
   yard
-  brutal
-  rubocop:autocorrect
 ]
-
-tasks << :test if RUBY_VERSION.start_with?("3.2.")
-task default: tasks

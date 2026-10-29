@@ -4,10 +4,9 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "brutal"
-gem "bundler"
-gem "matchi"
+gem "matchi", "~> 5.0"
 gem "rake"
+gem "rubocop"
 gem "rubocop-md"
 gem "rubocop-performance"
 gem "rubocop-rake"

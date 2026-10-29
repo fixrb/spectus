@@ -1,32 +1,46 @@
-inherit_mode:
-  merge:
-    - Exclude
-
+# The target Ruby version is read from `required_ruby_version` in the gemspec.
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.1
 
-  Exclude:
-    - test.rb
-
-require:
+plugins:
   - rubocop-md
   - rubocop-performance
   - rubocop-rake
   - rubocop-thread_safety
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-# We do not need to support Ruby 1.9, so this is good to use.
-Style/SymbolArray:
-  Enabled: true
 
 # Most readable form.
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
 
-Style/MixinUsage:
+# The tests are a flat list of `raise unless …` checks, each one a sentence:
+# an empty line after each would double their length for nothing.
+Layout/EmptyLineAfterGuardClause:
   Exclude:
-    - README.md
+    - test/**/*
+
+# Every class, module and method of the library carries a comment; YARD
+# (`--fail-on-warning` in .yardopts) checks that its tags match the code.
+# Enabled explicitly: the next major release of RuboCop is expected to
+# disable `Style/Documentation` by default.
+Style/Documentation:
+  Enabled: true
+  Include:
+    - lib/**/*.rb
+
+Style/DocumentationMethod:
+  Enabled: true
+  Include:
+    - lib/**/*.rb
+
+# `::String === object` asks String, not the object, which user code may
+# have redefined: the form the library wants.
+Style/CaseEquality:
+  Exclude:
+    - lib/**/*
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
