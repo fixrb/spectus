@@ -62,7 +62,7 @@ A `Spectus::Result` is plain data, frozen: symbols, booleans and frozen strings 
 | `negate`        | `true` or `false` |
 | `outcome`       | `:success`, `:warning`, `:info`, `:failure` or `:error` |
 | `description`   | the matcher, as its `to_s` wrote it: `eq 42` |
-| `actual`        | the value the block returned, as its `inspect` wrote it, or the exception it raised, whether the matcher rescued it or not; `nil` when the matcher did not call the block |
+| `actual`        | the value the block returned, as its `inspect` wrote it, or the exception it raised, whether the matcher rescued it or not; `nil` when the matcher did not call the block, or when the block raised an exception Defi does not keep and the matcher rescued it |
 | `error_class`   | the class of the exception that came out of `match?`, or `TypeError` for an answer that was not `true` or `false`; `nil` otherwise |
 | `error_message` | its message |
 | `backtrace`     | its backtrace, when it has one, library frames included: a runner filters by path |
@@ -73,9 +73,13 @@ The texts are read defensively: an `inspect` or a `message` that raises or does 
 
 ## Exceptions
 
-`call` raises `ArgumentError` without a block and `TypeError` when the `to_s` of the matcher is not a `String`; the matcher is test code, trusted, and what its `to_s` raises goes through. The block and `match?` run under the policy of Defi: the exceptions a method raises on its own, a `StandardError`, a `ScriptError` (such as `NotImplementedError`), a `SystemStackError` or the `SystemExit` of an `exit`, end in the result (as an error, or as an info for a MAY), while an `Interrupt`, a `SignalException`, a `NoMemoryError`, the exception a `Timeout` uses to end its block and any other subclass of `Exception` go through, whether the block or the matcher raised them. Spectus never sees what a matcher rescues itself: in matchi 5.0, `Matchi::RaiseException` rescues `Exception`, so an `exit` inside its block is not an error.
+`call` raises `ArgumentError` without a block and `TypeError` when the `to_s` of the matcher is not a `String`; the matcher is test code, trusted, and what its `to_s` raises goes through. The block and `match?` run under the policy of Defi: the exceptions a method raises on its own, a `StandardError`, a `ScriptError` (such as `NotImplementedError`), a `SystemStackError` or the `SystemExit` of an `exit`, end in the result (as an error, or as an info for a MAY), while an `Interrupt`, a `SignalException`, a `NoMemoryError`, the exception a `Timeout` uses to end its block and any other subclass of `Exception` go through, whether the block or the matcher raised them. Spectus never sees what a matcher rescues itself: `Matchi::RaiseException` rescues a `SystemExit`, so an `exit` inside its block is a failed match, not an error, and `Matchi::RaiseException.new(Interrupt)` rescues an `Interrupt`, a success without an actual value.
 
 The block runs inside `match?`, as many times as the matcher calls it, and without arguments: a lambda that expects some raises `ArgumentError`, which ends in the result. `actual` is the block's last value. The exception it raises is raised again inside the matcher, the same object with its own cause, as Defi does it.
+
+## Changes in 6.0.1
+
+- Documentation: `actual` is also `nil` when the block raised an exception Defi does not keep and the matcher rescued it, as `Matchi::RaiseException.new(Interrupt)` does; what `Matchi::RaiseException` rescues is described as of matchi 6.0.
 
 ## Changes in 6.0
 

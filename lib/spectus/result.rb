@@ -19,7 +19,8 @@ module Spectus
   #   @return [String, nil] the value the block produced, as its `inspect`
   #     wrote it, or the exception it raised (which is also the error when
   #     the matcher let it through); `nil` when the matcher did not call the
-  #     block
+  #     block, or the block raised an exception Defi does not keep and the
+  #     matcher rescued it
   # @!attribute [r] error_class
   #   @return [String, nil] the class of the exception that came out of
   #     `match?`, or `TypeError` for an answer that was not true or false

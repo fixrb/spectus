@@ -191,6 +191,17 @@ result = Spectus.must(silent).call { raise "never run" }
 raise unless result.outcome == :success && result.actual.nil? && result.to_s == "Success: expected to be left alone"
 raise unless Spectus.must_not(silent).call { 1 }.to_s == "Failure: expected not to be left alone"
 
+# An exception Defi does not keep leaves no actual value, even when the
+# matcher rescues it.
+expecting = matcher("raise Interrupt") do |&block|
+  block.call
+  false
+rescue Interrupt
+  true
+end
+result = Spectus.must(expecting).call { raise Interrupt }
+raise unless result.outcome == :success && result.actual.nil? && result.to_s == "Success: expected to raise Interrupt"
+
 # The exception raised again inside the matcher is the same object, with its
 # own cause.
 caught = nil
