@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "matchi", "~> 5.0"
+gem "matchi", "~> 6.0"
 gem "rake"
 gem "rubocop"
 gem "rubocop-md"
