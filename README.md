@@ -1,7 +1,7 @@
 # Spectus
 
 [![Version](https://img.shields.io/github/v/tag/fixrb/spectus?label=Version&logo=github)](https://github.com/fixrb/spectus/tags)
-[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/spectus/main)
+[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://gemdocs.org/gems/spectus/latest/)
 [![License](https://img.shields.io/github/license/fixrb/spectus?label=License&logo=github)](https://github.com/fixrb/spectus/raw/main/LICENSE.md)
 
 Spectus expresses expectations with the requirement levels of [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119): what a value MUST do, SHOULD do, or MAY do. An expectation is a level, a negation and a matcher; called with a block, it gives a result that says how it went, and never raises for an expectation that is not met.
